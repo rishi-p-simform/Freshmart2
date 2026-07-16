@@ -14,6 +14,8 @@ export interface CustomInputProps extends TextInputProps {
   testID?: string;
   /** Accessibility Label */
   accessibilityLabel?: string;
+  /** Optional label text shown above the input */
+  label?: string;
 }
 
 export const CustomInputDefaultProps: Partial<CustomInputProps> = {

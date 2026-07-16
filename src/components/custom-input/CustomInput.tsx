@@ -1,8 +1,9 @@
-import React, { useState, forwardRef, useRef, useImperativeHandle, useEffect } from 'react';
-import { TextInput, View, Pressable, Animated } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { Animated, Pressable, TextInput, View } from 'react-native';
 import { useTheme } from '../../hooks';
 import { Colors } from '../../theme';
+import { Text } from '../text';
 import { styleSheet } from './CustomInputStyles';
 import { CustomInputDefaultProps, CustomInputProps } from './CustomInputTypes';
 
@@ -23,6 +24,7 @@ const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
     isPassword,
     testID,
     accessibilityLabel,
+    label,
     ...rest
   } = { ...CustomInputDefaultProps, ...props };
 
@@ -53,64 +55,66 @@ const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
   };
 
   const iconColor = Colors[theme]?.gray;
-  
+
   const animatedBorderColor = focusAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ['transparent', Colors[theme]?.primary || '#000']
+    outputRange: [Colors[theme]?.palette.gray[200], Colors[theme]?.primary || '#000']
   });
 
   return (
-    <AnimatedPressable 
-      style={[
-        styles.container, 
-        customStyle,
-        { borderColor: animatedBorderColor }
-      ]} 
-      testID={`${testID}-container`}
-      accessibilityRole="none"
-      onPress={handleContainerPress}
-    >
-      {leftIcon && (
-        <View style={styles.leftIconContainer}>
-          <Ionicons name={leftIcon} size={20} color={isFocused ? Colors[theme]?.primary : iconColor} />
-        </View>
-      )}
+    <View style={customStyle}>
+      {label && <Text variant='labelSmall' style={styles.label}>{label}</Text>}
+      <AnimatedPressable
+        style={[
+          styles.container,
+          { borderColor: animatedBorderColor }
+        ]}
+        testID={`${testID}-container`}
+        accessibilityRole="none"
+        onPress={handleContainerPress}
+      >
+        {leftIcon && (
+          <View style={styles.leftIconContainer}>
+            <Ionicons name={leftIcon} size={20} color={isFocused ? Colors[theme]?.primary : iconColor} />
+          </View>
+        )}
 
-      <TextInput
-        ref={inputRef}
-        style={[styles.input, inputStyle]}
-        secureTextEntry={isPassword && !isPasswordVisible}
-        placeholderTextColor={iconColor}
-        testID={testID}
-        accessibilityLabel={accessibilityLabel}
-        onFocus={(e) => {
-          setIsFocused(true);
-          rest.onFocus?.(e);
-        }}
-        onBlur={(e) => {
-          setIsFocused(false);
-          rest.onBlur?.(e);
-        }}
-        {...rest}
-      />
+        <TextInput
+          ref={inputRef}
+          style={[styles.input, inputStyle]}
+          secureTextEntry={isPassword && !isPasswordVisible}
+          placeholderTextColor={iconColor}
+          testID={testID}
+          accessibilityLabel={accessibilityLabel}
+          onFocus={(e) => {
+            setIsFocused(true);
+            rest.onFocus?.(e);
+          }}
+          onBlur={(e) => {
+            setIsFocused(false);
+            rest.onBlur?.(e);
+          }}
+          {...rest}
+        />
 
-      {isPassword && (
-        <Pressable
-          onPress={togglePasswordVisibility}
-          style={styles.rightIconContainer}
-          accessibilityRole="button"
-          accessibilityLabel={isPasswordVisible ? 'Hide password' : 'Show password'}
-          accessibilityHint="Toggles the visibility of the password field"
-          testID={`${testID}-toggle-visibility`}
-        >
-          <Ionicons
-            name={isPasswordVisible ? 'eye-outline' : 'eye-off-outline'}
-            size={20}
-            color={iconColor}
-          />
-        </Pressable>
-      )}
-    </AnimatedPressable>
+        {isPassword && (
+          <Pressable
+            onPress={togglePasswordVisibility}
+            style={styles.rightIconContainer}
+            accessibilityRole="button"
+            accessibilityLabel={isPasswordVisible ? 'Hide password' : 'Show password'}
+            accessibilityHint="Toggles the visibility of the password field"
+            testID={`${testID}-toggle-visibility`}
+          >
+            <Ionicons
+              name={isPasswordVisible ? 'eye-outline' : 'eye-off-outline'}
+              size={20}
+              color={iconColor}
+            />
+          </Pressable>
+        )}
+      </AnimatedPressable>
+    </View>
   );
 });
 

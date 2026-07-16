@@ -11,9 +11,9 @@ if (width > height) {
 }
 
 //Guideline sizes are based on standard ~5" screen mobile device
-const guidelineBaseWidth: number = 242;
+const guidelineBaseWidth: number = 260;
 
-const guidelineBaseHeight: number = 533;
+const guidelineBaseHeight: number = 530;
 
 const baseWidth: number = width / guidelineBaseWidth;
 

@@ -1,35 +1,42 @@
 import { StyleSheet } from 'react-native';
-import { ApplicationStyles, Colors, scale, type ThemeMode } from '../../theme';
+import { Colors, scale, type ThemeMode } from '../../theme';
 
-/**
- * Create a custom style sheet for the given theme.
- * @param {StyleSheetOption} theme - The theme to create the style sheet for.
- * @returns A custom style sheet that can be injected into the component.
- */
 const styles = (theme: ThemeMode) =>
   StyleSheet.create({
-    ...ApplicationStyles(theme),
     container: {
-      backgroundColor: Colors[theme]?.white,
-      width: '100%'
-    },
-    rightAndLeftView: {
-      flexDirection: 'row'
-    },
-    subContainer: {
-      alignItems: 'center',
-      flex: 1,
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      alignItems: 'center',
+      paddingHorizontal: scale(16),
+      paddingVertical: scale(18),
+      backgroundColor: Colors[theme]?.background || Colors[theme]?.white,
+      gap: scale(10),
+    },
+    leftContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: scale(10),
+    },
+    centerContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+    },
+    rightContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: scale(10),
     },
     textTitle: {
-      color: Colors[theme]?.black,
-      fontSize: scale(16),
-      left: 0,
-      position: 'absolute',
-      right: 0,
-      textAlign: 'center'
-    }
+      color: Colors[theme]?.text,
+    },
+    backButton: {
+      width: scale(40),
+      height: scale(40),
+      borderRadius: scale(12),
+      backgroundColor: Colors[theme]?.palette?.gray?.[50],
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   });
 
 export default styles;

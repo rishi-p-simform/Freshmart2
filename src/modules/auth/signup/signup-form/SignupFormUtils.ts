@@ -8,15 +8,23 @@ import type { FormikErrors } from 'formik';
  * @param {FormikErrors<SignupFormValues>} errors - the errors of the form.
  * @returns {boolean} - true if the form has any errors or missing values.
  */
-export function isRemainingToFillForm(
+export const isRemainingToFillForm = (
   values: SignupFormValues,
   errors: FormikErrors<SignupFormValues>
-): boolean {
+): boolean  => {
   const isError: boolean =
-    !_.isEmpty(errors.name) || !_.isEmpty(errors.email) || !_.isEmpty(errors.password);
+    !_.isEmpty(errors.name) || 
+    !_.isEmpty(errors.email) || 
+    !_.isEmpty(errors.password) ||
+    !_.isEmpty(errors.confirmPassword) ||
+    !_.isEmpty(errors.agreeToTerms);
 
   const isNoValue: boolean =
-    _.isEmpty(values.name) || _.isEmpty(values.email) || _.isEmpty(values.password);
+    _.isEmpty(values.name) || 
+    _.isEmpty(values.email) || 
+    _.isEmpty(values.password) ||
+    _.isEmpty(values.confirmPassword) ||
+    !values.agreeToTerms;
 
   return isError || isNoValue;
 }

@@ -14,6 +14,10 @@ const defineConfig = ({ config }) => {
     ios: {
       ...config.ios,
       bundleIdentifier: bundleIdentifier,
+      infoPlist: {
+        ...(config.ios?.infoPlist || {}),
+        LSApplicationQueriesSchemes: ['mailto']
+      }
     },
     android: {
       ...config.android,

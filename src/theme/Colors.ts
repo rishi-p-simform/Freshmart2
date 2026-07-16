@@ -91,7 +91,7 @@ type Keys =
   | 'surface'
   | 'text';
 
-type CommonKeys = 'white' | 'black' | 'transparentBlack' | 'transparentWhite';
+type CommonKeys = 'white' | 'black' | 'transparentBlack' | 'transparentWhite' | 'solidWhite';
 
 // Define theme colors with corresponding color values
 const themeColors: Record<Keys, string> = {
@@ -111,11 +111,12 @@ const themeColors: Record<Keys, string> = {
   text: palette.gray[900],
 };
 
-const commonColors: Record<CommonKeys, string> = {
+export const commonColors: Record<CommonKeys, string> = {
   white: palette.common.white,
   black: palette.common.black,
   transparentBlack: palette.common.transparentBlack,
-  transparentWhite: palette.common.transparentWhite
+  transparentWhite: palette.common.transparentWhite,
+  solidWhite: palette.common.white
 };
 
 type ThemeColors = Record<Keys, string> & Record<CommonKeys, string> & {
@@ -151,9 +152,31 @@ const light: ThemeColors = {
   white: commonColors.white,
   transparentWhite: commonColors.transparentWhite,
   transparentBlack: commonColors.transparentBlack,
+  solidWhite: commonColors.solidWhite,
   gradients: palette.gradients,
   palette,
   alpha: alphaHelper,
+};
+
+type PaletteColor = { 50: string; 100: string; 200: string; 300: string; 400: string; 500: string; 600: string; 700: string; 800: string; 900: string };
+const reverseColor = (c: PaletteColor): PaletteColor => ({
+  50: c[900], 100: c[800], 200: c[700], 300: c[600], 400: c[500],
+  500: c[400], 600: c[300], 700: c[200], 800: c[100], 900: c[50]
+});
+
+type StatusColor = { 50: string; 500: string; 900: string };
+const reverseStatusColor = (c: StatusColor): StatusColor => ({
+  50: c[900], 500: c[500], 900: c[50]
+});
+
+const darkPalette: typeof palette = {
+  ...palette,
+  primary: reverseColor(palette.primary),
+  secondary: reverseColor(palette.secondary),
+  orange: reverseColor(palette.orange),
+  gray: reverseColor(palette.gray),
+  error: reverseStatusColor(palette.error),
+  success: reverseStatusColor(palette.success),
 };
 
 /**
@@ -161,7 +184,7 @@ const light: ThemeColors = {
  */
 const dark: ThemeColors = {
   ...themeColors,
-  primary: palette.primary[400],
+  primary: palette.primary[700],
   secondary: palette.secondary[300],
   background: palette.gray[900],
   surface: palette.gray[800],
@@ -170,11 +193,12 @@ const dark: ThemeColors = {
   white: commonColors.black,
   transparentWhite: commonColors.transparentBlack,
   transparentBlack: commonColors.transparentWhite,
+  solidWhite: commonColors.solidWhite,
   gradients: {
     primary: ['#2563EB', '#1E3A8A'],
     light: ['#1e293b', '#0f172a'],
   },
-  palette,
+  palette: darkPalette,
   alpha: alphaHelper,
 };
 

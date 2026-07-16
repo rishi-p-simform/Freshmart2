@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native';
-import { ApplicationStyles, Colors, type ThemeMode } from '../../../theme';
+import { ApplicationStyles, Colors, type ThemeMode, scale } from '../../../theme';
 
-/**
- * A StyleSheet object that contains all of the sign in screen styles.
- * @param {ThemeMode} theme - The theme to use for the styles.
- * @returns {StyleSheet} A StyleSheet object containing all of the sign in screen styles.
- */
 const styles = (theme: ThemeMode) =>
   StyleSheet.create({
     ...ApplicationStyles(theme),
     screenView: {
-      backgroundColor: Colors[theme]?.white,
-      marginTop: '30%'
+      backgroundColor: Colors[theme]?.background,
+      flex: 1,
+    },
+    bottomContainer: {
+      flex: 1,
+      paddingTop: scale(24),
+      paddingHorizontal: scale(24),
     }
   });
 

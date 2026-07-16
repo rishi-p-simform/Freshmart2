@@ -1,22 +1,28 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useTheme } from '../../../hooks';
 import { SignupForm } from './signup-form';
 import styleSheet from './SignupStyles';
-import useSignup from './useSignup';
 import type { SignupHookReturnType } from './SignupTypes';
+import useSignup from './useSignup';
 
 /**
  * The SignupScreen component. It renders a Formik form that renders a SignupForm component.
  * @returns A ReactElement.
  */
-export default function SignupScreen(): React.ReactElement {
+const SignupScreen = (): React.ReactElement  => {
   const { styles } = useTheme(styleSheet);
-  const formik: SignupHookReturnType = useSignup();
+  const signupHook = useSignup();
 
   return (
-    <View style={StyleSheet.flatten([styles.screen, styles.screenView])}>
-      <SignupForm {...formik} />
-    </View>
+    <Animated.ScrollView style={StyleSheet.flatten([styles.screen, styles.screenView])}
+      bounces={false}
+    >
+      <SignupForm {...signupHook} />
+    </Animated.ScrollView>
   );
 }
+
+
+export default SignupScreen;

@@ -21,5 +21,11 @@ export const SignupFormSchema = Yup.object().shape({
   email: Yup.string()
     .required(Strings.YupError.requireEmailError)
     .email(Strings.YupError.invalidEmailError),
-  password: Yup.string().required(Strings.YupError.requirePasswordError)
+  password: Yup.string().required(Strings.YupError.requirePasswordError),
+  confirmPassword: Yup.string()
+    .required(Strings.YupError.requireConfirmPasswordError)
+    .oneOf([Yup.ref('password')], Strings.YupError.mismatchPasswordError),
+  agreeToTerms: Yup.boolean()
+    .required(Strings.YupError.requireTermsError)
+    .oneOf([true], Strings.YupError.requireTermsError)
 });

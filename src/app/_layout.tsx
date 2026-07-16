@@ -1,12 +1,8 @@
 import { AppEnvConst } from '@/src/constants';
 import { useTheme } from '@/src/hooks';
+import { SplashScreen as CustomSplashScreen } from '@/src/modules';
 import { AuthSelectors, persistor, store, useAppSelector } from '@/src/redux';
 import { Colors } from '@/src/theme';
-import { DefaultTheme, ThemeProvider, type Theme } from '@react-navigation/native';
-import { SplashScreen, Stack, useNavigationContainerRef } from 'expo-router';
-import React, { type FC, useEffect } from 'react';
-import { LogBox, StatusBar, Text, TextInput } from 'react-native';
-import { useFonts } from 'expo-font';
 import {
   PlusJakartaSans_400Regular,
   PlusJakartaSans_500Medium,
@@ -14,7 +10,13 @@ import {
   PlusJakartaSans_700Bold,
   PlusJakartaSans_800ExtraBold,
 } from '@expo-google-fonts/plus-jakarta-sans';
+import { DefaultTheme, ThemeProvider, type Theme } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import { SplashScreen, Stack, useNavigationContainerRef } from 'expo-router';
+import React, { useEffect, useState, type FC } from 'react';
+import { LogBox, StatusBar, Text, TextInput } from 'react-native';
 import 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 // Keep splash screen visible until auth state is rehydrated
@@ -51,10 +53,10 @@ LogBox.ignoreLogs([
  * @returns {React.ReactElement} The guarded Stack navigator.
  */
 const RootNavigator: FC = (): React.ReactElement => {
-  const isLoggedIn = useAppSelector(AuthSelectors.getIsLoggedIn);
+  const isLoggedIn = useAppSelector(AuthSelectors.getIsAuthenticated);
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack screenOptions={{ headerShown: false, animation: 'fade' }}>
       <Stack.Screen name="index" />
       <Stack.Protected guard={isLoggedIn}>
         <Stack.Screen name="(protected)" />
@@ -89,7 +91,7 @@ const NavigationDevTools: FC<{ navigationRef: ReturnType<typeof useNavigationCon
 const ThemedNavigator: FC = (): React.ReactElement => {
   const { theme, isDark } = useTheme();
   const navigationRef = useNavigationContainerRef();
-
+  const [isSplashActive, setIsSplashActive] = useState(true);
 
   const navTheme: Theme = {
     ...DefaultTheme,
@@ -105,7 +107,6 @@ const ThemedNavigator: FC = (): React.ReactElement => {
     }
   };
 
-
   return (
     <ThemeProvider value={navTheme}>
       {AppEnvConst.isDevelopment && <NavigationDevTools navigationRef={navigationRef} />}
@@ -113,7 +114,11 @@ const ThemedNavigator: FC = (): React.ReactElement => {
         backgroundColor={Colors[theme]?.white}
         barStyle={isDark ? 'light-content' : 'dark-content'}
       />
-      <RootNavigator />
+      {isSplashActive ? (
+        <CustomSplashScreen onFinish={() => setIsSplashActive(false)} />
+      ) : (
+        <RootNavigator />
+      )}
     </ThemeProvider>
   );
 };
@@ -123,6 +128,8 @@ const ThemedNavigator: FC = (): React.ReactElement => {
  * Wraps the application with the necessary providers and the root navigator.
  * @returns {React.ReactElement} The RootLayout component.
  */
+import Toast from 'react-native-toast-message';
+
 const RootLayout: FC = (): React.ReactElement | null => {
   const [fontsLoaded, fontError] = useFonts({
     PlusJakartaSans_400Regular,
@@ -133,19 +140,28 @@ const RootLayout: FC = (): React.ReactElement | null => {
   });
 
   useEffect(() => {
+    if (fontsLoaded || fontError) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  useEffect(() => {
     if (fontError) throw fontError;
   }, [fontError]);
 
-  if (!fontsLoaded) {
+  if (!fontsLoaded && !fontError) {
     return null;
   }
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ThemedNavigator />
-      </PersistGate>
-    </Provider>
+    <SafeAreaProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemedNavigator />
+        </PersistGate>
+      </Provider>
+      <Toast />
+    </SafeAreaProvider>
   );
 };
 

@@ -4,6 +4,7 @@ import { getReactotronEnhancer } from '../configs/Reactotron';
 import { AppEnvConst } from '../constants';
 import { reduxStorage } from '../services';
 import { AuthReducer } from './auth';
+import { UserReducer } from './user';
 
 /**
  * The Configuring persistConfig object for ReduxStorage.
@@ -18,7 +19,7 @@ const persistConfig = {
   key: '@expoBoilerplateToolkitCachePersist',
   version: 1,
   storage: reduxStorage,
-  whitelist: ['auth'], // Whitelist (Save Specific Reducers)
+  whitelist: ['auth', 'user'], // Whitelist (Save Specific Reducers)
   blacklist: ['nav', 'navigation'] // Blacklist (Don't Save Specific Reducers)
 };
 
@@ -27,7 +28,8 @@ const persistConfig = {
  * @returns {Object} The new reducers of the application.
  */
 const rootReducer = combineReducers({
-  auth: AuthReducer
+  auth: AuthReducer,
+  user: UserReducer
 });
 
 /**
