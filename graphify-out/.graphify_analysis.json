@@ -1,0 +1,768 @@
+{
+  "communities": {
+    "0": [
+      "src_app_index",
+      "src_app_index_app",
+      "src_app_layout",
+      "src_app_layout_navigationdevtools",
+      "src_app_layout_rootlayout",
+      "src_app_layout_rootnavigator",
+      "src_app_layout_themednavigator",
+      "src_app_public_layout",
+      "src_app_public_layout_publiclayout",
+      "src_configs_reactotron",
+      "src_configs_reactotron_getreactotronenhancer",
+      "src_configs_reactotronconfig",
+      "src_configs_reactotronconfig_reactotron",
+      "src_constants_navigationroutes",
+      "src_constants_navigationroutes_routes",
+      "src_hooks_usetheme_usetheme",
+      "src_modules_auth_signin_signin_form_index",
+      "src_modules_auth_signin_signin_form_signinform",
+      "src_modules_auth_signin_signin_form_signinform_signinform",
+      "src_modules_auth_signin_signin_form_signinformtypes",
+      "src_modules_auth_signin_signin_form_signinformtypes_signinformpropstype",
+      "src_modules_auth_signin_signin_form_signinformutils",
+      "src_modules_auth_signin_signin_form_signinformutils_isremainingtofillform",
+      "src_modules_auth_signin_signinscreen",
+      "src_modules_auth_signin_signinscreen_signinscreen",
+      "src_modules_auth_signin_signintypes",
+      "src_modules_auth_signin_signintypes_signinformvalues",
+      "src_modules_auth_signin_signintypes_signinhookreturntype",
+      "src_modules_auth_signin_signintypes_signinrouteparamlist",
+      "src_modules_auth_signin_usesignin",
+      "src_modules_auth_signin_usesignin_rationale_30",
+      "src_modules_auth_signin_usesignin_usesignin",
+      "src_modules_home_homescreen",
+      "src_modules_home_homescreen_homescreen",
+      "src_modules_home_homestyles",
+      "src_modules_home_homestyles_styles",
+      "src_modules_profile_profilescreen",
+      "src_modules_profile_profilescreen_profilescreen",
+      "src_modules_profile_profilestyles",
+      "src_modules_profile_profilestyles_styles",
+      "src_redux_auth_authselector_authselectors",
+      "src_redux_auth_authslice_authactions",
+      "src_redux_auth_index",
+      "src_redux_index",
+      "src_redux_store",
+      "src_redux_store_appdispatchtype",
+      "src_redux_store_enhancers",
+      "src_redux_store_middlewarelist",
+      "src_redux_store_persistconfig",
+      "src_redux_store_persistedreducer",
+      "src_redux_store_persistor",
+      "src_redux_store_rootreducer",
+      "src_redux_store_store",
+      "src_redux_useredux",
+      "src_redux_useredux_useappdispatch",
+      "src_redux_useredux_useappselector",
+      "src_utils_navigatorutils_navigatewithparam"
+    ],
+    "1": [
+      "src_app_protected_layout",
+      "src_app_protected_layout_detailsheaderleft",
+      "src_app_protected_layout_protectedlayout",
+      "src_app_protected_tabs_layout",
+      "src_app_protected_tabs_layout_hometabicon",
+      "src_app_protected_tabs_layout_profiletabicon",
+      "src_app_protected_tabs_layout_tabiconprops",
+      "src_app_protected_tabs_layout_tabslayout",
+      "src_components_custom_header_customheader",
+      "src_components_custom_header_customheader_customheader",
+      "src_components_custom_header_customheaderstyles",
+      "src_components_custom_header_customheaderstyles_styles",
+      "src_components_custom_header_customheadertypes",
+      "src_components_custom_header_customheadertypes_customheaderpropstype",
+      "src_components_custom_header_customheadertypes_defaultprops",
+      "src_components_custom_header_index",
+      "src_hooks_useheader",
+      "src_hooks_useheader_useheaderheight",
+      "src_hooks_useheader_usestatusbarheight",
+      "src_hooks_usetheme",
+      "src_modules_auth_signin_signin_form_signinformstyles",
+      "src_modules_auth_signin_signin_form_signinformstyles_styles",
+      "src_modules_auth_signin_signinstyles",
+      "src_modules_auth_signin_signinstyles_styles",
+      "src_modules_auth_signup_signup_form_signupformstyles",
+      "src_modules_auth_signup_signup_form_signupformstyles_styles",
+      "src_modules_auth_signup_signupstyles",
+      "src_modules_auth_signup_signupstyles_styles",
+      "src_theme_applicationstyles",
+      "src_theme_applicationstyles_applicationstyles",
+      "src_theme_colors",
+      "src_theme_colors_commoncolors",
+      "src_theme_colors_commonkeys",
+      "src_theme_colors_dark",
+      "src_theme_colors_keys",
+      "src_theme_colors_light",
+      "src_theme_colors_themecolors",
+      "src_theme_colors_thememode",
+      "src_theme_colors_thememodeenum",
+      "src_theme_index",
+      "src_theme_metrics",
+      "src_theme_metrics_globalmetrics",
+      "src_theme_metrics_globalmetricstype",
+      "src_theme_metrics_scale",
+      "src_theme_metrics_width_height"
+    ],
+    "2": [
+      "src_configs_apiconfig",
+      "src_configs_apiconfig_apiconfig",
+      "src_configs_apiconfig_apidispatch",
+      "src_configs_apiconfig_apimonitor",
+      "src_configs_apiconfig_apiwithcanceltoken",
+      "src_configs_apiconfig_asyncresponsetransform",
+      "src_configs_apiconfig_authorizedapi",
+      "src_configs_apiconfig_createasyncthunkwithcanceltoken",
+      "src_configs_apiconfig_handlecatcherror",
+      "src_configs_apiconfig_handleclienterror",
+      "src_configs_apiconfig_handleerror",
+      "src_configs_apiconfig_rationale_131",
+      "src_configs_apiconfig_rationale_160",
+      "src_configs_apiconfig_responsebound",
+      "src_configs_apiconfig_setheaders",
+      "src_configs_apiconfig_thunkapiconfig",
+      "src_configs_apiconfig_thunkarg",
+      "src_configs_apiconfig_unauthorizedapi",
+      "src_configs_apiconfigtypes",
+      "src_configs_apiconfigtypes_apierrortype",
+      "src_configs_index",
+      "src_redux_auth_authinitial",
+      "src_redux_auth_authinitial_authstatetype",
+      "src_redux_auth_authinitial_initial_state",
+      "src_redux_auth_authselector",
+      "src_redux_auth_authselector_authselectorstype",
+      "src_redux_auth_authslice",
+      "src_redux_auth_authslice_authslice",
+      "src_redux_auth_authslice_signinrequest",
+      "src_redux_store_rootstatetype",
+      "src_types_errorresponse",
+      "src_types_errorresponse_errorresponse",
+      "src_types_index",
+      "src_types_userresponse",
+      "src_types_userresponse_userresponse",
+      "src_utils_commonutils",
+      "src_utils_commonutils_cleanarray",
+      "src_utils_commonutils_cleanundefornull",
+      "src_utils_commonutils_formatnumber",
+      "src_utils_commonutils_formatstring",
+      "src_utils_commonutils_geterrorresponse",
+      "src_utils_commonutils_isnullorwhitespace"
+    ],
+    "3": [
+      "claude_settings",
+      "claude_settings_hooks",
+      "claude_settings_hooks_stop",
+      "claude_settings_permissions",
+      "claude_settings_permissions_deny",
+      "claude_settings_schema",
+      "ref_read_aab",
+      "ref_read_apk",
+      "ref_read_app",
+      "ref_read_build",
+      "ref_read_coverage",
+      "ref_read_credentials_json",
+      "ref_read_cxx",
+      "ref_read_dist",
+      "ref_read_ds_store",
+      "ref_read_env",
+      "ref_read_expo",
+      "ref_read_gradle",
+      "ref_read_idea",
+      "ref_read_ios_tmp_xcconfig",
+      "ref_read_ipa",
+      "ref_read_jks",
+      "ref_read_jsbundle",
+      "ref_read_key",
+      "ref_read_keystore",
+      "ref_read_local_properties",
+      "ref_read_log",
+      "ref_read_metro_health_check",
+      "ref_read_mobileprovision",
+      "ref_read_node_modules",
+      "ref_read_orig",
+      "ref_read_p12",
+      "ref_read_p8",
+      "ref_read_tar_gz",
+      "ref_read_web_build"
+    ],
+    "4": [
+      "src_assets_fonts_index",
+      "src_assets_icons_index",
+      "src_assets_images_index",
+      "src_assets_index",
+      "src_components_custom_button_custombutton",
+      "src_components_custom_button_custombutton_custombutton",
+      "src_components_custom_button_custombuttonstyles",
+      "src_components_custom_button_custombuttonstyles_activityindicatorcolor",
+      "src_components_custom_button_custombuttonstyles_buttondefaultstyles",
+      "src_components_custom_button_custombuttonstyles_buttonvariantstyles",
+      "src_components_custom_button_custombuttonstyles_gettextvariant",
+      "src_components_custom_button_custombuttonstyles_textcolor",
+      "src_components_custom_button_custombuttontypes",
+      "src_components_custom_button_custombuttontypes_custombuttonprops",
+      "src_components_custom_button_custombuttontypes_custombuttonvariant",
+      "src_components_custom_button_index",
+      "src_components_full_screen_loader_fullscreenloader",
+      "src_components_full_screen_loader_fullscreenloader_fullscreenloader",
+      "src_components_full_screen_loader_fullscreenloaderstyles",
+      "src_components_full_screen_loader_index",
+      "src_components_index",
+      "src_components_spinner_index",
+      "src_components_spinner_spinner",
+      "src_components_spinner_spinner_spinner",
+      "src_components_text_index",
+      "src_components_text_text",
+      "src_components_text_text_text",
+      "src_components_text_textstyles",
+      "src_components_text_textstyles_fontsizestyles",
+      "src_components_text_textstyles_fontweightstyles",
+      "src_components_text_textstyles_textvariantsstyles",
+      "src_components_text_texttypes",
+      "src_components_text_texttypes_textprops",
+      "src_components_text_texttypes_textvariant"
+    ],
+    "5": [
+      "src_constants_apiconst",
+      "src_constants_appenvconst",
+      "src_constants_deeplinkconst",
+      "src_constants_deeplinkconst_deeplink",
+      "src_constants_deeplinkconst_deeplinkprefixes",
+      "src_constants_deeplinkconst_deeplinkregex",
+      "src_constants_index",
+      "src_constants_mmkvkeys",
+      "src_constants_regexconst",
+      "src_constants_strings",
+      "src_constants_strings_apierror",
+      "src_constants_strings_auth",
+      "src_constants_strings_details",
+      "src_constants_strings_freezestringsobject",
+      "src_constants_strings_home",
+      "src_constants_strings_keystringvaluemap",
+      "src_constants_strings_profile",
+      "src_constants_strings_yuperror",
+      "src_constants_toolkitaction",
+      "src_translations_i18",
+      "src_translations_i18_language_detector",
+      "src_translations_i18_storage",
+      "src_translations_index",
+      "src_utils_deeplinkutils",
+      "src_utils_deeplinkutils_checkandgetparams",
+      "src_utils_deeplinkutils_checkandgetparamsreturntype",
+      "src_utils_deeplinkutils_converturltodeeplink",
+      "src_utils_deeplinkutils_geturlparams",
+      "src_utils_deeplinkutils_isdeeplinktype",
+      "src_utils_deeplinkutils_istoastmessage"
+    ],
+    "6": [
+      "src_hooks_hooks_utils_index",
+      "src_hooks_hooks_utils_usedeepcomparememoize",
+      "src_hooks_hooks_utils_usedeepcomparememoize_checkdeps",
+      "src_hooks_hooks_utils_usedeepcomparememoize_usedeepcomparememoize",
+      "src_hooks_index",
+      "src_hooks_usedeepcomparecallback",
+      "src_hooks_usedeepcomparecallback_usedeepcomparecallback",
+      "src_hooks_usedeepcompareeffect",
+      "src_hooks_usedeepcompareeffect_usedeepcompareeffect",
+      "src_hooks_usepermission",
+      "src_hooks_usepermission_defaultoption",
+      "src_hooks_usepermission_getpermissionresult",
+      "src_hooks_usepermission_getpermissionresultreturntype",
+      "src_hooks_usepermission_permissionrationale",
+      "src_hooks_usepermission_permissionsoptions",
+      "src_hooks_usepermission_permissionstatus",
+      "src_hooks_usepermission_rationaleoptions",
+      "src_hooks_usepermission_usemultiplepermissions",
+      "src_hooks_usepermission_usenotificationpermissions",
+      "src_hooks_usepermission_usesinglepermissions",
+      "src_services_index",
+      "src_services_storage",
+      "src_services_storage_getstoragestring",
+      "src_services_storage_reduxstorage",
+      "src_services_storage_setstoragestring",
+      "src_services_storage_storage",
+      "src_services_storage_storagestringtype"
+    ],
+    "7": [
+      "src_modules_auth_signup_signup_form_index",
+      "src_modules_auth_signup_signup_form_signupform",
+      "src_modules_auth_signup_signup_form_signupform_signupform",
+      "src_modules_auth_signup_signup_form_signupformtypes",
+      "src_modules_auth_signup_signup_form_signupformtypes_signupformpropstype",
+      "src_modules_auth_signup_signup_form_signupformutils",
+      "src_modules_auth_signup_signup_form_signupformutils_isremainingtofillform",
+      "src_modules_auth_signup_signupscreen",
+      "src_modules_auth_signup_signupscreen_signupscreen",
+      "src_modules_auth_signup_signuptypes",
+      "src_modules_auth_signup_signuptypes_signupformvalues",
+      "src_modules_auth_signup_signuptypes_signuphookreturntype",
+      "src_modules_auth_signup_usesignup",
+      "src_modules_auth_signup_usesignup_rationale_24",
+      "src_modules_auth_signup_usesignup_usesignup",
+      "src_utils_index",
+      "src_utils_navigatorutils",
+      "src_utils_navigatorutils_navigateback",
+      "src_utils_navigatorutils_navigatepop",
+      "src_utils_navigatorutils_navigatewithpush",
+      "src_utils_navigatorutils_navigatewithreplace",
+      "src_utils_navigatorutils_navigatewithreset",
+      "src_utils_navigatorutils_routeparams",
+      "src_utils_validationschema",
+      "src_utils_validationschema_signinformschema",
+      "src_utils_validationschema_signupformschema"
+    ],
+    "8": [
+      "eslint",
+      "eslint_config_expo",
+      "package",
+      "package_devdependencies",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_expo",
+      "package_devdependencies_react_navigation_devtools",
+      "package_devdependencies_types_react",
+      "package_devdependencies_typescript",
+      "package_main",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_android",
+      "package_scripts_ios",
+      "package_scripts_lint",
+      "package_scripts_reset_project",
+      "package_scripts_start",
+      "package_scripts_web",
+      "package_version",
+      "react_navigation_devtools",
+      "types_react",
+      "typescript"
+    ],
+    "9": [
+      "src_app_protected_details",
+      "src_app_protected_tabs_home_index",
+      "src_app_protected_tabs_profile_index",
+      "src_app_public_signin_index",
+      "src_app_public_signup_index",
+      "src_modules_auth_index",
+      "src_modules_auth_signin_index",
+      "src_modules_auth_signup_index",
+      "src_modules_details_detailsscreen",
+      "src_modules_details_detailsscreen_detailscreen",
+      "src_modules_details_detailsstyles",
+      "src_modules_details_detailsstyles_styles",
+      "src_modules_details_index",
+      "src_modules_home_index",
+      "src_modules_index",
+      "src_modules_profile_index"
+    ],
+    "10": [
+      "ref_expo_env_d_ts",
+      "ref_expo_tsconfig_base",
+      "ref_expo_types_ts",
+      "ref_src_modules",
+      "ref_ts",
+      "ref_tsx",
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_extends",
+      "tsconfig_include",
+      "tsconfig_paths_modules"
+    ],
+    "11": [
+      "expo_splash_screen",
+      "expo_system_ui",
+      "package_dependencies",
+      "package_dependencies_expo_splash_screen",
+      "package_dependencies_expo_system_ui",
+      "package_dependencies_react_native_mmkv",
+      "package_dependencies_react_native_screens",
+      "package_dependencies_reduxjs_toolkit",
+      "react_native_mmkv",
+      "react_native_screens",
+      "reduxjs_toolkit"
+    ],
+    "12": [
+      "withcustomsigning",
+      "withcustomsigning_fs",
+      "withcustomsigning_modifygradlefiles",
+      "withcustomsigning_path",
+      "withcustomsigning_withcustomsigning",
+      "withcustomsigning_withdangerousmod"
+    ],
+    "13": [
+      "app_config",
+      "app_config_defineconfig",
+      "buildconfig",
+      "buildconfig_defineproguardrules",
+      "buildconfig_getenvironmentconfig"
+    ],
+    "14": [
+      "eslint_config",
+      "eslint_config_defineconfig",
+      "eslint_config_expoconfig"
+    ],
+    "15": [
+      "apisauce",
+      "package_dependencies_apisauce"
+    ],
+    "16": [
+      "axios",
+      "package_dependencies_axios"
+    ],
+    "17": [
+      "axois",
+      "package_dependencies_axois"
+    ],
+    "18": [
+      "claude_hooks_post_task_check",
+      "claude_hooks_post_task_check_execsync"
+    ],
+    "19": [
+      "expo",
+      "package_dependencies_expo"
+    ],
+    "20": [
+      "expo_constants",
+      "package_dependencies_expo_constants"
+    ],
+    "21": [
+      "expo_font",
+      "package_dependencies_expo_font"
+    ],
+    "22": [
+      "expo_haptics",
+      "package_dependencies_expo_haptics"
+    ],
+    "23": [
+      "expo_image",
+      "package_dependencies_expo_image"
+    ],
+    "24": [
+      "expo_linking",
+      "package_dependencies_expo_linking"
+    ],
+    "25": [
+      "expo_localization",
+      "package_dependencies_expo_localization"
+    ],
+    "26": [
+      "expo_router",
+      "package_dependencies_expo_router"
+    ],
+    "27": [
+      "expo_status_bar",
+      "package_dependencies_expo_status_bar"
+    ],
+    "28": [
+      "expo_symbols",
+      "package_dependencies_expo_symbols"
+    ],
+    "29": [
+      "expo_vector_icons",
+      "package_dependencies_expo_vector_icons"
+    ],
+    "30": [
+      "expo_web_browser",
+      "package_dependencies_expo_web_browser"
+    ],
+    "31": [
+      "formik",
+      "package_dependencies_formik"
+    ],
+    "32": [
+      "i18next",
+      "package_dependencies_i18next"
+    ],
+    "33": [
+      "lodash",
+      "package_dependencies_lodash"
+    ],
+    "34": [
+      "package_dependencies_react",
+      "react"
+    ],
+    "35": [
+      "package_dependencies_react_dom",
+      "react_dom"
+    ],
+    "36": [
+      "package_dependencies_react_i18next",
+      "react_i18next"
+    ],
+    "37": [
+      "package_dependencies_react_native",
+      "react_native"
+    ],
+    "38": [
+      "package_dependencies_react_native_gesture_handler",
+      "react_native_gesture_handler"
+    ],
+    "39": [
+      "package_dependencies_react_native_nitro_modules",
+      "react_native_nitro_modules"
+    ],
+    "40": [
+      "package_dependencies_react_native_permissions",
+      "react_native_permissions"
+    ],
+    "41": [
+      "package_dependencies_react_native_reanimated",
+      "react_native_reanimated"
+    ],
+    "42": [
+      "package_dependencies_react_native_safe_area_context",
+      "react_native_safe_area_context"
+    ],
+    "43": [
+      "package_dependencies_react_native_web",
+      "react_native_web"
+    ],
+    "44": [
+      "package_dependencies_react_native_worklets",
+      "react_native_worklets"
+    ],
+    "45": [
+      "package_dependencies_react_navigation_bottom_tabs",
+      "react_navigation_bottom_tabs"
+    ],
+    "46": [
+      "package_dependencies_react_navigation_elements",
+      "react_navigation_elements"
+    ],
+    "47": [
+      "package_dependencies_react_navigation_native",
+      "react_navigation_native"
+    ],
+    "48": [
+      "package_dependencies_react_redux",
+      "react_redux"
+    ],
+    "49": [
+      "package_dependencies_reactotron_react_native",
+      "reactotron_react_native"
+    ],
+    "50": [
+      "package_dependencies_reactotron_redux",
+      "reactotron_redux"
+    ],
+    "51": [
+      "package_dependencies_redux_persist",
+      "redux_persist"
+    ],
+    "52": [
+      "package_dependencies_yup",
+      "yup"
+    ],
+    "53": [
+      "jest_config"
+    ],
+    "54": [
+      "prettierrc"
+    ]
+  },
+  "cohesion": {
+    "0": 0.06829573934837092,
+    "1": 0.09696969696969697,
+    "2": 0.08943089430894309,
+    "3": 0.05714285714285714,
+    "4": 0.11942959001782531,
+    "5": 0.08735632183908046,
+    "6": 0.15954415954415954,
+    "7": 0.12923076923076923,
+    "8": 0.08695652173913043,
+    "9": 0.13333333333333333,
+    "10": 0.15384615384615385,
+    "11": 0.18181818181818182,
+    "12": 0.4,
+    "13": 0.8,
+    "14": 0.6666666666666666,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0
+  },
+  "gods": [
+    {
+      "id": "claude_settings_permissions_deny",
+      "label": "deny",
+      "degree": 30
+    },
+    {
+      "id": "src_hooks_usetheme_usetheme",
+      "label": "useTheme()",
+      "degree": 29
+    },
+    {
+      "id": "src_theme_metrics_scale",
+      "label": "scale()",
+      "degree": 22
+    },
+    {
+      "id": "src_theme_colors_thememode",
+      "label": "ThemeMode",
+      "degree": 14
+    },
+    {
+      "id": "src_theme_applicationstyles_applicationstyles",
+      "label": "applicationStyles()",
+      "degree": 13
+    },
+    {
+      "id": "src_types_errorresponse_errorresponse",
+      "label": "ErrorResponse",
+      "degree": 9
+    },
+    {
+      "id": "src_redux_auth_authslice_authactions",
+      "label": "AuthActions",
+      "degree": 8
+    },
+    {
+      "id": "src_redux_useredux_useappselector",
+      "label": "useAppSelector",
+      "degree": 8
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 7
+    },
+    {
+      "id": "src_components_custom_button_custombutton_custombutton",
+      "label": "CustomButton()",
+      "degree": 7
+    }
+  ],
+  "surprises": [
+    {
+      "source": "defineConfig()",
+      "target": "defineProGuardRules()",
+      "source_files": [
+        "app.config.js",
+        "buildconfig.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "defineConfig()",
+      "target": "getEnvironmentConfig()",
+      "source_files": [
+        "app.config.js",
+        "buildconfig.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "DetailScreen()",
+      "target": "useTheme()",
+      "source_files": [
+        "src/modules/details/DetailsScreen.tsx",
+        "src/hooks/useTheme.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities; peripheral node `DetailScreen()` unexpectedly reaches hub `useTheme()`"
+    },
+    {
+      "source": "TabsLayout()",
+      "target": "useTheme()",
+      "source_files": [
+        "src/app/(protected)/(tabs)/_layout.tsx",
+        "src/hooks/useTheme.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "ProtectedLayout()",
+      "target": "useTheme()",
+      "source_files": [
+        "src/app/(protected)/_layout.tsx",
+        "src/hooks/useTheme.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `Community 11` to `Community 8`, `Community 15`, `Community 16`, `Community 17`, `Community 19`, `Community 20`, `Community 21`, `Community 22`, `Community 23`, `Community 24`, `Community 25`, `Community 26`, `Community 27`, `Community 28`, `Community 29`, `Community 30`, `Community 31`, `Community 32`, `Community 33`, `Community 34`, `Community 35`, `Community 36`, `Community 37`, `Community 38`, `Community 39`, `Community 40`, `Community 41`, `Community 42`, `Community 43`, `Community 44`, `Community 45`, `Community 46`, `Community 47`, `Community 48`, `Community 49`, `Community 50`, `Community 51`, `Community 52`?",
+      "why": "High betweenness centrality (0.053) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `useTheme()` connect `Community 0` to `Community 1`, `Community 4`, `Community 9`, `Community 7`?",
+      "why": "High betweenness centrality (0.046) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `scale()` connect `Community 1` to `Community 4`?",
+      "why": "High betweenness centrality (0.010) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `{ execSync }`, `$schema`, `Read(.env*)` to the rest of the system?",
+      "why": "141 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.06829573934837092 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09696969696969697 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08943089430894309 - nodes in this community are weakly interconnected."
+    }
+  ]
+}
