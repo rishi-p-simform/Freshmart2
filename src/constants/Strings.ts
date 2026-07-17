@@ -45,6 +45,9 @@ const YupError = freezeStringsObject({
   requireEmailError: I18n.t('yupError:requireEmailError'),
   invalidEmailError: I18n.t('yupError:invalidEmailError'),
   requirePasswordError: I18n.t('yupError:requirePasswordError'),
+  requireConfirmPasswordError: I18n.t('yupError:requireConfirmPasswordError'),
+  mismatchPasswordError: I18n.t('yupError:mismatchPasswordError'),
+  requireTermsError: I18n.t('yupError:requireTermsError'),
   lengthPasswordError: I18n.t('yupError:lengthPasswordError'),
   lowercasePasswordError: I18n.t('yupError:lowercasePasswordError'),
   uppercasePasswordError: I18n.t('yupError:uppercasePasswordError'),
@@ -68,6 +71,10 @@ const Auth = freezeStringsObject({
   hintName: I18n.t('auth:hintName'),
   hintEmail: I18n.t('auth:hintEmail'),
   hintPassword: I18n.t('auth:hintPassword'),
+  lblName: I18n.t('auth:lblName'),
+  lblEmail: I18n.t('auth:lblEmail'),
+  lblPassword: I18n.t('auth:lblPassword'),
+  lblConfirmPassword: I18n.t('auth:lblConfirmPassword'),
   btnSignIn: I18n.t('auth:btnSignIn'),
   btnSignUp: I18n.t('auth:btnSignUp'),
   signInTitle: I18n.t('auth:signInTitle'),
@@ -77,12 +84,47 @@ const Auth = freezeStringsObject({
   noAccountLabel: I18n.t('auth:noAccountLabel'),
   hasAccountLabel: I18n.t('auth:hasAccountLabel'),
   signUpAction: I18n.t('auth:signUpAction'),
-  signInAction: I18n.t('auth:signInAction')
+  signInAction: I18n.t('auth:signInAction'),
+  forgotPassword: I18n.t('auth:forgotPassword'),
+  orContinueWith: I18n.t('auth:orContinueWith'),
+  btnGoogle: I18n.t('auth:btnGoogle'),
+  newHereLabel: I18n.t('auth:newHereLabel'),
+  agreeTo: I18n.t('auth:agreeTo'),
+  termsOfService: I18n.t('auth:termsOfService'),
+  and: I18n.t('auth:and'),
+  privacyPolicy: I18n.t('auth:privacyPolicy'),
+  verifyEmailTitle: I18n.t('auth:verifyEmailTitle'),
+  verifyEmailSentTo: I18n.t('auth:verifyEmailSentTo'),
+  verifyEmailEnterCode: I18n.t('auth:verifyEmailEnterCode'),
+  verifyEmailResendIn: I18n.t('auth:verifyEmailResendIn'),
+  verifyEmailVerifyContinue: I18n.t('auth:verifyEmailVerifyContinue'),
+  verifyEmailOr: I18n.t('auth:verifyEmailOr'),
+  verifyEmailMagicLink: I18n.t('auth:verifyEmailMagicLink'),
+  verifyEmailMagicLinkSub: I18n.t('auth:verifyEmailMagicLinkSub'),
+  verifyEmailOpenApp: I18n.t('auth:verifyEmailOpenApp')
 });
 
 const Profile = freezeStringsObject({
   title: I18n.t('profile:title'),
-  btnLogout: I18n.t('profile:btnLogout')
+  btnLogout: I18n.t('profile:btnLogout'),
+  btnDeleteAccount: I18n.t('profile:btnDeleteAccount'),
+  deleteAccountConfirmTitle: I18n.t('profile:deleteAccountConfirmTitle'),
+  deleteAccountConfirmMessage: I18n.t('profile:deleteAccountConfirmMessage'),
+  btnCancel: I18n.t('profile:btnCancel'),
+  btnConfirmDelete: I18n.t('profile:btnConfirmDelete')
+});
+
+const Explore = freezeStringsObject({
+  title: I18n.t('explore:title')
+});
+
+const Cart = freezeStringsObject({
+  title: I18n.t('cart:title')
+});
+
+const Splash = freezeStringsObject({
+  title: I18n.t('splash:title'),
+  subtitle: I18n.t('splash:subtitle')
 });
 
 /**
@@ -97,5 +139,8 @@ export default Object.freeze({
   Home,
   Details,
   Auth,
-  Profile
+  Profile,
+  Explore,
+  Cart,
+  Splash
 });

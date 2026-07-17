@@ -1,22 +1,25 @@
 import React from 'react';
-import { type TextStyle } from 'react-native';
+import { type TextStyle, type ViewStyle } from 'react-native';
 
-/**
- * A type for the props of the header component.
- * @property {React.ReactElement} customLeftView - Header left view.
- * @property {React.ReactElement} customRightView - Header right view.
- * @property {string} title - A title for the header component.
- * @property {TextStyle} titleStyle - A title style for the header component.
- * @property {boolean} isBottomLine - A bottom line is displayed or not.
- */
+export type HeaderAction = {
+  icon: React.ReactNode;
+  onPress?: () => void;
+};
+
 export interface CustomHeaderPropsType {
-  customLeftView: React.ReactElement;
-  customRightView: React.ReactElement;
-  title: string;
-  titleStyle: TextStyle;
-  isBottomLine: boolean;
+  title?: string;
+  leftActions?: HeaderAction[];
+  rightActions?: HeaderAction[];
+  headerContent?: React.ReactNode;
+  containerStyle?: ViewStyle | ViewStyle[];
+  titleStyle?: TextStyle | TextStyle[];
+  showGradientBG?: boolean;
+
 }
 
 export const defaultProps = {
-  isBottomLine: true
+  isBottomLine: false,
+  leftActions: [],
+  rightActions: [],
+  showGradientBG: false,
 };

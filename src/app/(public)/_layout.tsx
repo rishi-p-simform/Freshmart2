@@ -1,3 +1,5 @@
+import { CustomHeader } from '@/src/components';
+import { Strings } from '@/src/constants';
 import { Stack } from 'expo-router';
 import React, { type FC } from 'react';
 import { useTheme } from '../../hooks';
@@ -14,15 +16,31 @@ const PublicLayout: FC = (): React.ReactElement => {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
         contentStyle: {
           backgroundColor: Colors[theme]?.white
         },
         navigationBarColor: Colors[theme]?.white
       }}
     >
-      <Stack.Screen name="signin/index" options={{ title: 'Sign In' }} />
-      <Stack.Screen name="signup/index" options={{ title: 'Sign Up' }} />
+      <Stack.Screen name="signin/index" options={{ title: 'Sign In', headerShown: false }} />
+      <Stack.Screen
+        name="signup/index"
+        options={{
+          title: 'Sign Up',
+          header: () => (
+            <CustomHeader title={Strings.Auth.signUpTitle} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="verify-email/index"
+        options={{
+          title: 'Verify Email',
+          header: () => (
+            <CustomHeader title={Strings.Auth.verifyEmailTitle} />
+          ),
+        }}
+      />
     </Stack>
   );
 };

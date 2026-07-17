@@ -335,11 +335,11 @@ interface GetPermissionResultReturnType {
  * @param statuses - Record<Permission[number], PermissionStatus> - current permissions status.
  * @returns An object with a status, deniedList, and blockedList property.
  */
-function getPermissionResult(
+const getPermissionResult = (
   types: Permission[],
   optionTypes: Permission[],
   statuses: Record<Permission[number], PermissionStatus>
-): GetPermissionResultReturnType {
+): GetPermissionResultReturnType  => {
   const tempOptionTypes: Permission[] = optionTypes ?? [];
   const grantedList: Permission[] = types.filter(
     (type) =>

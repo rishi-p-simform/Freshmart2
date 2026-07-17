@@ -1,7 +1,7 @@
 import { createAsyncThunk, type AsyncThunk } from '@reduxjs/toolkit';
 import {
-  CancelToken,
   CANCEL_ERROR,
+  CancelToken,
   CLIENT_ERROR,
   CONNECTION_ERROR,
   create,
@@ -14,10 +14,10 @@ import {
 } from 'apisauce';
 import axios, { type AxiosRequestConfig, type CancelTokenSource, type Method } from 'axios';
 import _ from 'lodash';
-import { Strings, AppEnvConst } from '../constants';
-import { formatString, getErrorResponse } from '../utils/CommonUtils';
-import { APIErrorType } from './APIConfigTypes';
+import { AppEnvConst, Strings } from '../constants';
 import type { ErrorResponse } from '../types';
+import { formatString, getErrorResponse } from '../utils/CommonUtils';
+import { APIErrorType, APIErrorCategory } from './APIConfigTypes';
 
 /**
  * ResponseBound is an object that has a property called message that is a string or undefined.
@@ -93,7 +93,7 @@ export interface APIDispatch<Returned> {
  * @param {string} baseURL - The base URL of the API.
  * @returns {ApisauceInstance} - The API instance
  */
-function apiConfig(baseURL: string): ApisauceInstance {
+const apiConfig = (baseURL: string): ApisauceInstance  => {
   return create({
     baseURL,
     timeout: 120000,
@@ -115,7 +115,7 @@ export const unauthorizedAPI: ApisauceInstance = apiConfig(AppEnvConst.apiUrl);
  * @param {Record<string, any>} headers - the headers to set for the authorized API.
  * @returns None
  */
-export function setHeaders(headers: Record<string, any>): void {
+export const setHeaders = (headers: Record<string, any>): void  => {
   authorizedAPI.setHeaders(headers);
 }
 
@@ -128,11 +128,20 @@ authorizedAPI.addAsyncRequestTransform(async (request) => {
   // eslint-disable-next-line no-restricted-syntax
   console.log({ request });
 
-  // TODO: You can add authorization token like below
-  // const state = reduxStore?.store?.getState();
-  // const authToken = state?.auth?.loginData?.access_token;
-  // const token = `Bearer ${authToken}`;
-  // request.headers.Authorization = token;
+  try {
+    const { default: store } = await import('../redux/Store');
+    const state = store.getState();
+
+    const token = state.auth?.accessToken;
+    if (token) {
+      if (!request.headers) {
+        request.headers = {};
+      }
+      request.headers.Authorization = `Bearer ${token}`;
+    }
+  } catch (error) {
+    console.error('Failed to get token from store:', error);
+  }
 });
 
 /**
@@ -140,7 +149,7 @@ authorizedAPI.addAsyncRequestTransform(async (request) => {
  * @param {ApiResponse<any>} response - the response from the API call.
  * @returns None
  */
-function APIMonitor(response: ApiResponse<any>) {
+const APIMonitor = (response: ApiResponse<any>) => {
   // eslint-disable-next-line no-restricted-syntax
   console.log({ response });
 }
@@ -155,7 +164,7 @@ unauthorizedAPI.addMonitor(APIMonitor);
  */
 async function asyncResponseTransform(response: ApiResponse<any>) {
   // eslint-disable-next-line no-restricted-syntax
-  console.log({ response });
+  // console.log({ response });
 
   // TODO: You can add global condition for token expired or internet issue like below
   // if (response.status === 401) {
@@ -176,10 +185,10 @@ unauthorizedAPI.addAsyncResponseTransform(asyncResponseTransform);
  * @param {CancelTokenSource} source - the cancel token source for the request
  * @returns {Promise<ApiResponse<Response>>} - the response from the API
  */
-function apiWithCancelToken<Response>(
+const apiWithCancelToken = <Response>(
   { api, method, url, params, data, setting, paths }: ApiConfig,
   source: CancelTokenSource
-): Promise<ApiResponse<Response>> {
+): Promise<ApiResponse<Response>>  => {
   const httpMethod: string = method.toLowerCase();
 
   const hasData: boolean = ['post', 'put', 'patch'].indexOf(httpMethod) >= 0;
@@ -200,27 +209,14 @@ function apiWithCancelToken<Response>(
   }
   const request: Promise<ApiResponse<Response>> = hasData
     ? // @ts-ignore
-      api[httpMethod](finalUrl, data, settings)
+    api[httpMethod](finalUrl, data, settings)
     : // @ts-ignore
-      api[httpMethod](finalUrl, params ?? {}, settings);
+    api[httpMethod](finalUrl, params ?? {}, settings);
 
   return request;
 }
 
-/**
- * Handles the error response from the API.
- * @param {ApiErrorResponse<Response>} response - the error response from the API.
- * @param {string} defaultMessage - the default message to display if the response does not
- * contain a message.
- * @returns {ErrorResponse} - the error response to be displayed.
- */
-function handleClientError<Response extends ResponseBound>(
-  response: ApiErrorResponse<Response>,
-  defaultMessage: string
-): ErrorResponse {
-  const messages = response.data?.message ?? defaultMessage;
-  return getErrorResponse(messages);
-}
+import { parseServerError } from './APIErrorParser';
 
 /**
  * Handles the error response from the API.
@@ -229,33 +225,33 @@ function handleClientError<Response extends ResponseBound>(
  * not handled.
  * @returns {ErrorResponse} - the error response to display.
  */
-function handleError<Response extends ResponseBound>(
+const handleError = <Response extends ResponseBound>(
   response: ApiErrorResponse<Response>,
   shouldShowToast: boolean
-): ErrorResponse {
-  let error: ErrorResponse;
+): ErrorResponse  => {
+  let defaultMessage = Strings.APIError.somethingWentWrong;
   switch (response.problem) {
     case CLIENT_ERROR:
-      error = handleClientError(response, Strings.APIError.clientError);
+      defaultMessage = Strings.APIError.clientError;
       break;
     case SERVER_ERROR:
-      error = handleClientError(response, Strings.APIError.serverError);
+      defaultMessage = Strings.APIError.serverError;
       break;
     case TIMEOUT_ERROR:
-      error = handleClientError(response, Strings.APIError.timeoutError);
+      defaultMessage = Strings.APIError.timeoutError;
       break;
     case CONNECTION_ERROR:
-      error = handleClientError(response, Strings.APIError.connectionError);
+      defaultMessage = Strings.APIError.connectionError;
       break;
     case NETWORK_ERROR:
-      error = handleClientError(response, Strings.APIError.networkError);
+      defaultMessage = Strings.APIError.networkError;
       break;
     case CANCEL_ERROR:
-      error = handleClientError(response, Strings.APIError.cancelError);
+      defaultMessage = Strings.APIError.cancelError;
       break;
-    default:
-      error = handleClientError(response, Strings.APIError.somethingWentWrong);
   }
+
+  const error = parseServerError(response, defaultMessage);
 
   if (response.problem !== CANCEL_ERROR && shouldShowToast) {
     /**
@@ -273,13 +269,26 @@ function handleError<Response extends ResponseBound>(
  * @param {unknown} error - unknown - This is the error that is thrown by the API.
  * @returns {ErrorResponse} - The error response object.
  */
-function handleCatchError(error: unknown): ErrorResponse {
+const handleCatchError = (error: unknown): ErrorResponse  => {
   if (axios.isAxiosError(error)) {
-    return getErrorResponse(error.message);
+    return {
+      message: error.message,
+      category: APIErrorCategory.NETWORK,
+      code: error.code || APIErrorType.NETWORK_ERROR,
+      statusCode: error.response?.status,
+      raw: error
+    };
   } else {
-    return getErrorResponse(Strings.APIError.unexpectedError);
+    return {
+      message: Strings.APIError.unexpectedError,
+      category: APIErrorCategory.UNKNOWN,
+      code: APIErrorType.UNEXPECTED_ERROR,
+      raw: error
+    };
   }
 }
+
+
 
 /**
  * Processes the API response and captures any relevant information for error reporting.
@@ -297,12 +306,12 @@ function handleCatchError(error: unknown): ErrorResponse {
  * @param {ApisauceInstance} api - The API instance to use and default value is authorizedAPI
  * @returns {AsyncThunk<Response, ThunkArg, ThunkApiConfig>} - The async thunk action state.
  */
-export function createAsyncThunkWithCancelToken<Response extends ResponseBound>(
+export const createAsyncThunkWithCancelToken = <Response extends ResponseBound>(
   typePrefix: string,
   method: Method,
   url: string,
   api: ApisauceInstance = authorizedAPI
-): AsyncThunk<Response, ThunkArg, ThunkApiConfig> {
+): AsyncThunk<Response, ThunkArg, ThunkApiConfig>  => {
   return createAsyncThunk<Response, ThunkArg, ThunkApiConfig>(
     typePrefix,
     async (payload, thunkApi) => {

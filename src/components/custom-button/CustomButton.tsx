@@ -1,9 +1,11 @@
 import debounce from 'lodash/debounce';
 import React from 'react';
-import { Pressable, type GestureResponderEvent } from 'react-native';
+import { Pressable, type GestureResponderEvent, View } from 'react-native';
 import { useTheme } from '../../hooks';
 import { Spinner } from '../spinner';
 import { Text } from '../text';
+import { Ionicons } from '@expo/vector-icons';
+import { scale } from '../../theme/Metrics';
 import {
   activityIndicatorColor,
   buttonDefaultStyles,
@@ -28,6 +30,8 @@ const CustomButton = ({
   debounceTime = 300,
   enableDebounce = true,
   style,
+  titleStyle,
+  color,
   ...rest
 }: CustomButtonProps) => {
   const { styles: buttonStyles, theme } = useTheme(buttonDefaultStyles);
@@ -62,15 +66,25 @@ const CustomButton = ({
       {...rest}
     >
       {loading ? (
-        <Spinner color={activityIndicatorColor(variant, theme)} />
+        <Spinner color={color || activityIndicatorColor(variant, theme)} />
       ) : (
-        <Text
-          variant={titleVariant}
-          {...titleProps}
-          style={[{ color: textColor(variant, theme) }, titleProps?.style]}
-        >
-          {title}
-        </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+          {rest.leftIcon && (
+            <Ionicons
+              name={rest.leftIcon}
+              size={20}
+              color={color || textColor(variant, theme)}
+              style={{ marginRight: scale(8) }}
+            />
+          )}
+          <Text
+            variant={titleVariant}
+            {...titleProps}
+            style={[{ color: color || textColor(variant, theme) }, titleStyle, titleProps?.style]}
+          >
+            {title}
+          </Text>
+        </View>
       )}
     </Pressable>
   );

@@ -1,101 +1,48 @@
 {
   "communities": {
     "0": [
-      "src_app_index",
-      "src_app_index_app",
-      "src_app_layout",
-      "src_app_layout_navigationdevtools",
-      "src_app_layout_rootlayout",
-      "src_app_layout_rootnavigator",
-      "src_app_layout_themednavigator",
-      "src_app_public_layout",
-      "src_app_public_layout_publiclayout",
-      "src_configs_reactotron",
-      "src_configs_reactotron_getreactotronenhancer",
-      "src_configs_reactotronconfig",
-      "src_configs_reactotronconfig_reactotron",
+      "src_constants_apiconst",
+      "src_constants_appenvconst",
+      "src_constants_deeplinkconst",
+      "src_constants_deeplinkconst_deeplink",
+      "src_constants_deeplinkconst_deeplinkprefixes",
+      "src_constants_deeplinkconst_deeplinkregex",
+      "src_constants_index",
+      "src_constants_mmkvkeys",
       "src_constants_navigationroutes",
       "src_constants_navigationroutes_routes",
-      "src_hooks_usetheme_usetheme",
-      "src_modules_auth_signin_signin_form_index",
-      "src_modules_auth_signin_signin_form_signinform",
-      "src_modules_auth_signin_signin_form_signinform_signinform",
-      "src_modules_auth_signin_signin_form_signinformtypes",
-      "src_modules_auth_signin_signin_form_signinformtypes_signinformpropstype",
-      "src_modules_auth_signin_signin_form_signinformutils",
-      "src_modules_auth_signin_signin_form_signinformutils_isremainingtofillform",
-      "src_modules_auth_signin_signinscreen",
-      "src_modules_auth_signin_signinscreen_signinscreen",
-      "src_modules_auth_signin_signintypes",
-      "src_modules_auth_signin_signintypes_signinformvalues",
-      "src_modules_auth_signin_signintypes_signinhookreturntype",
-      "src_modules_auth_signin_signintypes_signinrouteparamlist",
-      "src_modules_auth_signin_usesignin",
-      "src_modules_auth_signin_usesignin_rationale_30",
-      "src_modules_auth_signin_usesignin_usesignin",
-      "src_modules_home_homescreen",
-      "src_modules_home_homescreen_homescreen",
-      "src_modules_home_homestyles",
-      "src_modules_home_homestyles_styles",
-      "src_modules_profile_profilescreen",
-      "src_modules_profile_profilescreen_profilescreen",
-      "src_modules_profile_profilestyles",
-      "src_modules_profile_profilestyles_styles",
-      "src_redux_auth_authselector_authselectors",
-      "src_redux_auth_authslice_authactions",
-      "src_redux_auth_index",
-      "src_redux_index",
-      "src_redux_store",
-      "src_redux_store_appdispatchtype",
-      "src_redux_store_enhancers",
-      "src_redux_store_middlewarelist",
-      "src_redux_store_persistconfig",
-      "src_redux_store_persistedreducer",
-      "src_redux_store_persistor",
-      "src_redux_store_rootreducer",
-      "src_redux_store_store",
-      "src_redux_useredux",
-      "src_redux_useredux_useappdispatch",
-      "src_redux_useredux_useappselector",
-      "src_utils_navigatorutils_navigatewithparam"
-    ],
-    "1": [
-      "src_app_protected_layout",
-      "src_app_protected_layout_detailsheaderleft",
-      "src_app_protected_layout_protectedlayout",
-      "src_app_protected_tabs_layout",
-      "src_app_protected_tabs_layout_hometabicon",
-      "src_app_protected_tabs_layout_profiletabicon",
-      "src_app_protected_tabs_layout_tabiconprops",
-      "src_app_protected_tabs_layout_tabslayout",
-      "src_components_custom_header_customheader",
-      "src_components_custom_header_customheader_customheader",
-      "src_components_custom_header_customheaderstyles",
-      "src_components_custom_header_customheaderstyles_styles",
-      "src_components_custom_header_customheadertypes",
-      "src_components_custom_header_customheadertypes_customheaderpropstype",
-      "src_components_custom_header_customheadertypes_defaultprops",
-      "src_components_custom_header_index",
+      "src_constants_regexconst",
+      "src_constants_toolkitaction",
       "src_hooks_useheader",
       "src_hooks_useheader_useheaderheight",
       "src_hooks_useheader_usestatusbarheight",
       "src_hooks_usetheme",
-      "src_modules_auth_signin_signin_form_signinformstyles",
-      "src_modules_auth_signin_signin_form_signinformstyles_styles",
-      "src_modules_auth_signin_signinstyles",
-      "src_modules_auth_signin_signinstyles_styles",
-      "src_modules_auth_signup_signup_form_signupformstyles",
-      "src_modules_auth_signup_signup_form_signupformstyles_styles",
-      "src_modules_auth_signup_signupstyles",
-      "src_modules_auth_signup_signupstyles_styles",
+      "src_hooks_usetheme_usetheme",
+      "src_modules_details_detailsscreen",
+      "src_modules_details_detailsscreen_detailscreen",
+      "src_modules_details_detailsstyles",
+      "src_modules_details_detailsstyles_styles",
+      "src_modules_details_index",
+      "src_modules_home_homescreen",
+      "src_modules_home_homescreen_homescreen",
+      "src_modules_home_homestyles",
+      "src_modules_home_homestyles_styles",
+      "src_modules_home_index",
       "src_theme_applicationstyles",
       "src_theme_applicationstyles_applicationstyles",
       "src_theme_colors",
+      "src_theme_colors_alphahelper",
       "src_theme_colors_commoncolors",
       "src_theme_colors_commonkeys",
       "src_theme_colors_dark",
+      "src_theme_colors_darkpalette",
       "src_theme_colors_keys",
       "src_theme_colors_light",
+      "src_theme_colors_palette",
+      "src_theme_colors_palettecolor",
+      "src_theme_colors_reversecolor",
+      "src_theme_colors_reversestatuscolor",
+      "src_theme_colors_statuscolor",
       "src_theme_colors_themecolors",
       "src_theme_colors_thememode",
       "src_theme_colors_thememodeenum",
@@ -104,53 +51,10 @@
       "src_theme_metrics_globalmetrics",
       "src_theme_metrics_globalmetricstype",
       "src_theme_metrics_scale",
-      "src_theme_metrics_width_height"
+      "src_theme_metrics_width_height",
+      "src_utils_navigatorutils_navigatewithparam"
     ],
-    "2": [
-      "src_configs_apiconfig",
-      "src_configs_apiconfig_apiconfig",
-      "src_configs_apiconfig_apidispatch",
-      "src_configs_apiconfig_apimonitor",
-      "src_configs_apiconfig_apiwithcanceltoken",
-      "src_configs_apiconfig_asyncresponsetransform",
-      "src_configs_apiconfig_authorizedapi",
-      "src_configs_apiconfig_createasyncthunkwithcanceltoken",
-      "src_configs_apiconfig_handlecatcherror",
-      "src_configs_apiconfig_handleclienterror",
-      "src_configs_apiconfig_handleerror",
-      "src_configs_apiconfig_rationale_131",
-      "src_configs_apiconfig_rationale_160",
-      "src_configs_apiconfig_responsebound",
-      "src_configs_apiconfig_setheaders",
-      "src_configs_apiconfig_thunkapiconfig",
-      "src_configs_apiconfig_thunkarg",
-      "src_configs_apiconfig_unauthorizedapi",
-      "src_configs_apiconfigtypes",
-      "src_configs_apiconfigtypes_apierrortype",
-      "src_configs_index",
-      "src_redux_auth_authinitial",
-      "src_redux_auth_authinitial_authstatetype",
-      "src_redux_auth_authinitial_initial_state",
-      "src_redux_auth_authselector",
-      "src_redux_auth_authselector_authselectorstype",
-      "src_redux_auth_authslice",
-      "src_redux_auth_authslice_authslice",
-      "src_redux_auth_authslice_signinrequest",
-      "src_redux_store_rootstatetype",
-      "src_types_errorresponse",
-      "src_types_errorresponse_errorresponse",
-      "src_types_index",
-      "src_types_userresponse",
-      "src_types_userresponse_userresponse",
-      "src_utils_commonutils",
-      "src_utils_commonutils_cleanarray",
-      "src_utils_commonutils_cleanundefornull",
-      "src_utils_commonutils_formatnumber",
-      "src_utils_commonutils_formatstring",
-      "src_utils_commonutils_geterrorresponse",
-      "src_utils_commonutils_isnullorwhitespace"
-    ],
-    "3": [
+    "1": [
       "claude_settings",
       "claude_settings_hooks",
       "claude_settings_hooks_stop",
@@ -187,31 +91,116 @@
       "ref_read_tar_gz",
       "ref_read_web_build"
     ],
+    "2": [
+      "src_app_index",
+      "src_app_index_app",
+      "src_redux_auth_auth_actions",
+      "src_redux_auth_auth_actions_login",
+      "src_redux_auth_auth_actions_logout",
+      "src_redux_auth_auth_actions_resendconfirmation",
+      "src_redux_auth_auth_actions_signup",
+      "src_redux_auth_auth_actions_verifysignup",
+      "src_redux_auth_auth_selectors",
+      "src_redux_auth_auth_selectors_authselectors",
+      "src_redux_auth_auth_selectors_authselectorstype",
+      "src_redux_auth_auth_slice",
+      "src_redux_auth_auth_slice_authslice",
+      "src_redux_auth_auth_slice_initial_state",
+      "src_redux_auth_auth_types",
+      "src_redux_auth_auth_types_authstate",
+      "src_redux_auth_auth_types_loginresponse",
+      "src_redux_auth_auth_types_resendconfirmationresponse",
+      "src_redux_auth_auth_types_verifysignupresponse",
+      "src_redux_auth_index",
+      "src_redux_index",
+      "src_redux_store",
+      "src_redux_store_appdispatchtype",
+      "src_redux_store_enhancers",
+      "src_redux_store_middlewarelist",
+      "src_redux_store_persistconfig",
+      "src_redux_store_persistedreducer",
+      "src_redux_store_persistor",
+      "src_redux_store_rootreducer",
+      "src_redux_store_rootstatetype",
+      "src_redux_store_store",
+      "src_redux_useredux",
+      "src_redux_useredux_useappdispatch"
+    ],
+    "3": [
+      "src_modules_auth_signin_index",
+      "src_modules_auth_signin_signinscreen",
+      "src_modules_auth_signin_signinscreen_signinscreen",
+      "src_modules_auth_signin_usesignin",
+      "src_modules_auth_signin_usesignin_usesignin",
+      "src_modules_auth_signup_index",
+      "src_modules_auth_signup_signupscreen",
+      "src_modules_auth_signup_signupscreen_signupscreen",
+      "src_modules_auth_signup_usesignup",
+      "src_modules_auth_signup_usesignup_usesignup",
+      "src_modules_profile_index",
+      "src_modules_profile_profilescreen",
+      "src_modules_profile_profilescreen_profilescreen",
+      "src_modules_profile_profilestyles",
+      "src_modules_profile_profilestyles_styles",
+      "src_redux_auth_auth_actions_authactions",
+      "src_redux_user_index",
+      "src_redux_user_user_actions",
+      "src_redux_user_user_actions_deleteaccount",
+      "src_redux_user_user_actions_fetchprofile",
+      "src_redux_user_user_actions_useractions",
+      "src_redux_user_user_selectors",
+      "src_redux_user_user_selectors_userselectors",
+      "src_redux_user_user_selectors_userselectorstype",
+      "src_redux_user_user_slice",
+      "src_redux_user_user_slice_initial_state",
+      "src_redux_user_user_slice_userslice",
+      "src_redux_user_user_types",
+      "src_redux_user_user_types_deleteaccountresponse",
+      "src_redux_user_user_types_user",
+      "src_redux_user_user_types_userstate"
+    ],
     "4": [
-      "src_assets_fonts_index",
-      "src_assets_icons_index",
-      "src_assets_images_index",
-      "src_assets_index",
-      "src_components_custom_button_custombutton",
-      "src_components_custom_button_custombutton_custombutton",
-      "src_components_custom_button_custombuttonstyles",
-      "src_components_custom_button_custombuttonstyles_activityindicatorcolor",
-      "src_components_custom_button_custombuttonstyles_buttondefaultstyles",
-      "src_components_custom_button_custombuttonstyles_buttonvariantstyles",
-      "src_components_custom_button_custombuttonstyles_gettextvariant",
-      "src_components_custom_button_custombuttonstyles_textcolor",
-      "src_components_custom_button_custombuttontypes",
-      "src_components_custom_button_custombuttontypes_custombuttonprops",
-      "src_components_custom_button_custombuttontypes_custombuttonvariant",
-      "src_components_custom_button_index",
-      "src_components_full_screen_loader_fullscreenloader",
-      "src_components_full_screen_loader_fullscreenloader_fullscreenloader",
-      "src_components_full_screen_loader_fullscreenloaderstyles",
-      "src_components_full_screen_loader_index",
-      "src_components_index",
-      "src_components_spinner_index",
-      "src_components_spinner_spinner",
-      "src_components_spinner_spinner_spinner",
+      "src_types_errorresponse",
+      "src_types_errorresponse_errorresponse",
+      "src_types_index",
+      "src_types_userresponse",
+      "src_types_userresponse_userresponse",
+      "src_utils_commonutils",
+      "src_utils_commonutils_cleanarray",
+      "src_utils_commonutils_cleanundefornull",
+      "src_utils_commonutils_formatnumber",
+      "src_utils_commonutils_formatstring",
+      "src_utils_commonutils_geterrorresponse",
+      "src_utils_commonutils_isnullorwhitespace",
+      "src_utils_deeplinkutils",
+      "src_utils_deeplinkutils_checkandgetparams",
+      "src_utils_deeplinkutils_checkandgetparamsreturntype",
+      "src_utils_deeplinkutils_converturltodeeplink",
+      "src_utils_deeplinkutils_geturlparams",
+      "src_utils_deeplinkutils_isdeeplinktype",
+      "src_utils_deeplinkutils_istoastmessage",
+      "src_utils_index",
+      "src_utils_navigatorutils",
+      "src_utils_navigatorutils_navigateback",
+      "src_utils_navigatorutils_navigatepop",
+      "src_utils_navigatorutils_navigatewithpush",
+      "src_utils_navigatorutils_navigatewithreplace",
+      "src_utils_navigatorutils_navigatewithreset",
+      "src_utils_navigatorutils_routeparams",
+      "src_utils_validationschema",
+      "src_utils_validationschema_signinformschema",
+      "src_utils_validationschema_signupformschema"
+    ],
+    "5": [
+      "src_components_custom_input_custominput",
+      "src_components_custom_input_custominput_animatedpressable",
+      "src_components_custom_input_custominput_custominput",
+      "src_components_custom_input_custominputstyles",
+      "src_components_custom_input_custominputstyles_stylesheet",
+      "src_components_custom_input_custominputtypes",
+      "src_components_custom_input_custominputtypes_custominputdefaultprops",
+      "src_components_custom_input_custominputtypes_custominputprops",
+      "src_components_custom_input_index",
       "src_components_text_index",
       "src_components_text_text",
       "src_components_text_text_text",
@@ -221,41 +210,78 @@
       "src_components_text_textstyles_textvariantsstyles",
       "src_components_text_texttypes",
       "src_components_text_texttypes_textprops",
-      "src_components_text_texttypes_textvariant"
-    ],
-    "5": [
-      "src_constants_apiconst",
-      "src_constants_appenvconst",
-      "src_constants_deeplinkconst",
-      "src_constants_deeplinkconst_deeplink",
-      "src_constants_deeplinkconst_deeplinkprefixes",
-      "src_constants_deeplinkconst_deeplinkregex",
-      "src_constants_index",
-      "src_constants_mmkvkeys",
-      "src_constants_regexconst",
-      "src_constants_strings",
-      "src_constants_strings_apierror",
-      "src_constants_strings_auth",
-      "src_constants_strings_details",
-      "src_constants_strings_freezestringsobject",
-      "src_constants_strings_home",
-      "src_constants_strings_keystringvaluemap",
-      "src_constants_strings_profile",
-      "src_constants_strings_yuperror",
-      "src_constants_toolkitaction",
-      "src_translations_i18",
-      "src_translations_i18_language_detector",
-      "src_translations_i18_storage",
-      "src_translations_index",
-      "src_utils_deeplinkutils",
-      "src_utils_deeplinkutils_checkandgetparams",
-      "src_utils_deeplinkutils_checkandgetparamsreturntype",
-      "src_utils_deeplinkutils_converturltodeeplink",
-      "src_utils_deeplinkutils_geturlparams",
-      "src_utils_deeplinkutils_isdeeplinktype",
-      "src_utils_deeplinkutils_istoastmessage"
+      "src_components_text_texttypes_textvariant",
+      "src_modules_splash_index",
+      "src_modules_splash_splashscreen",
+      "src_modules_splash_splashscreen_splashscreen",
+      "src_modules_splash_splashstyles",
+      "src_modules_splash_splashstyles_styles",
+      "src_modules_splash_splashtypes",
+      "src_modules_splash_splashtypes_splashhookreturntype",
+      "src_modules_splash_splashtypes_splashscreenprops",
+      "src_modules_splash_usesplash",
+      "src_modules_splash_usesplash_usesplash"
     ],
     "6": [
+      "src_configs_apiconfig",
+      "src_configs_apiconfig_apiconfig",
+      "src_configs_apiconfig_apidispatch",
+      "src_configs_apiconfig_apimonitor",
+      "src_configs_apiconfig_apiwithcanceltoken",
+      "src_configs_apiconfig_asyncresponsetransform",
+      "src_configs_apiconfig_authorizedapi",
+      "src_configs_apiconfig_createasyncthunkwithcanceltoken",
+      "src_configs_apiconfig_handlecatcherror",
+      "src_configs_apiconfig_handleerror",
+      "src_configs_apiconfig_rationale_169",
+      "src_configs_apiconfig_responsebound",
+      "src_configs_apiconfig_setheaders",
+      "src_configs_apiconfig_thunkapiconfig",
+      "src_configs_apiconfig_thunkarg",
+      "src_configs_apiconfig_unauthorizedapi",
+      "src_configs_apiconfigtypes",
+      "src_configs_apiconfigtypes_apierrorcategory",
+      "src_configs_apiconfigtypes_apierrortype",
+      "src_configs_apierrorparser",
+      "src_configs_apierrorparser_extracterrordetails",
+      "src_configs_apierrorparser_extracterrormessage",
+      "src_configs_apierrorparser_parseservererror",
+      "src_configs_index",
+      "src_configs_tests_apiconfig_test",
+      "src_configs_tests_run_tests",
+      "src_configs_tests_run_tests_assert",
+      "src_configs_tests_run_tests_assertdeepequal"
+    ],
+    "7": [
+      "eslint",
+      "eslint_config_expo",
+      "package",
+      "package_devdependencies",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_expo",
+      "package_devdependencies_react_navigation_devtools",
+      "package_devdependencies_types_jest",
+      "package_devdependencies_types_lodash",
+      "package_devdependencies_types_react",
+      "package_devdependencies_typescript",
+      "package_main",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_android",
+      "package_scripts_ios",
+      "package_scripts_lint",
+      "package_scripts_reset_project",
+      "package_scripts_start",
+      "package_scripts_web",
+      "package_version",
+      "react_navigation_devtools",
+      "types_jest",
+      "types_lodash",
+      "types_react",
+      "typescript"
+    ],
+    "8": [
       "src_hooks_hooks_utils_index",
       "src_hooks_hooks_utils_usedeepcomparememoize",
       "src_hooks_hooks_utils_usedeepcomparememoize_checkdeps",
@@ -284,81 +310,109 @@
       "src_services_storage_storage",
       "src_services_storage_storagestringtype"
     ],
-    "7": [
-      "src_modules_auth_signup_signup_form_index",
-      "src_modules_auth_signup_signup_form_signupform",
-      "src_modules_auth_signup_signup_form_signupform_signupform",
-      "src_modules_auth_signup_signup_form_signupformtypes",
-      "src_modules_auth_signup_signup_form_signupformtypes_signupformpropstype",
-      "src_modules_auth_signup_signup_form_signupformutils",
-      "src_modules_auth_signup_signup_form_signupformutils_isremainingtofillform",
-      "src_modules_auth_signup_signupscreen",
-      "src_modules_auth_signup_signupscreen_signupscreen",
-      "src_modules_auth_signup_signuptypes",
-      "src_modules_auth_signup_signuptypes_signupformvalues",
-      "src_modules_auth_signup_signuptypes_signuphookreturntype",
-      "src_modules_auth_signup_usesignup",
-      "src_modules_auth_signup_usesignup_rationale_24",
-      "src_modules_auth_signup_usesignup_usesignup",
-      "src_utils_index",
-      "src_utils_navigatorutils",
-      "src_utils_navigatorutils_navigateback",
-      "src_utils_navigatorutils_navigatepop",
-      "src_utils_navigatorutils_navigatewithpush",
-      "src_utils_navigatorutils_navigatewithreplace",
-      "src_utils_navigatorutils_navigatewithreset",
-      "src_utils_navigatorutils_routeparams",
-      "src_utils_validationschema",
-      "src_utils_validationschema_signinformschema",
-      "src_utils_validationschema_signupformschema"
-    ],
-    "8": [
-      "eslint",
-      "eslint_config_expo",
-      "package",
-      "package_devdependencies",
-      "package_devdependencies_eslint",
-      "package_devdependencies_eslint_config_expo",
-      "package_devdependencies_react_navigation_devtools",
-      "package_devdependencies_types_react",
-      "package_devdependencies_typescript",
-      "package_main",
-      "package_name",
-      "package_private",
-      "package_scripts",
-      "package_scripts_android",
-      "package_scripts_ios",
-      "package_scripts_lint",
-      "package_scripts_reset_project",
-      "package_scripts_start",
-      "package_scripts_web",
-      "package_version",
-      "react_navigation_devtools",
-      "types_react",
-      "typescript"
-    ],
     "9": [
-      "src_app_protected_details",
-      "src_app_protected_tabs_home_index",
-      "src_app_protected_tabs_profile_index",
-      "src_app_public_signin_index",
-      "src_app_public_signup_index",
       "src_modules_auth_index",
-      "src_modules_auth_signin_index",
-      "src_modules_auth_signup_index",
-      "src_modules_details_detailsscreen",
-      "src_modules_details_detailsscreen_detailscreen",
-      "src_modules_details_detailsstyles",
-      "src_modules_details_detailsstyles_styles",
-      "src_modules_details_index",
-      "src_modules_home_index",
-      "src_modules_index",
-      "src_modules_profile_index"
+      "src_modules_auth_verify_email_index",
+      "src_modules_auth_verify_email_otp_input_index",
+      "src_modules_auth_verify_email_otp_input_otpinput",
+      "src_modules_auth_verify_email_otp_input_otpinput_otpinput",
+      "src_modules_auth_verify_email_otp_input_otpinputstyles",
+      "src_modules_auth_verify_email_otp_input_otpinputstyles_stylesheet",
+      "src_modules_auth_verify_email_otp_input_otpinputtypes",
+      "src_modules_auth_verify_email_otp_input_otpinputtypes_otpinputprops",
+      "src_modules_auth_verify_email_otp_input_useotpinput",
+      "src_modules_auth_verify_email_otp_input_useotpinput_useotpinput",
+      "src_modules_auth_verify_email_useverifyemail",
+      "src_modules_auth_verify_email_useverifyemail_useverifyemail",
+      "src_modules_auth_verify_email_verifyemailscreen",
+      "src_modules_auth_verify_email_verifyemailscreen_verifyemailheader",
+      "src_modules_auth_verify_email_verifyemailscreen_verifyemailscreen",
+      "src_modules_auth_verify_email_verifyemailstyles",
+      "src_modules_auth_verify_email_verifyemailstyles_stylesheet",
+      "src_modules_auth_verify_email_verifyemailtypes",
+      "src_modules_auth_verify_email_verifyemailtypes_verifyemailhookreturntype",
+      "src_modules_auth_verify_email_verifyemailtypes_verifyemailrouteparamlist",
+      "src_modules_auth_verify_email_verifyemailtypes_verifyemailrouteprop",
+      "src_utils_toasthelper",
+      "src_utils_toasthelper_toasthelper"
     ],
     "10": [
-      "ref_expo_env_d_ts",
+      "src_app_protected_tabs_layout",
+      "src_app_protected_tabs_layout_tabslayout",
+      "src_components_custom_tab_bar_customtabbar",
+      "src_components_custom_tab_bar_customtabbar_customtabbar",
+      "src_components_custom_tab_bar_customtabbar_tabs_config",
+      "src_components_custom_tab_bar_customtabbarstyles",
+      "src_components_custom_tab_bar_customtabbarstyles_styles",
+      "src_components_custom_tab_bar_customtabbartypes",
+      "src_components_custom_tab_bar_customtabbartypes_customtabbarprops",
+      "src_components_custom_tab_bar_customtabbartypes_tabconfig",
+      "src_components_custom_tab_bar_index",
+      "src_components_index",
+      "src_modules_auth_signin_loginheader",
+      "src_modules_auth_signin_loginheader_loginheader",
+      "src_modules_auth_signin_loginheaderstyles",
+      "src_modules_auth_signin_loginheaderstyles_styles"
+    ],
+    "11": [
+      "src_app_protected_tabs_cart_index",
+      "src_app_protected_tabs_explore_index",
+      "src_modules_cart_cartscreen",
+      "src_modules_cart_cartscreen_cartscreen",
+      "src_modules_cart_cartstyles",
+      "src_modules_cart_cartstyles_styles",
+      "src_modules_cart_index",
+      "src_modules_explore_explorescreen",
+      "src_modules_explore_explorescreen_explorescreen",
+      "src_modules_explore_explorestyles",
+      "src_modules_explore_explorestyles_styles",
+      "src_modules_explore_index",
+      "src_modules_index"
+    ],
+    "12": [
+      "apisauce",
+      "expo_image",
+      "expo_localization",
+      "package_dependencies",
+      "package_dependencies_apisauce",
+      "package_dependencies_expo_image",
+      "package_dependencies_expo_localization",
+      "package_dependencies_react_navigation_elements",
+      "package_dependencies_react_navigation_native",
+      "package_dependencies_react_redux",
+      "react_navigation_native",
+      "react_redux"
+    ],
+    "13": [
+      "src_components_custom_button_custombutton",
+      "src_components_custom_button_custombutton_custombutton",
+      "src_components_custom_button_custombuttonstyles",
+      "src_components_custom_button_custombuttonstyles_activityindicatorcolor",
+      "src_components_custom_button_custombuttonstyles_buttondefaultstyles",
+      "src_components_custom_button_custombuttonstyles_buttonvariantstyles",
+      "src_components_custom_button_custombuttonstyles_gettextvariant",
+      "src_components_custom_button_custombuttonstyles_textcolor",
+      "src_components_custom_button_custombuttontypes",
+      "src_components_custom_button_custombuttontypes_custombuttonprops",
+      "src_components_custom_button_custombuttontypes_custombuttonvariant",
+      "src_components_custom_button_index"
+    ],
+    "14": [
+      "src_constants_strings",
+      "src_constants_strings_apierror",
+      "src_constants_strings_auth",
+      "src_constants_strings_cart",
+      "src_constants_strings_details",
+      "src_constants_strings_explore",
+      "src_constants_strings_freezestringsobject",
+      "src_constants_strings_home",
+      "src_constants_strings_keystringvaluemap",
+      "src_constants_strings_profile",
+      "src_constants_strings_splash",
+      "src_constants_strings_yuperror"
+    ],
+    "15": [
       "ref_expo_tsconfig_base",
-      "ref_expo_types_ts",
       "ref_src_modules",
       "ref_ts",
       "ref_tsx",
@@ -370,20 +424,38 @@
       "tsconfig_include",
       "tsconfig_paths_modules"
     ],
-    "11": [
-      "expo_splash_screen",
-      "expo_system_ui",
-      "package_dependencies",
-      "package_dependencies_expo_splash_screen",
-      "package_dependencies_expo_system_ui",
-      "package_dependencies_react_native_mmkv",
-      "package_dependencies_react_native_screens",
-      "package_dependencies_reduxjs_toolkit",
-      "react_native_mmkv",
-      "react_native_screens",
-      "reduxjs_toolkit"
+    "16": [
+      "src_components_custom_header_customheader",
+      "src_components_custom_header_customheader_backbutton",
+      "src_components_custom_header_customheader_customheader",
+      "src_components_custom_header_customheaderstyles",
+      "src_components_custom_header_customheaderstyles_styles",
+      "src_components_custom_header_customheadertypes",
+      "src_components_custom_header_customheadertypes_customheaderpropstype",
+      "src_components_custom_header_customheadertypes_defaultprops",
+      "src_components_custom_header_customheadertypes_headeraction",
+      "src_components_custom_header_index"
     ],
-    "12": [
+    "17": [
+      "src_modules_auth_signin_signin_form_signinformtypes",
+      "src_modules_auth_signin_signin_form_signinformtypes_signinformpropstype",
+      "src_modules_auth_signin_signin_form_signinformutils",
+      "src_modules_auth_signin_signin_form_signinformutils_isremainingtofillform",
+      "src_modules_auth_signin_signintypes",
+      "src_modules_auth_signin_signintypes_signinformvalues",
+      "src_modules_auth_signin_signintypes_signinhookreturntype",
+      "src_modules_auth_signin_signintypes_signinrouteparamlist"
+    ],
+    "18": [
+      "src_modules_auth_signup_signup_form_signupformtypes",
+      "src_modules_auth_signup_signup_form_signupformtypes_signupformpropstype",
+      "src_modules_auth_signup_signup_form_signupformutils",
+      "src_modules_auth_signup_signup_form_signupformutils_isremainingtofillform",
+      "src_modules_auth_signup_signuptypes",
+      "src_modules_auth_signup_signuptypes_signupformvalues",
+      "src_modules_auth_signup_signuptypes_signuphookreturntype"
+    ],
+    "19": [
       "withcustomsigning",
       "withcustomsigning_fs",
       "withcustomsigning_modifygradlefiles",
@@ -391,209 +463,311 @@
       "withcustomsigning_withcustomsigning",
       "withcustomsigning_withdangerousmod"
     ],
-    "13": [
-      "app_config",
-      "app_config_defineconfig",
+    "20": [
+      "src_app_layout",
+      "src_app_layout_navigationdevtools",
+      "src_app_layout_rootlayout",
+      "src_app_layout_rootnavigator",
+      "src_app_layout_themednavigator"
+    ],
+    "21": [
+      "src_modules_auth_signin_signin_form_index",
+      "src_modules_auth_signin_signin_form_signinform",
+      "src_modules_auth_signin_signin_form_signinform_signinform",
+      "src_modules_auth_signin_signin_form_signinformstyles",
+      "src_modules_auth_signin_signin_form_signinformstyles_styles"
+    ],
+    "22": [
+      "src_modules_auth_signup_signup_form_index",
+      "src_modules_auth_signup_signup_form_signupform",
+      "src_modules_auth_signup_signup_form_signupform_signupform",
+      "src_modules_auth_signup_signup_form_signupformstyles",
+      "src_modules_auth_signup_signup_form_signupformstyles_styles"
+    ],
+    "23": [
+      "src_assets_fonts_index",
+      "src_assets_icons_index",
+      "src_assets_images_index",
+      "src_assets_index"
+    ],
+    "24": [
+      "src_components_full_screen_loader_fullscreenloader",
+      "src_components_full_screen_loader_fullscreenloader_fullscreenloader",
+      "src_components_full_screen_loader_fullscreenloaderstyles",
+      "src_components_full_screen_loader_index"
+    ],
+    "25": [
+      "src_configs_reactotron",
+      "src_configs_reactotron_getreactotronenhancer",
+      "src_configs_reactotronconfig",
+      "src_configs_reactotronconfig_reactotron"
+    ],
+    "26": [
+      "src_translations_i18",
+      "src_translations_i18_language_detector",
+      "src_translations_i18_storage",
+      "src_translations_index"
+    ],
+    "27": [
       "buildconfig",
       "buildconfig_defineproguardrules",
       "buildconfig_getenvironmentconfig"
     ],
-    "14": [
+    "28": [
       "eslint_config",
       "eslint_config_defineconfig",
       "eslint_config_expoconfig"
     ],
-    "15": [
-      "apisauce",
-      "package_dependencies_apisauce"
+    "29": [
+      "src_app_protected_layout",
+      "src_app_protected_layout_detailsheaderleft",
+      "src_app_protected_layout_protectedlayout"
     ],
-    "16": [
+    "30": [
+      "src_components_spinner_index",
+      "src_components_spinner_spinner",
+      "src_components_spinner_spinner_spinner"
+    ],
+    "31": [
+      "app_config",
+      "app_config_defineconfig"
+    ],
+    "32": [
       "axios",
       "package_dependencies_axios"
     ],
-    "17": [
+    "33": [
       "axois",
       "package_dependencies_axois"
     ],
-    "18": [
+    "34": [
       "claude_hooks_post_task_check",
       "claude_hooks_post_task_check_execsync"
     ],
-    "19": [
+    "35": [
       "expo",
       "package_dependencies_expo"
     ],
-    "20": [
+    "36": [
+      "expo_build_properties",
+      "package_dependencies_expo_build_properties"
+    ],
+    "37": [
       "expo_constants",
       "package_dependencies_expo_constants"
     ],
-    "21": [
+    "38": [
       "expo_font",
       "package_dependencies_expo_font"
     ],
-    "22": [
+    "39": [
+      "expo_google_fonts_plus_jakarta_sans",
+      "package_dependencies_expo_google_fonts_plus_jakarta_sans"
+    ],
+    "40": [
       "expo_haptics",
       "package_dependencies_expo_haptics"
     ],
-    "23": [
-      "expo_image",
-      "package_dependencies_expo_image"
+    "41": [
+      "expo_linear_gradient",
+      "package_dependencies_expo_linear_gradient"
     ],
-    "24": [
+    "42": [
       "expo_linking",
       "package_dependencies_expo_linking"
     ],
-    "25": [
-      "expo_localization",
-      "package_dependencies_expo_localization"
-    ],
-    "26": [
+    "43": [
       "expo_router",
       "package_dependencies_expo_router"
     ],
-    "27": [
+    "44": [
+      "expo_splash_screen",
+      "package_dependencies_expo_splash_screen"
+    ],
+    "45": [
       "expo_status_bar",
       "package_dependencies_expo_status_bar"
     ],
-    "28": [
+    "46": [
       "expo_symbols",
       "package_dependencies_expo_symbols"
     ],
-    "29": [
+    "47": [
+      "expo_system_ui",
+      "package_dependencies_expo_system_ui"
+    ],
+    "48": [
       "expo_vector_icons",
       "package_dependencies_expo_vector_icons"
     ],
-    "30": [
+    "49": [
       "expo_web_browser",
       "package_dependencies_expo_web_browser"
     ],
-    "31": [
+    "50": [
       "formik",
       "package_dependencies_formik"
     ],
-    "32": [
+    "51": [
       "i18next",
       "package_dependencies_i18next"
     ],
-    "33": [
+    "52": [
       "lodash",
       "package_dependencies_lodash"
     ],
-    "34": [
+    "53": [
       "package_dependencies_react",
       "react"
     ],
-    "35": [
+    "54": [
       "package_dependencies_react_dom",
       "react_dom"
     ],
-    "36": [
+    "55": [
       "package_dependencies_react_i18next",
       "react_i18next"
     ],
-    "37": [
+    "56": [
       "package_dependencies_react_native",
       "react_native"
     ],
-    "38": [
+    "57": [
       "package_dependencies_react_native_gesture_handler",
       "react_native_gesture_handler"
     ],
-    "39": [
+    "58": [
+      "package_dependencies_react_native_mmkv",
+      "react_native_mmkv"
+    ],
+    "59": [
       "package_dependencies_react_native_nitro_modules",
       "react_native_nitro_modules"
     ],
-    "40": [
+    "60": [
       "package_dependencies_react_native_permissions",
       "react_native_permissions"
     ],
-    "41": [
+    "61": [
       "package_dependencies_react_native_reanimated",
       "react_native_reanimated"
     ],
-    "42": [
+    "62": [
       "package_dependencies_react_native_safe_area_context",
       "react_native_safe_area_context"
     ],
-    "43": [
+    "63": [
+      "package_dependencies_react_native_screens",
+      "react_native_screens"
+    ],
+    "64": [
+      "package_dependencies_react_native_toast_message",
+      "react_native_toast_message"
+    ],
+    "65": [
       "package_dependencies_react_native_web",
       "react_native_web"
     ],
-    "44": [
+    "66": [
       "package_dependencies_react_native_worklets",
       "react_native_worklets"
     ],
-    "45": [
+    "67": [
       "package_dependencies_react_navigation_bottom_tabs",
       "react_navigation_bottom_tabs"
     ],
-    "46": [
-      "package_dependencies_react_navigation_elements",
-      "react_navigation_elements"
-    ],
-    "47": [
-      "package_dependencies_react_navigation_native",
-      "react_navigation_native"
-    ],
-    "48": [
-      "package_dependencies_react_redux",
-      "react_redux"
-    ],
-    "49": [
+    "68": [
       "package_dependencies_reactotron_react_native",
       "reactotron_react_native"
     ],
-    "50": [
+    "69": [
       "package_dependencies_reactotron_redux",
       "reactotron_redux"
     ],
-    "51": [
+    "70": [
       "package_dependencies_redux_persist",
       "redux_persist"
     ],
-    "52": [
+    "71": [
+      "package_dependencies_reduxjs_toolkit",
+      "reduxjs_toolkit"
+    ],
+    "72": [
       "package_dependencies_yup",
       "yup"
     ],
-    "53": [
+    "73": [
+      "src_app_public_layout",
+      "src_app_public_layout_publiclayout"
+    ],
+    "74": [
+      "src_modules_auth_signin_signinstyles",
+      "src_modules_auth_signin_signinstyles_styles"
+    ],
+    "75": [
+      "src_modules_auth_signup_signupstyles",
+      "src_modules_auth_signup_signupstyles_styles"
+    ],
+    "76": [
       "jest_config"
     ],
-    "54": [
+    "77": [
       "prettierrc"
+    ],
+    "78": [
+      "src_app_protected_details"
+    ],
+    "79": [
+      "src_app_protected_tabs_home_index"
+    ],
+    "80": [
+      "src_app_protected_tabs_profile_index"
+    ],
+    "81": [
+      "src_app_public_signin_index"
+    ],
+    "82": [
+      "src_app_public_signup_index"
+    ],
+    "83": [
+      "src_app_public_verify_email_index"
+    ],
+    "84": [
+      "src_redux_useredux_useappselector"
     ]
   },
   "cohesion": {
-    "0": 0.06829573934837092,
-    "1": 0.09696969696969697,
-    "2": 0.08943089430894309,
-    "3": 0.05714285714285714,
-    "4": 0.11942959001782531,
-    "5": 0.08735632183908046,
-    "6": 0.15954415954415954,
-    "7": 0.12923076923076923,
-    "8": 0.08695652173913043,
-    "9": 0.13333333333333333,
-    "10": 0.15384615384615385,
-    "11": 0.18181818181818182,
-    "12": 0.4,
-    "13": 0.8,
-    "14": 0.6666666666666666,
-    "15": 1.0,
-    "16": 1.0,
-    "17": 1.0,
-    "18": 1.0,
-    "19": 1.0,
-    "20": 1.0,
-    "21": 1.0,
-    "22": 1.0,
-    "23": 1.0,
-    "24": 1.0,
-    "25": 1.0,
-    "26": 1.0,
-    "27": 1.0,
-    "28": 1.0,
+    "0": 0.058069381598793365,
+    "1": 0.05714285714285714,
+    "2": 0.0928030303030303,
+    "3": 0.1053763440860215,
+    "4": 0.08505747126436781,
+    "5": 0.1206896551724138,
+    "6": 0.12698412698412698,
+    "7": 0.07407407407407407,
+    "8": 0.15954415954415954,
+    "9": 0.13768115942028986,
+    "10": 0.16666666666666666,
+    "11": 0.1794871794871795,
+    "12": 0.18181818181818182,
+    "13": 0.42424242424242425,
+    "14": 0.16666666666666666,
+    "15": 0.18181818181818182,
+    "16": 0.28888888888888886,
+    "17": 0.32142857142857145,
+    "18": 0.38095238095238093,
+    "19": 0.4,
+    "20": 0.4,
+    "21": 0.5,
+    "22": 0.5,
+    "23": 0.5,
+    "24": 0.5,
+    "25": 0.5,
+    "26": 0.5,
+    "27": 0.6666666666666666,
+    "28": 0.6666666666666666,
     "29": 1.0,
-    "30": 1.0,
+    "30": 0.6666666666666666,
     "31": 1.0,
     "32": 1.0,
     "33": 1.0,
@@ -617,7 +791,37 @@
     "51": 1.0,
     "52": 1.0,
     "53": 1.0,
-    "54": 1.0
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 1.0,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0,
+    "80": 1.0,
+    "81": 1.0,
+    "82": 1.0,
+    "83": 1.0,
+    "84": 1.0
   },
   "gods": [
     {
@@ -626,39 +830,19 @@
       "degree": 30
     },
     {
-      "id": "src_hooks_usetheme_usetheme",
-      "label": "useTheme()",
-      "degree": 29
+      "id": "src_hooks_usedeepcompareeffect_usedeepcompareeffect",
+      "label": "useDeepCompareEffect()",
+      "degree": 7
     },
     {
-      "id": "src_theme_metrics_scale",
-      "label": "scale()",
-      "degree": 22
+      "id": "src_hooks_usepermission_usemultiplepermissions",
+      "label": "useMultiplePermissions()",
+      "degree": 7
     },
     {
-      "id": "src_theme_colors_thememode",
-      "label": "ThemeMode",
-      "degree": 14
-    },
-    {
-      "id": "src_theme_applicationstyles_applicationstyles",
-      "label": "applicationStyles()",
-      "degree": 13
-    },
-    {
-      "id": "src_types_errorresponse_errorresponse",
-      "label": "ErrorResponse",
-      "degree": 9
-    },
-    {
-      "id": "src_redux_auth_authslice_authactions",
-      "label": "AuthActions",
-      "degree": 8
-    },
-    {
-      "id": "src_redux_useredux_useappselector",
-      "label": "useAppSelector",
-      "degree": 8
+      "id": "src_configs_apierrorparser_parseservererror",
+      "label": "parseServerError()",
+      "degree": 7
     },
     {
       "id": "package_scripts",
@@ -666,33 +850,42 @@
       "degree": 7
     },
     {
+      "id": "src_hooks_hooks_utils_usedeepcomparememoize_checkdeps",
+      "label": "checkDeps()",
+      "degree": 6
+    },
+    {
+      "id": "src_hooks_usedeepcomparecallback_usedeepcomparecallback",
+      "label": "useDeepCompareCallback()",
+      "degree": 6
+    },
+    {
+      "id": "src_hooks_usepermission_usesinglepermissions",
+      "label": "useSinglePermissions()",
+      "degree": 6
+    },
+    {
       "id": "src_components_custom_button_custombutton_custombutton",
       "label": "CustomButton()",
-      "degree": 7
+      "degree": 6
+    },
+    {
+      "id": "src_redux_store_rootstatetype",
+      "label": "RootStateType",
+      "degree": 6
     }
   ],
   "surprises": [
     {
-      "source": "defineConfig()",
-      "target": "defineProGuardRules()",
+      "source": "CustomTabBar()",
+      "target": "textColor()",
       "source_files": [
-        "app.config.js",
-        "buildconfig.js"
+        "src/components/custom-tab-bar/CustomTabBar.tsx",
+        "src/components/custom-button/CustomButtonStyles.ts"
       ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "connects across different repos/directories"
-    },
-    {
-      "source": "defineConfig()",
-      "target": "getEnvironmentConfig()",
-      "source_files": [
-        "app.config.js",
-        "buildconfig.js"
-      ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "connects across different repos/directories"
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "why": "inferred connection - not explicitly stated in source; bridges separate communities"
     },
     {
       "source": "DetailScreen()",
@@ -703,66 +896,77 @@
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "why": "bridges separate communities; peripheral node `DetailScreen()` unexpectedly reaches hub `useTheme()`"
+      "why": "peripheral node `DetailScreen()` unexpectedly reaches hub `useTheme()`"
     },
     {
-      "source": "TabsLayout()",
-      "target": "useTheme()",
+      "source": "Text()",
+      "target": "textVariantsStyles()",
       "source_files": [
-        "src/app/(protected)/(tabs)/_layout.tsx",
-        "src/hooks/useTheme.ts"
+        "src/components/text/Text.tsx",
+        "src/components/text/TextStyles.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "why": "inferred connection - not explicitly stated in source"
+    },
+    {
+      "source": "applicationStyles()",
+      "target": "scale()",
+      "source_files": [
+        "src/theme/ApplicationStyles.ts",
+        "src/theme/Metrics.tsx"
       ],
       "confidence": "EXTRACTED",
       "relation": "calls",
-      "why": "bridges separate communities"
+      "why": "peripheral node `applicationStyles()` unexpectedly reaches hub `scale()`"
     },
     {
-      "source": "ProtectedLayout()",
-      "target": "useTheme()",
+      "source": "CustomButton()",
+      "target": "buttonDefaultStyles()",
       "source_files": [
-        "src/app/(protected)/_layout.tsx",
-        "src/hooks/useTheme.ts"
+        "src/components/custom-button/CustomButton.tsx",
+        "src/components/custom-button/CustomButtonStyles.ts"
       ],
-      "confidence": "EXTRACTED",
-      "relation": "calls",
-      "why": "bridges separate communities"
+      "confidence": "INFERRED",
+      "relation": "indirect_call",
+      "why": "inferred connection - not explicitly stated in source"
     }
   ],
   "questions": [
     {
       "type": "bridge_node",
-      "question": "Why does `dependencies` connect `Community 11` to `Community 8`, `Community 15`, `Community 16`, `Community 17`, `Community 19`, `Community 20`, `Community 21`, `Community 22`, `Community 23`, `Community 24`, `Community 25`, `Community 26`, `Community 27`, `Community 28`, `Community 29`, `Community 30`, `Community 31`, `Community 32`, `Community 33`, `Community 34`, `Community 35`, `Community 36`, `Community 37`, `Community 38`, `Community 39`, `Community 40`, `Community 41`, `Community 42`, `Community 43`, `Community 44`, `Community 45`, `Community 46`, `Community 47`, `Community 48`, `Community 49`, `Community 50`, `Community 51`, `Community 52`?",
-      "why": "High betweenness centrality (0.053) - this node is a cross-community bridge."
+      "question": "Why does `dependencies` connect `dependencies` to `devDependencies`, `axios`, `axois`, `expo`, `expo-build-properties`, `expo-constants`, `expo-font`, `@expo-google-fonts/plus-jakarta-sans`, `expo-haptics`, `expo-linear-gradient`, `expo-linking`, `expo-router`, `expo-splash-screen`, `expo-status-bar`, `expo-symbols`, `expo-system-ui`, `@expo/vector-icons`, `expo-web-browser`, `formik`, `i18next`, `lodash`, `react`, `react-dom`, `react-i18next`, `react-native`, `react-native-gesture-handler`, `react-native-mmkv`, `react-native-nitro-modules`, `react-native-permissions`, `react-native-reanimated`, `react-native-safe-area-context`, `react-native-screens`, `react-native-toast-message`, `react-native-web`, `react-native-worklets`, `@react-navigation/bottom-tabs`, `reactotron-react-native`, `reactotron-redux`, `redux-persist`, `@reduxjs/toolkit`, `yup`?",
+      "why": "High betweenness centrality (0.041) - this node is a cross-community bridge."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `useTheme()` connect `Community 0` to `Community 1`, `Community 4`, `Community 9`, `Community 7`?",
-      "why": "High betweenness centrality (0.046) - this node is a cross-community bridge."
-    },
-    {
-      "type": "bridge_node",
-      "question": "Why does `scale()` connect `Community 1` to `Community 4`?",
-      "why": "High betweenness centrality (0.010) - this node is a cross-community bridge."
+      "question": "Why does `useVerifyEmail()` connect `VerifyEmailScreen.tsx` to `user.selectors.ts`?",
+      "why": "High betweenness centrality (0.009) - this node is a cross-community bridge."
     },
     {
       "type": "isolated_nodes",
       "question": "What connects `{ execSync }`, `$schema`, `Read(.env*)` to the rest of the system?",
-      "why": "141 weakly-connected nodes found - possible documentation gaps or missing edges."
+      "why": "180 weakly-connected nodes found - possible documentation gaps or missing edges."
     },
     {
       "type": "low_cohesion",
-      "question": "Should `Community 0` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.06829573934837092 - nodes in this community are weakly interconnected."
+      "question": "Should `Colors.ts` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.058069381598793365 - nodes in this community are weakly interconnected."
     },
     {
       "type": "low_cohesion",
-      "question": "Should `Community 1` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.09696969696969697 - nodes in this community are weakly interconnected."
+      "question": "Should `deny` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected."
     },
     {
       "type": "low_cohesion",
-      "question": "Should `Community 2` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.08943089430894309 - nodes in this community are weakly interconnected."
+      "question": "Should `Store.ts` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.0928030303030303 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `user.selectors.ts` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1053763440860215 - nodes in this community are weakly interconnected."
     }
   ]
 }

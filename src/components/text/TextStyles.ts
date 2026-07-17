@@ -26,39 +26,30 @@ export const fontWeightStyles = StyleSheet.create({
 export const fontSizeStyles = StyleSheet.create({
   displayLG: {
     fontSize: scale(48, true),
-    lineHeight: scale(60, true)
   },
   displayMD: {
     fontSize: scale(36, true),
-    lineHeight: scale(44, true)
   },
   displaySM: {
     fontSize: scale(30, true),
-    lineHeight: scale(38, true)
   },
   displayXS: {
-    fontSize: scale(24, true),
-    lineHeight: scale(32, true)
+    fontSize: scale(22, true),
   },
   textLG: {
-    fontSize: scale(18, true),
-    lineHeight: scale(28, true)
+    fontSize: scale(16, true),
   },
   textMD: {
-    fontSize: scale(16, true),
-    lineHeight: scale(24, true)
+    fontSize: scale(14, true),
   },
   textSM: {
-    fontSize: scale(14, true),
-    lineHeight: scale(20, true)
+    fontSize: scale(12, true),
   },
   textXL: {
-    fontSize: scale(20, true),
-    lineHeight: scale(30, true)
+    fontSize: scale(18, true),
   },
   textXS: {
-    fontSize: scale(12, true),
-    lineHeight: scale(18, true)
+    fontSize: scale(10, true),
   }
 });
 
@@ -99,7 +90,7 @@ export const textVariantsStyles = (theme: ThemeMode) =>
     },
     headlineSmall: {
       ...fontSizeStyles.textLG,
-      ...fontWeightStyles.semiBold,
+      ...fontWeightStyles.bold,
       color: Colors[theme].text,
     },
 
@@ -116,7 +107,7 @@ export const textVariantsStyles = (theme: ThemeMode) =>
     },
     titleSmall: {
       ...fontSizeStyles.textMD,
-      ...fontWeightStyles.medium,
+      ...fontWeightStyles.bold,
       color: Colors[theme].text,
     },
 
@@ -173,7 +164,6 @@ export const textVariantsStyles = (theme: ThemeMode) =>
 
     // Status
     error: {
-      ...fontSizeStyles.textSM,
       ...fontWeightStyles.medium,
       color: Colors[theme].error,
     },

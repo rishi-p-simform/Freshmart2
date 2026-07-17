@@ -28,6 +28,9 @@
     "requireEmailError": "Please enter an email address.",
     "invalidEmailError": "Please enter a valid email address.",
     "requirePasswordError": "Please enter a password.",
+    "requireConfirmPasswordError": "Please confirm your password.",
+    "mismatchPasswordError": "Passwords do not match.",
+    "requireTermsError": "You must agree to the terms and privacy policy.",
     "lengthPasswordError": "Must be at least 8 characters long.",
     "lowercasePasswordError": "Must contain at least one lowercase letter.",
     "uppercasePasswordError": "Must contain at least one uppercase letter.",
@@ -35,22 +38,58 @@
     "digitPasswordError": "Must contain at least one digit."
   },
   "auth": {
-    "hintName": "Name",
-    "hintEmail": "Email",
-    "hintPassword": "Password",
+    "hintName": "Full Name",
+    "hintEmail": "Email Address",
+    "hintPassword": "••••••••",
+    "lblName": "Full Name",
+    "lblEmail": "Email Address",
+    "lblPassword": "Password",
+    "lblConfirmPassword": "Confirm Password",
     "btnSignIn": "Sign In",
-    "btnSignUp": "Sign Up",
-    "signInTitle": "Welcome Back",
+    "btnSignUp": "Create Account",
+    "signInTitle": "Welcome Back!",
     "signInSubtitle": "Sign in to continue to your account",
     "signUpTitle": "Create Account",
     "signUpSubtitle": "Sign up to get started with your new account",
     "noAccountLabel": "Don't have an account? ",
-    "hasAccountLabel": "Already have an account? ",
+    "hasAccountLabel": "Have an account? ",
     "signUpAction": "Sign Up",
-    "signInAction": "Sign In"
+    "signInAction": "Sign In",
+    "forgotPassword": "Forgot password?",
+    "orContinueWith": "OR CONTINUE WITH",
+    "btnGoogle": "Google",
+    "newHereLabel": "New here? ",
+    "agreeTo": "I agree to the ",
+    "termsOfService": "Terms of Service",
+    "and": " and ",
+    "privacyPolicy": "Privacy Policy",
+    "verifyEmailTitle": "Verify Your Email",
+    "verifyEmailSentTo": "We sent a verification code to",
+    "verifyEmailEnterCode": "Enter the 6-digit code",
+    "verifyEmailResendIn": "Resend code in ",
+    "verifyEmailVerifyContinue": "Verify & Continue",
+    "verifyEmailOr": "OR",
+    "verifyEmailMagicLink": "Use Magic Link",
+    "verifyEmailMagicLinkSub": "Click the link sent to your inbox — no code needed",
+    "verifyEmailOpenApp": "Open Email App"
   },
   "profile": {
     "title": "Profile",
-    "btnLogout": "Logout"
+    "btnLogout": "Logout",
+    "btnDeleteAccount": "Delete Account",
+    "deleteAccountConfirmTitle": "Delete Account?",
+    "deleteAccountConfirmMessage": "Are you sure you want to permanently delete your account and all associated data? This action cannot be undone.",
+    "btnCancel": "Cancel",
+    "btnConfirmDelete": "Delete"
+  },
+  "explore": {
+    "title": "Explore"
+  },
+  "cart": {
+    "title": "Cart"
+  },
+  "splash": {
+    "title": "FreshMart",
+    "subtitle": "Fresh. Local. Delivered."
   }
 }

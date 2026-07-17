@@ -12,8 +12,15 @@ const styles = (theme: ThemeMode) =>
       alignSelf: 'center',
       width: width * 0.5
     },
+    deleteButton: {
+      alignSelf: 'center',
+      marginTop: 20,
+      width: width * 0.5,
+      backgroundColor: Colors[theme]?.error,
+      borderColor: Colors[theme]?.error
+    },
     screenView: {
-      backgroundColor: Colors[theme]?.white,
+      backgroundColor: Colors[theme]?.background,
       flex: 1,
       justifyContent: 'center'
     }

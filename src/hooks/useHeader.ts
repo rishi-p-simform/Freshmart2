@@ -10,7 +10,7 @@ import { globalMetrics, scale } from '../theme';
  * A status bar hook returns the height of the status bar.
  * @returns {number} The height of the status bar.
  */
-export function useStatusBarHeight(): number {
+export const useStatusBarHeight = (): number  => {
   const insets: EdgeInsets = useSafeAreaInsets();
   return insets.top;
 }
@@ -20,7 +20,7 @@ export function useStatusBarHeight(): number {
  * @param {boolean} [modalPresentation=false] - Whether the header is being used in a modal presentation.
  * @returns {number} The height of the header.
  */
-export function useHeaderHeight(modalPresentation: boolean = false): number {
+export const useHeaderHeight = (modalPresentation: boolean = false): number  => {
   const frame: Rect = useSafeAreaFrame();
   const statusBarHeight: number = useStatusBarHeight();
   let headerHeight: number;

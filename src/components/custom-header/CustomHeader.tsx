@@ -1,71 +1,91 @@
-import React, { useCallback, useState } from 'react';
-import { StyleSheet, Text, View, type LayoutChangeEvent } from 'react-native';
-import { useHeaderHeight, useStatusBarHeight, useTheme } from '../../hooks';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import React, { memo } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useTheme } from '../../hooks';
+import { Colors } from '../../theme';
+import { Text } from '../text';
 import styleSheet from './CustomHeaderStyles';
-import { defaultProps, type CustomHeaderPropsType } from './CustomHeaderTypes';
+import { defaultProps, type CustomHeaderPropsType, type HeaderAction } from './CustomHeaderTypes';
 
-/**
- * The custom header component.
- * @param {HeaderPropsType} props - the props for the header component.
- * @returns {React.ReactElement} A React Element.
- */
-export default function CustomHeader({
-  customLeftView,
-  customRightView,
+const BackButton = memo(({ onPress }: { onPress: () => void }) => {
+  const { styles, theme } = useTheme(styleSheet);
+  return (
+    <TouchableOpacity style={styles.backButton} onPress={onPress} activeOpacity={0.7}>
+      <Ionicons name="arrow-back" size={24} color={Colors[theme]?.text} />
+    </TouchableOpacity>
+  );
+});
+
+BackButton.displayName = 'BackButton';
+
+const CustomHeader = ({
   title,
+  leftActions = [],
+  rightActions = [],
+  containerStyle,
+  headerContent,
   titleStyle,
-  isBottomLine
-}: Partial<CustomHeaderPropsType>): React.ReactElement {
+}: CustomHeaderPropsType): React.ReactElement  => {
   const { styles } = useTheme(styleSheet);
-  const [widthLeft, setWidthLeft] = useState<number>(0);
-  const [widthRight, setWidthRight] = useState<number>(0);
-  const statusBarHeight: number = useStatusBarHeight();
-  const headerHeight: number = useHeaderHeight();
+  const navigation = useNavigation();
+  const insets = useSafeAreaInsets();
 
-  const handleLeftLayout = useCallback<(event: LayoutChangeEvent) => void>(
-    (event: LayoutChangeEvent) => {
-      const { width } = event.nativeEvent.layout;
-      setWidthLeft(width);
-    },
-    []
-  );
+  const handleBack = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    }
+  };
 
-  const handleRightLayout = useCallback<(event: LayoutChangeEvent) => void>(
-    (event: LayoutChangeEvent) => {
-      const { width } = event.nativeEvent.layout;
-      setWidthRight(width);
-    },
-    []
-  );
+  const renderLeftActions = () => {
+    if (leftActions.length > 0) {
+      return leftActions.map((item: HeaderAction, index: number) => (
+        <TouchableOpacity key={index} onPress={item.onPress} activeOpacity={0.7}>
+          {item.icon}
+        </TouchableOpacity>
+      ));
+    }
+    // Automatically render back button if no left actions are provided and we can go back
+    if (navigation.canGoBack()) {
+      return <BackButton onPress={handleBack} />;
+    }
+    return null;
+  };
 
   return (
     <View
       style={StyleSheet.flatten([
-        isBottomLine && styles.bottomLine,
-        { height: headerHeight },
-        styles.container
+        styles.container,
+        { paddingTop: insets.top },
+        containerStyle,
       ])}
     >
-      <View pointerEvents="none" style={{ height: statusBarHeight }} />
-      <View pointerEvents="box-none" style={styles.subContainer}>
-        <Text
-          style={StyleSheet.flatten([
-            styles.textTitle,
-            titleStyle,
-            { left: widthLeft, right: widthRight }
-          ])}
-        >
-          {title}
-        </Text>
-        <View style={styles.rightAndLeftView} onLayout={handleLeftLayout}>
-          {customLeftView && customLeftView}
-        </View>
-        <View style={styles.rightAndLeftView} onLayout={handleRightLayout}>
-          {customRightView && customRightView}
-        </View>
+      <View style={styles.leftContainer}>{renderLeftActions()}</View>
+
+      <View style={styles.centerContainer}>
+        {headerContent ? (
+          headerContent
+        ) : title ? (
+          <Text variant='headlineSmall' numberOfLines={1} style={StyleSheet.flatten([styles.textTitle, titleStyle])}>
+            {title}
+          </Text>
+        ) : null}
       </View>
+
+      {rightActions.length > 0 && (
+        <View style={styles.rightContainer}>
+          {rightActions.map((item: HeaderAction, index: number) => (
+            <TouchableOpacity key={index} onPress={item.onPress} activeOpacity={0.7}>
+              {item.icon}
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
     </View>
   );
 }
 
 CustomHeader.defaultProps = defaultProps;
+
+export default memo(CustomHeader);

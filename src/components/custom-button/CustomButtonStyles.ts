@@ -35,11 +35,11 @@ export const activityIndicatorColor = (
 ): string => {
   switch (buttonVariant) {
     case 'outline':
-      return Colors[theme]?.lightBlue;
+      return Colors[theme]?.primary;
     case 'solid':
       return Colors[theme]?.white;
     case 'hyperlink':
-      return Colors[theme]?.lightBlue;
+      return Colors[theme]?.primary;
     default:
       return Colors[theme]?.white;
   }
@@ -55,11 +55,11 @@ export const activityIndicatorColor = (
 export const textColor = (buttonVariant: CustomButtonVariant, theme: ThemeMode): string => {
   switch (buttonVariant) {
     case 'outline':
-      return Colors[theme]?.lightBlue;
+      return Colors[theme]?.primary;
     case 'solid':
       return Colors[theme]?.white;
     case 'hyperlink':
-      return Colors[theme]?.lightBlue;
+      return Colors[theme]?.primary;
     default:
       return Colors[theme]?.white;
   }
@@ -78,14 +78,14 @@ export const buttonVariantStyles = (theme: ThemeMode) =>
     },
     outline: {
       backgroundColor: Colors[theme]?.transparent,
-      borderColor: Colors[theme]?.lightBlue,
-      borderRadius: scale(4),
+      borderColor: Colors[theme]?.primary,
+      borderRadius: scale(16),
       borderWidth: 1
     },
     solid: {
-      backgroundColor: Colors[theme]?.lightBlue,
-      borderColor: Colors[theme]?.lightBlue,
-      borderRadius: scale(4),
+      backgroundColor: Colors[theme]?.primary,
+      borderColor: Colors[theme]?.primary,
+      borderRadius: scale(16),
       borderWidth: 1
     }
   });
@@ -104,16 +104,15 @@ export const buttonDefaultStyles = (theme: ThemeMode) =>
     },
     defaultButtonStyle: {
       alignItems: 'center',
-      backgroundColor: Colors[theme]?.lightBlue,
-      height: scale(44),
+      backgroundColor: Colors[theme]?.primary,
+      height: scale(52), // Larger touch target
       justifyContent: 'center',
       width: '100%',
-      borderRadius: scale(12)
+      borderRadius: scale(16),
     },
     disabledButtonStyle: {
       opacity: 0.5,
-      borderRadius: scale(12)
-
+      borderRadius: scale(16)
     },
     pressedStyle: {
       opacity: 0.6

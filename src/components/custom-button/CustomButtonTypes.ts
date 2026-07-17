@@ -1,6 +1,7 @@
-import { type GestureResponderEvent, type PressableProps } from 'react-native';
+import { type GestureResponderEvent, type PressableProps, type StyleProp, type TextStyle } from 'react-native';
 import { type TextProps } from '../text';
 import { buttonVariantStyles } from './CustomButtonStyles';
+import { Ionicons } from '@expo/vector-icons';
 
 export type CustomButtonVariant = keyof ReturnType<typeof buttonVariantStyles>;
 
@@ -26,4 +27,8 @@ export interface CustomButtonProps extends PressableProps {
   enableDebounce?: boolean;
   disabled?: boolean;
   style?: PressableProps['style'];
+  leftIcon?: keyof typeof Ionicons.glyphMap;
+  titleStyle?: StyleProp<TextStyle>;
+  color?: string;
 }
+

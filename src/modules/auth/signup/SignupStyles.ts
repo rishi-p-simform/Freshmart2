@@ -10,8 +10,7 @@ const styles = (theme: ThemeMode) =>
   StyleSheet.create({
     ...ApplicationStyles(theme),
     screenView: {
-      backgroundColor: Colors[theme]?.white,
-      marginTop: '30%'
+      backgroundColor: Colors[theme]?.background,
     }
   });
 

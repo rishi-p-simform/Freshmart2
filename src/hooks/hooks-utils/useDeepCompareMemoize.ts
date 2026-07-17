@@ -7,7 +7,7 @@ import React, { useRef } from 'react';
  * @param {string} name - the name of the hook that is being used
  * @returns None
  */
-export function checkDeps(deps: React.DependencyList, name: string) {
+export const checkDeps = (deps: React.DependencyList, name: string) => {
   const reactHookName: string = `React.${name.replace(/DeepCompare/, '')}`;
 
   if (!deps || deps.length === 0) {
@@ -22,7 +22,7 @@ export function checkDeps(deps: React.DependencyList, name: string) {
  * @param {React.DependencyList} value - the dependency list to memoize
  * @returns {React.DependencyList} - the memoized version of the dependency list
  */
-export default function useDeepCompareMemoize(value: React.DependencyList): React.DependencyList {
+const useDeepCompareMemoize = (value: React.DependencyList): React.DependencyList  => {
   const ref = useRef<React.DependencyList>([]);
 
   if (!_.isEqual(value, ref.current)) {
@@ -31,3 +31,5 @@ export default function useDeepCompareMemoize(value: React.DependencyList): Reac
 
   return ref.current;
 }
+
+export default useDeepCompareMemoize;

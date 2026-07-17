@@ -7,7 +7,7 @@ import type { ErrorResponse } from '../types';
  * @param {any} o - the array to clean
  * @returns {any} - the cleaned array.
  */
-function cleanArray(o: any) {
+const cleanArray = (o: any) => {
   return _.isArray(o) ? _.compact(o) : o;
 }
 
@@ -16,7 +16,7 @@ function cleanArray(o: any) {
  * @param {Record<string, any>} o - the object to clean
  * @returns {Record<string, any>} a new object with all the undefined or null values removed.
  */
-export function cleanUndefOrNull(o: Record<string, any>) {
+export const cleanUndefOrNull = (o: Record<string, any>) => {
   return _.transform(o, (r, v, k) => {
     let isObjectBool: boolean = _.isObject(v);
     let val = isObjectBool ? cleanArray(cleanUndefOrNull(v)) : v;
@@ -35,7 +35,7 @@ export function cleanUndefOrNull(o: Record<string, any>) {
  * @param {string | null} value - string | null
  * @returns A boolean value.
  */
-function isNullOrWhiteSpace(value: string | null): boolean {
+const isNullOrWhiteSpace = (value: string | null): boolean  => {
   if (value === null || value === 'undefined') {
     return true;
   }
@@ -55,7 +55,7 @@ function isNullOrWhiteSpace(value: string | null): boolean {
  * @param {string} formatTemplate - The format template to use.
  * @returns A string
  */
-function formatNumber(input: number, formatTemplate: string): string {
+const formatNumber = (input: number, formatTemplate: string): string  => {
   const count = formatTemplate.length;
   const stringValue = input.toString();
   if (count <= stringValue.length) {
@@ -73,7 +73,7 @@ function formatNumber(input: number, formatTemplate: string): string {
  * @param [parseByObject=false] - If the args parameter is an object, then this should be true.
  * @returns A string
  */
-export function formatString(format: string, args: Record<string, any>): string {
+export const formatString = (format: string, args: Record<string, any>): string  => {
   return format.replace(/{(\w+(:\w*)?)}/g, function (match, x) {
     //0
     const s = match.split(':');

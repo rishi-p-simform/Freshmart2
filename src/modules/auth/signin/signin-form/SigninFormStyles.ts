@@ -12,33 +12,56 @@ const styles = (theme: ThemeMode) =>
     buttonText: {
       color: Colors[theme]?.white
     },
-    errorMsg: {
-      color: Colors[theme]?.red,
-      fontSize: scale(14),
-      marginBottom: scale(20)
-    },
     formContainer: {
       flex: 1,
-      paddingHorizontal: scale(20)
+      paddingHorizontal: scale(16),
+      paddingVertical: scale(18),
+      gap: scale(5)
+    },
+    errorBanner: {
+      backgroundColor: '#fef2f2',
+      borderWidth: 1,
+      borderColor: '#fecaca',
+      borderRadius: scale(8),
+      paddingHorizontal: scale(12),
+      paddingVertical: scale(10),
+    },
+    errorBannerText: {
+      color: '#dc2626',
+      textAlign: 'center',
+    },
+    forgotPassword: {
+      textAlign: 'right',
+    },
+    dividerContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingVertical: scale(10)
+    },
+    dividerLine: {
+      flex: 1,
+      height: 1,
+      backgroundColor: Colors[theme]?.palette.gray[300],
+    },
+    dividerText: {
+      color: Colors[theme]?.palette.gray[400],
+      paddingHorizontal: scale(16),
+    },
+    googleButton: {
+      borderColor: Colors[theme]?.palette.gray[300],
+      borderWidth: 1,
+      backgroundColor: Colors[theme]?.surface,
     },
     labelText: {
-      color: Colors[theme]?.black,
-      fontSize: scale(14)
+      color: Colors[theme]?.palette.gray[500],
     },
     linkActionText: {
-      color: Colors[theme]?.lightBlue,
-      fontSize: scale(14),
-      fontWeight: '600'
+      color: Colors[theme]?.primary,
+      fontWeight: 'bold'
     },
     linkContainer: {
       alignItems: 'center',
-      marginTop: scale(18)
-    },
-    subtitleText: {
-      color: Colors[theme]?.gray,
-      fontSize: scale(14),
-      lineHeight: scale(20),
-      marginBottom: scale(32)
+      paddingVertical: scale(10)
     },
     textInput: {
       backgroundColor: Colors[theme]?.palette.gray[100],
@@ -48,12 +71,6 @@ const styles = (theme: ThemeMode) =>
       paddingHorizontal: scale(11),
       paddingVertical: scale(11)
     },
-    titleText: {
-      color: Colors[theme]?.text,
-      fontSize: scale(24),
-      fontWeight: 'bold',
-      marginBottom: scale(8)
-    }
   });
 
 export default styles;

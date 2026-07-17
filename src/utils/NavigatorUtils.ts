@@ -11,7 +11,7 @@ type RouteParams = Record<string, string | number | undefined | null | (string |
  * @param {boolean} [isPopToTop=false] - If true, dismisses all screens back to the first screen in the stack.
  * @returns None
  */
-export function navigatePop(screenCount: number = 1, isPopToTop: boolean = false): void {
+export const navigatePop = (screenCount: number = 1, isPopToTop: boolean = false): void  => {
   if (isPopToTop) {
     router.dismissAll();
   } else {
@@ -23,7 +23,7 @@ export function navigatePop(screenCount: number = 1, isPopToTop: boolean = false
  * Navigates back one screen in the navigation history.
  * @returns None
  */
-export function navigateBack(): void {
+export const navigateBack = (): void  => {
   if (router.canGoBack()) {
     router.back();
   }
@@ -35,7 +35,7 @@ export function navigateBack(): void {
  * @param {object} [params] - Optional parameters to pass to the route.
  * @returns None
  */
-export function navigateWithReplace(routeName: Href, params?: RouteParams): void {
+export const navigateWithReplace = (routeName: Href, params?: RouteParams): void  => {
   router.replace(params ? ({ pathname: routeName as string, params } as Href) : routeName);
 }
 
@@ -45,7 +45,7 @@ export function navigateWithReplace(routeName: Href, params?: RouteParams): void
  * @param {object} [params] - Optional parameters to pass to the route.
  * @returns None
  */
-export function navigateWithParam(routeName: Href, params?: RouteParams): void {
+export const navigateWithParam = (routeName: Href, params?: RouteParams): void  => {
   router.navigate(params ? ({ pathname: routeName as string, params } as Href) : routeName);
 }
 
@@ -56,7 +56,7 @@ export function navigateWithParam(routeName: Href, params?: RouteParams): void {
  * @param {object} [params] - Optional parameters to pass to the route.
  * @returns None
  */
-export function navigateWithPush(routeName: Href, params?: RouteParams): void {
+export const navigateWithPush = (routeName: Href, params?: RouteParams): void  => {
   router.push(params ? ({ pathname: routeName as string, params } as Href) : routeName);
 }
 
@@ -64,7 +64,7 @@ export function navigateWithPush(routeName: Href, params?: RouteParams): void {
  * Reset the navigation stack to a single screen.
  * In Expo Router: dismissAll() clears the stack, then replace() sets the new root.
  */
-export function navigateWithReset(routeName: Href, params?: RouteParams): void {
+export const navigateWithReset = (routeName: Href, params?: RouteParams): void  => {
   router.dismissAll();
   router.replace(params ? ({ pathname: routeName as string, params } as Href) : routeName);
 }

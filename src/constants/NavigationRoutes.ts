@@ -3,8 +3,11 @@
  */
 export enum ROUTES {
   Home = '/home',
+  Explore = '/explore',
+  Cart = '/cart',
   Profile = '/profile',
   Details = '/details',
   SignIn = '/signin',
-  SignUp = '/signup'
+  SignUp = '/signup',
+  VerifyEmail = '/verify-email'
 }

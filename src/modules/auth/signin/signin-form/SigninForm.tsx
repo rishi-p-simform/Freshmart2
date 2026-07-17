@@ -1,10 +1,10 @@
+import { Colors } from '@/src/theme';
 import React, { createRef } from 'react';
 import { TextInput, View } from 'react-native';
 import { CustomButton, CustomInput, Text } from '../../../../components';
 import { ROUTES, Strings } from '../../../../constants';
 import { useTheme } from '../../../../hooks';
 import { AuthSelectors, useAppSelector } from '../../../../redux';
-import { Colors } from '../../../../theme';
 import { navigateWithParam } from '../../../../utils';
 import styleSheet from './SigninFormStyles';
 import type { SigninFormPropsType } from './SigninFormTypes';
@@ -19,10 +19,13 @@ export default function SigninForm({
   handleSubmit,
   handleChange,
   values,
-  errors
-}: SigninFormPropsType): React.ReactElement {
+  errors,
+  ...props
+}: SigninFormPropsType & { apiError?: string | null; setApiError?: (err: string | null) => void }): React.ReactElement {
   const { styles, theme } = useTheme(styleSheet);
   const loading = useAppSelector<boolean>(AuthSelectors.getLoading);
+  const apiError = (props as any).apiError;
+  const setApiError = (props as any).setApiError;
   const inputPasswordRef: React.LegacyRef<TextInput> = createRef();
   const disabled: boolean = isRemainingToFillForm(values, errors);
   const fieldErrorEmail: string | undefined = (values.email?.length ?? 0) ? errors.email : '';
@@ -31,46 +34,82 @@ export default function SigninForm({
 
   return (
     <View style={styles.formContainer}>
-      <Text variant="displayMedium" >{Strings.Auth.signInTitle}</Text>
-      <Text style={styles.subtitleText}>{Strings.Auth.signInSubtitle}</Text>
       <CustomInput
         autoFocus
+        value={values.email}
         returnKeyType="next"
         keyboardType="email-address"
+        autoCapitalize='none'
+        label={Strings.Auth.lblEmail}
         placeholder={Strings.Auth.hintEmail}
         leftIcon="mail-outline"
-        onChangeText={handleChange('email')}
+        onChangeText={(text) => {
+          handleChange('email')(text);
+          setApiError?.(null);
+        }}
         onSubmitEditing={() => {
           inputPasswordRef.current?.focus();
         }}
       />
-      <Text style={styles.errorMsg}>{fieldErrorEmail}</Text>
+      <Text variant="error">{fieldErrorEmail}</Text>
+
       <CustomInput
         isPassword
+        value={values.password}
         ref={inputPasswordRef}
         returnKeyType="done"
         keyboardType="default"
+        label={Strings.Auth.lblPassword}
         placeholder={Strings.Auth.hintPassword}
         leftIcon="lock-closed-outline"
-        onChangeText={handleChange('password')}
+        onChangeText={(text) => {
+          handleChange('password')(text);
+          setApiError?.(null);
+        }}
         onSubmitEditing={() => {
           handleSubmit();
         }}
       />
-      <Text style={styles.errorMsg}>{fieldErrorPassword}</Text>
+      <Text variant="error">{fieldErrorPassword}</Text>
+
+      <Text variant="info" style={styles.forgotPassword} onPress={() => { }}>{Strings.Auth.forgotPassword}</Text>
+
+      {apiError ? (
+        <View style={styles.errorBanner}>
+          <Text variant="bodySmall" style={styles.errorBannerText}>{apiError}</Text>
+        </View>
+      ) : null}
+
       <CustomButton
         style={styles.buttonTopMargin}
         disabled={disabled}
         loading={loading}
         title={Strings.Auth.btnSignIn}
         onPress={() => handleSubmit()}
-        titleProps={{ variant: 'titleMedium' }}
+        titleProps={{ variant: 'labelLarge' }}
       />
+
+      <View style={styles.dividerContainer}>
+        <View style={styles.dividerLine} />
+        <Text variant="labelLarge" style={styles.dividerText}>{Strings.Auth.orContinueWith}</Text>
+        <View style={styles.dividerLine} />
+      </View>
+
+      <CustomButton
+        variant="solid"
+        style={styles.googleButton}
+        title={Strings.Auth.btnGoogle}
+        onPress={() => { }}
+        titleProps={{ variant: 'labelLarge' }}
+        leftIcon="logo-google"
+        color={Colors[theme].text}
+      />
+
       <View style={styles.linkContainer}>
-        <Text style={styles.labelText}>
-          {Strings.Auth.noAccountLabel}
-          <Text style={styles.linkActionText} onPress={() => navigateWithParam(ROUTES.SignUp)}>
-            {Strings.Auth.signUpAction}
+        <Text variant='bodyMedium' style={styles.labelText}>
+          {Strings.Auth.newHereLabel}
+          <Text variant='titleSmall' style={styles.linkActionText} onPress={() => navigateWithParam(ROUTES.SignUp)}>
+            Create Account
           </Text>
         </Text>
       </View>

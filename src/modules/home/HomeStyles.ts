@@ -9,7 +9,7 @@ import { Colors, type ThemeMode } from '../../theme';
 const styles = (theme: ThemeMode) =>
   StyleSheet.create({
     screenView: {
-      backgroundColor: Colors[theme]?.white,
+      backgroundColor: Colors[theme]?.background,
       flex: 1
     },
     textView: {
