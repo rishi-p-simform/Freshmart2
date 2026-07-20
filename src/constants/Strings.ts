@@ -60,7 +60,10 @@ const Home = freezeStringsObject({
   details: I18n.t('home:details'),
   signIn: I18n.t('home:signIn'),
   lightTheme: I18n.t('home:lightTheme'),
-  darkTheme: I18n.t('home:darkTheme')
+  darkTheme: I18n.t('home:darkTheme'),
+  categories: I18n.t('home:categories'),
+  bestSellers: I18n.t('home:bestSellers'),
+  seeAll: I18n.t('home:seeAll')
 });
 
 const Details = freezeStringsObject({
@@ -127,6 +130,24 @@ const Splash = freezeStringsObject({
   subtitle: I18n.t('splash:subtitle')
 });
 
+const Location = freezeStringsObject({
+  setDeliveryLocation: I18n.t('location:setDeliveryLocation'),
+  deliveryLocationSubtitle: I18n.t('location:deliveryLocationSubtitle'),
+  addressLine1Label: I18n.t('location:addressLine1Label'),
+  addressLine1Placeholder: I18n.t('location:addressLine1Placeholder'),
+  addressLine2Label: I18n.t('location:addressLine2Label'),
+  addressLine2Placeholder: I18n.t('location:addressLine2Placeholder'),
+  cityLabel: I18n.t('location:cityLabel'),
+  cityPlaceholder: I18n.t('location:cityPlaceholder'),
+  stateLabel: I18n.t('location:stateLabel'),
+  statePlaceholder: I18n.t('location:statePlaceholder'),
+  pincodeLabel: I18n.t('location:pincodeLabel'),
+  pincodePlaceholder: I18n.t('location:pincodePlaceholder'),
+  saveAs: I18n.t('location:saveAs'),
+  useCurrentLocation: I18n.t('location:useCurrentLocation'),
+  confirmLocation: I18n.t('location:confirmLocation')
+});
+
 /**
  * Exporting all the strings in one object..
  * Separate string object like Home, Details & Auth etc...
@@ -142,5 +163,6 @@ export default Object.freeze({
   Profile,
   Explore,
   Cart,
-  Splash
+  Splash,
+  Location
 });

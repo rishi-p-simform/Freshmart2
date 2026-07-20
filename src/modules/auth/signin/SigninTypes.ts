@@ -4,7 +4,7 @@ import type { FormikProps } from 'formik';
  * The route params for the sign in screen.
  * @param {string} email - the email of the user.
  */
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+ 
 export type SigninRouteParamList = {
   email: string;
 };

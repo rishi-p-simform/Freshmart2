@@ -19,6 +19,8 @@ import type { ErrorResponse } from '../types';
 import { formatString, getErrorResponse } from '../utils/CommonUtils';
 import { APIErrorType, APIErrorCategory } from './APIConfigTypes';
 
+import { parseServerError } from './APIErrorParser';
+
 /**
  * ResponseBound is an object that has a property called message that is a string or undefined.
  * @property {string} message - The message to display to the user.
@@ -125,7 +127,7 @@ export const setHeaders = (headers: Record<string, any>): void  => {
  * @returns None
  */
 authorizedAPI.addAsyncRequestTransform(async (request) => {
-  // eslint-disable-next-line no-restricted-syntax
+   
   console.log({ request });
 
   try {
@@ -150,7 +152,7 @@ authorizedAPI.addAsyncRequestTransform(async (request) => {
  * @returns None
  */
 const APIMonitor = (response: ApiResponse<any>) => {
-  // eslint-disable-next-line no-restricted-syntax
+   
   console.log({ response });
 }
 authorizedAPI.addMonitor(APIMonitor);
@@ -163,7 +165,7 @@ unauthorizedAPI.addMonitor(APIMonitor);
  * @returns None
  */
 async function asyncResponseTransform(response: ApiResponse<any>) {
-  // eslint-disable-next-line no-restricted-syntax
+   
   // console.log({ response });
 
   // TODO: You can add global condition for token expired or internet issue like below
@@ -215,8 +217,6 @@ const apiWithCancelToken = <Response>(
 
   return request;
 }
-
-import { parseServerError } from './APIErrorParser';
 
 /**
  * Handles the error response from the API.

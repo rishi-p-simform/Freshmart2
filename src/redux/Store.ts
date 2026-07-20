@@ -5,6 +5,10 @@ import { AppEnvConst } from '../constants';
 import { reduxStorage } from '../services';
 import { AuthReducer } from './auth';
 import { UserReducer } from './user';
+import { AddressReducer } from './address';
+import { CategoryReducer } from './category';
+import { bannerApi } from './banner/bannerApi';
+
 
 /**
  * The Configuring persistConfig object for ReduxStorage.
@@ -19,7 +23,7 @@ const persistConfig = {
   key: '@expoBoilerplateToolkitCachePersist',
   version: 1,
   storage: reduxStorage,
-  whitelist: ['auth', 'user'], // Whitelist (Save Specific Reducers)
+  whitelist: ['auth', 'user', 'address'], // Whitelist (Save Specific Reducers)
   blacklist: ['nav', 'navigation'] // Blacklist (Don't Save Specific Reducers)
 };
 
@@ -29,7 +33,10 @@ const persistConfig = {
  */
 const rootReducer = combineReducers({
   auth: AuthReducer,
-  user: UserReducer
+  user: UserReducer,
+  address: AddressReducer,
+  category: CategoryReducer,
+  [bannerApi.reducerPath]: bannerApi.reducer
 });
 
 /**
@@ -63,7 +70,7 @@ const store = configureStore({
     getDefaultMiddleware({
       thunk: true,
       serializableCheck: false
-    }).concat(middlewareList),
+    }).concat(bannerApi.middleware).concat(middlewareList),
   enhancers: (getDefaultEnhancers) => getDefaultEnhancers().concat(enhancers)
 });
 
@@ -75,7 +82,7 @@ const store = configureStore({
 export const persistor = persistStore(store);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootStateType = ReturnType<typeof store.getState>;
+export type RootStateType = ReturnType<typeof rootReducer>;
 
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatchType = typeof store.dispatch;

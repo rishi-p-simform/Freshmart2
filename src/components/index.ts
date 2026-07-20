@@ -5,3 +5,10 @@ export * from './spinner';
 export * from './text';
 export * from './custom-input';
 export * from './custom-tab-bar';
+export { default as AddressCard } from './address-card';
+export type { AddressCardProps } from './address-card';
+export { default as Banner } from './banner';
+export type { BannerProps } from './banner';
+export { default as CategoryCard } from './category-card';
+export type { CategoryCardProps } from './category-card';
+

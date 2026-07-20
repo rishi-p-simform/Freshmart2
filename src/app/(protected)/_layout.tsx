@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Stack } from 'expo-router';
 import React, { type FC } from 'react';
 import { Pressable } from 'react-native';
-import { useTheme } from '../../hooks';
+import { useLocationPermission, useTheme } from '../../hooks';
 import { Colors, scale } from '../../theme';
 import { navigateBack } from '../../utils';
 
@@ -27,6 +27,7 @@ const DetailsHeaderLeft = ({ tintColor }: { tintColor?: string }): React.ReactEl
  */
 const ProtectedLayout: FC = (): React.ReactElement => {
   const { theme } = useTheme();
+  useLocationPermission(true);
 
   return (
     <Stack
@@ -57,6 +58,21 @@ const ProtectedLayout: FC = (): React.ReactElement => {
             color: Colors[theme]?.black,
             fontSize: scale(18)
           }
+        }}
+      />
+      <Stack.Screen
+        name="location"
+        options={{
+          presentation: 'formSheet',
+          sheetAllowedDetents: [0.6, 0.8, 1],
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="addAddress"
+        options={{
+          headerShown: false,
+          presentation: 'fullScreenModal'
         }}
       />
     </Stack>

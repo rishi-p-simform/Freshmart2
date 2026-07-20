@@ -7,6 +7,37 @@ import { Colors, scale } from '../../../../theme';
 import { styleSheet } from './OTPInputStyles';
 import { OTPInputProps } from './OTPInputTypes';
 
+interface OTPBoxProps {
+  char: string;
+  isActive: boolean;
+  isCurrentBox: boolean;
+  index: number;
+  themeColors: any;
+  styles: any;
+}
+
+const OTPBox: React.FC<OTPBoxProps> = ({ char, isActive, isCurrentBox, index, themeColors, styles }) => {
+  const animatedStyle = useAnimatedStyle(() => ({
+    borderColor: withTiming(isActive ? themeColors.primary : themeColors.gray, { duration: 200 }),
+  }));
+
+  return (
+    <Animated.View entering={ZoomIn.delay(index * 50 + 400).duration(300)}>
+      <Animated.View style={[styles.otpBox, animatedStyle]}>
+        {char ? (
+          <Text style={{ color: themeColors.text }} variant='headlineLarge'>
+            {char}
+          </Text>
+        ) : (
+          isCurrentBox && (
+            <View style={{ width: 2, height: scale(24), backgroundColor: themeColors.primary }} />
+          )
+        )}
+      </Animated.View>
+    </Animated.View>
+  );
+};
+
 const OTPInput: React.FC<OTPInputProps> = (props) => {
   const { length = 6, value = '', onChange, onComplete } = props;
   const { styles, theme } = useTheme(styleSheet);
@@ -49,29 +80,16 @@ const OTPInput: React.FC<OTPInputProps> = (props) => {
         const isCurrentBox = isFocused && (index === otp.length || (index === length - 1 && otp.length === length));
         const isActive = !!char || isCurrentBox;
 
-        const animatedStyle = useAnimatedStyle(() => ({
-          borderColor: withTiming(isActive ? themeColors.primary : themeColors.gray, { duration: 200 }),
-        }));
-
-        // Blinking cursor animation
-        const cursorStyle = useAnimatedStyle(() => ({
-          opacity: withTiming(isCurrentBox && !char ? 1 : 0, { duration: 400 }), // simplified blinking by just showing it, we can use repeat if we import withRepeat
-        }));
-
         return (
-          <Animated.View key={`${index + 1}`} entering={ZoomIn.delay(index * 50 + 400).duration(300)}>
-            <Animated.View style={[styles.otpBox, animatedStyle]}>
-              {char ? (
-                <Text style={{ color: themeColors.text }} variant='headlineLarge'>
-                  {char}
-                </Text>
-              ) : (
-                isCurrentBox && (
-                  <View style={{ width: 2, height: scale(24), backgroundColor: themeColors.primary }} />
-                )
-              )}
-            </Animated.View>
-          </Animated.View>
+          <OTPBox
+            key={`${index + 1}`}
+            char={char}
+            isActive={isActive}
+            isCurrentBox={isCurrentBox}
+            index={index}
+            themeColors={themeColors}
+            styles={styles}
+          />
         );
       })}
 

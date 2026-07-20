@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import * as Location from 'expo-location';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert, type AlertButton } from 'react-native';
 import {
@@ -9,6 +10,7 @@ import {
   request,
   requestMultiple,
   requestNotifications,
+  PERMISSIONS,
   type Permission,
   type RationaleObject
 } from 'react-native-permissions';
@@ -760,3 +762,54 @@ export function useNotificationPermissions(
   );
   return [permissionStatus, error, callPermission, getPermissions];
 }
+
+/**
+ * Custom hook to manage location permissions across both iOS and Android platforms.
+ * It encapsulates the specific permission types and standard rationale messages using expo-location.
+ * @param {boolean} ask - Whether to ask for the permission on mount.
+ * @returns {object} The permission status and request function.
+ */
+export const useLocationPermission = (ask = false) => {
+  const [permissionStatus, setPermissionStatus] = useState<PermissionStatus | undefined>();
+
+  const getPermissions = useCallback(async () => {
+    const response = await Location.getForegroundPermissionsAsync();
+    let newStatus: PermissionStatus = 'denied';
+    if (response.status === Location.PermissionStatus.GRANTED) {
+      newStatus = 'granted';
+    } else if (response.status === Location.PermissionStatus.DENIED && !response.canAskAgain) {
+      newStatus = 'blocked';
+    }
+    setPermissionStatus(newStatus);
+    return newStatus;
+  }, []);
+
+  const requestPermissions = useCallback(async () => {
+    const response = await Location.requestForegroundPermissionsAsync();
+    let newStatus: PermissionStatus = 'denied';
+    if (response.status === Location.PermissionStatus.GRANTED) {
+      newStatus = 'granted';
+    } else if (response.status === Location.PermissionStatus.DENIED && !response.canAskAgain) {
+      newStatus = 'blocked';
+    }
+    setPermissionStatus(newStatus);
+  }, []);
+
+  useEffect(() => {
+    if (ask) {
+      getPermissions().then((status) => {
+        if (status !== 'granted' && status !== 'blocked') {
+          requestPermissions();
+        }
+      });
+    } else {
+      getPermissions();
+    }
+  }, [ask, getPermissions, requestPermissions]);
+
+  return {
+    permissionStatus,
+    requestPermissions,
+    getPermissions
+  };
+};

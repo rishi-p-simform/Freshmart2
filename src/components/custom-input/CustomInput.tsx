@@ -19,8 +19,10 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
   const {
     customStyle,
+    containerStyle,
     inputStyle,
     leftIcon,
+    iconColor: propIconColor,
     isPassword,
     testID,
     accessibilityLabel,
@@ -54,7 +56,7 @@ const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
-  const iconColor = Colors[theme]?.gray;
+  const iconColor = propIconColor || Colors[theme]?.gray;
 
   const animatedBorderColor = focusAnim.interpolate({
     inputRange: [0, 1],
@@ -67,7 +69,8 @@ const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
       <AnimatedPressable
         style={[
           styles.container,
-          { borderColor: animatedBorderColor }
+          { borderColor: animatedBorderColor },
+          containerStyle
         ]}
         testID={`${testID}-container`}
         accessibilityRole="none"
