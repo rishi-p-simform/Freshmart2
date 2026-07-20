@@ -21,7 +21,12 @@ export default Object.freeze({
   refresh: 'auth/refresh',
   fetchProducts: 'products/fetchProducts',
   searchProducts: 'products/searchProducts',
-  fetchProductDetail: 'products/fetchProductDetail'
+  fetchProductDetail: 'products/fetchProductDetail',
+  getCart: 'cart/getCart',
+  clearCart: 'cart/clearCart',
+  addToCart: 'cart/addToCart',
+  updateCartItem: 'cart/updateCartItem',
+  removeFromCart: 'cart/removeFromCart'
 });
 
 

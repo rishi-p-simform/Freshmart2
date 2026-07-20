@@ -16,7 +16,9 @@ export default Object.freeze({
   refresh: '/api/v1/auth/refresh',
   products: '/api/v1/products',
   productsSearch: '/api/v1/products/search',
-  productDetail: '/api/v1/products/' // {id} will be appended
+  productDetail: '/api/v1/products/', // {id} will be appended
+  cart: '/api/v1/cart/',
+  cartItems: '/api/v1/cart/items'
 });
 
 

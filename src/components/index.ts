@@ -10,6 +10,7 @@ export type { AddressCardProps } from './address-card';
 export { default as Banner } from './banner';
 export type { BannerProps } from './banner';
 export { default as CategoryCard } from './category-card';
+export { CategoryCardSkeleton } from './category-card';
 export type { CategoryCardProps } from './category-card';
 export { default as ItemCounter } from './item-counter';
 export type { ItemCounterProps } from './item-counter';
@@ -18,4 +19,7 @@ export { ProductCardSkeleton } from './product-card';
 export type { ProductCardProps } from './product-card';
 export { default as ProductsListItems } from './products-list-items';
 export type { ProductsListItemsProps } from './products-list-items';
+export { default as CartProductCard } from './cart-product-card';
+export type { CartProductCardProps } from './cart-product-card';
+
 

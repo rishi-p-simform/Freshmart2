@@ -146,6 +146,92 @@ authorizedAPI.addAsyncRequestTransform(async (request) => {
   }
 });
 
+let isRefreshing = false;
+let failedQueue: Array<{ resolve: (value?: unknown) => void; reject: (reason?: any) => void }> = [];
+
+const processQueue = (error: any, token: string | null = null) => {
+  failedQueue.forEach((prom) => {
+    if (error) {
+      prom.reject(error);
+    } else {
+      prom.resolve(token);
+    }
+  });
+  failedQueue = [];
+};
+
+authorizedAPI.axiosInstance.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+    
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      if (isRefreshing) {
+        return new Promise((resolve, reject) => {
+          failedQueue.push({ resolve, reject });
+        })
+          .then((token) => {
+            originalRequest.headers.Authorization = 'Bearer ' + token;
+            return authorizedAPI.axiosInstance(originalRequest);
+          })
+          .catch((err) => {
+            return Promise.reject(err);
+          });
+      }
+
+      originalRequest._retry = true;
+      isRefreshing = true;
+
+      try {
+        const { default: store } = await import('../redux/Store');
+        const { AuthActions } = await import('../redux/auth');
+        const state = store.getState();
+        const refreshToken = state.auth?.refreshToken;
+
+        if (refreshToken) {
+          const refreshResponse = await unauthorizedAPI.post('/api/v1/auth/refresh', { refresh_token: refreshToken });
+          
+          if (refreshResponse.ok && refreshResponse.data) {
+            const data = refreshResponse.data as any; // Type as RefreshResponse roughly
+            const session = data?.data?.session;
+            
+            if (session && session.access_token) {
+              store.dispatch(
+                AuthActions.setSession({
+                  accessToken: session.access_token,
+                  refreshToken: session.refresh_token,
+                  expiresIn: session.expires_in
+                })
+              );
+              
+              authorizedAPI.setHeaders({ Authorization: `Bearer ${session.access_token}` });
+              originalRequest.headers.Authorization = `Bearer ${session.access_token}`;
+              
+              processQueue(null, session.access_token);
+              return authorizedAPI.axiosInstance(originalRequest);
+            }
+          }
+          
+          // If refresh failed or structure was missing
+          store.dispatch(AuthActions.clearSession());
+          processQueue(new Error('Refresh failed'));
+          return Promise.reject(error);
+        } else {
+          processQueue(new Error('No refresh token'));
+          return Promise.reject(error);
+        }
+      } catch (err) {
+        processQueue(err);
+        return Promise.reject(error);
+      } finally {
+        isRefreshing = false;
+      }
+    }
+    
+    return Promise.reject(error);
+  }
+);
+
 /**
  * Monitor/Logs the response from an API call.
  * @param {ApiResponse<any>} response - the response from the API call.

@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { AddressActions, CategoryActions, CategorySelectors, useAppDispatch, useAppSelector, UserSelectors, useGetBannersQuery } from '../../redux';
 import { ProductsActions } from '../../redux/products/ProductsSlice';
+import { CartActions } from '../../redux/cart';
 import { useTheme } from '../../hooks';
 import styleSheet from './HomeStyles';
 
@@ -17,9 +18,10 @@ const useHome = () => {
   const { refetch: refetchBanners } = useGetBannersQuery();
 
   useEffect(() => {
-    // Fetch addresses and categories when home screen mounts
+    // Fetch addresses, categories, and cart when home screen mounts
     dispatch(AddressActions.fetchAddresses({}));
     dispatch(CategoryActions.fetchCategories({}));
+    dispatch(CartActions.getCart({}));
   }, [dispatch]);
 
   const onRefresh = useCallback(async () => {
@@ -28,6 +30,7 @@ const useHome = () => {
       await Promise.all([
         dispatch(AddressActions.fetchAddresses({})).unwrap(),
         dispatch(CategoryActions.fetchCategories({})).unwrap(),
+        dispatch(CartActions.getCart({})).unwrap(),
         dispatch(
           ProductsActions.fetchProducts({
             params: { featured: true, page: 1, limit: 20 },

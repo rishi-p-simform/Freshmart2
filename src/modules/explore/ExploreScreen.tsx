@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React, { useRef, type FC } from 'react';
 import { ActivityIndicator, FlatList, TextInput, View } from 'react-native';
-import { CategoryCard, CustomHeader, CustomInput } from '../../components';
+import { CategoryCard, CategoryCardSkeleton, CustomHeader, CustomInput } from '../../components';
 import { Strings } from '../../constants';
 import { useTheme } from '../../hooks';
 import { Colors } from '../../theme';
@@ -62,9 +62,19 @@ const ExploreScreen: FC = (): React.ReactElement => {
 
       {/* Categories Grid List */}
       {loading && filteredCategories.length === 0 ? (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={Colors[theme]?.primary} />
-        </View>
+        <FlatList
+          data={Array.from({ length: 12 }, (_, i) => ({ id: `skeleton-${i}` }))}
+          keyExtractor={(item) => item.id}
+          numColumns={3}
+          contentContainerStyle={styles.listContent}
+          columnWrapperStyle={styles.columnWrapper}
+          showsVerticalScrollIndicator={false}
+          renderItem={() => (
+            <View style={styles.cardWrapper}>
+              <CategoryCardSkeleton />
+            </View>
+          )}
+        />
       ) : (
         <FlatList
           data={filteredCategories}

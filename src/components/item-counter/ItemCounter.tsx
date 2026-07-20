@@ -4,6 +4,7 @@ import { Pressable, View, LayoutAnimation, Platform, UIManager, ActivityIndicato
 import { useTheme } from '../../hooks';
 import { Colors } from '../../theme';
 import { Text } from '../text';
+import { useCart } from '../../hooks';
 import styleSheet from './ItemCounterStyles';
 import { ItemCounterDefaultProps, type ItemCounterProps } from './ItemCounterTypes';
 
@@ -29,27 +30,39 @@ const ItemCounter: React.FC<ItemCounterProps> = (props) => {
   } = { ...ItemCounterDefaultProps, ...props };
 
   const { styles, theme } = useTheme(styleSheet);
-  const [count, setCount] = useState(0);
+  const { addToCart, updateCartItem, removeFromCart, getItemCount } = useCart();
   const [loading, setLoading] = useState(false);
 
-  const handleIncrement = () => {
+  const count = getItemCount(product.id);
+
+  const handleIncrement = async () => {
+    if (loading) return;
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setLoading(true);
-    setTimeout(() => {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-      setCount((prev) => prev + 1);
+    try {
+      if (count === 0) {
+        await addToCart(product.id, 1);
+      } else {
+        await updateCartItem(product.id, count + 1);
+      }
+    } finally {
       setLoading(false);
-    }, 300);
+    }
   };
 
-  const handleDecrement = () => {
+  const handleDecrement = async () => {
+    if (loading) return;
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setLoading(true);
-    setTimeout(() => {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-      setCount((prev) => Math.max(0, prev - 1));
+    try {
+      if (count > 1) {
+        await updateCartItem(product.id, count - 1);
+      } else {
+        await removeFromCart(product.id);
+      }
+    } finally {
       setLoading(false);
-    }, 300);
+    }
   };
 
   if (count === 0) {
@@ -63,7 +76,7 @@ const ItemCounter: React.FC<ItemCounterProps> = (props) => {
         testID={`${testID}-add-btn`}
       >
         {loading ? (
-          <ActivityIndicator size="small" color={Colors[theme]?.white} />
+          <ActivityIndicator size={14} color={Colors[theme]?.white} />
         ) : (
           <Ionicons name="add" size={14} color={Colors[theme]?.white} />
         )}
@@ -85,9 +98,7 @@ const ItemCounter: React.FC<ItemCounterProps> = (props) => {
       </Pressable>
 
       {loading ? (
-        <View style={{ width: 14, height: 14, justifyContent: 'center', alignItems: 'center' }}>
-          <ActivityIndicator size="small" color={Colors[theme]?.orange} />
-        </View>
+        <ActivityIndicator size={14} color={Colors[theme]?.primary} style={styles.countText} />
       ) : (
         <Text
           variant="labelMedium"
@@ -114,3 +125,4 @@ const ItemCounter: React.FC<ItemCounterProps> = (props) => {
 
 ItemCounter.displayName = 'ItemCounter';
 export default ItemCounter;
+
