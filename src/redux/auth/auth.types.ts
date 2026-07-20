@@ -43,3 +43,16 @@ export interface ResendConfirmationResponse {
     message: string;
   };
 }
+
+export interface RefreshResponse {
+  success: boolean;
+  message?: string;
+  data: {
+    session: {
+      access_token: string;
+      refresh_token: string;
+      expires_in: number;
+      token_type: string;
+    };
+  };
+}

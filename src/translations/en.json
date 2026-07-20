@@ -91,6 +91,16 @@
   "cart": {
     "title": "Cart"
   },
+  "products": {
+    "noImage": "No Image",
+    "add": "ADD",
+    "noProductsFound": "No products found in this category.",
+    "searchPlaceholder": "Search products...",
+    "productsTitle": "Products",
+    "items": "items",
+    "item": "item",
+    "dataFetchingCompleted": "All caught up! Nothing to fetch"
+  },
   "splash": {
     "title": "FreshMart",
     "subtitle": "Fresh. Local. Delivered."

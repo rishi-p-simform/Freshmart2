@@ -12,7 +12,11 @@ export default Object.freeze({
   verifySignup: '/api/v1/auth/email/verify-signup',
   resendConfirmation: '/api/v1/auth/email/resend-confirmation',
   addresses: '/api/v1/user/addresses',
-  categories: '/api/v1/categories'
+  categories: '/api/v1/categories',
+  refresh: '/api/v1/auth/refresh',
+  products: '/api/v1/products',
+  productsSearch: '/api/v1/products/search',
+  productDetail: '/api/v1/products/' // {id} will be appended
 });
 
 

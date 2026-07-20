@@ -30,9 +30,9 @@ const styles = (theme: ThemeMode) =>
       color: Colors[theme]?.text,
     },
     backButton: {
-      width: scale(40),
-      height: scale(40),
-      borderRadius: scale(12),
+      width: scale(32),
+      height: scale(32),
+      borderRadius: scale(8),
       backgroundColor: Colors[theme]?.palette?.gray?.[50],
       justifyContent: 'center',
       alignItems: 'center',

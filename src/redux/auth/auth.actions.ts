@@ -1,7 +1,7 @@
 import { createAsyncThunkWithCancelToken, authorizedAPI, unauthorizedAPI } from '../../configs';
 import { APIConst, ToolkitAction } from '../../constants';
 import { setSession, clearSession, setLoading, setError } from './auth.slice';
-import type { LoginResponse, SignupResponse, VerifySignupResponse, ResendConfirmationResponse } from './auth.types';
+import type { LoginResponse, SignupResponse, VerifySignupResponse, ResendConfirmationResponse, RefreshResponse } from './auth.types';
 
 /**
  * Async thunk for logging in.
@@ -53,6 +53,16 @@ export const resendConfirmation = createAsyncThunkWithCancelToken<ResendConfirma
   unauthorizedAPI
 );
 
+/**
+ * Async thunk for refreshing session.
+ */
+export const refresh = createAsyncThunkWithCancelToken<RefreshResponse>(
+  ToolkitAction.refresh,
+  'POST',
+  APIConst.refresh,
+  unauthorizedAPI
+);
+
 export const AuthActions = {
   setSession,
   clearSession,
@@ -62,6 +72,7 @@ export const AuthActions = {
   signup,
   logout,
   verifySignup,
-  resendConfirmation
+  resendConfirmation,
+  refresh
 };
 

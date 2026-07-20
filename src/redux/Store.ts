@@ -7,6 +7,7 @@ import { AuthReducer } from './auth';
 import { UserReducer } from './user';
 import { AddressReducer } from './address';
 import { CategoryReducer } from './category';
+import { ProductsReducer } from './products';
 import { bannerApi } from './banner/bannerApi';
 
 
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
   user: UserReducer,
   address: AddressReducer,
   category: CategoryReducer,
+  products: ProductsReducer,
   [bannerApi.reducerPath]: bannerApi.reducer
 });
 

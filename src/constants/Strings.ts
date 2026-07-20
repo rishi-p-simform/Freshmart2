@@ -148,6 +148,17 @@ const Location = freezeStringsObject({
   confirmLocation: I18n.t('location:confirmLocation')
 });
 
+const Products = freezeStringsObject({
+  noImage: I18n.t('products:noImage'),
+  add: I18n.t('products:add'),
+  noProductsFound: I18n.t('products:noProductsFound'),
+  searchPlaceholder: I18n.t('products:searchPlaceholder'),
+  productsTitle: I18n.t('products:productsTitle'),
+  items: I18n.t('products:items'),
+  item: I18n.t('products:item'),
+  dataFetchingCompleted: I18n.t('products:dataFetchingCompleted')
+});
+
 /**
  * Exporting all the strings in one object..
  * Separate string object like Home, Details & Auth etc...
@@ -164,5 +175,6 @@ export default Object.freeze({
   Explore,
   Cart,
   Splash,
-  Location
+  Location,
+  Products
 });

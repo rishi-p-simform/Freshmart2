@@ -12,6 +12,9 @@ const styles = (theme: ThemeMode) =>
       backgroundColor: Colors[theme]?.background,
       flex: 1,
     },
+    contentContainer: {
+      paddingBottom: scale(66),
+    },
 
     textView: {
       color: Colors[theme]?.black

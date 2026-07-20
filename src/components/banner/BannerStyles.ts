@@ -21,6 +21,7 @@ export const styleSheet = (theme: ThemeMode, isDark?: boolean) =>
       flexDirection: 'row',
       gap: ITEM_GAP,
       paddingHorizontal: (width - ITEM_WIDTH) / 2,
+      minHeight: scale(130)
     },
     container: {
       width: ITEM_WIDTH,
@@ -29,7 +30,7 @@ export const styleSheet = (theme: ThemeMode, isDark?: boolean) =>
       overflow: 'hidden',
       backgroundColor: Colors[theme]?.orange,
       gap: scale(6),
-      minHeight: scale(110)
+      minHeight: scale(130)
     },
     containerLeft: {
       flex: 1,
