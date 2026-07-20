@@ -54,7 +54,8 @@ const TabsLayout: FC = (): React.ReactElement => {
         name="profile/index"
         options={{
           title: 'Account',
-          headerTitle: 'Account'
+          headerTitle: 'Account',
+          headerShown: false
         }}
       />
     </Tabs>

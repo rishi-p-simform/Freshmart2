@@ -108,7 +108,7 @@ export const buttonDefaultStyles = (theme: ThemeMode) =>
       height: scale(52), // Larger touch target
       justifyContent: 'center',
       width: '100%',
-      borderRadius: scale(16),
+      borderRadius: scale(16)
     },
     disabledButtonStyle: {
       opacity: 0.5,

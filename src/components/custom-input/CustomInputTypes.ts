@@ -24,5 +24,5 @@ export interface CustomInputProps extends TextInputProps {
 
 export const CustomInputDefaultProps: Partial<CustomInputProps> = {
   testID: 'custom-input',
-  isPassword: false,
+  isPassword: false
 } as const;

@@ -16,16 +16,23 @@ interface OTPBoxProps {
   styles: any;
 }
 
-const OTPBox: React.FC<OTPBoxProps> = ({ char, isActive, isCurrentBox, index, themeColors, styles }) => {
+const OTPBox: React.FC<OTPBoxProps> = ({
+  char,
+  isActive,
+  isCurrentBox,
+  index,
+  themeColors,
+  styles
+}) => {
   const animatedStyle = useAnimatedStyle(() => ({
-    borderColor: withTiming(isActive ? themeColors.primary : themeColors.gray, { duration: 200 }),
+    borderColor: withTiming(isActive ? themeColors.primary : themeColors.gray, { duration: 200 })
   }));
 
   return (
     <Animated.View entering={ZoomIn.delay(index * 50 + 400).duration(300)}>
       <Animated.View style={[styles.otpBox, animatedStyle]}>
         {char ? (
-          <Text style={{ color: themeColors.text }} variant='headlineLarge'>
+          <Text style={{ color: themeColors.text }} variant="headlineLarge">
             {char}
           </Text>
         ) : (
@@ -77,7 +84,8 @@ const OTPInput: React.FC<OTPInputProps> = (props) => {
         const char = otp[index] || '';
 
         // The box is active if it has a character, or if it's the currently focused box ready for input
-        const isCurrentBox = isFocused && (index === otp.length || (index === length - 1 && otp.length === length));
+        const isCurrentBox =
+          isFocused && (index === otp.length || (index === length - 1 && otp.length === length));
         const isActive = !!char || isCurrentBox;
 
         return (
@@ -107,7 +115,7 @@ const OTPInput: React.FC<OTPInputProps> = (props) => {
           position: 'absolute',
           width: 1,
           height: 1,
-          opacity: 0,
+          opacity: 0
         }}
       />
     </Pressable>

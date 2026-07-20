@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import React, { useState } from 'react';
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
-import { useTheme, useCart } from '../../hooks';
+import { useCart, useTheme } from '../../hooks';
 import { Colors } from '../../theme';
 import ItemCounter from '../item-counter';
 import { Text } from '../text';
@@ -17,12 +17,10 @@ import { CartProductCardDefaultProps, type CartProductCardProps } from './CartPr
  * @returns {React.ReactElement} The CartProductCard component.
  */
 const CartProductCard: React.FC<CartProductCardProps> = (props) => {
-  const {
-    product,
-    customStyle,
-    testID,
-    accessibilityLabel,
-  } = { ...CartProductCardDefaultProps, ...props };
+  const { product, customStyle, testID, accessibilityLabel } = {
+    ...CartProductCardDefaultProps,
+    ...props
+  };
 
   const { styles, theme } = useTheme(styleSheet);
   const { removeFromCart } = useCart();
@@ -52,23 +50,13 @@ const CartProductCard: React.FC<CartProductCardProps> = (props) => {
       )}
 
       <View style={styles.textSection}>
-        <Text
-          variant="titleSmall"
-          numberOfLines={2}
-          style={styles.productName}
-        >
+        <Text variant="titleSmall" numberOfLines={2} style={styles.productName}>
           {product.name}
         </Text>
-        <Text
-          variant="caption"
-          style={styles.unitText}
-        >
+        <Text variant="caption" style={styles.unitText}>
           {product.unit}
         </Text>
-        <Text
-          variant="titleSmall"
-          style={styles.priceText}
-        >
+        <Text variant="titleSmall" style={styles.priceText}>
           ₹{Math.round(product.price)}
         </Text>
       </View>
@@ -87,11 +75,7 @@ const CartProductCard: React.FC<CartProductCardProps> = (props) => {
           {deleting ? (
             <ActivityIndicator size={14} color={Colors[theme]?.error} />
           ) : (
-            <Ionicons
-              name="trash-outline"
-              color={Colors[theme]?.error}
-              size={14}
-            />
+            <Ionicons name="trash-outline" color={Colors[theme]?.error} size={14} />
           )}
         </TouchableOpacity>
       </View>
@@ -101,4 +85,3 @@ const CartProductCard: React.FC<CartProductCardProps> = (props) => {
 
 CartProductCard.displayName = 'CartProductCard';
 export default CartProductCard;
-

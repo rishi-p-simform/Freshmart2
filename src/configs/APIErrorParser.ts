@@ -1,21 +1,17 @@
 import {
   CANCEL_ERROR,
-  CLIENT_ERROR,
   CONNECTION_ERROR,
   NETWORK_ERROR,
-  SERVER_ERROR,
   TIMEOUT_ERROR,
   type ApiErrorResponse
 } from 'apisauce';
-import axios from 'axios';
-import { Strings } from '../constants';
 import type { ErrorResponse } from '../types';
-import { APIErrorType, APIErrorCategory } from './APIConfigTypes';
+import { APIErrorCategory } from './APIConfigTypes';
 
 /**
  * Safely extracts error messages from various response payload structures to ensure loose coupling.
  */
-export const extractErrorMessage = (data: any, defaultMessage: string): string  => {
+export const extractErrorMessage = (data: any, defaultMessage: string): string => {
   if (!data) return defaultMessage;
   if (typeof data === 'string') return data;
 
@@ -23,7 +19,9 @@ export const extractErrorMessage = (data: any, defaultMessage: string): string  
   if (data.message) {
     if (typeof data.message === 'string') return data.message;
     if (Array.isArray(data.message) && data.message.length > 0) {
-      return data.message.map((m: any) => (typeof m === 'string' ? m : JSON.stringify(m))).join(', ');
+      return data.message
+        .map((m: any) => (typeof m === 'string' ? m : JSON.stringify(m)))
+        .join(', ');
     }
   }
 
@@ -69,12 +67,12 @@ export const extractErrorMessage = (data: any, defaultMessage: string): string  
   }
 
   return defaultMessage;
-}
+};
 
 /**
  * Safely extracts field validation errors from various response payload structures.
  */
-export const extractErrorDetails = (data: any): Record<string, string | string[]> | undefined  => {
+export const extractErrorDetails = (data: any): Record<string, string | string[]> | undefined => {
   if (!data || typeof data !== 'object') return undefined;
 
   // Check data.errors
@@ -103,7 +101,7 @@ export const extractErrorDetails = (data: any): Record<string, string | string[]
   }
 
   return undefined;
-}
+};
 
 /**
  * Normalizes any server error response into a standard ErrorResponse structure.
@@ -111,7 +109,7 @@ export const extractErrorDetails = (data: any): Record<string, string | string[]
 export const parseServerError = (
   response: ApiErrorResponse<any>,
   defaultMessage: string
-): ErrorResponse  => {
+): ErrorResponse => {
   const status = response.status ?? 0;
   const problem = response.problem;
 
@@ -130,7 +128,10 @@ export const parseServerError = (
     category = APIErrorCategory.FORBIDDEN;
   } else if (status === 404) {
     category = APIErrorCategory.NOT_FOUND;
-  } else if (status === 422 || (status >= 400 && status < 500 && (response.data?.errors || response.data?.details))) {
+  } else if (
+    status === 422 ||
+    (status >= 400 && status < 500 && (response.data?.errors || response.data?.details))
+  ) {
     category = APIErrorCategory.VALIDATION;
   } else if (status >= 500) {
     category = APIErrorCategory.SERVER;
@@ -149,4 +150,4 @@ export const parseServerError = (
     details,
     raw: response.data
   };
-}
+};

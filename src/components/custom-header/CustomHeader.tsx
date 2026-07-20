@@ -10,25 +10,29 @@ import { Text } from '../text';
 import styleSheet from './CustomHeaderStyles';
 import { defaultProps, type CustomHeaderPropsType, type HeaderAction } from './CustomHeaderTypes';
 
-const BackButton = memo(({ onPress, showGradientBG }: { onPress: () => void; showGradientBG?: boolean }) => {
-  const { styles, theme } = useTheme(styleSheet);
-  return (
-    <TouchableOpacity
-      style={StyleSheet.flatten([
-        styles.backButton,
-        showGradientBG && { backgroundColor: Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.15) }
-      ])}
-      onPress={onPress}
-      activeOpacity={0.7}
-    >
-      <Ionicons
-        name="arrow-back"
-        size={24}
-        color={showGradientBG ? Colors[theme]?.solidWhite : Colors[theme]?.text}
-      />
-    </TouchableOpacity>
-  );
-});
+const BackButton = memo(
+  ({ onPress, showGradientBG }: { onPress: () => void; showGradientBG?: boolean }) => {
+    const { styles, theme } = useTheme(styleSheet);
+    return (
+      <TouchableOpacity
+        style={StyleSheet.flatten([
+          styles.backButton,
+          showGradientBG && {
+            backgroundColor: Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.15)
+          }
+        ])}
+        onPress={onPress}
+        activeOpacity={0.7}
+      >
+        <Ionicons
+          name="arrow-back"
+          size={24}
+          color={showGradientBG ? Colors[theme]?.solidWhite : Colors[theme]?.text}
+        />
+      </TouchableOpacity>
+    );
+  }
+);
 
 BackButton.displayName = 'BackButton';
 
@@ -40,8 +44,8 @@ const CustomHeader = ({
   headerContent,
   titleStyle,
   showGradientBG,
-  hideBackButton,
-}: CustomHeaderPropsType): React.ReactElement  => {
+  hideBackButton
+}: CustomHeaderPropsType): React.ReactElement => {
   const { styles, theme } = useTheme(styleSheet);
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
@@ -76,12 +80,12 @@ const CustomHeader = ({
           headerContent
         ) : title ? (
           <Text
-            variant='headlineSmall'
+            variant="headlineSmall"
             numberOfLines={1}
             style={StyleSheet.flatten([
               styles.textTitle,
               showGradientBG && { color: Colors[theme]?.solidWhite },
-              titleStyle,
+              titleStyle
             ])}
           >
             {title}
@@ -111,7 +115,7 @@ const CustomHeader = ({
           styles.container,
           { backgroundColor: 'transparent' },
           { paddingTop: insets.top },
-          containerStyle,
+          containerStyle
         ])}
       >
         {headerInner}
@@ -121,16 +125,12 @@ const CustomHeader = ({
 
   return (
     <View
-      style={StyleSheet.flatten([
-        styles.container,
-        { paddingTop: insets.top },
-        containerStyle,
-      ])}
+      style={StyleSheet.flatten([styles.container, { paddingTop: insets.top }, containerStyle])}
     >
       {headerInner}
     </View>
   );
-}
+};
 
 CustomHeader.defaultProps = defaultProps;
 

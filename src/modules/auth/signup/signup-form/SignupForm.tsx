@@ -23,7 +23,10 @@ export default function SignupForm({
   values,
   errors,
   ...props
-}: SignupFormPropsType & { apiError?: string | null; setApiError?: (err: string | null) => void }): React.ReactElement {
+}: SignupFormPropsType & {
+  apiError?: string | null;
+  setApiError?: (err: string | null) => void;
+}): React.ReactElement {
   const { styles, theme } = useTheme(styleSheet);
   const loading = useAppSelector<boolean>(AuthSelectors.getLoading);
   const apiError = (props as any).apiError;
@@ -35,9 +38,12 @@ export default function SignupForm({
 
   const fieldErrorName: string | undefined = (values.name?.length ?? 0) ? errors.name : '';
   const fieldErrorEmail: string | undefined = (values.email?.length ?? 0) ? errors.email : '';
-  const fieldErrorPassword: string | undefined = (values.password?.length ?? 0) ? errors.password : '';
-  const fieldErrorConfirmPassword: string | undefined = (values.confirmPassword?.length ?? 0) ? errors.confirmPassword : '';
-  const fieldErrorTerms: string | undefined = (!values.agreeToTerms && errors.agreeToTerms) ? errors.agreeToTerms : '';
+  const fieldErrorPassword: string | undefined =
+    (values.password?.length ?? 0) ? errors.password : '';
+  const fieldErrorConfirmPassword: string | undefined =
+    (values.confirmPassword?.length ?? 0) ? errors.confirmPassword : '';
+  const fieldErrorTerms: string | undefined =
+    !values.agreeToTerms && errors.agreeToTerms ? errors.agreeToTerms : '';
 
   return (
     <View style={styles.formContainer}>
@@ -85,7 +91,7 @@ export default function SignupForm({
         value={values.password}
         returnKeyType="next"
         keyboardType="default"
-        autoCapitalize='none'
+        autoCapitalize="none"
         label={Strings.Auth.lblPassword}
         placeholder={Strings.Auth.hintPassword}
         leftIcon="lock-closed-outline"
@@ -105,7 +111,7 @@ export default function SignupForm({
         value={values.confirmPassword}
         returnKeyType="done"
         keyboardType="default"
-        autoCapitalize='none'
+        autoCapitalize="none"
         label={Strings.Auth.lblConfirmPassword}
         placeholder={Strings.Auth.hintPassword}
         leftIcon="lock-closed-outline"
@@ -140,7 +146,9 @@ export default function SignupForm({
 
       {apiError ? (
         <View style={styles.errorBanner}>
-          <Text variant="bodySmall" style={styles.errorBannerText}>{apiError}</Text>
+          <Text variant="bodySmall" style={styles.errorBannerText}>
+            {apiError}
+          </Text>
         </View>
       ) : null}
 

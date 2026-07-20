@@ -10,7 +10,10 @@ import type { SigninFormValues, SigninHookReturnType, SigninRouteParamList } fro
  * Hook that returns the ref to the sign in form and the function to submit the form.
  * @returns formik props
  */
-const useSignin = (): SigninHookReturnType & { apiError: string | null; setApiError: (err: string | null) => void } => {
+const useSignin = (): SigninHookReturnType & {
+  apiError: string | null;
+  setApiError: (err: string | null) => void;
+} => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const params = useLocalSearchParams<SigninRouteParamList>();
@@ -37,9 +40,25 @@ const useSignin = (): SigninHookReturnType & { apiError: string | null; setApiEr
 
         // 2. Set auth session state
         const rawResult = loginResult as any;
-        const accessToken = rawResult.accessToken || rawResult.token || rawResult.access_token || rawResult.data?.token || rawResult.data?.accessToken || rawResult.data?.access_token || rawResult.data?.session?.access_token;
-        const refreshToken = rawResult.refreshToken || rawResult.refresh_token || rawResult.data?.refreshToken || rawResult.data?.refresh_token || rawResult.data?.session?.refresh_token;
-        const expiresIn = rawResult.expiresIn || rawResult.data?.expiresIn || rawResult.data?.session?.expires_in || 3600;
+        const accessToken =
+          rawResult.accessToken ||
+          rawResult.token ||
+          rawResult.access_token ||
+          rawResult.data?.token ||
+          rawResult.data?.accessToken ||
+          rawResult.data?.access_token ||
+          rawResult.data?.session?.access_token;
+        const refreshToken =
+          rawResult.refreshToken ||
+          rawResult.refresh_token ||
+          rawResult.data?.refreshToken ||
+          rawResult.data?.refresh_token ||
+          rawResult.data?.session?.refresh_token;
+        const expiresIn =
+          rawResult.expiresIn ||
+          rawResult.data?.expiresIn ||
+          rawResult.data?.session?.expires_in ||
+          3600;
 
         dispatch(
           AuthActions.setSession({
@@ -89,7 +108,6 @@ const useSignin = (): SigninHookReturnType & { apiError: string | null; setApiEr
     apiError,
     setApiError
   };
-}
-
+};
 
 export default useSignin;

@@ -7,4 +7,3 @@ export * from './cart';
 export * from './banner/bannerApi';
 export * from './useRedux';
 export { default as store, persistor } from './Store';
-

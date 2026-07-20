@@ -20,5 +20,3 @@ export default Object.freeze({
   cart: '/api/v1/cart/',
   cartItems: '/api/v1/cart/items'
 });
-
-

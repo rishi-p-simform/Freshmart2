@@ -2,7 +2,13 @@ import { Tabs, useRouter } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import React, { type FC } from 'react';
 import { FlatList, Pressable, RefreshControl, ScrollView, View } from 'react-native';
-import { Banner, CategoryCard, CategoryCardSkeleton, ProductsListItems, Text } from '../../components';
+import {
+  Banner,
+  CategoryCard,
+  CategoryCardSkeleton,
+  ProductsListItems,
+  Text
+} from '../../components';
 import { Strings } from '../../constants';
 import { HomeHeader } from './components/home-header';
 import useHome from './useHome';
@@ -20,8 +26,8 @@ const HomeScreen: FC = (): React.ReactElement => {
       pathname: '/products/[id]',
       params: {
         id: 'bestSellers',
-        slug: 'best-sellers',
-      },
+        slug: 'best-sellers'
+      }
     });
   };
 
@@ -29,9 +35,7 @@ const HomeScreen: FC = (): React.ReactElement => {
     <ScrollView
       style={styles.screenView}
       contentContainerStyle={styles.contentContainer}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       keyboardShouldPersistTaps="handled"
     >
       <Tabs.Screen
@@ -72,9 +76,7 @@ const HomeScreen: FC = (): React.ReactElement => {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.categoriesList}
-          renderItem={() => (
-            <CategoryCardSkeleton />
-          )}
+          renderItem={() => <CategoryCardSkeleton />}
           keyExtractor={(item) => item.id}
         />
       ) : (
@@ -117,7 +119,6 @@ const HomeScreen: FC = (): React.ReactElement => {
         showSearch={false}
         scrollEnabled={false}
       />
-
     </ScrollView>
   );
 };

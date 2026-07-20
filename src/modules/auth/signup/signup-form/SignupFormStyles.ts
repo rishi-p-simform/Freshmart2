@@ -23,20 +23,20 @@ const styles = (theme: ThemeMode) =>
       borderColor: '#fecaca',
       borderRadius: scale(8),
       paddingHorizontal: scale(12),
-      paddingVertical: scale(10),
+      paddingVertical: scale(10)
     },
     errorBannerText: {
       color: '#dc2626',
-      textAlign: 'center',
+      textAlign: 'center'
     },
     labelText: {
-      color: Colors[theme]?.palette.gray[500],
+      color: Colors[theme]?.palette.gray[500]
     },
     linkActionText: {
-      color: Colors[theme]?.lightBlue,
+      color: Colors[theme]?.lightBlue
     },
     linkContainer: {
-      alignItems: 'center',
+      alignItems: 'center'
     },
     linkText: {
       color: Colors[theme]?.lightBlue,
@@ -45,7 +45,7 @@ const styles = (theme: ThemeMode) =>
     subtitleText: {
       color: Colors[theme]?.gray,
       fontSize: scale(14),
-      lineHeight: scale(20),
+      lineHeight: scale(20)
     },
     textInput: {
       backgroundColor: Colors[theme]?.black,
@@ -56,7 +56,7 @@ const styles = (theme: ThemeMode) =>
       paddingVertical: scale(10)
     },
     titleText: {
-      color: Colors[theme]?.black,
+      color: Colors[theme]?.black
     },
     checkboxContainer: {
       flexDirection: 'row',
@@ -80,7 +80,7 @@ const styles = (theme: ThemeMode) =>
     termsText: {
       flex: 1,
       color: Colors[theme]?.gray
-    },
+    }
   });
 
 export default styles;

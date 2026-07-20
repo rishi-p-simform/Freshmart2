@@ -1,8 +1,16 @@
-import { useEffect, useState, useCallback, useMemo } from 'react';
-import { AddressActions, CategoryActions, CategorySelectors, useAppDispatch, useAppSelector, UserSelectors, useGetBannersQuery } from '../../redux';
-import { ProductsActions } from '../../redux/products/ProductsSlice';
-import { CartActions } from '../../redux/cart';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTheme } from '../../hooks';
+import {
+  AddressActions,
+  CategoryActions,
+  CategorySelectors,
+  useAppDispatch,
+  useAppSelector,
+  useGetBannersQuery,
+  UserSelectors
+} from '../../redux';
+import { CartActions } from '../../redux/cart';
+import { ProductsActions } from '../../redux/products/ProductsSlice';
 import styleSheet from './HomeStyles';
 
 /**
@@ -30,7 +38,6 @@ const useHome = () => {
       await Promise.all([
         dispatch(AddressActions.fetchAddresses({})).unwrap(),
         dispatch(CategoryActions.fetchCategories({})).unwrap(),
-        dispatch(CartActions.getCart({})).unwrap(),
         dispatch(
           ProductsActions.fetchProducts({
             params: { featured: true, page: 1, limit: 20 },

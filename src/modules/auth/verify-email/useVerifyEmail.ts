@@ -1,15 +1,20 @@
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
 import { Linking } from 'react-native';
 import { setHeaders } from '../../../configs';
-import { AuthActions, AuthSelectors, UserActions, useAppDispatch, useAppSelector } from '../../../redux';
+import {
+  AuthActions,
+  AuthSelectors,
+  UserActions,
+  useAppDispatch,
+  useAppSelector
+} from '../../../redux';
 import { ToastHelper } from '../../../utils/ToastHelper';
 import type { VerifyEmailHookReturnType } from './VerifyEmailTypes';
 
 const useVerifyEmail = (): VerifyEmailHookReturnType => {
   const dispatch = useAppDispatch();
   const isLoading = useAppSelector(AuthSelectors.getLoading);
-  const router = useRouter();
   const params = useLocalSearchParams<{ email: string }>();
   const [code, setCode] = useState('');
   const [targetTime, setTargetTime] = useState<number>(Date.now() + 60 * 1000);
@@ -17,7 +22,7 @@ const useVerifyEmail = (): VerifyEmailHookReturnType => {
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    
+
     if (targetTime > Date.now()) {
       interval = setInterval(() => {
         const remaining = Math.max(0, Math.floor((targetTime - Date.now()) / 1000));
@@ -29,7 +34,7 @@ const useVerifyEmail = (): VerifyEmailHookReturnType => {
     } else {
       setTimer(0);
     }
-    
+
     return () => {
       if (interval) clearInterval(interval);
     };
@@ -50,9 +55,25 @@ const useVerifyEmail = (): VerifyEmailHookReturnType => {
       ).unwrap();
 
       const rawResult = result as any;
-      const accessToken = rawResult.accessToken || rawResult.token || rawResult.access_token || rawResult.data?.token || rawResult.data?.accessToken || rawResult.data?.access_token || rawResult.data?.session?.access_token;
-      const refreshToken = rawResult.refreshToken || rawResult.refresh_token || rawResult.data?.refreshToken || rawResult.data?.refresh_token || rawResult.data?.session?.refresh_token;
-      const expiresIn = rawResult.expiresIn || rawResult.data?.expiresIn || rawResult.data?.session?.expires_in || 3600;
+      const accessToken =
+        rawResult.accessToken ||
+        rawResult.token ||
+        rawResult.access_token ||
+        rawResult.data?.token ||
+        rawResult.data?.accessToken ||
+        rawResult.data?.access_token ||
+        rawResult.data?.session?.access_token;
+      const refreshToken =
+        rawResult.refreshToken ||
+        rawResult.refresh_token ||
+        rawResult.data?.refreshToken ||
+        rawResult.data?.refresh_token ||
+        rawResult.data?.session?.refresh_token;
+      const expiresIn =
+        rawResult.expiresIn ||
+        rawResult.data?.expiresIn ||
+        rawResult.data?.session?.expires_in ||
+        3600;
 
       dispatch(
         AuthActions.setSession({
@@ -71,7 +92,6 @@ const useVerifyEmail = (): VerifyEmailHookReturnType => {
       const rawProfile = profileResult as any;
       const profile = rawProfile.data || rawProfile;
       dispatch(UserActions.setProfile(profile));
-
     } catch (error: any) {
       ToastHelper.showError('Error', error?.message || 'Verification failed');
     } finally {

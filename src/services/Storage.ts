@@ -25,7 +25,7 @@ export type StorageStringType = boolean | string | number | object;
  * @param {T} defaultValue - The default value to return if the key doesn't exist.
  * @returns {T} The return type is T, which is a generic type.
  */
-export const getStorageString = <T extends StorageStringType>(key: string, defaultValue: T): T  => {
+export const getStorageString = <T extends StorageStringType>(key: string, defaultValue: T): T => {
   const value = storage.getString(key) ?? '';
   if (_.isEmpty(value)) {
     return defaultValue;
@@ -37,7 +37,7 @@ export const getStorageString = <T extends StorageStringType>(key: string, defau
     return Number(value) as T;
   }
   return JSON.parse(value);
-}
+};
 
 /**
  * "This function sets a value in the local storage, and it accepts a string, boolean,
@@ -50,7 +50,7 @@ export const getStorageString = <T extends StorageStringType>(key: string, defau
  * @param {T} newValue - The new value to set.
  * @returns None
  */
-export const setStorageString = <T extends StorageStringType>(key: string, newValue: T): void  => {
+export const setStorageString = <T extends StorageStringType>(key: string, newValue: T): void => {
   let value: string;
   if (
     typeof newValue === 'boolean' ||
@@ -62,7 +62,7 @@ export const setStorageString = <T extends StorageStringType>(key: string, newVa
     value = JSON.stringify(newValue);
   }
   storage.set(key, value);
-}
+};
 export const reduxStorage: Storage = {
   setItem: (key: string, value: any) => {
     storage.set(key, value);

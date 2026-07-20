@@ -25,9 +25,9 @@ const ProductsScreen: FC<ProductsScreenProps> = (props) => {
   // Derive a user-friendly title from the slug, e.g., "fresh-vegetables" -> "Fresh Vegetables"
   const title = slug
     ? slug
-      .split('-')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ')
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
     : Strings.Products.productsTitle;
 
   const filters = useMemo(() => {
@@ -40,17 +40,19 @@ const ProductsScreen: FC<ProductsScreenProps> = (props) => {
   const rightActions = [
     {
       icon: (
-        <View style={{
-          backgroundColor: Colors[theme].alpha(Colors[theme].solidWhite, 0.18),
-          paddingHorizontal: scale(8),
-          paddingVertical: scale(8),
-          borderRadius: scale(7),
-        }}>
+        <View
+          style={{
+            backgroundColor: Colors[theme].alpha(Colors[theme].solidWhite, 0.18),
+            paddingHorizontal: scale(8),
+            paddingVertical: scale(8),
+            borderRadius: scale(7)
+          }}
+        >
           <Text variant="labelSmall" style={{ color: '#FFFFFF', fontWeight: '700' }}>
             {countText}
           </Text>
         </View>
-      ),
+      )
     }
   ];
 
@@ -66,7 +68,7 @@ const ProductsScreen: FC<ProductsScreenProps> = (props) => {
               titleStyle={{ ...fontSizeStyles.displayXS }}
               rightActions={rightActions}
             />
-          ),
+          )
         }}
       />
       <ProductsListItems listKey={id} filters={filters} showSearch={true} />

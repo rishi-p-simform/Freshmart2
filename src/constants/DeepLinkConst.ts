@@ -4,7 +4,6 @@ export const bundleId: string = 'com.simform.expoboilerplate';
 
 export const scheme: string = 'expoboilerplate://';
 
-
 export const deepLinkPrefixes = ['expoboilerplate://', `${domain}//`, `https://${domain}`];
 
 export enum DeepLink {

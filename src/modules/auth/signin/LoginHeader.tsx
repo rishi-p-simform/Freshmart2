@@ -9,7 +9,7 @@ import { useTheme } from '../../../hooks';
 import { Colors, scale } from '../../../theme';
 import styleSheet from './LoginHeaderStyles';
 
-const LoginHeader = (): React.ReactElement  => {
+const LoginHeader = (): React.ReactElement => {
   const { styles, theme } = useTheme(styleSheet);
   const insets = useSafeAreaInsets();
 
@@ -25,11 +25,11 @@ const LoginHeader = (): React.ReactElement  => {
       <Text variant="displaySmall" style={styles.whiteText}>
         {Strings.Auth.signInTitle}
       </Text>
-      <Text variant='labelSmall' style={styles.mutedText}>
+      <Text variant="labelSmall" style={styles.mutedText}>
         {Strings.Auth.signInSubtitle}
       </Text>
     </View>
   );
-}
+};
 
 export default LoginHeader;

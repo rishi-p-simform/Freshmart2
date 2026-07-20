@@ -13,5 +13,5 @@ export interface BannerProps {
 }
 
 export const BannerDefaultProps: Partial<BannerProps> = {
-  testID: 'banner',
+  testID: 'banner'
 } as const;

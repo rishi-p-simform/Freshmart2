@@ -13,7 +13,7 @@ const assert = (condition: boolean, message: string) => {
     failedTests++;
     console.error(`❌ FAIL: ${message}`);
   }
-}
+};
 
 const assertDeepEqual = (actual: any, expected: any, message: string) => {
   const actualStr = JSON.stringify(actual);
@@ -25,7 +25,7 @@ const assertDeepEqual = (actual: any, expected: any, message: string) => {
     failedTests++;
     console.error(`❌ FAIL: ${message}\n  Expected: ${expectedStr}\n  Actual:   ${actualStr}`);
   }
-}
+};
 
 console.log('Starting APIConfig Error Parsing & Normalization Unit Tests...\n');
 
@@ -89,7 +89,8 @@ try {
   );
 
   assert(
-    extractErrorMessage({ errors: { email: 'Unique required' } }, defaultMsg) === 'email: Unique required',
+    extractErrorMessage({ errors: { email: 'Unique required' } }, defaultMsg) ===
+      'email: Unique required',
     'extractErrorMessage: should extract from errors key-value object'
   );
 
@@ -97,7 +98,6 @@ try {
     extractErrorMessage({ msg: 'Fallback msg' }, defaultMsg) === 'Fallback msg',
     'extractErrorMessage: should extract from fallback msg field'
   );
-
 } catch (err: any) {
   failedTests++;
   console.error('Exception during extractErrorMessage tests:', err);
@@ -138,7 +138,6 @@ try {
     },
     'extractErrorDetails: should parse array of error objects into grouped keys'
   );
-
 } catch (err: any) {
   failedTests++;
   console.error('Exception during extractErrorDetails tests:', err);
@@ -154,9 +153,15 @@ try {
     originalError: null as any
   };
   const parsedCancel = parseServerError(cancelResponse, 'Cancelled');
-  assert(parsedCancel.category === APIErrorCategory.CANCEL, 'parseServerError: CANCEL_ERROR category');
+  assert(
+    parsedCancel.category === APIErrorCategory.CANCEL,
+    'parseServerError: CANCEL_ERROR category'
+  );
   assert(parsedCancel.message === 'Cancelled', 'parseServerError: CANCEL_ERROR message');
-  assert(parsedCancel.statusCode === undefined, 'parseServerError: CANCEL_ERROR statusCode undefined');
+  assert(
+    parsedCancel.statusCode === undefined,
+    'parseServerError: CANCEL_ERROR statusCode undefined'
+  );
 
   const timeoutResponse: ApiErrorResponse<any> = {
     ok: false,
@@ -166,7 +171,10 @@ try {
     originalError: null as any
   };
   const parsedTimeout = parseServerError(timeoutResponse, 'Timed out');
-  assert(parsedTimeout.category === APIErrorCategory.TIMEOUT, 'parseServerError: TIMEOUT_ERROR category');
+  assert(
+    parsedTimeout.category === APIErrorCategory.TIMEOUT,
+    'parseServerError: TIMEOUT_ERROR category'
+  );
 
   const unauthorizedResponse: ApiErrorResponse<any> = {
     ok: false,
@@ -215,9 +223,16 @@ try {
     originalError: null as any
   };
   const parsedValidation = parseServerError(validationResponse, 'Validation failed');
-  assert(parsedValidation.category === APIErrorCategory.VALIDATION, 'parseServerError: 422 category');
+  assert(
+    parsedValidation.category === APIErrorCategory.VALIDATION,
+    'parseServerError: 422 category'
+  );
   assert(parsedValidation.message === 'Invalid input', 'parseServerError: 422 message');
-  assertDeepEqual(parsedValidation.details, { email: ['Required field'] }, 'parseServerError: 422 details');
+  assertDeepEqual(
+    parsedValidation.details,
+    { email: ['Required field'] },
+    'parseServerError: 422 details'
+  );
 
   const serverResponse: ApiErrorResponse<any> = {
     ok: false,
@@ -229,7 +244,6 @@ try {
   const parsedServer = parseServerError(serverResponse, 'Internal server error');
   assert(parsedServer.category === APIErrorCategory.SERVER, 'parseServerError: 500 category');
   assert(parsedServer.message === 'DB disconnect', 'parseServerError: 500 message');
-
 } catch (err: any) {
   failedTests++;
   console.error('Exception during parseServerError tests:', err);

@@ -28,5 +28,3 @@ export default Object.freeze({
   updateCartItem: 'cart/updateCartItem',
   removeFromCart: 'cart/removeFromCart'
 });
-
-

@@ -10,35 +10,35 @@ const styles = (theme: ThemeMode, _isDark?: boolean) =>
   StyleSheet.create({
     screen: {
       flex: 1,
-      backgroundColor: Colors[theme]?.background,
+      backgroundColor: Colors[theme]?.background
     },
     scrollView: {
-      flex: 1,
+      flex: 1
     },
     contentContainer: {
-      paddingBottom: scale(20),
+      paddingBottom: scale(20)
     },
     listContent: {
       paddingHorizontal: scale(16),
-      paddingVertical: scale(16),
+      paddingVertical: scale(16)
     },
     loadingContainer: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      paddingVertical: scale(20),
+      paddingVertical: scale(20)
     },
     emptyContainer: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      paddingVertical: scale(40),
+      paddingVertical: scale(40)
     },
     emptyText: {
       color: Colors[theme]?.palette.gray[300],
       fontSize: scale(16),
-      textAlign: 'center',
-    },
+      textAlign: 'center'
+    }
   });
 
 export default styles;

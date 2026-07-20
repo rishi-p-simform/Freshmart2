@@ -15,15 +15,10 @@ import { CategoryCardDefaultProps, CategoryCardProps } from './CategoryCardTypes
  * @returns {React.ReactElement} The CategoryCard component.
  */
 const CategoryCard: React.FC<CategoryCardProps> = (props) => {
-  const {
-    id,
-    image_url,
-    title,
-    slug,
-    customStyle,
-    testID,
-    accessibilityLabel,
-  } = { ...CategoryCardDefaultProps, ...props };
+  const { id, image_url, title, slug, customStyle, testID, accessibilityLabel } = {
+    ...CategoryCardDefaultProps,
+    ...props
+  };
 
   const { styles } = useTheme(styleSheet);
   const router = useRouter();
@@ -33,8 +28,8 @@ const CategoryCard: React.FC<CategoryCardProps> = (props) => {
       pathname: '/products/[id]',
       params: {
         slug,
-        id,
-      },
+        id
+      }
     });
   };
 
@@ -47,11 +42,7 @@ const CategoryCard: React.FC<CategoryCardProps> = (props) => {
       accessibilityHint={`Navigates to products in ${title}`}
       testID={testID}
     >
-      <Image
-        source={{ uri: image_url }}
-        style={styles.imageStyle}
-        resizeMode="cover"
-      />
+      <Image source={{ uri: image_url }} style={styles.imageStyle} resizeMode="cover" />
 
       <Text
         numberOfLines={2}

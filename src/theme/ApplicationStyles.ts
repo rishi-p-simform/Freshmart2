@@ -50,6 +50,13 @@ const applicationStyles = (theme: ThemeMode) =>
     screen: {
       flex: 1
     },
+    cardShadow: {
+      shadowColor: Colors[theme]?.black,
+      shadowOffset: { width: 0, height: scale(2) },
+      shadowOpacity: 0.09,
+      shadowRadius: scale(6),
+      elevation: 2
+    },
     spinnerButton: {
       borderRadius: globalMetrics.isAndroid ? scale(25) : scale(20),
       height: globalMetrics.isAndroid ? scale(50) : scale(40),

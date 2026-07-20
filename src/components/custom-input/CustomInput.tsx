@@ -12,7 +12,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 /**
  * CustomInput component for text entry.
  * Supports an optional left icon and a password variant that shows an eye icon.
- * 
+ *
  * @param props CustomInputProps
  * @returns JSX.Element
  */
@@ -44,7 +44,7 @@ const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
     Animated.timing(focusAnim, {
       toValue: isFocused ? 1 : 0,
       duration: 200,
-      useNativeDriver: false,
+      useNativeDriver: false
     }).start();
   }, [isFocused, focusAnim]);
 
@@ -65,20 +65,24 @@ const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
 
   return (
     <View style={customStyle}>
-      {label && <Text variant='labelSmall' style={styles.label}>{label}</Text>}
+      {label && (
+        <Text variant="labelSmall" style={styles.label}>
+          {label}
+        </Text>
+      )}
       <AnimatedPressable
-        style={[
-          styles.container,
-          { borderColor: animatedBorderColor },
-          containerStyle
-        ]}
+        style={[styles.container, { borderColor: animatedBorderColor }, containerStyle]}
         testID={`${testID}-container`}
         accessibilityRole="none"
         onPress={handleContainerPress}
       >
         {leftIcon && (
           <View style={styles.leftIconContainer}>
-            <Ionicons name={leftIcon} size={20} color={isFocused ? Colors[theme]?.primary : iconColor} />
+            <Ionicons
+              name={leftIcon}
+              size={20}
+              color={isFocused ? Colors[theme]?.primary : iconColor}
+            />
           </View>
         )}
 

@@ -1,8 +1,18 @@
-import { createSlice, type ActionReducerMapBuilder, type Draft, type PayloadAction } from '@reduxjs/toolkit';
-import { APIConst, ToolkitAction } from '../../constants';
+import {
+  createSlice,
+  type ActionReducerMapBuilder,
+  type Draft,
+  type PayloadAction
+} from '@reduxjs/toolkit';
 import { authorizedAPI } from '../../configs';
 import { createAsyncThunkWithCancelToken } from '../../configs/APIConfig';
-import type { CartResponse, CartItemResponse, CartMessageResponse, ErrorResponse } from '../../types';
+import { APIConst, ToolkitAction } from '../../constants';
+import type {
+  CartItemResponse,
+  CartMessageResponse,
+  CartResponse,
+  ErrorResponse
+} from '../../types';
 import INITIAL_STATE, { type CartStateType } from './CartInitial';
 
 export const getCart = createAsyncThunkWithCancelToken<CartResponse>(
@@ -58,15 +68,21 @@ const cartSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(getCart.fulfilled, (state: Draft<CartStateType>, action: PayloadAction<CartResponse>) => {
-        state.loading = false;
-        state.data = action.payload.data;
-        state.lastUpdated = Date.now();
-      })
-      .addCase(getCart.rejected, (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.loading = false;
-        state.error = action.payload || { message: 'Unknown error' };
-      });
+      .addCase(
+        getCart.fulfilled,
+        (state: Draft<CartStateType>, action: PayloadAction<CartResponse>) => {
+          state.loading = false;
+          state.data = action.payload.data;
+          state.lastUpdated = Date.now();
+        }
+      )
+      .addCase(
+        getCart.rejected,
+        (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload || { message: 'Unknown error' };
+        }
+      );
 
     // clearCart
     builder
@@ -82,10 +98,13 @@ const cartSlice = createSlice({
           state.data.subtotal = 0;
         }
       })
-      .addCase(clearCart.rejected, (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.updatingCart = false;
-        state.error = action.payload || { message: 'Unknown error' };
-      });
+      .addCase(
+        clearCart.rejected,
+        (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.updatingCart = false;
+          state.error = action.payload || { message: 'Unknown error' };
+        }
+      );
 
     // addToCart
     builder
@@ -96,10 +115,13 @@ const cartSlice = createSlice({
       .addCase(addToCart.fulfilled, (state: Draft<CartStateType>) => {
         state.updatingCart = false;
       })
-      .addCase(addToCart.rejected, (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.updatingCart = false;
-        state.error = action.payload || { message: 'Unknown error' };
-      });
+      .addCase(
+        addToCart.rejected,
+        (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.updatingCart = false;
+          state.error = action.payload || { message: 'Unknown error' };
+        }
+      );
 
     // updateCartItem
     builder
@@ -110,10 +132,13 @@ const cartSlice = createSlice({
       .addCase(updateCartItem.fulfilled, (state: Draft<CartStateType>) => {
         state.updatingCart = false;
       })
-      .addCase(updateCartItem.rejected, (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.updatingCart = false;
-        state.error = action.payload || { message: 'Unknown error' };
-      });
+      .addCase(
+        updateCartItem.rejected,
+        (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.updatingCart = false;
+          state.error = action.payload || { message: 'Unknown error' };
+        }
+      );
 
     // removeFromCart
     builder
@@ -124,10 +149,13 @@ const cartSlice = createSlice({
       .addCase(removeFromCart.fulfilled, (state: Draft<CartStateType>) => {
         state.updatingCart = false;
       })
-      .addCase(removeFromCart.rejected, (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.updatingCart = false;
-        state.error = action.payload || { message: 'Unknown error' };
-      });
+      .addCase(
+        removeFromCart.rejected,
+        (state: Draft<CartStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.updatingCart = false;
+          state.error = action.payload || { message: 'Unknown error' };
+        }
+      );
   }
 });
 

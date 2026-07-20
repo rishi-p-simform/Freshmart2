@@ -9,25 +9,25 @@ const styles = (theme: ThemeMode) =>
       paddingHorizontal: scale(16),
       paddingVertical: scale(18),
       backgroundColor: Colors[theme]?.background || Colors[theme]?.white,
-      gap: scale(10),
+      gap: scale(10)
     },
     leftContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: scale(10),
+      gap: scale(10)
     },
     centerContainer: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'flex-start',
+      alignItems: 'flex-start'
     },
     rightContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: scale(10),
+      gap: scale(10)
     },
     textTitle: {
-      color: Colors[theme]?.text,
+      color: Colors[theme]?.text
     },
     backButton: {
       width: scale(32),
@@ -35,8 +35,8 @@ const styles = (theme: ThemeMode) =>
       borderRadius: scale(8),
       backgroundColor: Colors[theme]?.palette?.gray?.[50],
       justifyContent: 'center',
-      alignItems: 'center',
-    },
+      alignItems: 'center'
+    }
   });
 
 export default styles;

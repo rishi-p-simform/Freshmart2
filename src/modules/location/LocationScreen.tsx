@@ -15,12 +15,11 @@ import useLocation from './useLocation';
  */
 const LocationScreen: FC = (): React.ReactElement => {
   const { styles, theme } = useTheme(styleSheet);
-  const { 
-    onAddAddress, 
-    addresses, 
-    loading, 
-    userProfile, 
-    selectedAddressId, 
+  const {
+    onAddAddress,
+    addresses,
+    userProfile,
+    selectedAddressId,
     onSelectAddress,
     onDeleteAddress,
     onSetDefault,
@@ -43,8 +42,6 @@ const LocationScreen: FC = (): React.ReactElement => {
         <View style={styles.handle} />
       </View>
 
-
-
       {/* Primary — Use current location */}
       <Pressable
         style={styles.currentLocationBtn}
@@ -63,11 +60,7 @@ const LocationScreen: FC = (): React.ReactElement => {
             Using GPS
           </Text>
         </View>
-        <Ionicons
-          name="chevron-forward"
-          size={scale(16)}
-          color={orange700}
-        />
+        <Ionicons name="chevron-forward" size={scale(16)} color={orange700} />
       </Pressable>
 
       <View style={{ height: scale(10) }} />
@@ -90,11 +83,7 @@ const LocationScreen: FC = (): React.ReactElement => {
             Enter address manually
           </Text>
         </View>
-        <Ionicons
-          name="chevron-forward"
-          size={scale(16)}
-          color={Colors[theme]?.gray}
-        />
+        <Ionicons name="chevron-forward" size={scale(16)} color={Colors[theme]?.gray} />
       </Pressable>
 
       {/* Section label */}
@@ -131,11 +120,7 @@ const LocationScreen: FC = (): React.ReactElement => {
         /* Empty state */
         <View style={styles.emptyStateContainer}>
           <View style={styles.emptyStateIconContainer}>
-            <Ionicons
-              name="map-outline"
-              size={scale(26)}
-              color={orange500}
-            />
+            <Ionicons name="map-outline" size={scale(26)} color={orange500} />
           </View>
           <Text variant="titleSmall" style={styles.emptyStateTitle}>
             No Saved Addresses

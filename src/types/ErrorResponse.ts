@@ -9,4 +9,3 @@ export interface ErrorResponse {
   details?: Record<string, string | string[]>;
   raw?: any;
 }
-

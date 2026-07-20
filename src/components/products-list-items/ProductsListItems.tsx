@@ -7,7 +7,10 @@ import ProductCard, { ProductCardSkeleton } from '../product-card';
 import styleSheet from './ProductsListItemsStyles';
 import Text from '../text/Text';
 import Spinner from '../spinner/Spinner';
-import { ProductsListItemsDefaultProps, type ProductsListItemsProps } from './ProductsListItemsTypes';
+import {
+  ProductsListItemsDefaultProps,
+  type ProductsListItemsProps
+} from './ProductsListItemsTypes';
 
 /**
  * ProductsListItems Component
@@ -17,28 +20,16 @@ import { ProductsListItemsDefaultProps, type ProductsListItemsProps } from './Pr
  * @returns {React.ReactElement} The ProductsListItems component.
  */
 const ProductsListItems: React.FC<ProductsListItemsProps> = (props) => {
-  const {
-    listKey,
-    filters,
-    showSearch,
-    customStyle,
-    testID,
-    scrollEnabled,
-  } = { ...ProductsListItemsDefaultProps, ...props };
+  const { listKey, filters, showSearch, customStyle, testID, scrollEnabled } = {
+    ...ProductsListItemsDefaultProps,
+    ...props
+  };
 
   const { styles } = useTheme(styleSheet);
   const [search, setSearch] = useState('');
 
-  const {
-    items,
-    loading,
-    refreshing,
-    fetchList,
-    refreshList,
-    loadMore,
-    loadingMore,
-    hasNext,
-  } = useProduct(listKey);
+  const { items, loading, refreshing, fetchList, refreshList, loadMore, loadingMore, hasNext } =
+    useProduct(listKey);
 
   const serializedFilters = JSON.stringify(filters);
   useEffect(() => {
@@ -151,7 +142,10 @@ const ProductsListItems: React.FC<ProductsListItemsProps> = (props) => {
         onEndReachedThreshold={0.2}
         refreshControl={
           scrollEnabled ? (
-            <RefreshControl refreshing={refreshing || (loading && items.length === 0)} onRefresh={onRefresh} />
+            <RefreshControl
+              refreshing={refreshing || (loading && items.length === 0)}
+              onRefresh={onRefresh}
+            />
           ) : undefined
         }
         ListFooterComponent={renderFooter}

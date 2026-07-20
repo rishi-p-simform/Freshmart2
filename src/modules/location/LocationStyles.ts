@@ -13,23 +13,23 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
     ...ApplicationStyles(theme),
     container: {
       flex: 1,
-      backgroundColor: Colors[theme]?.white,
+      backgroundColor: Colors[theme]?.white
     },
     scrollContent: {
       flexGrow: 1,
-      paddingBottom: scale(40),
+      paddingBottom: scale(40)
     },
     /** Drag handle */
     handleContainer: {
       alignItems: 'center',
       paddingTop: scale(8),
-      paddingBottom: scale(10),
+      paddingBottom: scale(10)
     },
     handle: {
       width: scale(32),
       height: scale(4),
       borderRadius: scale(2),
-      backgroundColor: Colors[theme]?.alpha(Colors[theme]?.gray, 0.25),
+      backgroundColor: Colors[theme]?.alpha(Colors[theme]?.gray, 0.25)
     },
 
     /** Current location — primary CTA */
@@ -42,7 +42,7 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
       borderRadius: scale(10),
       backgroundColor: orange?.[50] ?? '#fff7ed',
       borderWidth: 1,
-      borderColor: orange?.[300] ?? '#fdba74',
+      borderColor: orange?.[300] ?? '#fdba74'
     },
     currentLocationIcon: {
       width: scale(30),
@@ -50,18 +50,18 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
       borderRadius: scale(8),
       backgroundColor: orange?.[500] ?? '#f97316',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'center'
     },
     currentLocationContent: {
       flex: 1,
-      marginLeft: scale(10),
+      marginLeft: scale(10)
     },
     currentLocationTitle: {
-      color: orange?.[700] ?? '#c2410c',
+      color: orange?.[700] ?? '#c2410c'
     },
     currentLocationSub: {
       color: orange?.[400] ?? '#fb923c',
-      marginTop: scale(1),
+      marginTop: scale(1)
     },
 
     /** Add address — secondary action */
@@ -75,7 +75,7 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
       borderWidth: 1,
       borderColor: Colors[theme]?.alpha(Colors[theme]?.gray, 0.15),
       borderStyle: 'dashed',
-      backgroundColor: Colors[theme]?.alpha(Colors[theme]?.background, 0.5),
+      backgroundColor: Colors[theme]?.alpha(Colors[theme]?.background, 0.5)
     },
     addAddressIcon: {
       width: scale(30),
@@ -83,18 +83,18 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
       borderRadius: scale(8),
       backgroundColor: Colors[theme]?.alpha(Colors[theme]?.gray, 0.08),
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'center'
     },
     addAddressContent: {
       flex: 1,
-      marginLeft: scale(10),
+      marginLeft: scale(10)
     },
     addAddressTitle: {
-      color: Colors[theme]?.text,
+      color: Colors[theme]?.text
     },
     addAddressSub: {
       color: Colors[theme]?.alpha(Colors[theme]?.gray, 0.5),
-      marginTop: scale(1),
+      marginTop: scale(1)
     },
     /** Section label */
     sectionLabel: {
@@ -103,14 +103,14 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
       marginBottom: scale(6),
       color: Colors[theme]?.alpha(Colors[theme]?.gray, 0.45),
       textTransform: 'uppercase',
-      letterSpacing: 1,
+      letterSpacing: 1
     },
     /** Empty state */
     emptyStateContainer: {
       alignItems: 'center',
       justifyContent: 'center',
       paddingVertical: scale(20),
-      paddingHorizontal: scale(24),
+      paddingHorizontal: scale(24)
     },
     emptyStateIconContainer: {
       width: scale(56),
@@ -119,16 +119,16 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
       backgroundColor: Colors[theme]?.alpha(orange?.[100] ?? '#ffedd5', 0.6),
       alignItems: 'center',
       justifyContent: 'center',
-      marginBottom: scale(10),
+      marginBottom: scale(10)
     },
     emptyStateTitle: {
       marginBottom: scale(4),
-      textAlign: 'center',
+      textAlign: 'center'
     },
     emptyStateDesc: {
       textAlign: 'center',
       color: Colors[theme]?.alpha(Colors[theme]?.gray, 0.55),
-      lineHeight: scale(17),
+      lineHeight: scale(17)
     },
     /** Saved address list item */
     addressItem: {
@@ -136,7 +136,7 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
       paddingHorizontal: scale(16),
       paddingVertical: scale(12),
       borderBottomWidth: StyleSheet.hairlineWidth,
-      borderBottomColor: Colors[theme]?.alpha(Colors[theme]?.gray, 0.1),
+      borderBottomColor: Colors[theme]?.alpha(Colors[theme]?.gray, 0.1)
     },
     addressIconContainer: {
       width: scale(36),
@@ -145,35 +145,35 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
       backgroundColor: Colors[theme]?.alpha(orange?.[100] ?? '#ffedd5', 0.5),
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: scale(2),
+      marginTop: scale(2)
     },
     addressItemContent: {
       flex: 1,
-      marginLeft: scale(12),
+      marginLeft: scale(12)
     },
     addressItemHeader: {
       flexDirection: 'row',
-      alignItems: 'center',
+      alignItems: 'center'
     },
     addressItemLabel: {
-      fontWeight: '600',
+      fontWeight: '600'
     },
     defaultBadge: {
       marginLeft: scale(8),
       paddingHorizontal: scale(6),
       paddingVertical: scale(2),
       backgroundColor: orange?.[100] ?? '#ffedd5',
-      borderRadius: scale(4),
+      borderRadius: scale(4)
     },
     defaultBadgeText: {
       color: orange?.[700] ?? '#c2410c',
-      fontSize: scale(10),
+      fontSize: scale(10)
     },
     addressItemDesc: {
       color: Colors[theme]?.gray,
       marginTop: scale(2),
-      lineHeight: scale(18),
-    },
+      lineHeight: scale(18)
+    }
   });
 };
 

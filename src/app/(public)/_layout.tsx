@@ -27,18 +27,14 @@ const PublicLayout: FC = (): React.ReactElement => {
         name="signup/index"
         options={{
           title: 'Sign Up',
-          header: () => (
-            <CustomHeader title={Strings.Auth.signUpTitle} />
-          ),
+          header: () => <CustomHeader title={Strings.Auth.signUpTitle} />
         }}
       />
       <Stack.Screen
         name="verify-email/index"
         options={{
           title: 'Verify Email',
-          header: () => (
-            <CustomHeader title={Strings.Auth.verifyEmailTitle} />
-          ),
+          header: () => <CustomHeader title={Strings.Auth.verifyEmailTitle} />
         }}
       />
     </Stack>

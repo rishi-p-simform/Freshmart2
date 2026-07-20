@@ -2,12 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { NativeSyntheticEvent, TextInput, TextInputKeyPressEventData } from 'react-native';
 import { OTPInputProps } from './OTPInputTypes';
 
-export const useOTPInput = ({
-  length = 6,
-  value = '',
-  onChange,
-  onComplete,
-}: OTPInputProps) => {
+export const useOTPInput = ({ length = 6, value = '', onChange, onComplete }: OTPInputProps) => {
   const refs = useRef<TextInput[]>([]);
   const [otp, setOtp] = useState(value.split('').slice(0, length));
 
@@ -46,7 +41,7 @@ export const useOTPInput = ({
       const next = [...prev];
       next[index] = newChar;
 
-      // Fix for React Native TextInput sync issue: 
+      // Fix for React Native TextInput sync issue:
       // If the user types the exact same character (e.g., '5' over '5'), the text becomes '55',
       // but the React state stays '5'. Since state didn't change, React doesn't force a native update.
       // This leaves the native input stuck at '55', preventing further typing because maxLength=2.
@@ -71,10 +66,7 @@ export const useOTPInput = ({
     });
   };
 
-  const backspace = (
-    e: NativeSyntheticEvent<TextInputKeyPressEventData>,
-    index: number
-  ) => {
+  const backspace = (e: NativeSyntheticEvent<TextInputKeyPressEventData>, index: number) => {
     if (e.nativeEvent.key === 'Backspace') {
       setOtp((prev) => {
         const next = [...prev];
@@ -98,6 +90,6 @@ export const useOTPInput = ({
     otp,
     refs,
     update,
-    backspace,
+    backspace
   };
 };

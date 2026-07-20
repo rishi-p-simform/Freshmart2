@@ -19,12 +19,10 @@ import { ProductCardDefaultProps, type ProductCardProps } from './ProductCardTyp
  * @returns {React.ReactElement} The ProductCard component.
  */
 const ProductCard: React.FC<ProductCardProps> = (props) => {
-  const {
-    item,
-    customStyle,
-    testID,
-    accessibilityLabel,
-  } = { ...ProductCardDefaultProps, ...props };
+  const { item, customStyle, testID, accessibilityLabel } = {
+    ...ProductCardDefaultProps,
+    ...props
+  };
 
   const { styles, theme } = useTheme(styleSheet);
   const router = useRouter();
@@ -35,7 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
   const handlePress = () => {
     router.navigate({
       pathname: '/details',
-      params: { id: item.id },
+      params: { id: item.id }
     });
   };
 
@@ -56,33 +54,19 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
           </View>
         )}
         <View>
-          <Text
-            variant="titleSmall"
-            numberOfLines={2}
-            style={styles.productNameText}
-          >
+          <Text variant="titleSmall" numberOfLines={2} style={styles.productNameText}>
             {item.name}
           </Text>
           <View style={styles.ratingRow}>
-            <Text
-              variant="bodySmall"
-              style={styles.secondaryText}
-            >
+            <Text variant="bodySmall" style={styles.secondaryText}>
               {item.unit} • {rating}
             </Text>
-            <Ionicons
-              name="star"
-              color={Colors[theme].palette.gray[400]}
-              size={12}
-            />
+            <Ionicons name="star" color={Colors[theme].palette.gray[400]} size={12} />
           </View>
         </View>
       </TouchableOpacity>
       <View style={styles.priceRow}>
-        <Text
-          variant="titleSmall"
-          style={styles.price}
-        >
+        <Text variant="titleSmall" style={styles.price}>
           ₹{Math.round(item.price)}
         </Text>
         <ItemCounter product={item} />

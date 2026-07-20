@@ -17,7 +17,13 @@ const CartSelectors: CartSelectorsType = {
   getUpdatingCart: (state) => state.cart.updatingCart,
   getError: (state) => state.cart?.error || undefined,
   getData: (state) => state.cart.data,
-  getCartItemCount: (state) => state.cart.data?.item_count || 0
+  getCartItemCount: (state) => {
+    const items = state.cart.data?.items;
+    if (items && items.length > 0) {
+      return items.reduce((sum, item) => sum + (item.quantity || 0), 0);
+    }
+    return state.cart.data?.item_count || 0;
+  }
 };
 
 export default CartSelectors;

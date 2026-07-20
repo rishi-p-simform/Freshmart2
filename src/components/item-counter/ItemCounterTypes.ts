@@ -13,5 +13,5 @@ export interface ItemCounterProps {
 }
 
 export const ItemCounterDefaultProps: Partial<ItemCounterProps> = {
-  testID: 'item-counter',
+  testID: 'item-counter'
 } as const;

@@ -3,14 +3,13 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { getReactotronEnhancer } from '../configs/Reactotron';
 import { AppEnvConst } from '../constants';
 import { reduxStorage } from '../services';
-import { AuthReducer } from './auth';
-import { UserReducer } from './user';
 import { AddressReducer } from './address';
+import { AuthReducer } from './auth';
+import { bannerApi } from './banner/bannerApi';
+import { CartReducer } from './cart';
 import { CategoryReducer } from './category';
 import { ProductsReducer } from './products';
-import { CartReducer } from './cart';
-import { bannerApi } from './banner/bannerApi';
-
+import { UserReducer } from './user';
 
 /**
  * The Configuring persistConfig object for ReduxStorage.
@@ -74,7 +73,9 @@ const store = configureStore({
     getDefaultMiddleware({
       thunk: true,
       serializableCheck: false
-    }).concat(bannerApi.middleware).concat(middlewareList),
+    })
+      .concat(bannerApi.middleware)
+      .concat(middlewareList),
   enhancers: (getDefaultEnhancers) => getDefaultEnhancers().concat(enhancers)
 });
 

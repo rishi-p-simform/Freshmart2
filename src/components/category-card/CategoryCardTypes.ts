@@ -21,5 +21,5 @@ export interface CategoryCardProps {
 }
 
 export const CategoryCardDefaultProps: Partial<CategoryCardProps> = {
-  testID: 'category-card',
+  testID: 'category-card'
 } as const;

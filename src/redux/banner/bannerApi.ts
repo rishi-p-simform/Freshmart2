@@ -28,7 +28,7 @@ export const bannerApi = createApi({
         headers.set('Authorization', `Bearer ${token}`);
       }
       return headers;
-    },
+    }
   }),
   tagTypes: ['Banner'],
   endpoints: (builder) => ({
@@ -39,9 +39,9 @@ export const bannerApi = createApi({
           .filter((banner) => banner.is_active)
           .sort((a, b) => a.sort_order - b.sort_order);
       },
-      providesTags: ['Banner'],
-    }),
-  }),
+      providesTags: ['Banner']
+    })
+  })
 });
 
 export const { useGetBannersQuery } = bannerApi;

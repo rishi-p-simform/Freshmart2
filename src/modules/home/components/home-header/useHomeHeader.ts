@@ -18,7 +18,7 @@ const useHomeHeader = () => {
     displayAddress = 'Select Address';
   }
 
-  const activeAddress = addresses.find(addr => addr.id === selectedAddressId) || defaultAddress;
+  const activeAddress = addresses.find((addr) => addr.id === selectedAddressId) || defaultAddress;
 
   if (activeAddress) {
     displayAddress = `${activeAddress.address_line1}, ${activeAddress.city}`;

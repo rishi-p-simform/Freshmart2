@@ -11,27 +11,26 @@ const styles = (theme: ThemeMode, _isDark?: boolean) =>
     container: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: scale(4),
+      gap: scale(4)
     },
     button: {
       width: scale(22),
       height: scale(22),
       borderRadius: scale(6),
       alignItems: 'center',
-      justifyContent: 'center',
-
+      justifyContent: 'center'
     },
     addBtn: {
-      backgroundColor: Colors[theme]?.orange,
+      backgroundColor: Colors[theme]?.orange
     },
     minusBtn: {
-      backgroundColor: Colors[theme]?.palette.gray[200],
+      backgroundColor: Colors[theme]?.palette.gray[200]
     },
     countText: {
       color: Colors[theme]?.text,
       minWidth: scale(12),
-      textAlign: 'center',
-    },
+      textAlign: 'center'
+    }
   });
 
 export default styles;

@@ -12,36 +12,62 @@ describe('APIConfig Error Parsing & Normalization', () => {
     });
 
     test('should return the string directly if data is a string', () => {
-      expect(extractErrorMessage('Direct server error string', defaultMsg)).toBe('Direct server error string');
+      expect(extractErrorMessage('Direct server error string', defaultMsg)).toBe(
+        'Direct server error string'
+      );
     });
 
     test('should extract from message field (string and array)', () => {
-      expect(extractErrorMessage({ message: 'User already exists' }, defaultMsg)).toBe('User already exists');
-      expect(extractErrorMessage({ message: ['Name is required', 'Age must be positive'] }, defaultMsg)).toBe('Name is required, Age must be positive');
+      expect(extractErrorMessage({ message: 'User already exists' }, defaultMsg)).toBe(
+        'User already exists'
+      );
+      expect(
+        extractErrorMessage({ message: ['Name is required', 'Age must be positive'] }, defaultMsg)
+      ).toBe('Name is required, Age must be positive');
     });
 
     test('should extract from error field (string and object)', () => {
       expect(extractErrorMessage({ error: 'Auth failed' }, defaultMsg)).toBe('Auth failed');
-      expect(extractErrorMessage({ error: { message: 'Token expired' } }, defaultMsg)).toBe('Token expired');
-      expect(extractErrorMessage({ error: { description: 'Missing header' } }, defaultMsg)).toBe('Missing header');
+      expect(extractErrorMessage({ error: { message: 'Token expired' } }, defaultMsg)).toBe(
+        'Token expired'
+      );
+      expect(extractErrorMessage({ error: { description: 'Missing header' } }, defaultMsg)).toBe(
+        'Missing header'
+      );
     });
 
     test('should extract from error_description field', () => {
-      expect(extractErrorMessage({ error_description: 'OAuth token inactive' }, defaultMsg)).toBe('OAuth token inactive');
+      expect(extractErrorMessage({ error_description: 'OAuth token inactive' }, defaultMsg)).toBe(
+        'OAuth token inactive'
+      );
     });
 
     test('should extract from errors field (string, array of strings, array of objects, key-value)', () => {
-      expect(extractErrorMessage({ errors: 'Some error text' }, defaultMsg)).toBe('Some error text');
-      expect(extractErrorMessage({ errors: ['Error one', 'Error two'] }, defaultMsg)).toBe('Error one, Error two');
-      expect(extractErrorMessage({ errors: [{ message: 'Email bad' }] }, defaultMsg)).toBe('Email bad');
-      expect(extractErrorMessage({ errors: [{ msg: 'Password weak' }] }, defaultMsg)).toBe('Password weak');
-      expect(extractErrorMessage({ errors: { email: 'Must be unique' } }, defaultMsg)).toBe('email: Must be unique');
-      expect(extractErrorMessage({ errors: { email: ['Is required', 'Too short'] } }, defaultMsg)).toBe('email: Is required');
+      expect(extractErrorMessage({ errors: 'Some error text' }, defaultMsg)).toBe(
+        'Some error text'
+      );
+      expect(extractErrorMessage({ errors: ['Error one', 'Error two'] }, defaultMsg)).toBe(
+        'Error one, Error two'
+      );
+      expect(extractErrorMessage({ errors: [{ message: 'Email bad' }] }, defaultMsg)).toBe(
+        'Email bad'
+      );
+      expect(extractErrorMessage({ errors: [{ msg: 'Password weak' }] }, defaultMsg)).toBe(
+        'Password weak'
+      );
+      expect(extractErrorMessage({ errors: { email: 'Must be unique' } }, defaultMsg)).toBe(
+        'email: Must be unique'
+      );
+      expect(
+        extractErrorMessage({ errors: { email: ['Is required', 'Too short'] } }, defaultMsg)
+      ).toBe('email: Is required');
     });
 
     test('should extract from fallback fields like msg or description', () => {
       expect(extractErrorMessage({ msg: 'Fallback message' }, defaultMsg)).toBe('Fallback message');
-      expect(extractErrorMessage({ description: 'Fallback description' }, defaultMsg)).toBe('Fallback description');
+      expect(extractErrorMessage({ description: 'Fallback description' }, defaultMsg)).toBe(
+        'Fallback description'
+      );
     });
 
     test('should fallback to default message if no recognized keys exist', () => {

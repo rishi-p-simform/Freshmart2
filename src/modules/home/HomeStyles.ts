@@ -10,10 +10,10 @@ const styles = (theme: ThemeMode) =>
   StyleSheet.create({
     screenView: {
       backgroundColor: Colors[theme]?.background,
-      flex: 1,
+      flex: 1
     },
     contentContainer: {
-      paddingBottom: scale(66),
+      paddingBottom: scale(66)
     },
 
     textView: {
@@ -42,15 +42,15 @@ const styles = (theme: ThemeMode) =>
       marginTop: scale(10)
     },
     sectionTitle: {
-      color: Colors[theme]?.text || Colors[theme]?.black,
+      color: Colors[theme]?.text || Colors[theme]?.black
     },
     seeAllText: {
-      color: Colors[theme]?.primary || Colors[theme]?.orange,
+      color: Colors[theme]?.primary || Colors[theme]?.orange
     },
     categoriesList: {
       paddingHorizontal: scale(16),
       paddingVertical: scale(10),
-      gap: scale(16),
+      gap: scale(16)
     }
   });
 

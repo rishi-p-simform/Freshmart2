@@ -9,7 +9,7 @@ import { AuthSelectors, useAppSelector } from '../redux';
  * - Unauthenticated users → redirected to `/signin` (public auth flow).
  * @returns {React.ReactElement} A Redirect component to the appropriate entry screen.
  */
-const App = (): React.ReactElement  => {
+const App = (): React.ReactElement => {
   const isLoggedIn = useAppSelector(AuthSelectors.getIsAuthenticated);
 
   if (isLoggedIn) {
@@ -17,6 +17,6 @@ const App = (): React.ReactElement  => {
   }
 
   return <Redirect href={ROUTES.SignIn} />;
-}
+};
 
 export default App;

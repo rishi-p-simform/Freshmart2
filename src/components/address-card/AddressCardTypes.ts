@@ -40,5 +40,5 @@ export interface AddressCardProps {
 
 export const AddressCardDefaultProps: Partial<AddressCardProps> = {
   testID: 'address-card',
-  isDefault: false,
+  isDefault: false
 } as const;

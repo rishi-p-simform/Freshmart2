@@ -20,49 +20,49 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
       borderRadius: scale(10),
       borderWidth: 1,
       borderColor: Colors[theme]?.alpha(Colors[theme]?.gray, 0.2),
-      backgroundColor: Colors[theme]?.white,
+      backgroundColor: Colors[theme]?.white
     },
     cardContainerSelected: {
-      borderColor: primary?.[600] ?? '#2563eb',
+      borderColor: primary?.[600] ?? '#2563eb'
     },
     contentContainer: {
       flex: 1,
-      paddingRight: scale(8),
+      paddingRight: scale(8)
     },
     actionsContainer: {
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'flex-start',
+      justifyContent: 'flex-start'
     },
     nameAndBadgeContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginBottom: scale(4),
+      marginBottom: scale(4)
     },
     nameText: {
       color: Colors[theme]?.text,
-      marginRight: scale(6),
+      marginRight: scale(6)
     },
     badgeContainer: {
       backgroundColor: primary?.[50] ?? '#eff6ff',
       paddingHorizontal: scale(6),
       paddingVertical: scale(2),
-      borderRadius: scale(4),
+      borderRadius: scale(4)
     },
     badgeText: {
       color: primary?.[600] ?? '#2563eb',
       textTransform: 'uppercase',
-      letterSpacing: 0.5,
+      letterSpacing: 0.5
     },
     editButton: {
-      padding: scale(2),
+      padding: scale(2)
     },
     editText: {
-      color: primary?.[600] ?? '#2563eb',
+      color: primary?.[600] ?? '#2563eb'
     },
     addressText: {
-      color: gray?.[500] ?? '#64748b',
-    },
+      color: gray?.[500] ?? '#64748b'
+    }
   });
 };
 
