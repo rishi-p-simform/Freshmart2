@@ -17,7 +17,6 @@ const HomeScreen: FC = (): React.ReactElement => {
   return (
     <ScrollView
       style={styles.screenView}
-      contentContainerStyle={styles.screenViewContent}
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }

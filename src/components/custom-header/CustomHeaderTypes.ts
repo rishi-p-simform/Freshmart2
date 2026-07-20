@@ -14,6 +14,7 @@ export interface CustomHeaderPropsType {
   containerStyle?: ViewStyle | ViewStyle[];
   titleStyle?: TextStyle | TextStyle[];
   showGradientBG?: boolean;
+  hideBackButton?: boolean;
 
 }
 
@@ -22,4 +23,5 @@ export const defaultProps = {
   leftActions: [],
   rightActions: [],
   showGradientBG: false,
+  hideBackButton: false,
 };
