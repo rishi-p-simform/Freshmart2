@@ -4,7 +4,10 @@
     "details": "Details",
     "signIn": "Sign In",
     "lightTheme": "Light Theme",
-    "darkTheme": "Dark Theme"
+    "darkTheme": "Dark Theme",
+    "categories": "Categories",
+    "bestSellers": "Best Sellers",
+    "seeAll": "See All"
   },
   "details": {
     "title": "Details Screen"
@@ -91,5 +94,22 @@
   "splash": {
     "title": "FreshMart",
     "subtitle": "Fresh. Local. Delivered."
+  },
+  "location": {
+    "setDeliveryLocation": "Set Delivery Location",
+    "deliveryLocationSubtitle": "We'll show options available in your area",
+    "addressLine1Label": "Address Line 1",
+    "addressLine1Placeholder": "Flat / House no / Building",
+    "addressLine2Label": "Address Line 2",
+    "addressLine2Placeholder": "Street / Area / Locality",
+    "cityLabel": "City ",
+    "cityPlaceholder": "City Name",
+    "stateLabel": "State",
+    "statePlaceholder": "State Name",
+    "pincodeLabel": "Pincode",
+    "pincodePlaceholder": "Enter Pincode",
+    "saveAs": "Save As",
+    "useCurrentLocation": "Use My Current Location",
+    "confirmLocation": "Confirm Location"
   }
 }

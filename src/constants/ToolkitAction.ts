@@ -10,7 +10,14 @@ export default Object.freeze({
   fetchProfile: 'user/fetchProfile',
   deleteAccount: 'user/deleteAccount',
   verifySignup: 'auth/verifySignup',
-  resendConfirmation: 'auth/resendConfirmation'
+  resendConfirmation: 'auth/resendConfirmation',
+  fetchAddresses: 'address/fetchAddresses',
+  createAddress: 'address/createAddress',
+  updateAddress: 'address/updateAddress',
+  deleteAddress: 'address/deleteAddress',
+  setDefaultAddress: 'address/setDefaultAddress',
+  fetchCategories: 'category/fetchCategories',
+  fetchCategoryDetail: 'category/fetchCategoryDetail'
 });
 
 

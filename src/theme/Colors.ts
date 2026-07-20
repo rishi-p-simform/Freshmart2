@@ -69,8 +69,9 @@ export const palette = {
     transparentWhite: '#FFFFFF00',
   },
   gradients: {
-    primary: ['#1E3A8A', '#2563EB'],
-    light: ['#EFF6FF', '#DBEAFE'],
+    primary: ['#1E3A8A', '#2563EB'] as readonly [string, string, ...string[]],
+    light: ['#EFF6FF', '#DBEAFE'] as readonly [string, string, ...string[]],
+    orangeToTransparent: ['#F97316', '#F9731680', 'transparent'] as readonly [string, string, ...string[]],
   }
 };
 
@@ -195,8 +196,9 @@ const dark: ThemeColors = {
   transparentBlack: commonColors.transparentWhite,
   solidWhite: commonColors.solidWhite,
   gradients: {
-    primary: ['#2563EB', '#1E3A8A'],
-    light: ['#1e293b', '#0f172a'],
+    primary: ['#2563EB', '#1E3A8A'] as readonly [string, string, ...string[]],
+    light: ['#1e293b', '#0f172a'] as readonly [string, string, ...string[]],
+    orangeToTransparent: ['#F97316', '#F9731680', 'transparent'] as readonly [string, string, ...string[]],
   },
   palette: darkPalette,
   alpha: alphaHelper,

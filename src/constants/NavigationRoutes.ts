@@ -9,5 +9,6 @@ export enum ROUTES {
   Details = '/details',
   SignIn = '/signin',
   SignUp = '/signup',
-  VerifyEmail = '/verify-email'
+  VerifyEmail = '/verify-email',
+  Location = '/location'
 }

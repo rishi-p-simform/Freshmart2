@@ -10,7 +10,9 @@ export default Object.freeze({
   me: '/api/v1/user/profile',
   deleteAccount: '/api/v1/user/account',
   verifySignup: '/api/v1/auth/email/verify-signup',
-  resendConfirmation: '/api/v1/auth/email/resend-confirmation'
+  resendConfirmation: '/api/v1/auth/email/resend-confirmation',
+  addresses: '/api/v1/user/addresses',
+  categories: '/api/v1/categories'
 });
 
 

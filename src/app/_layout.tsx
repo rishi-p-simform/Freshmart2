@@ -15,10 +15,17 @@ import { useFonts } from 'expo-font';
 import { SplashScreen, Stack, useNavigationContainerRef } from 'expo-router';
 import React, { useEffect, useState, type FC } from 'react';
 import { LogBox, StatusBar, Text, TextInput } from 'react-native';
-import 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+
+/**
+ * The Main RootLayout Component.
+ * Wraps the application with the necessary providers and the root navigator.
+ * @returns {React.ReactElement} The RootLayout component.
+ */
+import Toast from 'react-native-toast-message';
 // Keep splash screen visible until auth state is rehydrated
 SplashScreen.preventAutoHideAsync();
 
@@ -123,13 +130,6 @@ const ThemedNavigator: FC = (): React.ReactElement => {
   );
 };
 
-/**
- * The Main RootLayout Component.
- * Wraps the application with the necessary providers and the root navigator.
- * @returns {React.ReactElement} The RootLayout component.
- */
-import Toast from 'react-native-toast-message';
-
 const RootLayout: FC = (): React.ReactElement | null => {
   const [fontsLoaded, fontError] = useFonts({
     PlusJakartaSans_400Regular,
@@ -155,11 +155,13 @@ const RootLayout: FC = (): React.ReactElement | null => {
 
   return (
     <SafeAreaProvider>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ThemedNavigator />
-        </PersistGate>
-      </Provider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <ThemedNavigator />
+          </PersistGate>
+        </Provider>
+      </GestureHandlerRootView>
       <Toast />
     </SafeAreaProvider>
   );

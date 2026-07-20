@@ -11,6 +11,7 @@ const defineConfig = ({ config }) => {
     name: appName,
     slug: 'Freshmart2', // The slug must remain consistent
     version: config.version || '1.0.0',
+    userInterfaceStyle: 'automatic',
     ios: {
       ...config.ios,
       bundleIdentifier: bundleIdentifier,
@@ -22,6 +23,14 @@ const defineConfig = ({ config }) => {
     android: {
       ...config.android,
       package: bundleIdentifier,
+      permissions: [
+        ...(config.android?.permissions || [])
+      ],
+      config: {
+        googleMaps: {
+          apiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY
+        }
+      }
     },
     plugins: [
       'expo-router',
@@ -57,6 +66,18 @@ const defineConfig = ({ config }) => {
         'react-native-permissions',
         {
           iosPermissions: ['Camera']
+        }
+      ],
+      [
+        'expo-location',
+        {
+          locationAlwaysAndWhenInUsePermission: 'We need your location to deliver groceries.'
+        }
+      ],
+      [
+        'expo-maps',
+        {
+          googleMapsApiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY
         }
       ]
     ],

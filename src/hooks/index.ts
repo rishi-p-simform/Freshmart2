@@ -4,6 +4,8 @@ export * from './useHeader';
 export {
   useMultiplePermissions,
   useNotificationPermissions,
-  useSinglePermissions
+  useSinglePermissions,
+  useLocationPermission
 } from './usePermission';
 export { default as useTheme } from './useTheme';
+
