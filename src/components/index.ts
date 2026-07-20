@@ -11,4 +11,11 @@ export { default as Banner } from './banner';
 export type { BannerProps } from './banner';
 export { default as CategoryCard } from './category-card';
 export type { CategoryCardProps } from './category-card';
+export { default as ItemCounter } from './item-counter';
+export type { ItemCounterProps } from './item-counter';
+export { default as ProductCard } from './product-card';
+export { ProductCardSkeleton } from './product-card';
+export type { ProductCardProps } from './product-card';
+export { default as ProductsListItems } from './products-list-items';
+export type { ProductsListItemsProps } from './products-list-items';
 

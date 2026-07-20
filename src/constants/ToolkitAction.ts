@@ -17,7 +17,11 @@ export default Object.freeze({
   deleteAddress: 'address/deleteAddress',
   setDefaultAddress: 'address/setDefaultAddress',
   fetchCategories: 'category/fetchCategories',
-  fetchCategoryDetail: 'category/fetchCategoryDetail'
+  fetchCategoryDetail: 'category/fetchCategoryDetail',
+  refresh: 'auth/refresh',
+  fetchProducts: 'products/fetchProducts',
+  searchProducts: 'products/searchProducts',
+  fetchProductDetail: 'products/fetchProductDetail'
 });
 
 

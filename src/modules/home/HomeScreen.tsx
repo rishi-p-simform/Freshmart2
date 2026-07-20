@@ -1,8 +1,8 @@
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import React, { type FC } from 'react';
 import { FlatList, Pressable, RefreshControl, ScrollView, View } from 'react-native';
-import { Banner, CategoryCard, Text } from '../../components';
+import { Banner, CategoryCard, ProductsListItems, Text } from '../../components';
 import { Strings } from '../../constants';
 import { HomeHeader } from './components/home-header';
 import useHome from './useHome';
@@ -12,11 +12,23 @@ import useHome from './useHome';
  * @returns {React.ReactElement} A React element.
  */
 const HomeScreen: FC = (): React.ReactElement => {
-  const { styles, changeTheme, refreshing, onRefresh, greetingText, categories } = useHome();
+  const { styles, refreshing, onRefresh, greetingText, categories } = useHome();
+  const router = useRouter();
+
+  const handleSeeAllBestSellers = () => {
+    router.navigate({
+      pathname: '/products/[id]',
+      params: {
+        id: 'bestSellers',
+        slug: 'best-sellers',
+      },
+    });
+  };
 
   return (
     <ScrollView
       style={styles.screenView}
+      contentContainerStyle={styles.contentContainer}
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
@@ -75,12 +87,23 @@ const HomeScreen: FC = (): React.ReactElement => {
         <Text variant="titleMedium" style={styles.sectionTitle}>
           {Strings.Home.bestSellers}
         </Text>
-        <Pressable accessibilityRole="button" accessibilityLabel="See all best sellers">
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="See all best sellers"
+          onPress={handleSeeAllBestSellers}
+        >
           <Text variant="labelMedium" style={styles.seeAllText}>
             {Strings.Home.seeAll}
           </Text>
         </Pressable>
       </View>
+
+      <ProductsListItems
+        listKey="bestSellers"
+        filters={{ featured: true }}
+        showSearch={false}
+        scrollEnabled={false}
+      />
 
     </ScrollView>
   );

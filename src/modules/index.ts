@@ -6,3 +6,5 @@ export * from './explore';
 export * from './cart';
 export * from './location';
 export { default as SplashScreen } from './splash';
+export * from './products';
+

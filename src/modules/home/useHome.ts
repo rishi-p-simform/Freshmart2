@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { AddressActions, CategoryActions, CategorySelectors, useAppDispatch, useAppSelector, UserSelectors, useGetBannersQuery } from '../../redux';
+import { ProductsActions } from '../../redux/products/ProductsSlice';
 import { useTheme } from '../../hooks';
 import styleSheet from './HomeStyles';
 
@@ -27,6 +28,12 @@ const useHome = () => {
       await Promise.all([
         dispatch(AddressActions.fetchAddresses({})).unwrap(),
         dispatch(CategoryActions.fetchCategories({})).unwrap(),
+        dispatch(
+          ProductsActions.fetchProducts({
+            params: { featured: true, page: 1, limit: 20 },
+            data: { listId: 'bestSellers', page: 1, isRefresh: true }
+          })
+        ).unwrap(),
         refetchBanners()
       ]);
     } catch (error) {
