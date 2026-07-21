@@ -26,5 +26,9 @@ export default Object.freeze({
   clearCart: 'cart/clearCart',
   addToCart: 'cart/addToCart',
   updateCartItem: 'cart/updateCartItem',
-  removeFromCart: 'cart/removeFromCart'
+  removeFromCart: 'cart/removeFromCart',
+  createOrder: 'orders/createOrder',
+  fetchOrders: 'orders/fetchOrders',
+  fetchOrderDetail: 'orders/fetchOrderDetail',
+  cancelOrder: 'orders/cancelOrder'
 });

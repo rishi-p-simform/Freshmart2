@@ -155,5 +155,31 @@
     "cardSubtitle": "Visa · Mastercard · RuPay",
     "cod": "Cash on Delivery",
     "codSubtitle": "Pay when delivered"
+  },
+  "confirmation": {
+    "title": "Order Confirmation",
+    "orderPlaced": "Order Placed!",
+    "orderConfirmedDesc": "Your order has been confirmed and is being prepared.",
+    "orderNumber": "Order Number",
+    "estimatedTime": "~45 min",
+    "trackMyOrder": "Track My Order",
+    "continueShopping": "Continue Shopping"
+  },
+  "trackOrder": {
+    "title": "Track Order",
+    "deliveryPartner": "Ravi Kumar",
+    "deliveryPartnerRole": "⭐ 4.9 · Delivery Partner",
+    "orderPlaced": "Order Placed",
+    "confirmed": "Order Confirmed",
+    "packing": "Order Packed",
+    "outForDelivery": "Out for Delivery",
+    "delivered": "Delivered",
+    "cancelled": "Order Cancelled",
+    "estTime": "~18 min",
+    "unsupportedPlatform": "Unsupported Platform",
+    "unsupportedPlatformMsg": "This feature is only for Android and iOS.",
+    "errorTitle": "Error",
+    "smsError": "Failed to open SMS app.",
+    "telError": "Failed to open phone dialer."
   }
 }

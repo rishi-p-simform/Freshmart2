@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { PAGINATION } from '../../constants';
+import type { ProductFilters } from '../../types';
+import type { RootStateType } from '../Store';
 import { ProductsActions } from './ProductsSlice';
 import ProductsSelectors from './ProductsSelectors';
-import type { RootStateType } from '../Store';
-import type { ProductFilters } from '../../types';
 
 /**
  * Custom hook to execute search API calls on demand with list isolation.
@@ -20,8 +21,13 @@ export const useProductSearch = (listId: string = 'search') => {
     (query: string, filters: ProductFilters = {}) => {
       dispatch(
         ProductsActions.searchProducts({
-          params: { q: query, ...filters, page: 1, limit: filters.limit || 20 },
-          data: { listId, page: 1, isRefresh: false }
+          params: {
+            q: query,
+            ...filters,
+            page: PAGINATION.DEFAULT_PAGE,
+            limit: filters.limit || PAGINATION.DEFAULT_LIMIT
+          },
+          data: { listId, page: PAGINATION.DEFAULT_PAGE, isRefresh: false }
         })
       );
     },
@@ -34,7 +40,12 @@ export const useProductSearch = (listId: string = 'search') => {
         const nextPage = listState.page + 1;
         dispatch(
           ProductsActions.searchProducts({
-            params: { q: query, ...filters, page: nextPage, limit: filters.limit || 20 },
+            params: {
+              q: query,
+              ...filters,
+              page: nextPage,
+              limit: filters.limit || PAGINATION.DEFAULT_LIMIT
+            },
             data: { listId, page: nextPage, isRefresh: false }
           })
         );
@@ -47,8 +58,13 @@ export const useProductSearch = (listId: string = 'search') => {
     (query: string, filters: ProductFilters = {}) => {
       dispatch(
         ProductsActions.searchProducts({
-          params: { q: query, ...filters, page: 1, limit: filters.limit || 20 },
-          data: { listId, page: 1, isRefresh: true }
+          params: {
+            q: query,
+            ...filters,
+            page: PAGINATION.DEFAULT_PAGE,
+            limit: filters.limit || PAGINATION.DEFAULT_LIMIT
+          },
+          data: { listId, page: PAGINATION.DEFAULT_PAGE, isRefresh: true }
         })
       );
     },

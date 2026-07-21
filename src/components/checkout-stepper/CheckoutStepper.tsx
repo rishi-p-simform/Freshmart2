@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { ANIMATION_DURATION, STEPPER } from '../../constants';
 import { useTheme } from '../../hooks';
 import { Colors } from '../../theme';
 import styleSheet from './CheckoutStepperStyles';
@@ -32,7 +33,7 @@ const AnimatedConnector: React.FC<ConnectorProps> = ({ filled, fillColor, styles
   const progress = useSharedValue(0);
 
   useEffect(() => {
-    progress.value = withTiming(filled ? 1 : 0, { duration: 500 });
+    progress.value = withTiming(filled ? 1 : 0, { duration: ANIMATION_DURATION.NORMAL });
   }, [filled, progress]);
 
   const animatedFill = useAnimatedStyle(() => ({
@@ -74,8 +75,8 @@ const CheckoutStepper: React.FC<CheckoutStepperProps> = (props) => {
       style={[styles.container, customStyle]}
       testID={testID}
       accessibilityRole="progressbar"
-      accessibilityLabel={accessibilityLabel ?? `Step ${currentStep} of 3`}
-      accessibilityValue={{ min: 1, max: 3, now: currentStep }}
+      accessibilityLabel={accessibilityLabel ?? `Step ${currentStep} of ${STEPPER.MAX_STEP}`}
+      accessibilityValue={{ min: STEPPER.MIN_STEP, max: STEPPER.MAX_STEP, now: currentStep }}
     >
       {/* Background Connectors */}
       <View style={styles.connectorsContainer}>

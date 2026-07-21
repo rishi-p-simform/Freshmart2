@@ -52,6 +52,12 @@ const ProtectedLayout: FC = (): React.ReactElement => {
           presentation: 'fullScreenModal'
         }}
       />
+      <Stack.Screen
+        name="trackOrder"
+        options={{
+          headerShown: false
+        }}
+      />
     </Stack>
   );
 };

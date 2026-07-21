@@ -36,6 +36,7 @@ const CartStackLayout: FC = (): React.ReactElement => {
       <Stack.Screen name="index" />
       <Stack.Screen name="checkout" />
       <Stack.Screen name="payment" />
+      <Stack.Screen name="confirmation" />
     </Stack>
   );
 };

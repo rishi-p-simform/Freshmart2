@@ -6,6 +6,7 @@ import Animated, {
   withRepeat,
   withTiming
 } from 'react-native-reanimated';
+import { ANIMATION_DURATION, SKELETON } from '../../constants';
 import { useTheme } from '../../hooks';
 import styleSheet from './ProductCardStyles';
 
@@ -20,7 +21,11 @@ export const ProductCardSkeleton: React.FC = () => {
   const opacity = useSharedValue(0.4);
 
   useEffect(() => {
-    opacity.value = withRepeat(withTiming(0.8, { duration: 800 }), -1, true);
+    opacity.value = withRepeat(
+      withTiming(SKELETON.PULSE_OPACITY, { duration: ANIMATION_DURATION.SLOW }),
+      SKELETON.INFINITE_REPEAT,
+      true
+    );
   }, [opacity]);
 
   const animatedStyle = useAnimatedStyle(() => ({

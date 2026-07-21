@@ -10,6 +10,7 @@ const defineConfig = ({ config }) => {
     ...config,
     name: appName,
     slug: 'Freshmart2', // The slug must remain consistent
+    scheme: 'freshmart2',
     version: config.version || '1.0.0',
     userInterfaceStyle: 'automatic',
     ios: {

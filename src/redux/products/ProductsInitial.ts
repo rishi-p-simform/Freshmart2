@@ -1,4 +1,5 @@
-import type { Product, ErrorResponse } from '../../types';
+import { PAGINATION } from '../../constants';
+import type { ErrorResponse, Product } from '../../types';
 
 export type ProductListState = {
   items: Product[];
@@ -20,7 +21,7 @@ export type ProductsStateType = {
 
 export const createInitialListState = (): ProductListState => ({
   items: [],
-  page: 1,
+  page: PAGINATION.DEFAULT_PAGE,
   hasNext: false,
   loading: false,
   loadingMore: false,

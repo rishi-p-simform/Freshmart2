@@ -195,6 +195,34 @@ const Payment = freezeStringsObject({
   codSubtitle: I18n.t('payment:codSubtitle')
 });
 
+const Confirmation = freezeStringsObject({
+  title: I18n.t('confirmation:title'),
+  orderPlaced: I18n.t('confirmation:orderPlaced'),
+  orderConfirmedDesc: I18n.t('confirmation:orderConfirmedDesc'),
+  orderNumber: I18n.t('confirmation:orderNumber'),
+  estimatedTime: I18n.t('confirmation:estimatedTime'),
+  trackMyOrder: I18n.t('confirmation:trackMyOrder'),
+  continueShopping: I18n.t('confirmation:continueShopping')
+});
+
+const TrackOrder = freezeStringsObject({
+  title: I18n.t('trackOrder:title'),
+  deliveryPartner: I18n.t('trackOrder:deliveryPartner'),
+  deliveryPartnerRole: I18n.t('trackOrder:deliveryPartnerRole'),
+  orderPlaced: I18n.t('trackOrder:orderPlaced'),
+  confirmed: I18n.t('trackOrder:confirmed'),
+  packing: I18n.t('trackOrder:packing'),
+  outForDelivery: I18n.t('trackOrder:outForDelivery'),
+  delivered: I18n.t('trackOrder:delivered'),
+  cancelled: I18n.t('trackOrder:cancelled'),
+  estTime: I18n.t('trackOrder:estTime'),
+  unsupportedPlatform: I18n.t('trackOrder:unsupportedPlatform'),
+  unsupportedPlatformMsg: I18n.t('trackOrder:unsupportedPlatformMsg'),
+  errorTitle: I18n.t('trackOrder:errorTitle'),
+  smsError: I18n.t('trackOrder:smsError'),
+  telError: I18n.t('trackOrder:telError')
+});
+
 /**
  * Exporting all the strings in one object..
  * Separate string object like Home, Details & Auth etc...
@@ -214,5 +242,7 @@ export default Object.freeze({
   Location,
   Products,
   Checkout,
-  Payment
+  Payment,
+  Confirmation,
+  TrackOrder
 });

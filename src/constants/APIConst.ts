@@ -18,5 +18,7 @@ export default Object.freeze({
   productsSearch: '/api/v1/products/search',
   productDetail: '/api/v1/products/', // {id} will be appended
   cart: '/api/v1/cart/',
-  cartItems: '/api/v1/cart/items'
+  cartItems: '/api/v1/cart/items',
+  orders: '/api/v1/orders',
+  cancelOrder: '/api/v1/orders/'
 });

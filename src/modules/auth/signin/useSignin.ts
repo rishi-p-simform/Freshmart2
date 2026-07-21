@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useFormik, type FormikProps } from 'formik';
 import { useEffect, useState } from 'react';
 import { setHeaders } from '../../../configs';
+import { ROUTES } from '../../../constants';
 import { AuthActions, UserActions, useAppDispatch } from '../../../redux';
 import { SigninFormSchema } from '../../../utils';
 import type { SigninFormValues, SigninHookReturnType, SigninRouteParamList } from './SigninTypes';
@@ -22,8 +23,8 @@ const useSignin = (): SigninHookReturnType & {
   /* Creating a formik object that is used to submit the form. */
   const formik: FormikProps<SigninFormValues> = useFormik<SigninFormValues>({
     initialValues: {
-      email: 'rishipatodiya12@gmail.com',
-      password: 'Rishi@123'
+      email: '',
+      password: ''
     },
     validationSchema: SigninFormSchema,
     onSubmit: async (values: SigninFormValues) => {
@@ -87,7 +88,7 @@ const useSignin = (): SigninHookReturnType & {
         if (errorMessage === 'Email not confirmed') {
           dispatch(AuthActions.resendConfirmation({ data: { email: values.email } }));
           router.navigate({
-            pathname: '/(public)/verify-email',
+            pathname: ROUTES.VerifyEmail as any,
             params: { email: values.email }
           });
         }

@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { Animated, Pressable, TextInput, View } from 'react-native';
+import { ANIMATION_DURATION } from '../../constants';
 import { useTheme } from '../../hooks';
 import { Colors } from '../../theme';
 import { Text } from '../text';
@@ -43,7 +44,7 @@ const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
   useEffect(() => {
     Animated.timing(focusAnim, {
       toValue: isFocused ? 1 : 0,
-      duration: 200,
+      duration: ANIMATION_DURATION.FAST,
       useNativeDriver: false
     }).start();
   }, [isFocused, focusAnim]);

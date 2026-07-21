@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { PAGINATION } from '../../constants';
 import { useTheme } from '../../hooks';
 import {
   AddressActions,
@@ -40,8 +41,12 @@ const useHome = () => {
         dispatch(CategoryActions.fetchCategories({})).unwrap(),
         dispatch(
           ProductsActions.fetchProducts({
-            params: { featured: true, page: 1, limit: 20 },
-            data: { listId: 'bestSellers', page: 1, isRefresh: true }
+            params: {
+              featured: true,
+              page: PAGINATION.DEFAULT_PAGE,
+              limit: PAGINATION.DEFAULT_LIMIT
+            },
+            data: { listId: 'bestSellers', page: PAGINATION.DEFAULT_PAGE, isRefresh: true }
           })
         ).unwrap(),
         refetchBanners()

@@ -1,7 +1,8 @@
 import { useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
+import { CART_CONSTANTS, ROUTES } from '../../constants';
 import { useCart } from '../../hooks';
-import { AddressSelectors, useAppSelector } from '../../redux';
+import { AddressSelectors, useAppSelector, useOrders } from '../../redux';
 import { PAYMENT_OPTIONS, type PaymentHookReturnType } from './PaymentTypes';
 
 /**
@@ -9,37 +10,58 @@ import { PAYMENT_OPTIONS, type PaymentHookReturnType } from './PaymentTypes';
  */
 const usePayment = (): PaymentHookReturnType => {
   const router = useRouter();
-  const [selectedPaymentId, setSelectedPaymentId] = useState<number>(3);
-  const [isPlacingOrder, setIsPlacingOrder] = useState<boolean>(false);
+  const [selectedPaymentId, setSelectedPaymentId] = useState<number>(
+    CART_CONSTANTS.DEFAULT_PAYMENT_OPTION_ID
+  );
 
-  const { items, subtotal, itemCount, clearCart } = useCart();
+  const { items, subtotal, itemCount, fetchCart } = useCart();
   const selectedAddressId = useAppSelector(AddressSelectors.getSelectedAddressId);
+  const { createOrder, createLoading } = useOrders();
 
   const totalMrp = items.reduce((total, item) => {
     return total + (item.product?.mrp || item.product?.price || 0) * item.quantity;
   }, 0);
 
-  const deliveryFee = subtotal >= 500 ? 0 : 49;
+  const deliveryFee =
+    subtotal >= CART_CONSTANTS.FREE_DELIVERY_THRESHOLD ? 0 : CART_CONSTANTS.DEFAULT_DELIVERY_FEE;
 
   const onSelectPayment = useCallback((id: number) => {
     setSelectedPaymentId(id);
   }, []);
 
   const handlePlaceOrder = useCallback(async () => {
-    if (!selectedAddressId || isPlacingOrder) return;
+    if (!selectedAddressId || createLoading) return;
 
     try {
-      setIsPlacingOrder(true);
-      // Simulate order placement API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      await clearCart();
-      router.replace('/(protected)/(tabs)/home');
-    } catch {
-      // Error handling if needed
-    } finally {
-      setIsPlacingOrder(false);
+      const selectedOption = PAYMENT_OPTIONS.find((opt) => opt.id === selectedPaymentId);
+      const paymentMethod = selectedOption ? selectedOption.value : 'cod';
+
+      const response = await createOrder({
+        address_id: selectedAddressId,
+        payment_method: paymentMethod
+      }).unwrap();
+
+      const createdOrder = response?.data;
+
+      if (createdOrder?.id) {
+        // Refresh cart from server since backend clears cart after order creation
+        fetchCart();
+
+        // Dismiss cart stack screens (checkout & payment) back to cart index
+        if (router.canDismiss()) {
+          router.dismissAll();
+        }
+
+        // Navigate to confirmation screen with created order ID
+        router.push({
+          pathname: ROUTES.Confirmation as any,
+          params: { id: createdOrder.id }
+        });
+      }
+    } catch (err) {
+      console.error('Failed to create order:', err);
     }
-  }, [selectedAddressId, isPlacingOrder, clearCart, router]);
+  }, [selectedAddressId, createLoading, selectedPaymentId, createOrder, fetchCart, router]);
 
   return {
     selectedPaymentId,
@@ -49,7 +71,7 @@ const usePayment = (): PaymentHookReturnType => {
     subtotal,
     totalMrp,
     deliveryFee,
-    isPlacingOrder,
+    isPlacingOrder: createLoading,
     handlePlaceOrder,
     paymentOptions: PAYMENT_OPTIONS
   };

@@ -5,6 +5,7 @@ import {
   TIMEOUT_ERROR,
   type ApiErrorResponse
 } from 'apisauce';
+import { HTTP_STATUS } from '../constants';
 import type { ErrorResponse } from '../types';
 import { APIErrorCategory } from './APIConfigTypes';
 
@@ -122,20 +123,22 @@ export const parseServerError = (
     category = APIErrorCategory.TIMEOUT;
   } else if (problem === CONNECTION_ERROR || problem === NETWORK_ERROR) {
     category = APIErrorCategory.NETWORK;
-  } else if (status === 401) {
+  } else if (status === HTTP_STATUS.UNAUTHORIZED) {
     category = APIErrorCategory.UNAUTHORIZED;
-  } else if (status === 403) {
+  } else if (status === HTTP_STATUS.FORBIDDEN) {
     category = APIErrorCategory.FORBIDDEN;
-  } else if (status === 404) {
+  } else if (status === HTTP_STATUS.NOT_FOUND) {
     category = APIErrorCategory.NOT_FOUND;
   } else if (
-    status === 422 ||
-    (status >= 400 && status < 500 && (response.data?.errors || response.data?.details))
+    status === HTTP_STATUS.UNPROCESSABLE_ENTITY ||
+    (status >= HTTP_STATUS.BAD_REQUEST &&
+      status < HTTP_STATUS.INTERNAL_SERVER_ERROR &&
+      (response.data?.errors || response.data?.details))
   ) {
     category = APIErrorCategory.VALIDATION;
-  } else if (status >= 500) {
+  } else if (status >= HTTP_STATUS.INTERNAL_SERVER_ERROR) {
     category = APIErrorCategory.SERVER;
-  } else if (status >= 400 && status < 500) {
+  } else if (status >= HTTP_STATUS.BAD_REQUEST && status < HTTP_STATUS.INTERNAL_SERVER_ERROR) {
     category = APIErrorCategory.VALIDATION;
   }
 
