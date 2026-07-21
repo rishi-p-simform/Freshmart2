@@ -122,7 +122,18 @@ const Explore = freezeStringsObject({
 });
 
 const Cart = freezeStringsObject({
-  title: I18n.t('cart:title')
+  title: I18n.t('cart:title'),
+  emptyTitle: I18n.t('cart:emptyTitle'),
+  emptyDescription: I18n.t('cart:emptyDescription'),
+  startShopping: I18n.t('cart:startShopping'),
+  applyCoupon: I18n.t('cart:applyCoupon'),
+  apply: I18n.t('cart:apply'),
+  subtotalMrp: I18n.t('cart:subtotalMrp'),
+  delivery: I18n.t('cart:delivery'),
+  free: I18n.t('cart:free'),
+  discount: I18n.t('cart:discount'),
+  total: I18n.t('cart:total'),
+  proceedToCheckout: I18n.t('cart:proceedToCheckout')
 });
 
 const Splash = freezeStringsObject({
@@ -159,6 +170,31 @@ const Products = freezeStringsObject({
   dataFetchingCompleted: I18n.t('products:dataFetchingCompleted')
 });
 
+const Checkout = freezeStringsObject({
+  title: I18n.t('checkout:title'),
+  deliveryAddress: I18n.t('checkout:deliveryAddress'),
+  addNewAddress: I18n.t('checkout:addNewAddress'),
+  deliverySlot: I18n.t('checkout:deliverySlot'),
+  proceedToPayment: I18n.t('checkout:proceedToPayment')
+});
+
+const Payment = freezeStringsObject({
+  title: I18n.t('payment:title'),
+  selectPaymentMethod: I18n.t('payment:selectPaymentMethod'),
+  orderSummary: I18n.t('payment:orderSummary'),
+  delivery: I18n.t('payment:delivery'),
+  free: I18n.t('payment:free'),
+  total: I18n.t('payment:total'),
+  placeOrder: I18n.t('payment:placeOrder'),
+  placingOrder: I18n.t('payment:placingOrder'),
+  upi: I18n.t('payment:upi'),
+  upiSubtitle: I18n.t('payment:upiSubtitle'),
+  card: I18n.t('payment:card'),
+  cardSubtitle: I18n.t('payment:cardSubtitle'),
+  cod: I18n.t('payment:cod'),
+  codSubtitle: I18n.t('payment:codSubtitle')
+});
+
 /**
  * Exporting all the strings in one object..
  * Separate string object like Home, Details & Auth etc...
@@ -176,5 +212,7 @@ export default Object.freeze({
   Cart,
   Splash,
   Location,
-  Products
+  Products,
+  Checkout,
+  Payment
 });

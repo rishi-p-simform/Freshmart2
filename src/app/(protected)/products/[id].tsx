@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import ProductsScreen from '../../../modules/products';
+import { ProductsScreen } from '../../../modules/products';
 
 export default function Product() {
   const { slug, id } = useLocalSearchParams<{

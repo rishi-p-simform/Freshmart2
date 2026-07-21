@@ -236,7 +236,7 @@ authorizedAPI.axiosInstance.interceptors.response.use(
  * @param {ApiResponse<any>} response - the response from the API call.
  * @returns None
  */
-const APIMonitor = (response: ApiResponse<any>) => { };
+const APIMonitor = (response: ApiResponse<any>) => {};
 authorizedAPI.addMonitor(APIMonitor);
 unauthorizedAPI.addMonitor(APIMonitor);
 
@@ -290,9 +290,9 @@ const apiWithCancelToken = <Response>(
   }
   const request: Promise<ApiResponse<Response>> = hasData
     ? // @ts-ignore
-    api[httpMethod](finalUrl, data, settings)
+      api[httpMethod](finalUrl, data, settings)
     : // @ts-ignore
-    api[httpMethod](finalUrl, params ?? {}, settings);
+      api[httpMethod](finalUrl, params ?? {}, settings);
 
   return request;
 };

@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter, useNavigation } from 'expo-router';
+import { Stack, useNavigation, useRouter } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { RefreshControl, ScrollView, TouchableOpacity, View } from 'react-native';
@@ -15,6 +15,7 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated';
 import { CartProductCard, CustomButton, CustomHeader, Text } from '../../components';
+import { Strings } from '../../constants';
 import { useCart, useTheme } from '../../hooks';
 import { Colors } from '../../theme';
 import styleSheet from './CartStyles';
@@ -66,127 +67,123 @@ const CartScreen: React.FC = (): React.ReactElement => {
     width: `${progressWidth.value}%`
   }));
 
-  // Dynamically set header options including item count and tab bar visibility
-  useEffect(() => {
-    navigation.setOptions({
-      tabBarStyle: { display: 'none' },
-      header: () => (
-        <CustomHeader
-          title="My Cart"
-          leftActions={[
-            {
-              icon: <Ionicons name="arrow-back" size={24} color={Colors[theme]?.text} />,
-              onPress: () => {
-                if (navigation.canGoBack()) {
-                  navigation.goBack();
-                } else {
-                  router.replace('/(protected)/(tabs)/home');
-                }
-              }
-            }
-          ]}
-          rightActions={[
-            {
-              icon: (
-                <Text
-                  variant="labelMedium"
-                  style={{ color: Colors[theme]?.palette.gray[500], marginRight: 8 }}
-                >
-                  {itemCount} {itemCount === 1 ? 'item' : 'items'}
-                </Text>
-              )
-            }
-          ]}
-        />
-      )
-    });
-  }, [navigation, itemCount, theme, router]);
-
-  if (itemCount === 0) {
-    return (
-      <View style={styles.emptyContainer}>
-        <Animated.View entering={FadeIn.duration(500)} style={styles.emptyIcon}>
-          <LottieView
-            source={require('../../assets/lotties/empty.json')}
-            style={{ width: '100%', height: '100%' }}
-            autoPlay
-            loop
-          />
-        </Animated.View>
-        <Animated.View entering={FadeInUp.delay(300).duration(500)}>
-          <Text variant="headlineSmall" style={styles.emptyTitle}>
-            Your cart is empty
-          </Text>
-        </Animated.View>
-        <Animated.View entering={FadeInUp.delay(450).duration(500)}>
-          <Text variant="bodyMedium" style={styles.emptyDescription}>
-            Looks like you haven&apos;t added anything yet.
-          </Text>
-        </Animated.View>
-        <Animated.View entering={FadeInUp.delay(600).duration(500)} style={{ width: '100%' }}>
-          <CustomButton
-            title="Start Shopping"
-            onPress={() => router.replace('/(protected)/(tabs)/home')}
-            style={styles.shopButton}
-          />
-        </Animated.View>
-      </View>
-    );
-  }
-
   return (
     <View style={styles.container}>
-      <AnimatedScrollView
-        contentContainerStyle={styles.scrollViewContent}
-        keyboardDismissMode="interactive"
-        showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            tintColor={Colors[theme]?.primary}
-            colors={[Colors[theme]?.primary || '#3B82F6']}
-          />
-        }
-      >
-        <Animated.View style={styles.mainContentContainer}>
-          {/* Free Delivery Banner */}
-          <Animated.View
-            entering={FadeInDown.duration(400).springify()}
-            style={styles.freeDeliverySection}
-          >
-            <Text style={styles.truckIcon}>🚚</Text>
-            <View style={styles.freeDeliveryRight}>
-              <Text variant="labelMedium" style={styles.freeDeliveryText}>
-                {subtotal < 500
-                  ? `Add ₹${500 - subtotal} more for FREE delivery!`
-                  : 'You unlocked Free delivery!'}
-              </Text>
-              <View style={styles.progressBar}>
-                <Animated.View style={[styles.progressedBar, animatedProgressStyle]} />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          header: () => (
+            <CustomHeader
+              title={Strings.Cart.title}
+              leftActions={[
+                {
+                  icon: <Ionicons name="arrow-back" size={24} color={Colors[theme]?.text} />,
+                  onPress: () => {
+                    if (navigation.canGoBack()) {
+                      navigation.goBack();
+                    } else {
+                      router.replace('/(protected)/(tabs)/home');
+                    }
+                  }
+                }
+              ]}
+              rightActions={[
+                {
+                  icon: (
+                    <Text
+                      variant="labelMedium"
+                      style={{ color: Colors[theme]?.palette.gray[500], marginRight: 8 }}
+                    >
+                      {itemCount} {itemCount === 1 ? Strings.Products.item : Strings.Products.items}
+                    </Text>
+                  )
+                }
+              ]}
+            />
+          )
+        }}
+      />
+
+      {itemCount === 0 ? (
+        <View style={styles.emptyContainer}>
+          <Animated.View entering={FadeIn.duration(500)} style={styles.emptyIcon}>
+            <LottieView
+              source={require('../../assets/lotties/empty.json')}
+              style={{ width: '100%', height: '100%' }}
+              autoPlay
+              loop
+            />
+          </Animated.View>
+          <Animated.View entering={FadeInUp.delay(300).duration(500)}>
+            <Text variant="headlineSmall" style={styles.emptyTitle}>
+              {Strings.Cart.emptyTitle}
+            </Text>
+          </Animated.View>
+          <Animated.View entering={FadeInUp.delay(450).duration(500)}>
+            <Text variant="bodyMedium" style={styles.emptyDescription}>
+              {Strings.Cart.emptyDescription}
+            </Text>
+          </Animated.View>
+          <Animated.View entering={FadeInUp.delay(600).duration(500)} style={{ width: '100%' }}>
+            <CustomButton
+              title={Strings.Cart.startShopping}
+              onPress={() => router.replace('/(protected)/(tabs)/home')}
+              style={styles.shopButton}
+            />
+          </Animated.View>
+        </View>
+      ) : (
+        <AnimatedScrollView
+          contentContainerStyle={styles.scrollViewContent}
+          keyboardDismissMode="interactive"
+          showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={Colors[theme]?.primary}
+              colors={[Colors[theme]?.primary || '#3B82F6']}
+            />
+          }
+        >
+          <Animated.View style={styles.mainContentContainer}>
+            {/* Free Delivery Banner */}
+            <Animated.View
+              entering={FadeInDown.duration(400).springify()}
+              style={styles.freeDeliverySection}
+            >
+              <Text style={styles.truckIcon}>🚚</Text>
+              <View style={styles.freeDeliveryRight}>
+                <Text variant="labelMedium" style={styles.freeDeliveryText}>
+                  {subtotal < 500
+                    ? `Add ₹${500 - subtotal} more for FREE delivery!`
+                    : 'You unlocked Free delivery!'}
+                </Text>
+                <View style={styles.progressBar}>
+                  <Animated.View style={[styles.progressedBar, animatedProgressStyle]} />
+                </View>
               </View>
-            </View>
-          </Animated.View>
+            </Animated.View>
 
-          {/* Cart Items List */}
-          <Animated.View
-            style={styles.itemsContainer}
-            layout={LinearTransition.springify().damping(18).stiffness(120)}
-          >
-            {items.map((item, index) => (
-              <Animated.View
-                key={item.product?.id || item.id}
-                entering={FadeInRight.delay(index * 80)
-                  .duration(350)
-                  .springify()}
-                exiting={FadeOutLeft.duration(300)}
-                layout={LinearTransition.springify().damping(18).stiffness(120)}
-              >
-                <CartProductCard product={item.product} />
-              </Animated.View>
-            ))}
+            {/* Cart Items List */}
+            <Animated.View
+              style={styles.itemsContainer}
+              layout={LinearTransition.springify().damping(18).stiffness(120)}
+            >
+              {items.map((item, index) => (
+                <Animated.View
+                  key={item.product?.id || item.id}
+                  entering={FadeInRight.delay(index * 80)
+                    .duration(350)
+                    .springify()}
+                  exiting={FadeOutLeft.duration(300)}
+                  layout={LinearTransition.springify().damping(18).stiffness(120)}
+                >
+                  <CartProductCard product={item.product} />
+                </Animated.View>
+              ))}
+            </Animated.View>
           </Animated.View>
-
           {/* Coupon & Summary Footer */}
           <Animated.View
             entering={FadeInUp.delay(200).duration(400)}
@@ -196,11 +193,11 @@ const CartScreen: React.FC = (): React.ReactElement => {
             <View style={styles.couponSection}>
               <Text style={styles.percentIcon}>%</Text>
               <Text variant="bodyMedium" style={styles.couponTitle}>
-                Apply Coupon
+                {Strings.Cart.applyCoupon}
               </Text>
               <TouchableOpacity activeOpacity={0.7}>
                 <Text variant="labelLarge" style={styles.couponApplyText}>
-                  APPLY
+                  {Strings.Cart.apply}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -209,7 +206,7 @@ const CartScreen: React.FC = (): React.ReactElement => {
             <View style={styles.summarySection}>
               <View style={styles.priceRow}>
                 <Text variant="bodyMedium" style={styles.rowLabel}>
-                  Subtotal (MRP)
+                  {Strings.Cart.subtotalMrp}
                 </Text>
                 <Text variant="bodyMedium" style={styles.rowValue}>
                   ₹{totalMrp}
@@ -218,14 +215,14 @@ const CartScreen: React.FC = (): React.ReactElement => {
 
               <View style={styles.priceRow}>
                 <Text variant="bodyMedium" style={styles.rowLabel}>
-                  Delivery
+                  {Strings.Cart.delivery}
                 </Text>
                 {deliveryFee === 0 ? (
                   <Text
                     variant="bodyMedium"
                     style={[styles.rowValue, { color: Colors[theme]?.green }]}
                   >
-                    FREE
+                    {Strings.Cart.free}
                   </Text>
                 ) : (
                   <Text variant="bodyMedium" style={styles.rowValue}>
@@ -237,7 +234,7 @@ const CartScreen: React.FC = (): React.ReactElement => {
               {discount > 0 && (
                 <View style={styles.priceRow}>
                   <Text variant="bodyMedium" style={styles.rowLabel}>
-                    Discount
+                    {Strings.Cart.discount}
                   </Text>
                   <Text variant="bodyMedium" style={styles.discountValue}>
                     -₹{discount}
@@ -249,7 +246,7 @@ const CartScreen: React.FC = (): React.ReactElement => {
 
               <View style={styles.priceRow}>
                 <Text variant="titleMedium" style={styles.totalLabel}>
-                  Total
+                  {Strings.Cart.total}
                 </Text>
                 <Text variant="titleLarge" style={styles.totalValue}>
                   ₹{totalToPay}
@@ -259,15 +256,15 @@ const CartScreen: React.FC = (): React.ReactElement => {
 
             {/* Checkout Button */}
             <CustomButton
-              title="Proceed to Checkout →"
+              title={Strings.Cart.proceedToCheckout}
               onPress={() => {
-                router.replace('/(protected)/(tabs)/home');
+                router.navigate('/(protected)/(tabs)/cart/checkout');
               }}
               style={styles.checkoutButton}
             />
           </Animated.View>
-        </Animated.View>
-      </AnimatedScrollView>
+        </AnimatedScrollView>
+      )}
     </View>
   );
 };

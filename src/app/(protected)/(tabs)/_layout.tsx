@@ -44,10 +44,12 @@ const TabsLayout: FC = (): React.ReactElement => {
         }}
       />
       <Tabs.Screen
-        name="cart/index"
+        name="cart"
         options={{
           title: 'Cart',
-          headerTitle: 'Cart'
+          headerTitle: 'Cart',
+          headerShown: false,
+          tabBarStyle: { display: 'none' }
         }}
       />
       <Tabs.Screen
