@@ -1,24 +1,7 @@
-import { Ionicons } from '@expo/vector-icons';
 import { Stack } from 'expo-router';
 import React, { type FC } from 'react';
-import { Pressable } from 'react-native';
 import { useLocationPermission, useTheme } from '../../hooks';
-import { Colors, scale } from '../../theme';
-import { navigateBack } from '../../utils';
-
-/**
- * The DetailsHeaderLeft Component
- * Renders a back chevron button for the Details screen navigation header.
- * Uses Ionicons for consistent iconography and supports dynamic tint color.
- * @param {object} props - Component props.
- * @param {string} [props.tintColor] - The tint color applied to the icon.
- * @returns {React.ReactElement} A pressable back navigation button.
- */
-const DetailsHeaderLeft = ({ tintColor }: { tintColor?: string }): React.ReactElement => (
-  <Pressable hitSlop={8} onPress={navigateBack}>
-    <Ionicons name="chevron-back" size={scale(24)} color={tintColor} />
-  </Pressable>
-);
+import { Colors } from '../../theme';
 
 /**
  * The ProtectedLayout Component
@@ -47,19 +30,6 @@ const ProtectedLayout: FC = (): React.ReactElement => {
       }}
     >
       <Stack.Screen name="(tabs)" />
-      <Stack.Screen
-        name="details"
-        options={{
-          headerShown: true,
-          title: 'Details',
-          headerTitleAlign: 'center',
-          headerLeft: DetailsHeaderLeft,
-          headerTitleStyle: {
-            color: Colors[theme]?.black,
-            fontSize: scale(18)
-          }
-        }}
-      />
       <Stack.Screen
         name="location"
         options={{

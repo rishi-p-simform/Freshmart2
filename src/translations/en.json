@@ -89,7 +89,18 @@
     "title": "All Categories"
   },
   "cart": {
-    "title": "Cart"
+    "title": "My Cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyDescription": "Looks like you haven't added anything yet.",
+    "startShopping": "Start Shopping",
+    "applyCoupon": "Apply Coupon",
+    "apply": "APPLY",
+    "subtotalMrp": "Subtotal (MRP)",
+    "delivery": "Delivery",
+    "free": "FREE",
+    "discount": "Discount",
+    "total": "Total",
+    "proceedToCheckout": "Proceed to Checkout →"
   },
   "products": {
     "noImage": "No Image",
@@ -121,5 +132,28 @@
     "saveAs": "Save As",
     "useCurrentLocation": "Use My Current Location",
     "confirmLocation": "Confirm Location"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "deliveryAddress": "Delivery Address",
+    "addNewAddress": "Add New Address",
+    "deliverySlot": "Delivery Slot",
+    "proceedToPayment": "Proceed to Payment →"
+  },
+  "payment": {
+    "title": "Payment",
+    "selectPaymentMethod": "Select Payment Method",
+    "orderSummary": "Order Summary",
+    "delivery": "Delivery",
+    "free": "FREE",
+    "total": "Total",
+    "placeOrder": "Place Order",
+    "placingOrder": "Placing Order...",
+    "upi": "UPI",
+    "upiSubtitle": "GPay, PhonePe, Paytm",
+    "card": "Card",
+    "cardSubtitle": "Visa · Mastercard · RuPay",
+    "cod": "Cash on Delivery",
+    "codSubtitle": "Pay when delivered"
   }
 }

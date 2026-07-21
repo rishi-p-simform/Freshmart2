@@ -6,7 +6,7 @@ export enum ROUTES {
   Explore = '/explore',
   Cart = '/cart',
   Profile = '/profile',
-  Details = '/details',
+  DetailsProduct = '/products/detailsProduct',
   SignIn = '/signin',
   SignUp = '/signup',
   VerifyEmail = '/verify-email',

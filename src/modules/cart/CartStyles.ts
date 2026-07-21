@@ -22,7 +22,8 @@ const styles = (theme: ThemeMode, isDark?: boolean) =>
     mainContentContainer: {
       flexGrow: 1,
       width: '100%',
-      gap: scale(12)
+      gap: scale(12),
+      flex: 1
     },
     itemsContainer: {
       gap: scale(10)

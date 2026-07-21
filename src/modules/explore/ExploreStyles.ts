@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Colors, scale, type ThemeMode } from '../../theme';
+import { ApplicationStyles, Colors, scale, type ThemeMode } from '../../theme';
 
 /**
  * A StyleSheet object that contains all of the explore screen styles.
@@ -10,7 +10,8 @@ const styles = (theme: ThemeMode, isDark?: boolean) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: Colors[theme]?.background
+      backgroundColor: Colors[theme]?.background,
+      paddingBottom: scale(66)
     },
     searchContainer: {
       paddingHorizontal: scale(16),
@@ -35,11 +36,7 @@ const styles = (theme: ThemeMode, isDark?: boolean) =>
       alignItems: 'center',
       justifyContent: 'flex-start',
       // Shadow styles for premium look
-      shadowColor: Colors[theme]?.black || '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: isDark ? 0.4 : 0.06,
-      shadowRadius: scale(8),
-      elevation: 3
+      ...ApplicationStyles(theme).cardShadow
     },
     categoryCardOverride: {
       width: '100%',

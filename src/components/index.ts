@@ -22,3 +22,7 @@ export type { ProductsListItemsProps } from './products-list-items';
 export { default as CartProductCard } from './cart-product-card';
 export type { CartProductCardProps } from './cart-product-card';
 export * from './filter-selector';
+export { default as CustomRadio } from './custom-radio';
+export type { CustomRadioProps } from './custom-radio';
+export { default as CheckoutStepper } from './checkout-stepper';
+export type { CheckoutStepperProps, CheckoutStep } from './checkout-stepper';

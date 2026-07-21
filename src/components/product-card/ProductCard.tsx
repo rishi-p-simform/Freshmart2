@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useTheme } from '../../hooks';
-import { Strings } from '../../constants';
+import { ROUTES, Strings } from '../../constants';
 import ItemCounter from '../item-counter';
 import { Text } from '../text';
 import styleSheet from './ProductCardStyles';
@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 
   const handlePress = () => {
     router.navigate({
-      pathname: '/details',
+      pathname: ROUTES.DetailsProduct as any,
       params: { id: item.id }
     });
   };

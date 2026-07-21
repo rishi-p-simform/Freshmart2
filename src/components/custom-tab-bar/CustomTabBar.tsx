@@ -3,10 +3,10 @@ import React, { type FC } from 'react';
 import { Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '../../hooks';
-import { Colors, scale } from '../../theme';
-import Text from '../text/Text';
 import { CartSelectors } from '../../redux/cart';
 import { useAppSelector } from '../../redux/useRedux';
+import { Colors, scale } from '../../theme';
+import Text from '../text/Text';
 import styleSheet from './CustomTabBarStyles';
 import { CustomTabBarProps, TabConfig } from './CustomTabBarTypes';
 
@@ -25,7 +25,7 @@ const TABS_CONFIG: TabConfig[] = [
     inactiveIcon: 'grid-outline'
   },
   {
-    name: 'cart/index',
+    name: 'cart',
     label: 'Cart',
     activeIcon: 'cart',
     inactiveIcon: 'cart-outline',
