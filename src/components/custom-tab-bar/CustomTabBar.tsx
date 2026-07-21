@@ -43,9 +43,18 @@ const TABS_CONFIG: TabConfig[] = [
  * @param {CustomTabBarProps} props - Navigation tab bar props.
  * @returns {React.ReactElement} The CustomTabBar component.
  */
-const CustomTabBar: FC<CustomTabBarProps> = ({ state, navigation }): React.ReactElement => {
+const CustomTabBar: FC<CustomTabBarProps> = (props): React.ReactElement => {
+  const { state, navigation, descriptors } = props;
   const insets = useSafeAreaInsets();
   const { theme } = useTheme();
+
+  const focusedRoute = state.routes[state.index];
+  const focusedOptions = descriptors[focusedRoute.key]?.options;
+  const tabBarStyle = focusedOptions?.tabBarStyle;
+
+  if (tabBarStyle && (tabBarStyle as any).display === 'none') {
+    return <></>;
+  }
 
   // Custom stylesheet that takes the theme and safe-area inset
   const styles = styleSheet(theme, insets.bottom);

@@ -57,7 +57,7 @@ export const palette = {
     900: '#7f1d1d',
   },
   success: {
-    50: '#f0fdf4',
+    50: '#DCFCE7',
     500: '#22c55e',
     900: '#14532d',
   },

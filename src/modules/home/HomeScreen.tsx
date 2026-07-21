@@ -2,7 +2,7 @@ import { Tabs, useRouter } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import React, { type FC } from 'react';
 import { FlatList, Pressable, RefreshControl, ScrollView, View } from 'react-native';
-import { Banner, CategoryCard, ProductsListItems, Text } from '../../components';
+import { Banner, CategoryCard, CategoryCardSkeleton, ProductsListItems, Text } from '../../components';
 import { Strings } from '../../constants';
 import { HomeHeader } from './components/home-header';
 import useHome from './useHome';
@@ -12,7 +12,7 @@ import useHome from './useHome';
  * @returns {React.ReactElement} A React element.
  */
 const HomeScreen: FC = (): React.ReactElement => {
-  const { styles, refreshing, onRefresh, greetingText, categories } = useHome();
+  const { styles, refreshing, onRefresh, greetingText, categories, categoriesLoading } = useHome();
   const router = useRouter();
 
   const handleSeeAllBestSellers = () => {
@@ -66,21 +66,34 @@ const HomeScreen: FC = (): React.ReactElement => {
         </Pressable>
       </View>
 
-      <FlatList
-        data={categories}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.categoriesList}
-        renderItem={({ item }) => (
-          <CategoryCard
-            id={item.id}
-            title={item.name}
-            image_url={item.image_url}
-            slug={item.slug}
-          />
-        )}
-        keyExtractor={(item) => item.id}
-      />
+      {categoriesLoading && categories.length === 0 ? (
+        <FlatList
+          data={Array.from({ length: 6 }, (_, i) => ({ id: `skeleton-${i}` }))}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.categoriesList}
+          renderItem={() => (
+            <CategoryCardSkeleton />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      ) : (
+        <FlatList
+          data={categories}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.categoriesList}
+          renderItem={({ item }) => (
+            <CategoryCard
+              id={item.id}
+              title={item.name}
+              image_url={item.image_url}
+              slug={item.slug}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      )}
 
       {/* Best Sellers Section */}
       <View style={styles.sectionHeader}>
