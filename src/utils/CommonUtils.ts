@@ -9,7 +9,7 @@ import type { ErrorResponse } from '../types';
  */
 const cleanArray = (o: any) => {
   return _.isArray(o) ? _.compact(o) : o;
-}
+};
 
 /**
  * It recursively removes all `undefined` and `null` values from an object
@@ -27,7 +27,7 @@ export const cleanUndefOrNull = (o: Record<string, any>) => {
       r[k] = val;
     }
   });
-}
+};
 
 /**
  * If the value is null or undefined, return true. Otherwise, return true if the string is empty or
@@ -35,12 +35,12 @@ export const cleanUndefOrNull = (o: Record<string, any>) => {
  * @param {string | null} value - string | null
  * @returns A boolean value.
  */
-const isNullOrWhiteSpace = (value: string | null): boolean  => {
+const isNullOrWhiteSpace = (value: string | null): boolean => {
   if (value === null || value === 'undefined') {
     return true;
   }
   return value.toString().replace(/\s/g, '').length < 1;
-}
+};
 
 /**
  * "Given a number and a format template, return a string that is the number formatted to the
@@ -55,7 +55,7 @@ const isNullOrWhiteSpace = (value: string | null): boolean  => {
  * @param {string} formatTemplate - The format template to use.
  * @returns A string
  */
-const formatNumber = (input: number, formatTemplate: string): string  => {
+const formatNumber = (input: number, formatTemplate: string): string => {
   const count = formatTemplate.length;
   const stringValue = input.toString();
   if (count <= stringValue.length) {
@@ -64,7 +64,7 @@ const formatNumber = (input: number, formatTemplate: string): string  => {
   let remainingCount = count - stringValue.length;
   remainingCount += 1; //Array must have an extra entry
   return new Array(remainingCount).join('0') + stringValue;
-}
+};
 
 /**
  * It takes a string with placeholders in it, and replaces the placeholders with values from an object
@@ -73,7 +73,7 @@ const formatNumber = (input: number, formatTemplate: string): string  => {
  * @param [parseByObject=false] - If the args parameter is an object, then this should be true.
  * @returns A string
  */
-export const formatString = (format: string, args: Record<string, any>): string  => {
+export const formatString = (format: string, args: Record<string, any>): string => {
   return format.replace(/{(\w+(:\w*)?)}/g, function (match, x) {
     //0
     const s = match.split(':');
@@ -91,7 +91,7 @@ export const formatString = (format: string, args: Record<string, any>): string 
     }
     return typeof arg !== 'undefined' && arg !== null ? arg : '';
   });
-}
+};
 
 /**
  * Formats an error response into a message object.

@@ -1,7 +1,6 @@
 import { useFormik, type FormikProps } from 'formik';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { setHeaders } from '../../../configs';
 import { AuthActions, UserActions, useAppDispatch } from '../../../redux';
 import { SignupFormSchema } from '../../../utils';
 import type { SignupFormValues, SignupHookReturnType } from './SignupTypes';
@@ -10,7 +9,10 @@ import type { SignupFormValues, SignupHookReturnType } from './SignupTypes';
  * Hook that returns the ref to the sign up form and the function to submit the form.
  * @returns formik props
  */
-const useSignup = (): SignupHookReturnType & { apiError: string | null; setApiError: (err: string | null) => void } => {
+const useSignup = (): SignupHookReturnType & {
+  apiError: string | null;
+  setApiError: (err: string | null) => void;
+} => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [apiError, setApiError] = useState<string | null>(null);
@@ -31,7 +33,7 @@ const useSignup = (): SignupHookReturnType & { apiError: string | null; setApiEr
         setApiError(null);
 
         // 1. POST /signup using async thunk
-        const signupResult = await dispatch(
+        await dispatch(
           AuthActions.signup({
             data: {
               email: values.email,

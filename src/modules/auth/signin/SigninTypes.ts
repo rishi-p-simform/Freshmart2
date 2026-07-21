@@ -4,7 +4,7 @@ import type { FormikProps } from 'formik';
  * The route params for the sign in screen.
  * @param {string} email - the email of the user.
  */
- 
+
 export type SigninRouteParamList = {
   email: string;
 };

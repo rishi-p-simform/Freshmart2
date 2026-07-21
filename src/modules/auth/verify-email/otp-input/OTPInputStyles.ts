@@ -7,7 +7,7 @@ export const styleSheet = (theme: ThemeMode) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: '100%',
+      width: '100%'
     },
     otpBox: {
       width: scale(42),
@@ -17,20 +17,20 @@ export const styleSheet = (theme: ThemeMode) =>
       borderRadius: scale(10),
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: Colors[theme].surface,
+      backgroundColor: Colors[theme].surface
     },
     otpText: {
-      color: Colors[theme].text,
+      color: Colors[theme].text
     },
     cursor: {
       width: 2,
       height: scale(24),
-      backgroundColor: Colors[theme].orange,
+      backgroundColor: Colors[theme].orange
     },
     hiddenInput: {
       position: 'absolute',
       width: 1,
       height: 1,
-      opacity: 0,
-    },
+      opacity: 0
+    }
   });

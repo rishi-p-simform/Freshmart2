@@ -2,7 +2,7 @@ import { fontSizeStyles } from '@/src/components/text/TextStyles';
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import React, { useRef, type FC } from 'react';
-import { ActivityIndicator, FlatList, TextInput, View } from 'react-native';
+import { FlatList, TextInput, View } from 'react-native';
 import { CategoryCard, CategoryCardSkeleton, CustomHeader, CustomInput } from '../../components';
 import { Strings } from '../../constants';
 import { useTheme } from '../../hooks';
@@ -39,12 +39,12 @@ const ExploreScreen: FC = (): React.ReactElement => {
               rightActions={[
                 {
                   icon: <Ionicons name="search" size={24} color={Colors[theme]?.solidWhite} />,
-                  onPress: handleSearchPress,
-                },
+                  onPress: handleSearchPress
+                }
               ]}
               titleStyle={{ ...fontSizeStyles.displayXS }}
             />
-          ),
+          )
         }}
       />
 

@@ -10,20 +10,20 @@ const styles = (theme: ThemeMode, _isDark?: boolean) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      width: '100%',
+      width: '100%'
     },
     columnWrapperStyle: {
       gap: scale(12),
-      justifyContent: 'space-between',
+      justifyContent: 'space-between'
     },
     contentStyle: {
       gap: scale(12),
       paddingHorizontal: scale(16),
-      paddingVertical: scale(16),
+      paddingVertical: scale(16)
     },
     searchContainer: {
       paddingHorizontal: scale(16),
-      paddingTop: scale(12),
+      paddingTop: scale(12)
     },
     searchInput: {
       height: scale(44),
@@ -32,20 +32,20 @@ const styles = (theme: ThemeMode, _isDark?: boolean) =>
       backgroundColor: Colors[theme]?.surface,
       color: Colors[theme]?.text,
       borderWidth: 1,
-      borderColor: Colors[theme]?.palette.gray[200],
+      borderColor: Colors[theme]?.palette.gray[200]
     },
     cardWrapper: {
-      flex: 0.5,
+      flex: 0.5
     },
     footerContainer: {
       paddingVertical: scale(16),
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'center'
     },
     footerText: {
       color: Colors[theme]?.palette.gray[500],
-      textAlign: 'center',
-    },
+      textAlign: 'center'
+    }
   });
 
 export default styles;

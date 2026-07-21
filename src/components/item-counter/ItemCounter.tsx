@@ -1,10 +1,16 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { Pressable, View, LayoutAnimation, Platform, UIManager, ActivityIndicator } from 'react-native';
-import { useTheme } from '../../hooks';
+import {
+  ActivityIndicator,
+  LayoutAnimation,
+  Platform,
+  Pressable,
+  UIManager,
+  View
+} from 'react-native';
+import { useCart, useTheme } from '../../hooks';
 import { Colors } from '../../theme';
 import { Text } from '../text';
-import { useCart } from '../../hooks';
 import styleSheet from './ItemCounterStyles';
 import { ItemCounterDefaultProps, type ItemCounterProps } from './ItemCounterTypes';
 
@@ -22,12 +28,10 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
  * @returns {React.ReactElement} The ItemCounter component.
  */
 const ItemCounter: React.FC<ItemCounterProps> = (props) => {
-  const {
-    product,
-    customStyle,
-    testID,
-    accessibilityLabel,
-  } = { ...ItemCounterDefaultProps, ...props };
+  const { product, customStyle, testID, accessibilityLabel } = {
+    ...ItemCounterDefaultProps,
+    ...props
+  };
 
   const { styles, theme } = useTheme(styleSheet);
   const { addToCart, updateCartItem, removeFromCart, getItemCount } = useCart();
@@ -76,9 +80,9 @@ const ItemCounter: React.FC<ItemCounterProps> = (props) => {
         testID={`${testID}-add-btn`}
       >
         {loading ? (
-          <ActivityIndicator size={14} color={Colors[theme]?.white} />
+          <ActivityIndicator size={14} color={Colors[theme]?.solidWhite} />
         ) : (
-          <Ionicons name="add" size={14} color={Colors[theme]?.white} />
+          <Ionicons name="add" size={14} color={Colors[theme]?.solidWhite} />
         )}
       </Pressable>
     );
@@ -94,17 +98,13 @@ const ItemCounter: React.FC<ItemCounterProps> = (props) => {
         accessibilityLabel={`Decrease quantity of ${product.name}`}
         testID={`${testID}-minus-btn`}
       >
-        <Ionicons name="remove" size={14} color={Colors[theme]?.palette.gray[700]} />
+        <Ionicons name="remove" size={14} color={Colors[theme]?.black} />
       </Pressable>
 
       {loading ? (
         <ActivityIndicator size={14} color={Colors[theme]?.primary} style={styles.countText} />
       ) : (
-        <Text
-          variant="labelMedium"
-          style={styles.countText}
-          testID={`${testID}-count`}
-        >
+        <Text variant="titleLarge" style={styles.countText} testID={`${testID}-count`}>
           {count}
         </Text>
       )}
@@ -117,7 +117,7 @@ const ItemCounter: React.FC<ItemCounterProps> = (props) => {
         accessibilityLabel={`Increase quantity of ${product.name}`}
         testID={`${testID}-plus-btn`}
       >
-        <Ionicons name="add" size={14} color={Colors[theme]?.white} />
+        <Ionicons name="add" size={14} color={Colors[theme]?.solidWhite} />
       </Pressable>
     </View>
   );
@@ -125,4 +125,3 @@ const ItemCounter: React.FC<ItemCounterProps> = (props) => {
 
 ItemCounter.displayName = 'ItemCounter';
 export default ItemCounter;
-

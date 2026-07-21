@@ -13,5 +13,5 @@ export interface ProductCardProps {
 }
 
 export const ProductCardDefaultProps: Partial<ProductCardProps> = {
-  testID: 'product-card',
+  testID: 'product-card'
 } as const;

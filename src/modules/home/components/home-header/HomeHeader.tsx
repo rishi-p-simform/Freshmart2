@@ -1,17 +1,16 @@
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import React, { useEffect, useMemo } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import {
-  useSharedValue,
-  withSpring,
-  withTiming
-} from 'react-native-reanimated';
+import { useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CustomInput from '../../../../components/custom-input/CustomInput';
 import { Text } from '../../../../components/text';
 import { useTheme } from '../../../../hooks';
 import { Colors, scale } from '../../../../theme';
+import { CartSelectors } from '../../../../redux/cart';
+import { useAppSelector } from '../../../../redux/useRedux';
 import styleSheet from './HomeHeaderStyles';
 import { HomeHeaderDefaultProps, type HomeHeaderProps } from './HomeHeaderTypes';
 import useHomeHeader from './useHomeHeader';
@@ -27,6 +26,8 @@ const HomeHeader: React.FC<HomeHeaderProps> = (props) => {
   const { styles, theme } = useTheme(styleSheet);
   const { displayAddress, onLocationPress, searchQuery, setSearchQuery } = useHomeHeader();
   const insets = useSafeAreaInsets();
+  const router = useRouter();
+  const cartItemCount = useAppSelector(CartSelectors.getCartItemCount);
 
   // Animation values
   const opacity = useSharedValue(0);
@@ -35,15 +36,10 @@ const HomeHeader: React.FC<HomeHeaderProps> = (props) => {
   useEffect(() => {
     opacity.value = withTiming(1, { duration: 500 });
     translateY.value = withSpring(0, { damping: 12, stiffness: 90 });
-  }, []);
+  }, [opacity, translateY]);
 
   const containerStyle = useMemo(
-    () =>
-      StyleSheet.flatten([
-        styles.container,
-        { paddingTop: insets.top },
-        customStyle,
-      ]),
+    () => StyleSheet.flatten([styles.container, { paddingTop: insets.top }, customStyle]),
     [styles.container, insets.top, customStyle]
   );
 
@@ -66,7 +62,9 @@ const HomeHeader: React.FC<HomeHeaderProps> = (props) => {
             <Ionicons name="location" size={scale(24)} color={Colors[theme]?.orange} />
           </View>
           <View style={styles.textContainer}>
-            <Text variant="bodySmall" style={styles.deliverToText}>Deliver to</Text>
+            <Text variant="bodySmall" style={styles.deliverToText}>
+              Deliver to
+            </Text>
             <View style={styles.addressRow}>
               <Text variant="headlineSmall" style={styles.addressText} numberOfLines={1}>
                 {displayAddress}
@@ -78,27 +76,36 @@ const HomeHeader: React.FC<HomeHeaderProps> = (props) => {
 
         <Pressable
           style={styles.cartIconContainer}
+          onPress={() => router.push('/cart')}
           accessibilityRole="button"
           accessibilityLabel="Cart"
         >
           <Ionicons name="cart" size={scale(24)} color={Colors[theme]?.solidWhite} />
-          <View style={styles.badge}>
-            <Text variant="captionBold" style={styles.badgeText}>3</Text>
-          </View>
+          {cartItemCount > 0 && (
+            <View style={styles.badge}>
+              <Text variant="captionBold" style={styles.badgeText}>
+                {cartItemCount}
+              </Text>
+            </View>
+          )}
         </Pressable>
       </View>
 
-      <CustomInput
-        leftIcon="search"
-        iconColor={Colors[theme]?.solidWhite}
-        placeholder="Search groceries..."
-        placeholderTextColor={Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.5)}
-        value={searchQuery}
-        onChangeText={setSearchQuery}
-        accessibilityRole="search"
-        accessibilityLabel="Search groceries"
-        containerStyle={styles.searchContainer}
-      />
+      <Pressable onPress={() => router.push('/search')}>
+        <View pointerEvents="none">
+          <CustomInput
+            leftIcon="search"
+            iconColor={Colors[theme]?.solidWhite}
+            placeholder="Search groceries..."
+            placeholderTextColor={Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.5)}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            accessibilityRole="search"
+            accessibilityLabel="Search groceries"
+            containerStyle={styles.searchContainer}
+          />
+        </View>
+      </Pressable>
     </LinearGradient>
   );
 };

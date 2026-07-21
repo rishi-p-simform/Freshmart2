@@ -65,7 +65,14 @@ const ProtectedLayout: FC = (): React.ReactElement => {
         options={{
           presentation: 'formSheet',
           sheetAllowedDetents: [0.6, 0.8, 1],
-          headerShown: false,
+          headerShown: false
+        }}
+      />
+      <Stack.Screen
+        name="search"
+        options={{
+          presentation: 'containedTransparentModal',
+          headerShown: false
         }}
       />
       <Stack.Screen

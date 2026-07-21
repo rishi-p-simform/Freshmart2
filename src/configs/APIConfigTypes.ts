@@ -19,4 +19,3 @@ export enum APIErrorCategory {
   CANCEL = 'CANCEL',
   UNKNOWN = 'UNKNOWN'
 }
-

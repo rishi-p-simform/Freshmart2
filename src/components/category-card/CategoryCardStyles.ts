@@ -15,19 +15,19 @@ const styleSheet = (theme: ThemeMode, isDark?: boolean) => {
     container: {
       width: scale(52),
       gap: scale(3),
-      alignItems: 'center',
+      alignItems: 'center'
     },
     imageStyle: {
       width: scale(52),
       height: scale(52),
-      borderRadius: scale(12),
+      borderRadius: scale(12)
     },
     textStyle: {
-      textAlign: 'center',
+      textAlign: 'center'
     },
     textColor: {
-      color: gray?.[600] ?? '#475569',
-    },
+      color: gray?.[600] ?? '#475569'
+    }
   });
 };
 

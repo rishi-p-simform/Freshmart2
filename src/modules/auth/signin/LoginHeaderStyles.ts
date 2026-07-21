@@ -10,7 +10,7 @@ const styles = (theme: ThemeMode) =>
       paddingBottom: scale(30),
       overflow: 'hidden',
       borderBottomLeftRadius: scale(32),
-      borderBottomRightRadius: scale(32),
+      borderBottomRightRadius: scale(32)
     },
     iconStyle: {
       backgroundColor: Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.24),
@@ -25,11 +25,11 @@ const styles = (theme: ThemeMode) =>
     },
     whiteText: {
       color: Colors[theme]?.solidWhite,
-      fontWeight: 'bold',
+      fontWeight: 'bold'
     },
     mutedText: {
-      color: Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.65),
-    },
+      color: Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.65)
+    }
   });
 
 export default styles;

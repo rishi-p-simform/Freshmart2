@@ -15,7 +15,7 @@ export const useAddAddress = () => {
 
   const [coordinate, setCoordinate] = useState({
     latitude: 37.78825,
-    longitude: -122.4324,
+    longitude: -122.4324
   });
 
   const [addressType, setAddressType] = useState<AddressType>('Home');
@@ -64,7 +64,7 @@ export const useAddAddress = () => {
         const location = await Location.getCurrentPositionAsync({});
         setCoordinate({
           latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
+          longitude: location.coords.longitude
         });
 
         if (isCurrent) {
@@ -91,7 +91,7 @@ export const useAddAddress = () => {
         if (result && result.length > 0) {
           setCoordinate({
             latitude: result[0].latitude,
-            longitude: result[0].longitude,
+            longitude: result[0].longitude
           });
         }
       } catch (error) {
@@ -111,7 +111,10 @@ export const useAddAddress = () => {
 
   const onConfirm = async () => {
     if (!addressLine1.trim() || !city.trim() || !state.trim() || !pincode.trim()) {
-      Alert.alert('Validation Error', 'Please fill in all required fields (Address Line 1, City, State, Pincode).');
+      Alert.alert(
+        'Validation Error',
+        'Please fill in all required fields (Address Line 1, City, State, Pincode).'
+      );
       return;
     }
 
@@ -126,7 +129,7 @@ export const useAddAddress = () => {
         pincode: pincode.trim(),
         latitude: coordinate.latitude,
         longitude: coordinate.longitude,
-        is_default: true,
+        is_default: true
       };
 
       const resultAction = await dispatch(createAddress({ data: payload })).unwrap();
@@ -159,6 +162,6 @@ export const useAddAddress = () => {
     setPincode,
     isLoadingLocation,
     isSubmitting,
-    onConfirm,
+    onConfirm
   };
 };

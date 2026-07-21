@@ -10,7 +10,6 @@ import {
   request,
   requestMultiple,
   requestNotifications,
-  PERMISSIONS,
   type Permission,
   type RationaleObject
 } from 'react-native-permissions';
@@ -341,7 +340,7 @@ const getPermissionResult = (
   types: Permission[],
   optionTypes: Permission[],
   statuses: Record<Permission[number], PermissionStatus>
-): GetPermissionResultReturnType  => {
+): GetPermissionResultReturnType => {
   const tempOptionTypes: Permission[] = optionTypes ?? [];
   const grantedList: Permission[] = types.filter(
     (type) =>
@@ -366,7 +365,7 @@ const getPermissionResult = (
     status = 'unavailable';
   }
   return { status, deniedList, blockedList };
-}
+};
 
 /**
  * used for multiple permission check and request control.

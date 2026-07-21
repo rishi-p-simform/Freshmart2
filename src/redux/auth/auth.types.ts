@@ -22,7 +22,6 @@ export interface SignupResponse {
   };
 }
 
-
 export interface VerifySignupResponse {
   success: boolean;
   message?: string;

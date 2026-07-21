@@ -21,5 +21,5 @@ export interface ProductsListItemsProps {
 export const ProductsListItemsDefaultProps: Partial<ProductsListItemsProps> = {
   testID: 'products-list-items',
   showSearch: false,
-  scrollEnabled: true,
+  scrollEnabled: true
 } as const;

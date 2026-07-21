@@ -21,7 +21,10 @@ export default function SigninForm({
   values,
   errors,
   ...props
-}: SigninFormPropsType & { apiError?: string | null; setApiError?: (err: string | null) => void }): React.ReactElement {
+}: SigninFormPropsType & {
+  apiError?: string | null;
+  setApiError?: (err: string | null) => void;
+}): React.ReactElement {
   const { styles, theme } = useTheme(styleSheet);
   const loading = useAppSelector<boolean>(AuthSelectors.getLoading);
   const apiError = (props as any).apiError;
@@ -39,7 +42,7 @@ export default function SigninForm({
         value={values.email}
         returnKeyType="next"
         keyboardType="email-address"
-        autoCapitalize='none'
+        autoCapitalize="none"
         label={Strings.Auth.lblEmail}
         placeholder={Strings.Auth.hintEmail}
         leftIcon="mail-outline"
@@ -72,11 +75,15 @@ export default function SigninForm({
       />
       <Text variant="error">{fieldErrorPassword}</Text>
 
-      <Text variant="info" style={styles.forgotPassword} onPress={() => { }}>{Strings.Auth.forgotPassword}</Text>
+      <Text variant="info" style={styles.forgotPassword} onPress={() => {}}>
+        {Strings.Auth.forgotPassword}
+      </Text>
 
       {apiError ? (
         <View style={styles.errorBanner}>
-          <Text variant="bodySmall" style={styles.errorBannerText}>{apiError}</Text>
+          <Text variant="bodySmall" style={styles.errorBannerText}>
+            {apiError}
+          </Text>
         </View>
       ) : null}
 
@@ -91,7 +98,9 @@ export default function SigninForm({
 
       <View style={styles.dividerContainer}>
         <View style={styles.dividerLine} />
-        <Text variant="labelLarge" style={styles.dividerText}>{Strings.Auth.orContinueWith}</Text>
+        <Text variant="labelLarge" style={styles.dividerText}>
+          {Strings.Auth.orContinueWith}
+        </Text>
         <View style={styles.dividerLine} />
       </View>
 
@@ -99,16 +108,20 @@ export default function SigninForm({
         variant="solid"
         style={styles.googleButton}
         title={Strings.Auth.btnGoogle}
-        onPress={() => { }}
+        onPress={() => {}}
         titleProps={{ variant: 'labelLarge' }}
         leftIcon="logo-google"
         color={Colors[theme].text}
       />
 
       <View style={styles.linkContainer}>
-        <Text variant='bodyMedium' style={styles.labelText}>
+        <Text variant="bodyMedium" style={styles.labelText}>
           {Strings.Auth.newHereLabel}
-          <Text variant='titleSmall' style={styles.linkActionText} onPress={() => navigateWithParam(ROUTES.SignUp)}>
+          <Text
+            variant="titleSmall"
+            style={styles.linkActionText}
+            onPress={() => navigateWithParam(ROUTES.SignUp)}
+          >
             Create Account
           </Text>
         </Text>

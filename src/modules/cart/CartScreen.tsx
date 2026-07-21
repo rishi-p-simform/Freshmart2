@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter, useNavigation } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
@@ -11,10 +12,9 @@ import Animated, {
   LinearTransition,
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
+  withTiming
 } from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
-import { CustomButton, CustomHeader, CartProductCard, Text } from '../../components';
+import { CartProductCard, CustomButton, CustomHeader, Text } from '../../components';
 import { useCart, useTheme } from '../../hooks';
 import { Colors } from '../../theme';
 import styleSheet from './CartStyles';
@@ -60,10 +60,10 @@ const CartScreen: React.FC = (): React.ReactElement => {
   const progressWidth = useSharedValue(0);
   useEffect(() => {
     progressWidth.value = withTiming(progressPercent, { duration: 600 });
-  }, [progressPercent]);
+  }, [progressPercent, progressWidth]);
 
   const animatedProgressStyle = useAnimatedStyle(() => ({
-    width: `${progressWidth.value}%`,
+    width: `${progressWidth.value}%`
   }));
 
   // Dynamically set header options including item count and tab bar visibility
@@ -75,21 +75,15 @@ const CartScreen: React.FC = (): React.ReactElement => {
           title="My Cart"
           leftActions={[
             {
-              icon: (
-                <Ionicons
-                  name="arrow-back"
-                  size={24}
-                  color={Colors[theme]?.text}
-                />
-              ),
+              icon: <Ionicons name="arrow-back" size={24} color={Colors[theme]?.text} />,
               onPress: () => {
                 if (navigation.canGoBack()) {
                   navigation.goBack();
                 } else {
                   router.replace('/(protected)/(tabs)/home');
                 }
-              },
-            },
+              }
+            }
           ]}
           rightActions={[
             {
@@ -100,11 +94,11 @@ const CartScreen: React.FC = (): React.ReactElement => {
                 >
                   {itemCount} {itemCount === 1 ? 'item' : 'items'}
                 </Text>
-              ),
-            },
+              )
+            }
           ]}
         />
-      ),
+      )
     });
   }, [navigation, itemCount, theme, router]);
 
@@ -182,7 +176,9 @@ const CartScreen: React.FC = (): React.ReactElement => {
             {items.map((item, index) => (
               <Animated.View
                 key={item.product?.id || item.id}
-                entering={FadeInRight.delay(index * 80).duration(350).springify()}
+                entering={FadeInRight.delay(index * 80)
+                  .duration(350)
+                  .springify()}
                 exiting={FadeOutLeft.duration(300)}
                 layout={LinearTransition.springify().damping(18).stiffness(120)}
               >
@@ -190,84 +186,86 @@ const CartScreen: React.FC = (): React.ReactElement => {
               </Animated.View>
             ))}
           </Animated.View>
-        </Animated.View>
 
-        {/* Coupon & Summary Footer */}
-        <Animated.View
-          entering={FadeInUp.delay(200).duration(400)}
-          style={styles.checkoutSection}
-        >
-          {/* Coupon Code Section */}
-          <View style={styles.couponSection}>
-            <Text style={styles.percentIcon}>%</Text>
-            <Text variant="bodyMedium" style={styles.couponTitle}>
-              Apply Coupon
-            </Text>
-            <TouchableOpacity activeOpacity={0.7}>
-              <Text variant="labelLarge" style={styles.couponApplyText}>
-                APPLY
+          {/* Coupon & Summary Footer */}
+          <Animated.View
+            entering={FadeInUp.delay(200).duration(400)}
+            style={styles.checkoutSection}
+          >
+            {/* Coupon Code Section */}
+            <View style={styles.couponSection}>
+              <Text style={styles.percentIcon}>%</Text>
+              <Text variant="bodyMedium" style={styles.couponTitle}>
+                Apply Coupon
               </Text>
-            </TouchableOpacity>
-          </View>
-
-          {/* Order Summary Calculations */}
-          <View style={styles.summarySection}>
-            <View style={styles.priceRow}>
-              <Text variant="bodyMedium" style={styles.rowLabel}>
-                Subtotal (MRP)
-              </Text>
-              <Text variant="bodyMedium" style={styles.rowValue}>
-                ₹{totalMrp}
-              </Text>
+              <TouchableOpacity activeOpacity={0.7}>
+                <Text variant="labelLarge" style={styles.couponApplyText}>
+                  APPLY
+                </Text>
+              </TouchableOpacity>
             </View>
 
-            <View style={styles.priceRow}>
-              <Text variant="bodyMedium" style={styles.rowLabel}>
-                Delivery
-              </Text>
-              {deliveryFee === 0 ? (
-                <Text variant="bodyMedium" style={[styles.rowValue, { color: Colors[theme]?.green }]}>
-                  FREE
-                </Text>
-              ) : (
-                <Text variant="bodyMedium" style={styles.rowValue}>
-                  ₹{deliveryFee}
-                </Text>
-              )}
-            </View>
-
-            {discount > 0 && (
+            {/* Order Summary Calculations */}
+            <View style={styles.summarySection}>
               <View style={styles.priceRow}>
                 <Text variant="bodyMedium" style={styles.rowLabel}>
-                  Discount
+                  Subtotal (MRP)
                 </Text>
-                <Text variant="bodyMedium" style={styles.discountValue}>
-                  -₹{discount}
+                <Text variant="bodyMedium" style={styles.rowValue}>
+                  ₹{totalMrp}
                 </Text>
               </View>
-            )}
 
-            <View style={styles.divider} />
+              <View style={styles.priceRow}>
+                <Text variant="bodyMedium" style={styles.rowLabel}>
+                  Delivery
+                </Text>
+                {deliveryFee === 0 ? (
+                  <Text
+                    variant="bodyMedium"
+                    style={[styles.rowValue, { color: Colors[theme]?.green }]}
+                  >
+                    FREE
+                  </Text>
+                ) : (
+                  <Text variant="bodyMedium" style={styles.rowValue}>
+                    ₹{deliveryFee}
+                  </Text>
+                )}
+              </View>
 
-            <View style={styles.priceRow}>
-              <Text variant="titleMedium" style={styles.totalLabel}>
-                Total
-              </Text>
-              <Text variant="titleLarge" style={styles.totalValue}>
-                ₹{totalToPay}
-              </Text>
+              {discount > 0 && (
+                <View style={styles.priceRow}>
+                  <Text variant="bodyMedium" style={styles.rowLabel}>
+                    Discount
+                  </Text>
+                  <Text variant="bodyMedium" style={styles.discountValue}>
+                    -₹{discount}
+                  </Text>
+                </View>
+              )}
+
+              <View style={styles.divider} />
+
+              <View style={styles.priceRow}>
+                <Text variant="titleMedium" style={styles.totalLabel}>
+                  Total
+                </Text>
+                <Text variant="titleLarge" style={styles.totalValue}>
+                  ₹{totalToPay}
+                </Text>
+              </View>
             </View>
-          </View>
 
-          {/* Checkout Button */}
-          <CustomButton
-            title="Proceed to Checkout →"
-            onPress={() => {
-              // Navigating to Home/Explore as Checkout doesn't exist, or alert
-              router.replace('/(protected)/(tabs)/home');
-            }}
-            style={styles.checkoutButton}
-          />
+            {/* Checkout Button */}
+            <CustomButton
+              title="Proceed to Checkout →"
+              onPress={() => {
+                router.replace('/(protected)/(tabs)/home');
+              }}
+              style={styles.checkoutButton}
+            />
+          </Animated.View>
         </Animated.View>
       </AnimatedScrollView>
     </View>

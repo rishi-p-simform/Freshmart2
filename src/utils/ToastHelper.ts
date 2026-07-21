@@ -6,7 +6,7 @@ export const ToastHelper = {
       type: 'success',
       text1,
       text2,
-      position: 'bottom',
+      position: 'bottom'
     });
   },
   showError: (text1: string, text2?: string) => {
@@ -14,7 +14,7 @@ export const ToastHelper = {
       type: 'error',
       text1,
       text2,
-      position: 'bottom',
+      position: 'bottom'
     });
   },
   showInfo: (text1: string, text2?: string) => {
@@ -22,7 +22,7 @@ export const ToastHelper = {
       type: 'info',
       text1,
       text2,
-      position: 'bottom',
+      position: 'bottom'
     });
   }
 };

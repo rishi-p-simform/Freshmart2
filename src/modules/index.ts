@@ -5,6 +5,6 @@ export * from './profile';
 export * from './explore';
 export * from './cart';
 export * from './location';
+export * from './search';
 export { default as SplashScreen } from './splash';
 export * from './products';
-

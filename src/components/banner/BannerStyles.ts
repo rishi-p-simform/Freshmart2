@@ -6,7 +6,6 @@ import { scale, width } from '../../theme/Metrics';
 export const ITEM_WIDTH = width - scale(28);
 export const ITEM_GAP = scale(28);
 
-
 /**
  * Styles for the Banner component
  */
@@ -15,7 +14,7 @@ export const styleSheet = (theme: ThemeMode, isDark?: boolean) =>
     ...ApplicationStyles(theme),
     scrollViewStyle: {
       gap: ITEM_GAP,
-      paddingHorizontal: (width - ITEM_WIDTH) / 2,
+      paddingHorizontal: (width - ITEM_WIDTH) / 2
     },
     skeletonContainer: {
       flexDirection: 'row',
@@ -34,12 +33,12 @@ export const styleSheet = (theme: ThemeMode, isDark?: boolean) =>
     },
     containerLeft: {
       flex: 1,
-      flexShrink: 1,
+      flexShrink: 1
     },
     imageStyle: {
       width: ITEM_WIDTH,
       height: '140%',
-      position: 'absolute',
+      position: 'absolute'
     },
     circle: {
       position: 'absolute',
@@ -49,23 +48,23 @@ export const styleSheet = (theme: ThemeMode, isDark?: boolean) =>
       height: scale(72),
       borderRadius: scale(36),
       backgroundColor: Colors.light.alpha(Colors[theme]?.white, 0.1),
-      zIndex: 99,
+      zIndex: 99
     },
     gradient: {
-      ...StyleSheet.absoluteFillObject,
+      ...StyleSheet.absoluteFillObject
     },
     title: {
-      color: Colors.light.alpha(Colors[theme]?.solidWhite, 0.85),
+      color: Colors.light.alpha(Colors[theme]?.solidWhite, 0.85)
     },
     whiteText: {
-      color: Colors[theme]?.solidWhite,
+      color: Colors[theme]?.solidWhite
     },
     orangeText: {
-      color: Colors[theme]?.orange,
+      color: Colors[theme]?.orange
     },
     shopNowSection: {
       flex: 1,
-      flexDirection: 'row',
+      flexDirection: 'row'
     },
     shopNow: {
       marginTop: scale(7),
@@ -76,26 +75,26 @@ export const styleSheet = (theme: ThemeMode, isDark?: boolean) =>
       alignItems: 'center',
       alignSelf: 'flex-end',
       gap: scale(2),
-      backgroundColor: Colors[theme]?.white,
+      backgroundColor: Colors[theme]?.white
     },
     skeletonTitle: {
       width: scale(70),
       height: scale(10),
       marginBottom: scale(8),
       borderRadius: scale(4),
-      backgroundColor: Colors.light.alpha(Colors[theme]?.white, 0.5),
+      backgroundColor: Colors.light.alpha(Colors[theme]?.white, 0.5)
     },
     skeletonSubtitle: {
       width: scale(100),
       height: scale(16),
       marginBottom: scale(12),
       borderRadius: scale(4),
-      backgroundColor: Colors.light.alpha(Colors[theme]?.white, 0.5),
+      backgroundColor: Colors.light.alpha(Colors[theme]?.white, 0.5)
     },
     skeletonButton: {
       width: scale(75),
       height: scale(30),
       borderRadius: scale(7),
-      backgroundColor: Colors.light.alpha(Colors[theme]?.white, 0.5),
-    },
+      backgroundColor: Colors.light.alpha(Colors[theme]?.white, 0.5)
+    }
   });

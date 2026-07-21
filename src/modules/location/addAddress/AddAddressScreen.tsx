@@ -1,4 +1,4 @@
-import { CustomInput, Spinner, Text } from '@/src/components';
+import { FilterSelector, CustomInput, Spinner, Text } from '@/src/components';
 import Strings from '@/src/constants/Strings';
 import { useTheme } from '@/src/hooks';
 import { scale } from '@/src/theme';
@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { AppleMaps, GoogleMaps } from 'expo-maps';
 import React, { useMemo, useRef, type FC } from 'react';
-import { Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { Platform, Pressable, StyleSheet, View, useWindowDimensions } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import styleSheet from './AddAddressStyles';
 import { useAddAddress } from './useAddAddress';
@@ -17,15 +17,23 @@ import { useAddAddress } from './useAddAddress';
  * @returns {React.ReactElement} The Add Address Screen.
  */
 const AddAddressScreen: FC = (): React.ReactElement => {
-  const { styles, theme, isDark } = useTheme(styleSheet);
+  const { styles, isDark } = useTheme(styleSheet);
   const {
-    isCurrent, coordinate, goBack,
-    addressType, setAddressType,
-    addressLine1, setAddressLine1,
-    addressLine2, setAddressLine2,
-    city, setCity,
-    state, setState,
-    pincode, setPincode,
+    isCurrent,
+    coordinate,
+    goBack,
+    addressType,
+    setAddressType,
+    addressLine1,
+    setAddressLine1,
+    addressLine2,
+    setAddressLine2,
+    city,
+    setCity,
+    state,
+    setState,
+    pincode,
+    setPincode,
     isLoadingLocation,
     isSubmitting,
     onConfirm
@@ -44,7 +52,7 @@ const AddAddressScreen: FC = (): React.ReactElement => {
       mass: 1,
       overshootClamping: true,
       restDisplacementThreshold: 10,
-      restSpeedThreshold: 10,
+      restSpeedThreshold: 10
     }),
     []
   );
@@ -61,7 +69,7 @@ const AddAddressScreen: FC = (): React.ReactElement => {
       top: 0,
       left: 0,
       right: 0,
-      height: animatedPosition.value,
+      height: animatedPosition.value
     };
   });
 
@@ -72,7 +80,7 @@ const AddAddressScreen: FC = (): React.ReactElement => {
   const renderMap = () => {
     const cameraPosition = {
       coordinates: coordinate,
-      zoom: 14,
+      zoom: 14
     };
 
     const markers = isCurrent
@@ -87,7 +95,7 @@ const AddAddressScreen: FC = (): React.ReactElement => {
           markers={markers}
           uiSettings={{ myLocationButtonEnabled: false }}
           properties={{
-            mapType: isDark ? AppleMaps.MapType.HYBRID : AppleMaps.MapType.STANDARD,
+            mapType: isDark ? AppleMaps.MapType.HYBRID : AppleMaps.MapType.STANDARD
           }}
         />
       );
@@ -131,7 +139,10 @@ const AddAddressScreen: FC = (): React.ReactElement => {
         handleIndicatorStyle={styles.dragHandle}
         backgroundStyle={{ backgroundColor: styles.container.backgroundColor }}
       >
-        <BottomSheetScrollView contentContainerStyle={styles.bottomOverlay} showsVerticalScrollIndicator={false}>
+        <BottomSheetScrollView
+          contentContainerStyle={styles.bottomOverlay}
+          showsVerticalScrollIndicator={false}
+        >
           <Text variant="titleLarge" style={styles.headerText}>
             {Strings.Location.setDeliveryLocation}
           </Text>
@@ -179,28 +190,17 @@ const AddAddressScreen: FC = (): React.ReactElement => {
             </View>
           </View>
 
-          <Text variant="labelLarge">
-            {Strings.Location.saveAs}
-          </Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.addressTypeContainer}>
-            {['Home', 'Work', 'Other'].map((type) => {
-              const isSelected = addressType === type;
-              return (
-                <Pressable
-                  key={type}
-                  style={[styles.addressTypeChip, isSelected && styles.addressTypeChipSelected]}
-                  onPress={() => setAddressType(type as any)}
-                >
-                  <Text
-                    variant="labelMedium"
-                    style={[styles.addressTypeChipText, isSelected && styles.addressTypeChipTextSelected]}
-                  >
-                    {type}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </ScrollView>
+          <Text variant="labelLarge">{Strings.Location.saveAs}</Text>
+          <FilterSelector
+            options={[
+              { id: 'Home', name: 'Home' },
+              { id: 'Work', name: 'Work' },
+              { id: 'Other', name: 'Other' }
+            ]}
+            selectedCategoryId={addressType}
+            onSelectCategory={(id) => id && setAddressType(id as any)}
+            customStyle={{ paddingVertical: scale(8) }}
+          />
 
           {!isCurrent && (
             <Pressable

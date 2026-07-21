@@ -15,7 +15,7 @@ const LANGUAGE_DETECTOR = {
     const language = storage.getString(MMKVKeys.appLanguage);
     callback(language ?? deviceLang);
   },
-  init: () => { },
+  init: () => {},
   cacheUserLanguage: (language: string) => {
     storage.set(MMKVKeys.appLanguage, language);
   }
@@ -30,6 +30,7 @@ const LANGUAGE_DETECTOR = {
  * - detect: async (callback: any) => void - A phone language detector
  * @returns None
  */
+// eslint-disable-next-line import/no-named-as-default-member
 i18n
   .use(LANGUAGE_DETECTOR)
   .use(initReactI18next)

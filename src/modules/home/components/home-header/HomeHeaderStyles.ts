@@ -12,12 +12,12 @@ const styleSheet = (theme: ThemeMode) =>
     container: {
       paddingHorizontal: scale(16),
       paddingBottom: scale(16),
-      gap: scale(8),
+      gap: scale(8)
     },
     topRow: {
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: 'space-between'
     },
     locationSection: {
       flexDirection: 'row',
@@ -74,8 +74,7 @@ const styleSheet = (theme: ThemeMode) =>
     },
     searchIcon: {
       marginRight: scale(8)
-    },
-
+    }
   });
 
 export default styleSheet;

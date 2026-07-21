@@ -10,7 +10,7 @@ const styles = (theme: ThemeMode) =>
   StyleSheet.create({
     ...ApplicationStyles(theme),
     screenView: {
-      backgroundColor: Colors[theme]?.background,
+      backgroundColor: Colors[theme]?.background
     }
   });
 

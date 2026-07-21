@@ -11,7 +11,7 @@ import OTPInput from './otp-input/OTPInput';
 import useVerifyEmail from './useVerifyEmail';
 import { styleSheet } from './VerifyEmailStyles';
 
-const VerifyEmailHeader = ({ style, themeColors }: { style: any, themeColors: any }) => (
+const VerifyEmailHeader = ({ style, themeColors }: { style: any; themeColors: any }) => (
   <Animated.View style={style.headerContainer} entering={ZoomIn.duration(500)}>
     <LinearGradient
       style={style.gradientStyle}
@@ -28,17 +28,19 @@ const VerifyEmailHeader = ({ style, themeColors }: { style: any, themeColors: an
 
 const VerifyEmailScreen: React.FC = () => {
   const { styles, theme } = useTheme(styleSheet);
-  const { code, setCode, onSubmit, onResend, onOpenEmail, timer, isLoading, email } = useVerifyEmail();
+  const { code, setCode, onSubmit, onResend, onOpenEmail, timer, isLoading, email } =
+    useVerifyEmail();
   const themeColors = Colors[theme];
 
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView} contentContainerStyle={styles.contentContainer}>
-
         <VerifyEmailHeader style={styles} themeColors={themeColors} />
 
         <Animated.View entering={FadeInDown.delay(100).duration(400)}>
-          <Text style={styles.title} variant="titleMedium">{Strings.Auth.verifyEmailSentTo}</Text>
+          <Text style={styles.title} variant="titleMedium">
+            {Strings.Auth.verifyEmailSentTo}
+          </Text>
         </Animated.View>
         <Animated.View entering={FadeInDown.delay(200).duration(400)}>
           <Text style={styles.subtitle} variant="bodyMedium">
@@ -51,18 +53,16 @@ const VerifyEmailScreen: React.FC = () => {
         </Animated.View>
 
         <Animated.View entering={FadeInUp.delay(400).duration(400)} style={styles.codeContainer}>
-          <OTPInput
-            length={6}
-            value={code}
-            onChange={setCode}
-
-          />
+          <OTPInput length={6} value={code} onChange={setCode} />
         </Animated.View>
 
         <Animated.View entering={FadeInUp.delay(500).duration(400)}>
           <TouchableOpacity style={styles.resendContainer} onPress={onResend} disabled={timer > 0}>
             <Text style={styles.resendText}>
-              {Strings.Auth.verifyEmailResendIn} <Text style={styles.resendTimer}>{timer > 0 ? `00:${timer < 10 ? `0${timer}` : timer}` : 'Now'}</Text>
+              {Strings.Auth.verifyEmailResendIn}{' '}
+              <Text style={styles.resendTimer}>
+                {timer > 0 ? `00:${timer < 10 ? `0${timer}` : timer}` : 'Now'}
+              </Text>
             </Text>
           </TouchableOpacity>
         </Animated.View>

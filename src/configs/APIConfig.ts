@@ -12,12 +12,12 @@ import {
   type ApiResponse,
   type ApisauceInstance
 } from 'apisauce';
-import axios, { type AxiosRequestConfig, type CancelTokenSource, type Method } from 'axios';
+import { isAxiosError, type AxiosRequestConfig, type CancelTokenSource, type Method } from 'axios';
 import _ from 'lodash';
 import { AppEnvConst, Strings } from '../constants';
 import type { ErrorResponse } from '../types';
-import { formatString, getErrorResponse } from '../utils/CommonUtils';
-import { APIErrorType, APIErrorCategory } from './APIConfigTypes';
+import { formatString } from '../utils/CommonUtils';
+import { APIErrorCategory, APIErrorType } from './APIConfigTypes';
 
 import { parseServerError } from './APIErrorParser';
 
@@ -95,13 +95,13 @@ export interface APIDispatch<Returned> {
  * @param {string} baseURL - The base URL of the API.
  * @returns {ApisauceInstance} - The API instance
  */
-const apiConfig = (baseURL: string): ApisauceInstance  => {
+const apiConfig = (baseURL: string): ApisauceInstance => {
   return create({
     baseURL,
     timeout: 120000,
     headers: { 'Cache-Control': 'no-cache', 'Content-Type': 'application/json' }
   });
-}
+};
 
 /**
  * Creating two instances of the API. One is authorized and the other is unauthorized.
@@ -117,9 +117,9 @@ export const unauthorizedAPI: ApisauceInstance = apiConfig(AppEnvConst.apiUrl);
  * @param {Record<string, any>} headers - the headers to set for the authorized API.
  * @returns None
  */
-export const setHeaders = (headers: Record<string, any>): void  => {
+export const setHeaders = (headers: Record<string, any>): void => {
   authorizedAPI.setHeaders(headers);
-}
+};
 
 /**
  * Adds an async request transform to the authorized API.
@@ -127,9 +127,6 @@ export const setHeaders = (headers: Record<string, any>): void  => {
  * @returns None
  */
 authorizedAPI.addAsyncRequestTransform(async (request) => {
-   
-  console.log({ request });
-
   try {
     const { default: store } = await import('../redux/Store');
     const state = store.getState();
@@ -147,7 +144,7 @@ authorizedAPI.addAsyncRequestTransform(async (request) => {
 });
 
 let isRefreshing = false;
-let failedQueue: Array<{ resolve: (value?: unknown) => void; reject: (reason?: any) => void }> = [];
+let failedQueue: { resolve: (value?: unknown) => void; reject: (reason?: any) => void }[] = [];
 
 const processQueue = (error: any, token: string | null = null) => {
   failedQueue.forEach((prom) => {
@@ -164,7 +161,7 @@ authorizedAPI.axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    
+
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
@@ -189,12 +186,14 @@ authorizedAPI.axiosInstance.interceptors.response.use(
         const refreshToken = state.auth?.refreshToken;
 
         if (refreshToken) {
-          const refreshResponse = await unauthorizedAPI.post('/api/v1/auth/refresh', { refresh_token: refreshToken });
-          
+          const refreshResponse = await unauthorizedAPI.post('/api/v1/auth/refresh', {
+            refresh_token: refreshToken
+          });
+
           if (refreshResponse.ok && refreshResponse.data) {
             const data = refreshResponse.data as any; // Type as RefreshResponse roughly
             const session = data?.data?.session;
-            
+
             if (session && session.access_token) {
               store.dispatch(
                 AuthActions.setSession({
@@ -203,15 +202,15 @@ authorizedAPI.axiosInstance.interceptors.response.use(
                   expiresIn: session.expires_in
                 })
               );
-              
+
               authorizedAPI.setHeaders({ Authorization: `Bearer ${session.access_token}` });
               originalRequest.headers.Authorization = `Bearer ${session.access_token}`;
-              
+
               processQueue(null, session.access_token);
               return authorizedAPI.axiosInstance(originalRequest);
             }
           }
-          
+
           // If refresh failed or structure was missing
           store.dispatch(AuthActions.clearSession());
           processQueue(new Error('Refresh failed'));
@@ -227,7 +226,7 @@ authorizedAPI.axiosInstance.interceptors.response.use(
         isRefreshing = false;
       }
     }
-    
+
     return Promise.reject(error);
   }
 );
@@ -237,10 +236,7 @@ authorizedAPI.axiosInstance.interceptors.response.use(
  * @param {ApiResponse<any>} response - the response from the API call.
  * @returns None
  */
-const APIMonitor = (response: ApiResponse<any>) => {
-   
-  console.log({ response });
-}
+const APIMonitor = (response: ApiResponse<any>) => { };
 authorizedAPI.addMonitor(APIMonitor);
 unauthorizedAPI.addMonitor(APIMonitor);
 
@@ -251,9 +247,6 @@ unauthorizedAPI.addMonitor(APIMonitor);
  * @returns None
  */
 async function asyncResponseTransform(response: ApiResponse<any>) {
-   
-  // console.log({ response });
-
   // TODO: You can add global condition for token expired or internet issue like below
   // if (response.status === 401) {
   //   AsyncStorage.clear();
@@ -276,7 +269,7 @@ unauthorizedAPI.addAsyncResponseTransform(asyncResponseTransform);
 const apiWithCancelToken = <Response>(
   { api, method, url, params, data, setting, paths }: ApiConfig,
   source: CancelTokenSource
-): Promise<ApiResponse<Response>>  => {
+): Promise<ApiResponse<Response>> => {
   const httpMethod: string = method.toLowerCase();
 
   const hasData: boolean = ['post', 'put', 'patch'].indexOf(httpMethod) >= 0;
@@ -302,7 +295,7 @@ const apiWithCancelToken = <Response>(
     api[httpMethod](finalUrl, params ?? {}, settings);
 
   return request;
-}
+};
 
 /**
  * Handles the error response from the API.
@@ -314,7 +307,7 @@ const apiWithCancelToken = <Response>(
 const handleError = <Response extends ResponseBound>(
   response: ApiErrorResponse<Response>,
   shouldShowToast: boolean
-): ErrorResponse  => {
+): ErrorResponse => {
   let defaultMessage = Strings.APIError.somethingWentWrong;
   switch (response.problem) {
     case CLIENT_ERROR:
@@ -348,15 +341,15 @@ const handleError = <Response extends ResponseBound>(
   }
 
   return error;
-}
+};
 
 /**
  * Handles errors that occur when making API calls.
  * @param {unknown} error - unknown - This is the error that is thrown by the API.
  * @returns {ErrorResponse} - The error response object.
  */
-const handleCatchError = (error: unknown): ErrorResponse  => {
-  if (axios.isAxiosError(error)) {
+const handleCatchError = (error: unknown): ErrorResponse => {
+  if (isAxiosError(error)) {
     return {
       message: error.message,
       category: APIErrorCategory.NETWORK,
@@ -372,16 +365,13 @@ const handleCatchError = (error: unknown): ErrorResponse  => {
       raw: error
     };
   }
-}
-
-
+};
 
 /**
  * Processes the API response and captures any relevant information for error reporting.
  * @param {ApiErrorResponse<Response>} response - The API error response to process.
  * @param {string} url - The URL of the API endpoint that was called.
  */
-
 
 /**
  * It creates an async thunk that uses a cancel token to cancel the request if the user navigates away
@@ -397,7 +387,7 @@ export const createAsyncThunkWithCancelToken = <Response extends ResponseBound>(
   method: Method,
   url: string,
   api: ApisauceInstance = authorizedAPI
-): AsyncThunk<Response, ThunkArg, ThunkApiConfig>  => {
+): AsyncThunk<Response, ThunkArg, ThunkApiConfig> => {
   return createAsyncThunk<Response, ThunkArg, ThunkApiConfig>(
     typePrefix,
     async (payload, thunkApi) => {
@@ -423,4 +413,4 @@ export const createAsyncThunkWithCancelToken = <Response extends ResponseBound>(
       }
     }
   );
-}
+};

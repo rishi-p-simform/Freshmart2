@@ -27,9 +27,7 @@ const useExplore = (): ExploreHookReturnType => {
       return categories;
     }
     const query = searchQuery.toLowerCase();
-    return categories.filter((category) =>
-      category.name.toLowerCase().includes(query)
-    );
+    return categories.filter((category) => category.name.toLowerCase().includes(query));
   }, [categories, searchQuery]);
 
   return {
@@ -37,7 +35,7 @@ const useExplore = (): ExploreHookReturnType => {
     setSearchQuery,
     filteredCategories,
     loading,
-    categories,
+    categories
   };
 };
 

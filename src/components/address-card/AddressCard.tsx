@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { View, Pressable, StyleProp, ViewStyle, ActivityIndicator } from 'react-native';
+import { View, Pressable, ActivityIndicator } from 'react-native';
 import { useTheme } from '../../hooks';
 import { Colors, scale } from '../../theme';
 import { Text } from '../text';
@@ -31,17 +31,13 @@ const AddressCard: React.FC<AddressCardProps> = (props) => {
     isSelected,
     customStyle,
     testID,
-    accessibilityLabel,
+    accessibilityLabel
   } = { ...AddressCardDefaultProps, ...props };
 
   const { styles, theme } = useTheme(styleSheet);
   const primary = Colors[theme]?.palette?.primary?.[600] ?? '#2563eb';
 
-  const cardStyle = [
-    styles.cardContainer,
-    isSelected && styles.cardContainerSelected,
-    customStyle
-  ];
+  const cardStyle = [styles.cardContainer, isSelected && styles.cardContainerSelected, customStyle];
 
   const content = (
     <>
@@ -113,11 +109,7 @@ const AddressCard: React.FC<AddressCardProps> = (props) => {
                 {isDeleting ? (
                   <ActivityIndicator size="small" color={Colors[theme]?.error} />
                 ) : (
-                  <Ionicons
-                    name="trash-outline"
-                    size={scale(15)}
-                    color={Colors[theme]?.error}
-                  />
+                  <Ionicons name="trash-outline" size={scale(15)} color={Colors[theme]?.error} />
                 )}
               </Pressable>
             )}

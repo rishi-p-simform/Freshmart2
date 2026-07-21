@@ -1,4 +1,9 @@
-import { createSlice, type ActionReducerMapBuilder, type Draft, type PayloadAction } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  type ActionReducerMapBuilder,
+  type Draft,
+  type PayloadAction
+} from '@reduxjs/toolkit';
 import { APIConst, ToolkitAction } from '../../constants';
 import { authorizedAPI } from '../../configs';
 import { createAsyncThunkWithCancelToken } from '../../configs/APIConfig';
@@ -35,15 +40,21 @@ const categorySlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchCategories.fulfilled, (state: Draft<CategoryStateType>, action: PayloadAction<CategoryListResponse>) => {
-        state.loading = false;
-        state.categories = action.payload?.data || [];
-        state.lastUpdated = Date.now();
-      })
-      .addCase(fetchCategories.rejected, (state: Draft<CategoryStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.loading = false;
-        state.error = action.payload || null;
-      });
+      .addCase(
+        fetchCategories.fulfilled,
+        (state: Draft<CategoryStateType>, action: PayloadAction<CategoryListResponse>) => {
+          state.loading = false;
+          state.categories = action.payload?.data || [];
+          state.lastUpdated = Date.now();
+        }
+      )
+      .addCase(
+        fetchCategories.rejected,
+        (state: Draft<CategoryStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload || null;
+        }
+      );
 
     // Fetch Category Detail
     builder
@@ -51,15 +62,21 @@ const categorySlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchCategoryDetail.fulfilled, (state: Draft<CategoryStateType>, action: PayloadAction<CategoryResponse>) => {
-        state.loading = false;
-        state.categoryDetail = action.payload?.data || null;
-        state.lastUpdated = Date.now();
-      })
-      .addCase(fetchCategoryDetail.rejected, (state: Draft<CategoryStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.loading = false;
-        state.error = action.payload || null;
-      });
+      .addCase(
+        fetchCategoryDetail.fulfilled,
+        (state: Draft<CategoryStateType>, action: PayloadAction<CategoryResponse>) => {
+          state.loading = false;
+          state.categoryDetail = action.payload?.data || null;
+          state.lastUpdated = Date.now();
+        }
+      )
+      .addCase(
+        fetchCategoryDetail.rejected,
+        (state: Draft<CategoryStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload || null;
+        }
+      );
   }
 });
 

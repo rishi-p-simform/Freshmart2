@@ -5,6 +5,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '../../hooks';
 import { Colors, scale } from '../../theme';
 import Text from '../text/Text';
+import { CartSelectors } from '../../redux/cart';
+import { useAppSelector } from '../../redux/useRedux';
 import styleSheet from './CustomTabBarStyles';
 import { CustomTabBarProps, TabConfig } from './CustomTabBarTypes';
 
@@ -47,6 +49,7 @@ const CustomTabBar: FC<CustomTabBarProps> = (props): React.ReactElement => {
   const { state, navigation, descriptors } = props;
   const insets = useSafeAreaInsets();
   const { theme } = useTheme();
+  const cartItemCount = useAppSelector(CartSelectors.getCartItemCount);
 
   const focusedRoute = state.routes[state.index];
   const focusedOptions = descriptors[focusedRoute.key]?.options;
@@ -61,7 +64,7 @@ const CustomTabBar: FC<CustomTabBarProps> = (props): React.ReactElement => {
 
   // Dynamic badge infrastructure
   const dynamicBadges = {
-    cart: 3 // Dynamic count, could be loaded from Redux store in the future
+    cart: cartItemCount
   };
 
   return (
@@ -107,13 +110,11 @@ const CustomTabBar: FC<CustomTabBarProps> = (props): React.ReactElement => {
               <Ionicons name={iconName} size={scale(20)} color={iconColor} />
               {badgeValue > 0 && (
                 <View style={styles.badgeContainer}>
-                  <Text style={styles.badgeText}>
-                    {badgeValue}
-                  </Text>
+                  <Text style={styles.badgeText}>{badgeValue}</Text>
                 </View>
               )}
             </View>
-            <Text variant='labelSmall' style={[styles.label, { color: textColor }]}>
+            <Text variant="labelSmall" style={[styles.label, { color: textColor }]}>
               {tab.label}
             </Text>
           </Pressable>

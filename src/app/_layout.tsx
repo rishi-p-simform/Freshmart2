@@ -8,7 +8,7 @@ import {
   PlusJakartaSans_500Medium,
   PlusJakartaSans_600SemiBold,
   PlusJakartaSans_700Bold,
-  PlusJakartaSans_800ExtraBold,
+  PlusJakartaSans_800ExtraBold
 } from '@expo-google-fonts/plus-jakarta-sans';
 import { DefaultTheme, ThemeProvider, type Theme } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
@@ -73,7 +73,6 @@ const RootNavigator: FC = (): React.ReactElement => {
       </Stack.Protected>
     </Stack>
   );
-
 };
 
 /**
@@ -136,7 +135,7 @@ const RootLayout: FC = (): React.ReactElement | null => {
     PlusJakartaSans_500Medium,
     PlusJakartaSans_600SemiBold,
     PlusJakartaSans_700Bold,
-    PlusJakartaSans_800ExtraBold,
+    PlusJakartaSans_800ExtraBold
   });
 
   useEffect(() => {

@@ -15,14 +15,14 @@ export const checkDeps = (deps: React.DependencyList, name: string) => {
       `${name} should not be used with no dependencies. Use ${reactHookName} instead.`
     );
   }
-}
+};
 
 /**
  * A React hook that returns a memoized version of the given dependency list.
  * @param {React.DependencyList} value - the dependency list to memoize
  * @returns {React.DependencyList} - the memoized version of the dependency list
  */
-const useDeepCompareMemoize = (value: React.DependencyList): React.DependencyList  => {
+const useDeepCompareMemoize = (value: React.DependencyList): React.DependencyList => {
   const ref = useRef<React.DependencyList>([]);
 
   if (!_.isEqual(value, ref.current)) {
@@ -30,6 +30,6 @@ const useDeepCompareMemoize = (value: React.DependencyList): React.DependencyLis
   }
 
   return ref.current;
-}
+};
 
 export default useDeepCompareMemoize;

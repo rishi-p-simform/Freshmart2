@@ -62,4 +62,3 @@ const globalMetrics: GlobalMetricsType = {
 };
 
 export { globalMetrics, height, scale, width };
-

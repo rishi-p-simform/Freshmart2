@@ -24,14 +24,14 @@ const styles = (theme: ThemeMode) =>
       borderColor: '#fecaca',
       borderRadius: scale(8),
       paddingHorizontal: scale(12),
-      paddingVertical: scale(10),
+      paddingVertical: scale(10)
     },
     errorBannerText: {
       color: '#dc2626',
-      textAlign: 'center',
+      textAlign: 'center'
     },
     forgotPassword: {
-      textAlign: 'right',
+      textAlign: 'right'
     },
     dividerContainer: {
       flexDirection: 'row',
@@ -41,19 +41,19 @@ const styles = (theme: ThemeMode) =>
     dividerLine: {
       flex: 1,
       height: 1,
-      backgroundColor: Colors[theme]?.palette.gray[300],
+      backgroundColor: Colors[theme]?.palette.gray[300]
     },
     dividerText: {
       color: Colors[theme]?.palette.gray[400],
-      paddingHorizontal: scale(16),
+      paddingHorizontal: scale(16)
     },
     googleButton: {
       borderColor: Colors[theme]?.palette.gray[300],
       borderWidth: 1,
-      backgroundColor: Colors[theme]?.surface,
+      backgroundColor: Colors[theme]?.surface
     },
     labelText: {
-      color: Colors[theme]?.palette.gray[500],
+      color: Colors[theme]?.palette.gray[500]
     },
     linkActionText: {
       color: Colors[theme]?.primary,
@@ -70,7 +70,7 @@ const styles = (theme: ThemeMode) =>
       fontSize: scale(12),
       paddingHorizontal: scale(11),
       paddingVertical: scale(11)
-    },
+    }
   });
 
 export default styles;

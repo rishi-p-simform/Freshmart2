@@ -1,8 +1,18 @@
-import { createSlice, type ActionReducerMapBuilder, type Draft, type PayloadAction } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  type ActionReducerMapBuilder,
+  type Draft,
+  type PayloadAction
+} from '@reduxjs/toolkit';
 import { APIConst, ToolkitAction } from '../../constants';
 import { authorizedAPI } from '../../configs';
 import { createAsyncThunkWithCancelToken } from '../../configs/APIConfig';
-import type { AddressListResponse, AddressResponse, AddressPayload, DeleteAddressResponse, ErrorResponse } from '../../types';
+import type {
+  AddressListResponse,
+  AddressResponse,
+  DeleteAddressResponse,
+  ErrorResponse
+} from '../../types';
 import INITIAL_STATE, { type AddressStateType } from './AddressInitial';
 
 export const fetchAddresses = createAsyncThunkWithCancelToken<AddressListResponse>(
@@ -47,7 +57,10 @@ const addressSlice = createSlice({
     clearError: (state: Draft<AddressStateType>) => {
       state.error = null;
     },
-    setSelectedAddressId: (state: Draft<AddressStateType>, action: PayloadAction<string | null>) => {
+    setSelectedAddressId: (
+      state: Draft<AddressStateType>,
+      action: PayloadAction<string | null>
+    ) => {
       state.selectedAddressId = action.payload;
     },
     resetState: () => INITIAL_STATE
@@ -59,21 +72,27 @@ const addressSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchAddresses.fulfilled, (state: Draft<AddressStateType>, action: PayloadAction<AddressListResponse>) => {
-        state.loading = false;
-        state.addresses = action.payload?.data || [];
-        state.defaultAddress = state.addresses.find(addr => addr.is_default) || null;
-        if (!state.defaultAddress) {
-          state.selectedAddressId = null;
-        } else if (!state.selectedAddressId) {
-          state.selectedAddressId = state.defaultAddress.id;
+      .addCase(
+        fetchAddresses.fulfilled,
+        (state: Draft<AddressStateType>, action: PayloadAction<AddressListResponse>) => {
+          state.loading = false;
+          state.addresses = action.payload?.data || [];
+          state.defaultAddress = state.addresses.find((addr) => addr.is_default) || null;
+          if (!state.defaultAddress) {
+            state.selectedAddressId = null;
+          } else if (!state.selectedAddressId) {
+            state.selectedAddressId = state.defaultAddress.id;
+          }
+          state.lastUpdated = Date.now();
         }
-        state.lastUpdated = Date.now();
-      })
-      .addCase(fetchAddresses.rejected, (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.loading = false;
-        state.error = action.payload || null;
-      });
+      )
+      .addCase(
+        fetchAddresses.rejected,
+        (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload || null;
+        }
+      );
 
     // Create Address
     builder
@@ -81,21 +100,29 @@ const addressSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(createAddress.fulfilled, (state: Draft<AddressStateType>, action: PayloadAction<AddressResponse>) => {
-        state.loading = false;
-        if (action.payload?.data) {
-          state.addresses.push(action.payload.data);
-          if (action.payload.data.is_default) {
-            state.defaultAddress = action.payload.data;
-            // set other addresses to not default
-            state.addresses = state.addresses.map(addr => addr.id === action.payload.data.id ? addr : { ...addr, is_default: false });
+      .addCase(
+        createAddress.fulfilled,
+        (state: Draft<AddressStateType>, action: PayloadAction<AddressResponse>) => {
+          state.loading = false;
+          if (action.payload?.data) {
+            state.addresses.push(action.payload.data);
+            if (action.payload.data.is_default) {
+              state.defaultAddress = action.payload.data;
+              // set other addresses to not default
+              state.addresses = state.addresses.map((addr) =>
+                addr.id === action.payload.data.id ? addr : { ...addr, is_default: false }
+              );
+            }
           }
         }
-      })
-      .addCase(createAddress.rejected, (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.loading = false;
-        state.error = action.payload || null;
-      });
+      )
+      .addCase(
+        createAddress.rejected,
+        (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload || null;
+        }
+      );
 
     // Update Address
     builder
@@ -103,25 +130,33 @@ const addressSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(updateAddress.fulfilled, (state: Draft<AddressStateType>, action: PayloadAction<AddressResponse>) => {
-        state.loading = false;
-        if (action.payload?.data) {
-          const index = state.addresses.findIndex(addr => addr.id === action.payload.data.id);
-          if (index !== -1) {
-            state.addresses[index] = action.payload.data;
-          }
-          if (action.payload.data.is_default) {
-            state.defaultAddress = action.payload.data;
-            state.addresses = state.addresses.map(addr => addr.id === action.payload.data.id ? addr : { ...addr, is_default: false });
-          } else if (state.defaultAddress?.id === action.payload.data.id) {
-             state.defaultAddress = null; // Removed default
+      .addCase(
+        updateAddress.fulfilled,
+        (state: Draft<AddressStateType>, action: PayloadAction<AddressResponse>) => {
+          state.loading = false;
+          if (action.payload?.data) {
+            const index = state.addresses.findIndex((addr) => addr.id === action.payload.data.id);
+            if (index !== -1) {
+              state.addresses[index] = action.payload.data;
+            }
+            if (action.payload.data.is_default) {
+              state.defaultAddress = action.payload.data;
+              state.addresses = state.addresses.map((addr) =>
+                addr.id === action.payload.data.id ? addr : { ...addr, is_default: false }
+              );
+            } else if (state.defaultAddress?.id === action.payload.data.id) {
+              state.defaultAddress = null; // Removed default
+            }
           }
         }
-      })
-      .addCase(updateAddress.rejected, (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.loading = false;
-        state.error = action.payload || null;
-      });
+      )
+      .addCase(
+        updateAddress.rejected,
+        (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload || null;
+        }
+      );
 
     // Delete Address
     builder
@@ -133,7 +168,7 @@ const addressSlice = createSlice({
         state.loading = false;
         const deletedId = action.meta.arg.paths?.id;
         if (deletedId) {
-          state.addresses = state.addresses.filter(addr => addr.id !== deletedId);
+          state.addresses = state.addresses.filter((addr) => addr.id !== deletedId);
           if (state.defaultAddress?.id === deletedId) {
             state.defaultAddress = null;
           }
@@ -142,10 +177,13 @@ const addressSlice = createSlice({
           }
         }
       })
-      .addCase(deleteAddress.rejected, (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.loading = false;
-        state.error = action.payload || null;
-      });
+      .addCase(
+        deleteAddress.rejected,
+        (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload || null;
+        }
+      );
 
     // Set Default Address
     builder
@@ -153,17 +191,27 @@ const addressSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(setDefaultAddress.fulfilled, (state: Draft<AddressStateType>, action: PayloadAction<AddressResponse>) => {
-        state.loading = false;
-        if (action.payload?.data) {
-          state.defaultAddress = action.payload.data;
-          state.addresses = state.addresses.map(addr => addr.id === action.payload.data.id ? action.payload.data : { ...addr, is_default: false });
+      .addCase(
+        setDefaultAddress.fulfilled,
+        (state: Draft<AddressStateType>, action: PayloadAction<AddressResponse>) => {
+          state.loading = false;
+          if (action.payload?.data) {
+            state.defaultAddress = action.payload.data;
+            state.addresses = state.addresses.map((addr) =>
+              addr.id === action.payload.data.id
+                ? action.payload.data
+                : { ...addr, is_default: false }
+            );
+          }
         }
-      })
-      .addCase(setDefaultAddress.rejected, (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
-        state.loading = false;
-        state.error = action.payload || null;
-      });
+      )
+      .addCase(
+        setDefaultAddress.rejected,
+        (state: Draft<AddressStateType>, action: PayloadAction<ErrorResponse | undefined>) => {
+          state.loading = false;
+          state.error = action.payload || null;
+        }
+      );
   }
 });
 

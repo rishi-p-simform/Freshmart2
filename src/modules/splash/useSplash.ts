@@ -4,7 +4,7 @@ import type { SplashHookReturnType } from './SplashTypes';
 /**
  * Custom hook for Splash screen logic.
  * Handles the 2500ms timeout before triggering the onFinish callback.
- * 
+ *
  * @param {() => void} onFinish - Callback triggered when the splash animation/duration completes.
  * @returns {SplashHookReturnType} An empty object representing hook return values.
  */

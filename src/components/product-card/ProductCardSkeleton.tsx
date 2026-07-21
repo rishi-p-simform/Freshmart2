@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withRepeat,
+  withTiming
+} from 'react-native-reanimated';
 import { useTheme } from '../../hooks';
 import styleSheet from './ProductCardStyles';
 
@@ -15,33 +20,67 @@ export const ProductCardSkeleton: React.FC = () => {
   const opacity = useSharedValue(0.4);
 
   useEffect(() => {
-    opacity.value = withRepeat(
-      withTiming(0.8, { duration: 800 }),
-      -1,
-      true
-    );
+    opacity.value = withRepeat(withTiming(0.8, { duration: 800 }), -1, true);
   }, [opacity]);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
+    opacity: opacity.value
   }));
 
   return (
     <Animated.View style={[styles.container, animatedStyle]}>
       {/* Image Skeleton */}
       <View style={styles.imageStyle} />
-      
+
       {/* Title Skeleton */}
-      <View style={{ height: 16, backgroundColor: styles.imageStyle.backgroundColor, borderRadius: 4, width: '85%', marginTop: 6 }} />
-      <View style={{ height: 16, backgroundColor: styles.imageStyle.backgroundColor, borderRadius: 4, width: '55%', marginTop: 4 }} />
-      
+      <View
+        style={{
+          height: 16,
+          backgroundColor: styles.imageStyle.backgroundColor,
+          borderRadius: 4,
+          width: '85%',
+          marginTop: 6
+        }}
+      />
+      <View
+        style={{
+          height: 16,
+          backgroundColor: styles.imageStyle.backgroundColor,
+          borderRadius: 4,
+          width: '55%',
+          marginTop: 4
+        }}
+      />
+
       {/* Rating Row Skeleton */}
-      <View style={{ height: 12, backgroundColor: styles.imageStyle.backgroundColor, borderRadius: 4, width: '40%', marginTop: 6 }} />
+      <View
+        style={{
+          height: 12,
+          backgroundColor: styles.imageStyle.backgroundColor,
+          borderRadius: 4,
+          width: '40%',
+          marginTop: 6
+        }}
+      />
 
       {/* Price Row Skeleton */}
       <View style={[styles.priceRow, { marginTop: 10 }]}>
-        <View style={{ height: 20, backgroundColor: styles.imageStyle.backgroundColor, borderRadius: 4, width: '30%' }} />
-        <View style={{ height: 28, backgroundColor: styles.imageStyle.backgroundColor, borderRadius: 14, width: '40%' }} />
+        <View
+          style={{
+            height: 20,
+            backgroundColor: styles.imageStyle.backgroundColor,
+            borderRadius: 4,
+            width: '30%'
+          }}
+        />
+        <View
+          style={{
+            height: 28,
+            backgroundColor: styles.imageStyle.backgroundColor,
+            borderRadius: 14,
+            width: '40%'
+          }}
+        />
       </View>
     </Animated.View>
   );

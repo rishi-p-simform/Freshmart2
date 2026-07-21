@@ -9,7 +9,7 @@ const styles = (theme: ThemeMode) =>
     container: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'center'
     },
     topCircle: {
       position: 'absolute',
@@ -18,7 +18,7 @@ const styles = (theme: ThemeMode) =>
       borderRadius: scale(999),
       backgroundColor: Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.06),
       top: scale(362),
-      left: -scale(50),
+      left: -scale(50)
     },
     bottomCircle: {
       position: 'absolute',
@@ -27,10 +27,10 @@ const styles = (theme: ThemeMode) =>
       borderRadius: scale(999),
       backgroundColor: Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.06),
       top: -scale(40),
-      left: scale(102),
+      left: scale(102)
     },
     logoContainer: {
-      alignItems: 'center',
+      alignItems: 'center'
     },
     logoBox: {
       width: scale(80),
@@ -41,7 +41,7 @@ const styles = (theme: ThemeMode) =>
       alignItems: 'center',
       marginBottom: scale(20),
       borderWidth: scale(1),
-      borderColor: Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.3),
+      borderColor: Colors[theme]?.alpha(Colors[theme]?.solidWhite, 0.3)
     },
     textWhite: {
       color: Colors[theme]?.solidWhite,
@@ -55,7 +55,7 @@ const styles = (theme: ThemeMode) =>
       marginTop: scale(8),
       ...fontSizeStyles.textLG,
       fontFamily: fonts.medium
-    },
+    }
   });
 
 export default styles;

@@ -6,12 +6,12 @@ const styles = (theme: ThemeMode) =>
     ...ApplicationStyles(theme),
     screenView: {
       backgroundColor: Colors[theme]?.background,
-      flex: 1,
+      flex: 1
     },
     bottomContainer: {
       flex: 1,
       paddingTop: scale(24),
-      paddingHorizontal: scale(24),
+      paddingHorizontal: scale(24)
     }
   });
 

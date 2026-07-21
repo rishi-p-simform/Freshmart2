@@ -7,11 +7,11 @@ import { DeepLink, deepLinkPrefixes, DeepLinkRegex, RegexConst, scheme } from '.
  * @param {Record<string, any>} _params - Record<string, any>
  * @returns A boolean
  */
-const isToastMessage = (routeName: DeepLink | undefined, _params: Record<string, any>): boolean  => {
+const isToastMessage = (routeName: DeepLink | undefined, _params: Record<string, any>): boolean => {
   const isMagicLink: boolean = routeName === DeepLink.MagicLink;
   const isForgotPassword: boolean = routeName === DeepLink.ForgotPassword;
   return !isMagicLink && !isForgotPassword;
-}
+};
 
 /**
  * If the route name or params match the type, return true.
@@ -26,14 +26,14 @@ export const isDeepLinkType = (
   params: Record<string, any>,
   type: DeepLink,
   onlyToast: boolean = false
-): boolean  => {
+): boolean => {
   if (onlyToast && routeName === DeepLink.ToastMessage) {
     return isToastMessage(routeName, params);
   }
   const isMatchRoute: boolean = routeName === type;
   const isMatchParams: boolean = _.has(params, type);
   return isMatchRoute || isMatchParams;
-}
+};
 
 /**
  * If the routeName is DeepLink.MEETING, then return a deep link with the id and params.u, otherwise if
@@ -47,7 +47,7 @@ export const isDeepLinkType = (
 const convertUrlToDeepLink = (
   url: string,
   containRoutesParams?: { routeName: DeepLink | undefined; newParams: Record<string, any> }
-): string | undefined  => {
+): string | undefined => {
   if (!_.isNil(containRoutesParams)) {
     if (
       isDeepLinkType(
@@ -77,7 +77,7 @@ const convertUrlToDeepLink = (
     }
   }
   return undefined;
-}
+};
 
 export interface CheckAndGetParamsReturnType {
   routeName?: DeepLink;
@@ -90,7 +90,7 @@ export interface CheckAndGetParamsReturnType {
  * It takes a URL and returns an object with the URL's parameters as key-value pairs
  * @returns An object with the key value pairs of the url parameters.
  */
-const getUrlParams = (branchUrl: string): Record<string, string>  => {
+const getUrlParams = (branchUrl: string): Record<string, string> => {
   let newParams: Record<string, string> = {};
   try {
     let params: Record<string, string> = {};
@@ -116,7 +116,7 @@ const getUrlParams = (branchUrl: string): Record<string, string>  => {
     console.error('Error parsing URL parameters:', e);
   }
   return newParams;
-}
+};
 
 /**
  * It takes a url, parses it, and returns an object with the route name, id, and params
@@ -127,7 +127,9 @@ const getUrlParams = (branchUrl: string): Record<string, string>  => {
  * deepLink: string
  * branchUrl: string
  */
-export const checkAndGetParams = (nonBranchUrl: string): CheckAndGetParamsReturnType | undefined  => {
+export const checkAndGetParams = (
+  nonBranchUrl: string
+): CheckAndGetParamsReturnType | undefined => {
   const branchUrl: string = decodeURIComponent(nonBranchUrl);
   // if the url has no params, return just open the app
   if (_.filter(deepLinkPrefixes, (domain: string) => branchUrl === domain).length > 0)
@@ -160,4 +162,4 @@ export const checkAndGetParams = (nonBranchUrl: string): CheckAndGetParamsReturn
     console.error(error);
   }
   return undefined;
-}
+};
