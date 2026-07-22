@@ -33,7 +33,7 @@ const styles = (theme: ThemeMode) =>
       width: scale(32),
       height: scale(32),
       borderRadius: scale(8),
-      backgroundColor: Colors[theme]?.palette?.gray?.[50],
+      backgroundColor: Colors[theme]?.palette?.gray?.[100],
       justifyContent: 'center',
       alignItems: 'center'
     }

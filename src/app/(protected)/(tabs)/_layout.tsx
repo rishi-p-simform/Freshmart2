@@ -53,7 +53,7 @@ const TabsLayout: FC = (): React.ReactElement => {
         }}
       />
       <Tabs.Screen
-        name="profile/index"
+        name="profile"
         options={{
           title: 'Account',
           headerTitle: 'Account',

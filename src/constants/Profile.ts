@@ -38,6 +38,6 @@ export const profileTabs: ProfileTab[] = [
     title: 'Orders',
     colorLight: '#EFF6FF',
     colorDark: '#1E293B',
-    route: ROUTES.Cart
+    route: ROUTES.OrderHistory
   }
 ];

@@ -8,6 +8,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CustomInput from '../../../../components/custom-input/CustomInput';
 import { Text } from '../../../../components/text';
 import { useTheme } from '../../../../hooks';
+import { ANIMATION_DURATION } from '../../../../constants';
 import { Colors, scale } from '../../../../theme';
 import { CartSelectors } from '../../../../redux/cart';
 import { useAppSelector } from '../../../../redux/useRedux';
@@ -34,7 +35,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = (props) => {
   const translateY = useSharedValue(-20);
 
   useEffect(() => {
-    opacity.value = withTiming(1, { duration: 500 });
+    opacity.value = withTiming(1, { duration: ANIMATION_DURATION.NORMAL });
     translateY.value = withSpring(0, { damping: 12, stiffness: 90 });
   }, [opacity, translateY]);
 

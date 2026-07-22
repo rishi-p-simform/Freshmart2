@@ -1,5 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Stack, useNavigation, useRouter } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { RefreshControl, ScrollView, TouchableOpacity, View } from 'react-native';
@@ -15,7 +14,7 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated';
 import { CartProductCard, CustomButton, CustomHeader, Text } from '../../components';
-import { Strings } from '../../constants';
+import { ANIMATION_DURATION, CART_CONSTANTS, ROUTES, Strings } from '../../constants';
 import { useCart, useTheme } from '../../hooks';
 import { Colors } from '../../theme';
 import styleSheet from './CartStyles';
@@ -30,7 +29,6 @@ const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
  */
 const CartScreen: React.FC = (): React.ReactElement => {
   const router = useRouter();
-  const navigation = useNavigation();
   const { styles, theme } = useTheme(styleSheet);
 
   const { items, subtotal, itemCount, fetchCart } = useCart();
@@ -53,14 +51,18 @@ const CartScreen: React.FC = (): React.ReactElement => {
   }, [items]);
 
   const discount = Math.max(0, totalMrp - subtotal);
-  const deliveryFee = subtotal >= 500 ? 0 : 49;
+  const deliveryFee =
+    subtotal >= CART_CONSTANTS.FREE_DELIVERY_THRESHOLD ? 0 : CART_CONSTANTS.DEFAULT_DELIVERY_FEE;
   const totalToPay = subtotal + deliveryFee;
-  const progressPercent = Math.min((subtotal / 500) * 100, 100);
+  const progressPercent = Math.min(
+    (subtotal / CART_CONSTANTS.FREE_DELIVERY_THRESHOLD) * CART_CONSTANTS.PERCENTAGE_MULTIPLIER,
+    CART_CONSTANTS.PERCENTAGE_MULTIPLIER
+  );
 
   // Animated progress bar width
   const progressWidth = useSharedValue(0);
   useEffect(() => {
-    progressWidth.value = withTiming(progressPercent, { duration: 600 });
+    progressWidth.value = withTiming(progressPercent, { duration: ANIMATION_DURATION.MEDIUM });
   }, [progressPercent, progressWidth]);
 
   const animatedProgressStyle = useAnimatedStyle(() => ({
@@ -75,18 +77,7 @@ const CartScreen: React.FC = (): React.ReactElement => {
           header: () => (
             <CustomHeader
               title={Strings.Cart.title}
-              leftActions={[
-                {
-                  icon: <Ionicons name="arrow-back" size={24} color={Colors[theme]?.text} />,
-                  onPress: () => {
-                    if (navigation.canGoBack()) {
-                      navigation.goBack();
-                    } else {
-                      router.replace('/(protected)/(tabs)/home');
-                    }
-                  }
-                }
-              ]}
+              hideBackButton={false}
               rightActions={[
                 {
                   icon: (
@@ -155,8 +146,8 @@ const CartScreen: React.FC = (): React.ReactElement => {
               <Text style={styles.truckIcon}>🚚</Text>
               <View style={styles.freeDeliveryRight}>
                 <Text variant="labelMedium" style={styles.freeDeliveryText}>
-                  {subtotal < 500
-                    ? `Add ₹${500 - subtotal} more for FREE delivery!`
+                  {subtotal < CART_CONSTANTS.FREE_DELIVERY_THRESHOLD
+                    ? `Add ₹${CART_CONSTANTS.FREE_DELIVERY_THRESHOLD - subtotal} more for FREE delivery!`
                     : 'You unlocked Free delivery!'}
                 </Text>
                 <View style={styles.progressBar}>
@@ -258,7 +249,7 @@ const CartScreen: React.FC = (): React.ReactElement => {
             <CustomButton
               title={Strings.Cart.proceedToCheckout}
               onPress={() => {
-                router.navigate('/(protected)/(tabs)/cart/checkout');
+                router.navigate(ROUTES.Checkout as any);
               }}
               style={styles.checkoutButton}
             />

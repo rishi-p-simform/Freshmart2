@@ -7,6 +7,8 @@ import { Colors, scale } from '../../../../theme';
 import { styleSheet } from './OTPInputStyles';
 import { OTPInputProps } from './OTPInputTypes';
 
+import { ANIMATION_DURATION } from '../../../../constants';
+
 interface OTPBoxProps {
   char: string;
   isActive: boolean;
@@ -25,7 +27,9 @@ const OTPBox: React.FC<OTPBoxProps> = ({
   styles
 }) => {
   const animatedStyle = useAnimatedStyle(() => ({
-    borderColor: withTiming(isActive ? themeColors.primary : themeColors.gray, { duration: 200 })
+    borderColor: withTiming(isActive ? themeColors.primary : themeColors.gray, {
+      duration: ANIMATION_DURATION.FAST
+    })
   }));
 
   return (

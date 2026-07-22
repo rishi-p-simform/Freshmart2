@@ -2,6 +2,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, Pressable } from 'react-native';
 import { useTheme } from '../../hooks';
+import { ROUTES } from '../../constants';
 import { Text } from '../text';
 import styleSheet from './CategoryCardStyles';
 import { CategoryCardDefaultProps, CategoryCardProps } from './CategoryCardTypes';
@@ -25,7 +26,7 @@ const CategoryCard: React.FC<CategoryCardProps> = (props) => {
 
   const handlePress = () => {
     router.navigate({
-      pathname: '/products/[id]',
+      pathname: ROUTES.ProductDetails as any,
       params: {
         slug,
         id

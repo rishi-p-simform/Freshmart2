@@ -1,9 +1,9 @@
-
 import { Strings } from '../../constants';
 
 /** Payment option item configuration */
 export interface PaymentOption {
   id: number;
+  value: string;
   icon: string;
   title: string;
   subtitle: string;
@@ -15,6 +15,7 @@ export interface PaymentOption {
 export const PAYMENT_OPTIONS: PaymentOption[] = [
   {
     id: 1,
+    value: 'upi',
     icon: '📲',
     title: Strings.Payment.upi,
     subtitle: Strings.Payment.upiSubtitle,
@@ -22,6 +23,7 @@ export const PAYMENT_OPTIONS: PaymentOption[] = [
   },
   {
     id: 2,
+    value: 'card',
     icon: '💳',
     title: Strings.Payment.card,
     subtitle: Strings.Payment.cardSubtitle,
@@ -29,6 +31,7 @@ export const PAYMENT_OPTIONS: PaymentOption[] = [
   },
   {
     id: 3,
+    value: 'cod',
     icon: '💵',
     title: Strings.Payment.cod,
     subtitle: Strings.Payment.codSubtitle,

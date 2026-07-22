@@ -1,18 +1,13 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { LinearGradient } from 'expo-linear-gradient';
-import { router } from 'expo-router';
-import React, { useCallback, useEffect, useRef } from 'react';
+import React from 'react';
 import { FlatList, Image, TouchableOpacity, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import Text from '../text/Text';
-
-import { useGetBannersQuery, type BANNER } from '../../redux';
-import useTheme from '../../hooks/useTheme';
 import Colors from '../../theme/Colors';
 import { scale } from '../../theme/Metrics';
-import { ITEM_GAP, ITEM_WIDTH, styleSheet } from './BannerStyles';
+import { ITEM_GAP, ITEM_WIDTH } from './BannerStyles';
 import { BannerDefaultProps, type BannerProps } from './BannerTypes';
-
-const AUTO_SCROLL_INTERVAL = 10000;
+import { useBanner } from './useBanner';
 
 /**
  * Banner component to display a horizontal list of banners
@@ -21,55 +16,8 @@ const AUTO_SCROLL_INTERVAL = 10000;
  */
 const Banner: React.FC<BannerProps> = (props) => {
   const { customStyle, testID, accessibilityLabel } = { ...BannerDefaultProps, ...props };
-  const { theme, styles } = useTheme(styleSheet);
-
-  const { data: banners = [], isLoading: loading } = useGetBannersQuery();
-
-  const flatListRef = useRef<FlatList<BANNER>>(null);
-  const currentIndex = useRef(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  /** Clears the current auto-scroll interval and starts a fresh one. */
-  const resetAutoScroll = useCallback(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-
-    if (!banners.length) return;
-
-    intervalRef.current = setInterval(() => {
-      currentIndex.current =
-        currentIndex.current === banners.length - 1 ? 0 : currentIndex.current + 1;
-
-      flatListRef.current?.scrollToIndex({
-        index: currentIndex.current,
-        animated: true
-      });
-    }, AUTO_SCROLL_INTERVAL);
-  }, [banners]);
-
-  useEffect(() => {
-    resetAutoScroll();
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [resetAutoScroll]);
-
-  const handlePress = (action_type: string, action_value: string) => {
-    if (action_type === 'category') {
-      router.navigate({
-        pathname: '/(protected)/products/[id]',
-        params: {
-          slug: action_value,
-          id: action_value
-        }
-      });
-    } else if (action_type === 'url') {
-      router.navigate('/(protected)/search/Search');
-    }
-  };
+  const { theme, styles, banners, loading, flatListRef, handleMomentumScrollEnd, handlePress } =
+    useBanner();
 
   if (loading) {
     return (
@@ -108,8 +56,7 @@ const Banner: React.FC<BannerProps> = (props) => {
       })}
       onScrollToIndexFailed={() => {}}
       onMomentumScrollEnd={(e) => {
-        currentIndex.current = Math.round(e.nativeEvent.contentOffset.x / (ITEM_WIDTH + ITEM_GAP));
-        resetAutoScroll();
+        handleMomentumScrollEnd(e.nativeEvent.contentOffset.x);
       }}
       renderItem={({ item }) => (
         <View

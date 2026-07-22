@@ -8,6 +8,7 @@ import { AuthReducer } from './auth';
 import { bannerApi } from './banner/bannerApi';
 import { CartReducer } from './cart';
 import { CategoryReducer } from './category';
+import { OrdersReducer } from './orders';
 import { ProductsReducer } from './products';
 import { UserReducer } from './user';
 
@@ -24,7 +25,7 @@ const persistConfig = {
   key: '@expoBoilerplateToolkitCachePersist',
   version: 1,
   storage: reduxStorage,
-  whitelist: ['auth', 'user', 'address', 'category', 'cart'], // Whitelist (Save Specific Reducers)
+  whitelist: ['auth', 'user', 'address', 'category', 'cart', 'orders'], // Whitelist (Save Specific Reducers)
   blacklist: ['nav', 'navigation'] // Blacklist (Don't Save Specific Reducers)
 };
 
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   category: CategoryReducer,
   products: ProductsReducer,
   cart: CartReducer,
+  orders: OrdersReducer,
   [bannerApi.reducerPath]: bannerApi.reducer
 });
 

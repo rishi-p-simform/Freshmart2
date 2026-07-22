@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { PAGINATION } from '../../constants';
+import type { ProductFilters } from '../../types';
+import type { RootStateType } from '../Store';
 import { ProductsActions } from './ProductsSlice';
 import ProductsSelectors from './ProductsSelectors';
-import type { RootStateType } from '../Store';
-import type { ProductFilters } from '../../types';
 
 export const useProduct = (listId: string) => {
   const dispatch = useDispatch<any>();
@@ -16,8 +17,12 @@ export const useProduct = (listId: string) => {
     (filters: ProductFilters = {}) => {
       dispatch(
         ProductsActions.fetchProducts({
-          params: { ...filters, page: 1, limit: filters.limit || 20 },
-          data: { listId, page: 1, isRefresh: false }
+          params: {
+            ...filters,
+            page: PAGINATION.DEFAULT_PAGE,
+            limit: filters.limit || PAGINATION.DEFAULT_LIMIT
+          },
+          data: { listId, page: PAGINATION.DEFAULT_PAGE, isRefresh: false }
         })
       );
     },
@@ -30,7 +35,11 @@ export const useProduct = (listId: string) => {
         const nextPage = listState.page + 1;
         dispatch(
           ProductsActions.fetchProducts({
-            params: { ...filters, page: nextPage, limit: filters.limit || 20 },
+            params: {
+              ...filters,
+              page: nextPage,
+              limit: filters.limit || PAGINATION.DEFAULT_LIMIT
+            },
             data: { listId, page: nextPage, isRefresh: false }
           })
         );
@@ -43,8 +52,12 @@ export const useProduct = (listId: string) => {
     (filters: ProductFilters = {}) => {
       dispatch(
         ProductsActions.fetchProducts({
-          params: { ...filters, page: 1, limit: filters.limit || 20 },
-          data: { listId, page: 1, isRefresh: true }
+          params: {
+            ...filters,
+            page: PAGINATION.DEFAULT_PAGE,
+            limit: filters.limit || PAGINATION.DEFAULT_LIMIT
+          },
+          data: { listId, page: PAGINATION.DEFAULT_PAGE, isRefresh: true }
         })
       );
     },
@@ -55,8 +68,13 @@ export const useProduct = (listId: string) => {
     (q: string, filters: ProductFilters = {}) => {
       dispatch(
         ProductsActions.searchProducts({
-          params: { q, ...filters, page: 1, limit: filters.limit || 20 },
-          data: { listId, page: 1, isRefresh: false }
+          params: {
+            q,
+            ...filters,
+            page: PAGINATION.DEFAULT_PAGE,
+            limit: filters.limit || PAGINATION.DEFAULT_LIMIT
+          },
+          data: { listId, page: PAGINATION.DEFAULT_PAGE, isRefresh: false }
         })
       );
     },

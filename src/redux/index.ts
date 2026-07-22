@@ -4,6 +4,8 @@ export * from './address';
 export * from './category';
 export * from './products';
 export * from './cart';
+export * from './orders';
 export * from './banner/bannerApi';
+
 export * from './useRedux';
 export { default as store, persistor } from './Store';

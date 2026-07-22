@@ -10,7 +10,7 @@ import {
   CustomRadio,
   Text
 } from '../../components';
-import { Strings } from '../../constants';
+import { ROUTES, Strings } from '../../constants';
 import { useTheme } from '../../hooks';
 import { Colors } from '../../theme';
 import styleSheet from './CheckoutStyles';
@@ -119,7 +119,7 @@ const CheckoutScreen: React.FC = (): React.ReactElement => {
         {/* ── Proceed to Payment ───────────────────────────────── */}
         <CustomButton
           title={Strings.Checkout.proceedToPayment}
-          onPress={() => router.navigate('/(protected)/(tabs)/cart/payment')}
+          onPress={() => router.navigate(ROUTES.Payment as any)}
           style={styles.proceedBtn}
           testID="proceed-to-payment-btn"
           accessibilityLabel="Proceed to Payment"

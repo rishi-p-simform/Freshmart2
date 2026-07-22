@@ -32,7 +32,7 @@ const TABS_CONFIG: TabConfig[] = [
     badgeKey: 'cart'
   },
   {
-    name: 'profile/index',
+    name: 'profile',
     label: 'Account',
     activeIcon: 'person',
     inactiveIcon: 'person-outline'
