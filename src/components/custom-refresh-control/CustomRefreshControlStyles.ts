@@ -21,10 +21,12 @@ const createStyles = (theme: ThemeMode) => {
       paddingVertical: 12
     },
     spinnerCircle: {
-      width: 36,
-      height: 36,
-      borderRadius: 18,
-      backgroundColor: currentColors.background,
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      backgroundColor: currentColors.alpha(currentColors.surface, 0.8),
+      borderWidth: 1.5,
+      borderColor: currentColors.alpha(currentColors.primary, 0.15),
       alignItems: 'center',
       justifyContent: 'center',
       shadowColor: currentColors.gray,

@@ -65,10 +65,7 @@ const styleSheet = (theme: ThemeMode) => {
       resizeMode: 'cover'
     },
     avatarEmoji: {
-      fontSize: scale(80),
-      position: 'absolute',
-      bottom: -scale(20),
-      left: scale(0)
+      fontSize: scale(50),
     },
     editBadge: {
       alignItems: 'center',
