@@ -47,11 +47,12 @@ const useSignup = (): SignupHookReturnType & {
         // We do not set auth session here because signup does not return a session
         // Instead, redirect to VerifyEmail
         router.navigate({
-          pathname: ROUTES.VerifyEmail as any,
+          pathname: ROUTES.VerifyEmail,
           params: { email: values.email }
         });
-      } catch (error: any) {
-        const errorMessage = error?.message || 'Sign up failed. Please try again.';
+      } catch (error: unknown) {
+        const err = error as { message?: string };
+        const errorMessage = err?.message || 'Sign up failed. Please try again.';
         setApiError(errorMessage);
       } finally {
         dispatch(AuthActions.setLoading(false));

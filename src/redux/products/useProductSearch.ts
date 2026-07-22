@@ -1,21 +1,18 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { PAGINATION } from '../../constants';
 import type { ProductFilters } from '../../types';
-import type { RootStateType } from '../Store';
-import { ProductsActions } from './ProductsSlice';
+import { useAppDispatch, useAppSelector } from '../useRedux';
 import ProductsSelectors from './ProductsSelectors';
+import { ProductsActions } from './ProductsSlice';
 
 /**
  * Custom hook to execute search API calls on demand with list isolation.
  * Uses searchProducts thunk from ProductsSlice.
  */
 export const useProductSearch = (listId: string = 'search') => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useAppDispatch();
 
-  const listState = useSelector((state: RootStateType) =>
-    ProductsSelectors.getListState(state, listId)
-  );
+  const listState = useAppSelector((state) => ProductsSelectors.getListState(state, listId));
 
   const search = useCallback(
     (query: string, filters: ProductFilters = {}) => {

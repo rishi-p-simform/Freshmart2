@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { type FC } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
-import { Text, AddressCard } from '../../components';
+import { AddressCard, Text } from '../../components';
 import { useTheme } from '../../hooks';
 import { Colors, scale } from '../../theme';
 import styleSheet from './LocationStyles';
@@ -27,15 +27,15 @@ const LocationScreen: FC = (): React.ReactElement => {
     settingDefaultId
   } = useLocation();
 
-  const orange500 = Colors[theme]?.palette?.orange?.[500] ?? '#f97316';
-  const orange700 = Colors[theme]?.palette?.orange?.[700] ?? '#c2410c';
+  const orange500 = Colors[theme]?.palette?.orange?.[500];
+  const orange700 = Colors[theme]?.palette?.orange?.[700];
 
   return (
     <ScrollView
       style={styles.container}
       contentContainerStyle={styles.scrollContent}
-      contentInsetAdjustmentBehavior="automatic"
       showsVerticalScrollIndicator={false}
+      bounces={false}
     >
       {/* Drag handle */}
       <View style={styles.handleContainer}>

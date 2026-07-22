@@ -20,6 +20,8 @@ export interface CustomInputProps extends TextInputProps {
   accessibilityLabel?: string;
   /** Optional label text shown above the input */
   label?: string;
+  /** Optional custom input component (defaults to React Native TextInput) */
+  InputComponent?: React.ComponentType<TextInputProps>;
 }
 
 export const CustomInputDefaultProps: Partial<CustomInputProps> = {

@@ -37,15 +37,15 @@ const useConfirmation = (): ConfirmationHookReturnType => {
   const handleTrackOrder = useCallback(() => {
     if (id) {
       router.push({
-        pathname: ROUTES.TrackOrder as any,
+        pathname: ROUTES.TrackOrder,
         params: { id }
-      } as any);
+      });
     }
   }, [id, router]);
 
   const handleContinueShopping = useCallback(() => {
     router.dismissAll();
-    router.replace(ROUTES.Home as any);
+    router.replace(ROUTES.Home);
   }, [router]);
 
   return {

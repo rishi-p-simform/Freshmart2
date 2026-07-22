@@ -50,7 +50,7 @@ export const useDetailsProduct = (id: string): DetailsProductHookReturnType => {
     if (router.canGoBack()) {
       router.back();
     } else {
-      router.replace(ROUTES.Home as any);
+      router.replace(ROUTES.Home);
     }
   }, [router]);
 
@@ -60,7 +60,7 @@ export const useDetailsProduct = (id: string): DetailsProductHookReturnType => {
 
   const handleAddToCartAction = useCallback(async () => {
     if (quantity > 0) {
-      router.navigate(ROUTES.Cart as any);
+      router.navigate(ROUTES.Cart);
     } else if (id) {
       if (actionLoading) return;
       setActionLoading(true);

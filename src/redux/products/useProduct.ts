@@ -1,17 +1,14 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { PAGINATION } from '../../constants';
 import type { ProductFilters } from '../../types';
-import type { RootStateType } from '../Store';
-import { ProductsActions } from './ProductsSlice';
+import { useAppDispatch, useAppSelector } from '../useRedux';
 import ProductsSelectors from './ProductsSelectors';
+import { ProductsActions } from './ProductsSlice';
 
 export const useProduct = (listId: string) => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useAppDispatch();
 
-  const listState = useSelector((state: RootStateType) =>
-    ProductsSelectors.getListState(state, listId)
-  );
+  const listState = useAppSelector((state) => ProductsSelectors.getListState(state, listId));
 
   const fetchList = useCallback(
     (filters: ProductFilters = {}) => {

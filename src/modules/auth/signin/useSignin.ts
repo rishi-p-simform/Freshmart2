@@ -40,25 +40,27 @@ const useSignin = (): SigninHookReturnType & {
         ).unwrap();
 
         // 2. Set auth session state
-        const rawResult = loginResult as any;
+        const rawResult = loginResult as unknown as Record<string, unknown>;
+        const dataObj = rawResult.data as Record<string, unknown> | undefined;
+        const sessionObj = dataObj?.session as Record<string, unknown> | undefined;
         const accessToken =
-          rawResult.accessToken ||
-          rawResult.token ||
-          rawResult.access_token ||
-          rawResult.data?.token ||
-          rawResult.data?.accessToken ||
-          rawResult.data?.access_token ||
-          rawResult.data?.session?.access_token;
+          (rawResult.accessToken as string) ||
+          (rawResult.token as string) ||
+          (rawResult.access_token as string) ||
+          (dataObj?.token as string) ||
+          (dataObj?.accessToken as string) ||
+          (dataObj?.access_token as string) ||
+          (sessionObj?.access_token as string);
         const refreshToken =
-          rawResult.refreshToken ||
-          rawResult.refresh_token ||
-          rawResult.data?.refreshToken ||
-          rawResult.data?.refresh_token ||
-          rawResult.data?.session?.refresh_token;
+          (rawResult.refreshToken as string) ||
+          (rawResult.refresh_token as string) ||
+          (dataObj?.refreshToken as string) ||
+          (dataObj?.refresh_token as string) ||
+          (sessionObj?.refresh_token as string);
         const expiresIn =
-          rawResult.expiresIn ||
-          rawResult.data?.expiresIn ||
-          rawResult.data?.session?.expires_in ||
+          (rawResult.expiresIn as number) ||
+          (dataObj?.expiresIn as number) ||
+          (sessionObj?.expires_in as number) ||
           3600;
 
         dispatch(
@@ -79,16 +81,17 @@ const useSignin = (): SigninHookReturnType & {
         // 4. Fetch user profile (GET /me)
         dispatch(UserActions.setLoading(true));
         const profileResult = await dispatch(UserActions.fetchProfile({})).unwrap();
-        const rawProfile = profileResult as any;
-        const profile = rawProfile.data || rawProfile;
+        const rawProfile = profileResult as unknown as Record<string, unknown>;
+        const profile = (rawProfile.data || rawProfile) as typeof profileResult;
         dispatch(UserActions.setProfile(profile));
-      } catch (error: any) {
-        const errorMessage = error?.message || 'Sign in failed. Please try again.';
+      } catch (error: unknown) {
+        const err = error as { message?: string };
+        const errorMessage = err?.message || 'Sign in failed. Please try again.';
         setApiError(errorMessage);
         if (errorMessage === 'Email not confirmed') {
           dispatch(AuthActions.resendConfirmation({ data: { email: values.email } }));
           router.navigate({
-            pathname: ROUTES.VerifyEmail as any,
+            pathname: ROUTES.VerifyEmail,
             params: { email: values.email }
           });
         }

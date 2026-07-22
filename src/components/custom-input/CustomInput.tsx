@@ -1,6 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { Animated, Pressable, TextInput, View } from 'react-native';
+import {
+  Animated,
+  Pressable,
+  TextInput,
+  View,
+  type NativeSyntheticEvent,
+  type TextInputFocusEventData
+} from 'react-native';
 import { ANIMATION_DURATION } from '../../constants';
 import { useTheme } from '../../hooks';
 import { Colors } from '../../theme';
@@ -28,8 +35,11 @@ const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
     testID,
     accessibilityLabel,
     label,
+    InputComponent,
     ...rest
   } = { ...CustomInputDefaultProps, ...props };
+
+  const Input = (InputComponent || TextInput) as React.ComponentType<any>;
 
   const { styles, theme } = useTheme(styleSheet);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -87,18 +97,18 @@ const CustomInput = forwardRef<TextInput, CustomInputProps>((props, ref) => {
           </View>
         )}
 
-        <TextInput
+        <Input
           ref={inputRef}
           style={[styles.input, inputStyle]}
           secureTextEntry={isPassword && !isPasswordVisible}
           placeholderTextColor={iconColor}
           testID={testID}
           accessibilityLabel={accessibilityLabel}
-          onFocus={(e) => {
+          onFocus={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
             setIsFocused(true);
             rest.onFocus?.(e);
           }}
-          onBlur={(e) => {
+          onBlur={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
             setIsFocused(false);
             rest.onBlur?.(e);
           }}

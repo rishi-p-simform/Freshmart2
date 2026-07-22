@@ -1,6 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import type { RootStateType } from '../Store';
+import { useAppDispatch, useAppSelector } from '../useRedux';
 import ProductsSelectors from './ProductsSelectors';
 import { ProductsActions } from './ProductsSlice';
 
@@ -10,17 +9,13 @@ import { ProductsActions } from './ProductsSlice';
  * @returns Object containing productDetail, loading state, error, and fetch function.
  */
 export const useProductDetail = (id?: string) => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useAppDispatch();
 
-  const productDetail = useSelector((state: RootStateType) =>
-    ProductsSelectors.getProductDetail(state)
-  );
+  const productDetail = useAppSelector((state) => ProductsSelectors.getProductDetail(state));
 
-  const detailLoading = useSelector((state: RootStateType) =>
-    ProductsSelectors.getDetailLoading(state)
-  );
+  const detailLoading = useAppSelector((state) => ProductsSelectors.getDetailLoading(state));
 
-  const error = useSelector((state: RootStateType) => ProductsSelectors.getError(state));
+  const error = useAppSelector((state) => ProductsSelectors.getError(state));
 
   const fetchDetail = useCallback(
     (productId: string) => {

@@ -1,4 +1,9 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import {
+  combineReducers,
+  configureStore,
+  type Middleware,
+  type StoreEnhancer
+} from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import { getReactotronEnhancer } from '../configs/Reactotron';
 import { AppEnvConst } from '../constants';
@@ -52,7 +57,7 @@ const rootReducer = combineReducers({
  */
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const middlewareList: any[] = [];
+const middlewareList: Middleware[] = [];
 
 /* Creating a store with the persisted reducer. */
 /**
@@ -63,7 +68,7 @@ const middlewareList: any[] = [];
  * The default store is configured with the serializableCheck middleware,
  * which allows for actions to be serialized and deserialized.
  */
-let enhancers: any[] = [];
+let enhancers: StoreEnhancer[] = [];
 if (AppEnvConst.isDevelopment) {
   enhancers = getReactotronEnhancer();
 }

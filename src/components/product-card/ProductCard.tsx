@@ -32,7 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
 
   const handlePress = () => {
     router.navigate({
-      pathname: ROUTES.DetailsProduct as any,
+      pathname: ROUTES.DetailsProduct,
       params: { id: item.id }
     });
   };

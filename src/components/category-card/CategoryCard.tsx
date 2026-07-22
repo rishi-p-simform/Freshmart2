@@ -26,7 +26,7 @@ const CategoryCard: React.FC<CategoryCardProps> = (props) => {
 
   const handlePress = () => {
     router.navigate({
-      pathname: ROUTES.ProductDetails as any,
+      pathname: ROUTES.ProductDetails,
       params: {
         slug,
         id

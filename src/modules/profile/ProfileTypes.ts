@@ -8,6 +8,8 @@ export interface ProfileHookReturnType {
   isDark: boolean;
   theme: ThemeMode;
   deleting: boolean;
+  refreshing: boolean;
+  onRefresh: () => Promise<void>;
   handleLogout: () => Promise<void>;
   handleDeleteAccount: () => void;
   toggleThemeSwitch: () => void;

@@ -6,7 +6,7 @@ import { CustomHeader, ProductsListItems } from '../../components';
 import { useTheme } from '../../hooks';
 import styleSheet from './ProductsStyles';
 import type { ProductsScreenProps } from './ProductsTypes';
-import useProducts from './useProducts';
+import { useProducts } from './useProducts';
 
 /**
  * ProductsScreen component

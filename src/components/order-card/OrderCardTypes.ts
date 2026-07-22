@@ -5,7 +5,7 @@ export interface OrderCardProps {
   /** Order details object */
   order: Order;
   /** Async callback triggered when user taps Reorder */
-  onReorder: () => Promise<any>;
+  onReorder: () => Promise<void>;
   /** Optional custom container style */
   customStyle?: StyleProp<ViewStyle>;
   /** Optional testID */

@@ -9,13 +9,15 @@ import { OTPInputProps } from './OTPInputTypes';
 
 import { ANIMATION_DURATION } from '../../../../constants';
 
+import type { ThemeColors } from '../../../../theme';
+
 interface OTPBoxProps {
   char: string;
   isActive: boolean;
   isCurrentBox: boolean;
   index: number;
-  themeColors: any;
-  styles: any;
+  themeColors: ThemeColors;
+  styles: ReturnType<typeof styleSheet>;
 }
 
 const OTPBox: React.FC<OTPBoxProps> = ({

@@ -119,7 +119,7 @@ const CheckoutScreen: React.FC = (): React.ReactElement => {
         {/* ── Proceed to Payment ───────────────────────────────── */}
         <CustomButton
           title={Strings.Checkout.proceedToPayment}
-          onPress={() => router.navigate(ROUTES.Payment as any)}
+          onPress={() => router.navigate(ROUTES.Payment)}
           style={styles.proceedBtn}
           testID="proceed-to-payment-btn"
           accessibilityLabel="Proceed to Payment"

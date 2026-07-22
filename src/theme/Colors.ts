@@ -125,7 +125,7 @@ export const commonColors: Record<CommonKeys, string> = {
   solidWhite: palette.common.white
 };
 
-type ThemeColors = Record<Keys, string> &
+export type ThemeColors = Record<Keys, string> &
   Record<CommonKeys, string> & {
     gradients: typeof palette.gradients;
     palette: typeof palette;

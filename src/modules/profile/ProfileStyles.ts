@@ -50,15 +50,25 @@ const styleSheet = (theme: ThemeMode) => {
     },
     innerBorder: {
       alignItems: 'center',
-      borderColor: Colors[theme].alpha(currentColors.solidWhite, 0.35),
+      borderColor: Colors[theme].alpha(currentColors.solidWhite, 0.5),
       borderRadius: scale(99),
       borderWidth: scale(4),
       height: '100%',
       justifyContent: 'center',
-      width: '100%'
+      width: '100%',
+      overflow: 'hidden'
+    },
+    avatarImage: {
+      height: '100%',
+      width: '100%',
+      borderRadius: scale(99),
+      resizeMode: 'cover'
     },
     avatarEmoji: {
-      fontSize: scale(30)
+      fontSize: scale(80),
+      position: 'absolute',
+      bottom: -scale(20),
+      left: scale(0)
     },
     editBadge: {
       alignItems: 'center',

@@ -44,9 +44,9 @@ const OrderCard: React.FC<OrderCardProps> = (props) => {
       accessibilityLabel={accessibilityLabel || `Order #${orderIdPrefix}, status ${order.status}`}
       onPress={() => {
         router.push({
-          pathname: ROUTES.TrackOrder as any,
+          pathname: ROUTES.TrackOrder,
           params: { id: order.id }
-        } as any);
+        });
       }}
     >
       <View style={styles.header}>
@@ -94,7 +94,7 @@ const OrderCard: React.FC<OrderCardProps> = (props) => {
             try {
               setReordering(true);
               await onReorder();
-              router.navigate('/(protected)/(tabs)/cart' as any);
+              router.navigate(ROUTES.Cart);
             } finally {
               setReordering(false);
             }

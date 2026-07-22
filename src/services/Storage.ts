@@ -64,8 +64,8 @@ export const setStorageString = <T extends StorageStringType>(key: string, newVa
   storage.set(key, value);
 };
 export const reduxStorage: Storage = {
-  setItem: (key: string, value: any) => {
-    storage.set(key, value);
+  setItem: (key: string, value: unknown) => {
+    storage.set(key, typeof value === 'string' ? value : JSON.stringify(value));
     return Promise.resolve(true);
   },
   getItem: (key: string) => {
@@ -73,7 +73,7 @@ export const reduxStorage: Storage = {
     return Promise.resolve(value);
   },
   removeItem: (key: string) => {
-    (storage as any).delete(key);
+    (storage as Record<string, any>).delete?.(key);
     return Promise.resolve();
   }
 };

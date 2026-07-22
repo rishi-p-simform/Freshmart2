@@ -25,6 +25,13 @@ export const useAddAddress = () => {
   const [state, setState] = useState('');
   const [pincode, setPincode] = useState('');
 
+  const [errors, setErrors] = useState<{
+    addressLine1?: string;
+    city?: string;
+    state?: string;
+    pincode?: string;
+  }>({});
+
   // Ref to track if the current change is from reverse geocoding to prevent infinite loops
   const isReverseGeocoding = useRef(false);
 
@@ -39,6 +46,7 @@ export const useAddAddress = () => {
         setCity(addr.city || addr.subregion || '');
         setState(addr.region || '');
         setPincode(addr.postalCode || '');
+        setErrors({});
       }
     } catch (error) {
       console.warn('Error reverse geocoding:', error);
@@ -109,12 +117,53 @@ export const useAddAddress = () => {
   const dispatch = useAppDispatch();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const validateForm = (): boolean => {
+    const newErrors: {
+      addressLine1?: string;
+      city?: string;
+      state?: string;
+      pincode?: string;
+    } = {};
+
+    if (!addressLine1.trim()) {
+      newErrors.addressLine1 = 'Address Line 1 is required';
+    }
+    if (!city.trim()) {
+      newErrors.city = 'City is required';
+    }
+    if (!state.trim()) {
+      newErrors.state = 'State is required';
+    }
+    if (!pincode.trim()) {
+      newErrors.pincode = 'Pincode is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const setAddressLine1WithClearError = (text: string) => {
+    setAddressLine1(text);
+    if (errors.addressLine1) setErrors((prev) => ({ ...prev, addressLine1: undefined }));
+  };
+
+  const setCityWithClearError = (text: string) => {
+    setCity(text);
+    if (errors.city) setErrors((prev) => ({ ...prev, city: undefined }));
+  };
+
+  const setStateWithClearError = (text: string) => {
+    setState(text);
+    if (errors.state) setErrors((prev) => ({ ...prev, state: undefined }));
+  };
+
+  const setPincodeWithClearError = (text: string) => {
+    setPincode(text);
+    if (errors.pincode) setErrors((prev) => ({ ...prev, pincode: undefined }));
+  };
+
   const onConfirm = async () => {
-    if (!addressLine1.trim() || !city.trim() || !state.trim() || !pincode.trim()) {
-      Alert.alert(
-        'Validation Error',
-        'Please fill in all required fields (Address Line 1, City, State, Pincode).'
-      );
+    if (!validateForm()) {
       return;
     }
 
@@ -151,15 +200,16 @@ export const useAddAddress = () => {
     addressType,
     setAddressType,
     addressLine1,
-    setAddressLine1,
+    setAddressLine1: setAddressLine1WithClearError,
     addressLine2,
     setAddressLine2,
     city,
-    setCity,
+    setCity: setCityWithClearError,
     state,
-    setState,
+    setState: setStateWithClearError,
     pincode,
-    setPincode,
+    setPincode: setPincodeWithClearError,
+    errors,
     isLoadingLocation,
     isSubmitting,
     onConfirm

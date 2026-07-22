@@ -191,22 +191,29 @@ authorizedAPI.axiosInstance.interceptors.response.use(
           });
 
           if (refreshResponse.ok && refreshResponse.data) {
-            const data = refreshResponse.data as any; // Type as RefreshResponse roughly
-            const session = data?.data?.session;
+            const data = refreshResponse.data as Record<string, unknown>;
+            const dataInner = data?.data as Record<string, unknown> | undefined;
+            const session = dataInner?.session as Record<string, unknown> | undefined;
 
-            if (session && session.access_token) {
+            if (session && typeof session.access_token === 'string') {
+              const newAccessToken = session.access_token;
+              const newRefreshToken =
+                typeof session.refresh_token === 'string' ? session.refresh_token : undefined;
+              const newExpiresIn =
+                typeof session.expires_in === 'number' ? session.expires_in : undefined;
+
               store.dispatch(
                 AuthActions.setSession({
-                  accessToken: session.access_token,
-                  refreshToken: session.refresh_token,
-                  expiresIn: session.expires_in
+                  accessToken: newAccessToken,
+                  ...(newRefreshToken ? { refreshToken: newRefreshToken } : {}),
+                  ...(newExpiresIn !== undefined ? { expiresIn: newExpiresIn } : {})
                 })
               );
 
-              authorizedAPI.setHeaders({ Authorization: `Bearer ${session.access_token}` });
-              originalRequest.headers.Authorization = `Bearer ${session.access_token}`;
+              authorizedAPI.setHeaders({ Authorization: `Bearer ${newAccessToken}` });
+              originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
 
-              processQueue(null, session.access_token);
+              processQueue(null, newAccessToken);
               return authorizedAPI.axiosInstance(originalRequest);
             }
           }

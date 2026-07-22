@@ -22,6 +22,23 @@ export const useProfile = (): ProfileHookReturnType => {
   const user = useAppSelector(UserSelectors.getProfile);
   const { theme, isDark, changeTheme } = useTheme();
   const [deleting, setDeleting] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      const result = await dispatch(UserActions.fetchProfile({})).unwrap();
+      const rawProfile = result as unknown as Record<string, unknown>;
+      const profile = (rawProfile?.data || rawProfile) as unknown as typeof result;
+      if (profile) {
+        dispatch(UserActions.setProfile(profile));
+      }
+    } catch (error) {
+      console.warn('Failed to refresh profile:', error);
+    } finally {
+      setRefreshing(false);
+    }
+  }, [dispatch]);
 
   const toggleThemeSwitch = useCallback(() => {
     changeTheme(isDark ? ThemeModeEnum.light : ThemeModeEnum.dark);
@@ -84,6 +101,8 @@ export const useProfile = (): ProfileHookReturnType => {
     isDark,
     theme,
     deleting,
+    refreshing,
+    onRefresh,
     handleLogout,
     handleDeleteAccount,
     toggleThemeSwitch,

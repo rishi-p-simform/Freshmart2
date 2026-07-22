@@ -25,7 +25,7 @@ export const ProfileTabs: React.FC = () => {
             activeOpacity={0.7}
             onPress={() => {
               if (item.route) {
-                router.push(item.route as any);
+                router.push(item.route as import('expo-router').Href);
               }
             }}
           >

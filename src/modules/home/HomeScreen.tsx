@@ -63,7 +63,12 @@ const HomeScreen: FC = (): React.ReactElement => {
         <Text variant="titleMedium" style={styles.sectionTitle}>
           {Strings.Home.categories}
         </Text>
-        <Pressable accessibilityRole="button" accessibilityLabel="See all categories">
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="See all categories"
+          accessibilityHint="Navigates to full categories screen"
+          testID="see-all-categories-button"
+        >
           <Text variant="labelMedium" style={styles.seeAllText}>
             {Strings.Home.seeAll}
           </Text>

@@ -29,8 +29,7 @@ export default function SignupForm({
 }): React.ReactElement {
   const { styles, theme } = useTheme(styleSheet);
   const loading = useAppSelector<boolean>(AuthSelectors.getLoading);
-  const apiError = (props as any).apiError;
-  const setApiError = (props as any).setApiError;
+  const { apiError, setApiError } = props;
   const inputEmailRef: React.LegacyRef<TextInput> = createRef();
   const inputPasswordRef: React.LegacyRef<TextInput> = createRef();
   const inputConfirmPasswordRef: React.LegacyRef<TextInput> = createRef();

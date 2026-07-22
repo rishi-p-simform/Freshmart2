@@ -96,7 +96,7 @@ export const useProducts = (props: ProductsScreenProps): ProductsHookReturnType 
               borderRadius: scale(7)
             }}
           >
-            <Text variant="labelSmall" style={{ color: '#FFFFFF', fontWeight: '700' }}>
+            <Text variant="labelSmall" style={{ color: Colors[theme]?.white }}>
               {countText}
             </Text>
           </View>

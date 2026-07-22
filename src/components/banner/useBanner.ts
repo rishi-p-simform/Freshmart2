@@ -72,7 +72,7 @@ export const useBanner = (): UseBannerReturnType => {
   const handlePress = useCallback(
     (action_type?: string, action_value?: string) => {
       if (!action_type) {
-        router.navigate(ROUTES.Explore as any);
+        router.navigate(ROUTES.Explore);
         return;
       }
 
@@ -81,7 +81,7 @@ export const useBanner = (): UseBannerReturnType => {
       switch (type) {
         case 'category':
           router.navigate({
-            pathname: ROUTES.ProductDetails as any,
+            pathname: ROUTES.ProductDetails,
             params: {
               id: action_value || 'all',
               slug: action_value || 'all'
@@ -91,7 +91,7 @@ export const useBanner = (): UseBannerReturnType => {
 
         case 'product':
           router.navigate({
-            pathname: ROUTES.Search as any,
+            pathname: ROUTES.Search,
             params: {
               id: action_value
             }
@@ -99,30 +99,30 @@ export const useBanner = (): UseBannerReturnType => {
           break;
 
         case 'search':
-          router.navigate(ROUTES.Search as any);
+          router.navigate(ROUTES.Search);
           break;
 
         case 'url':
           if (action_value?.startsWith('http://') || action_value?.startsWith('https://')) {
             Linking.openURL(action_value).catch(() => {});
           } else if (action_value?.startsWith('/')) {
-            router.navigate(action_value as any);
+            router.navigate(action_value);
           } else {
-            router.navigate(ROUTES.Search as any);
+            router.navigate(ROUTES.Search);
           }
           break;
 
         default:
           if (action_value) {
             router.navigate({
-              pathname: ROUTES.ProductDetails as any,
+              pathname: ROUTES.ProductDetails,
               params: {
                 id: action_value,
                 slug: action_value
               }
             });
           } else {
-            router.navigate(ROUTES.Explore as any);
+            router.navigate(ROUTES.Explore);
           }
           break;
       }

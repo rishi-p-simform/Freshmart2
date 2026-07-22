@@ -27,8 +27,7 @@ export default function SigninForm({
 }): React.ReactElement {
   const { styles, theme } = useTheme(styleSheet);
   const loading = useAppSelector<boolean>(AuthSelectors.getLoading);
-  const apiError = (props as any).apiError;
-  const setApiError = (props as any).setApiError;
+  const { apiError, setApiError } = props;
   const inputPasswordRef: React.LegacyRef<TextInput> = createRef();
   const disabled: boolean = isRemainingToFillForm(values, errors);
   const fieldErrorEmail: string | undefined = (values.email?.length ?? 0) ? errors.email : '';

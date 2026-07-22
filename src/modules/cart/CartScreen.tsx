@@ -249,7 +249,7 @@ const CartScreen: React.FC = (): React.ReactElement => {
             <CustomButton
               title={Strings.Cart.proceedToCheckout}
               onPress={() => {
-                router.navigate(ROUTES.Checkout as any);
+                router.navigate(ROUTES.Checkout);
               }}
               style={styles.checkoutButton}
             />

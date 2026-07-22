@@ -1,9 +1,9 @@
+import React from 'react';
+import { Image, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scale } from '@/src/theme';
 import Feather from '@expo/vector-icons/Feather';
 import { LinearGradient } from 'expo-linear-gradient';
-import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Text } from '../../../components';
 import { useTheme } from '../../../hooks';
 import Colors from '../../../theme/Colors';
@@ -17,7 +17,8 @@ interface ProfileHeaderProps {
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   fullName = 'User',
-  email = 'user@example.com'
+  email = 'user@example.com',
+  avatarUrl
 }) => {
   const { theme, styles } = useTheme(styleSheet);
   const currentColors = Colors[theme] ?? Colors.light;
@@ -39,7 +40,11 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           style={styles.avatarBadge}
         >
           <View style={styles.innerBorder}>
-            <Text style={styles.avatarEmoji}>👨‍💼</Text>
+            {avatarUrl ? (
+              <Image source={{ uri: avatarUrl }} style={styles.avatarImage} />
+            ) : (
+              <Text style={styles.avatarEmoji}>👨‍💼</Text>
+            )}
           </View>
         </LinearGradient>
         <TouchableOpacity style={styles.editBadge} activeOpacity={0.8}>

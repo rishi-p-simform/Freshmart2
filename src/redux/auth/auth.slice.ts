@@ -22,11 +22,11 @@ const authSlice = createSlice({
      */
     setSession: (
       state: Draft<AuthState>,
-      action: PayloadAction<{ accessToken: string; refreshToken: string; expiresIn: number }>
+      action: PayloadAction<{ accessToken: string; refreshToken?: string; expiresIn?: number }>
     ) => {
       state.accessToken = action.payload.accessToken;
-      state.refreshToken = action.payload.refreshToken;
-      state.expiresIn = action.payload.expiresIn;
+      state.refreshToken = action.payload.refreshToken ?? null;
+      state.expiresIn = action.payload.expiresIn ?? null;
       state.isAuthenticated = true;
       state.error = null;
     },

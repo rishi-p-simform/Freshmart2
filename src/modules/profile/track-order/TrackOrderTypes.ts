@@ -1,4 +1,4 @@
-import type { Order } from '../../../types';
+import type { AddressData, Order } from '../../../types';
 
 export interface LocationCoordinates {
   latitude: number;
@@ -10,7 +10,7 @@ export interface TrackOrderHookReturnType {
   loading: boolean;
   refreshing: boolean;
   orderIdPrefix: string;
-  activeAddress: any;
+  activeAddress: AddressData | null;
   homeLocation: LocationCoordinates;
   storeLocation: LocationCoordinates;
   routeCoordinates: LocationCoordinates[];

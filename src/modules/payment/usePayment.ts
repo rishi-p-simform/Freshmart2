@@ -54,7 +54,7 @@ const usePayment = (): PaymentHookReturnType => {
 
         // Navigate to confirmation screen with created order ID
         router.push({
-          pathname: ROUTES.Confirmation as any,
+          pathname: ROUTES.Confirmation,
           params: { id: createdOrder.id }
         });
       }

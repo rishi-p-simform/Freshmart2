@@ -7,11 +7,17 @@ import { CustomButton, Text } from '../../../components';
 import { Strings } from '../../../constants';
 import { useTheme } from '../../../hooks';
 import { Colors } from '../../../theme';
+import type { ThemeColors } from '../../../theme';
 import OTPInput from './otp-input/OTPInput';
 import useVerifyEmail from './useVerifyEmail';
 import { styleSheet } from './VerifyEmailStyles';
 
-const VerifyEmailHeader = ({ style, themeColors }: { style: any; themeColors: any }) => (
+interface VerifyEmailHeaderProps {
+  style: ReturnType<typeof styleSheet>;
+  themeColors: ThemeColors;
+}
+
+const VerifyEmailHeader = ({ style, themeColors }: VerifyEmailHeaderProps) => (
   <Animated.View style={style.headerContainer} entering={ZoomIn.duration(500)}>
     <LinearGradient
       style={style.gradientStyle}

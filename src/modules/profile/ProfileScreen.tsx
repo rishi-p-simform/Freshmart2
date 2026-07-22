@@ -1,7 +1,7 @@
 import React, { type FC } from 'react';
-import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { CustomButton, Text } from '../../components';
+import { CustomButton, CustomRefreshControl, Text } from '../../components';
 import { Strings } from '../../constants';
 import { useTheme } from '../../hooks';
 import Colors, { ThemeModeEnum } from '../../theme/Colors';
@@ -20,14 +20,23 @@ const ProfileScreen: FC = (): React.ReactElement => {
   const { styles, theme } = useTheme(styleSheet);
   const currentColors = Colors[theme] ?? Colors.light;
 
-  const { user, isDark, deleting, handleLogout, handleDeleteAccount, setThemeMode } = useProfile();
+  const {
+    user,
+    isDark,
+    deleting,
+    refreshing,
+    onRefresh,
+    handleLogout,
+    handleDeleteAccount,
+    setThemeMode
+  } = useProfile();
 
   return (
     <View style={styles.container}>
-      <ScrollView
+      <CustomRefreshControl
+        refreshing={refreshing}
+        onRefresh={onRefresh}
         contentContainerStyle={styles.scrollViewContent}
-        bounces={false}
-        showsVerticalScrollIndicator={false}
       >
         <ProfileHeader
           fullName={user?.full_name}
@@ -97,7 +106,7 @@ const ProfileScreen: FC = (): React.ReactElement => {
             onPress={handleDeleteAccount}
           />
         </View>
-      </ScrollView>
+      </CustomRefreshControl>
     </View>
   );
 };

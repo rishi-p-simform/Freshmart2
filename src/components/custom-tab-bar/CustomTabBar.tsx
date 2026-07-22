@@ -55,7 +55,7 @@ const CustomTabBar: FC<CustomTabBarProps> = (props): React.ReactElement => {
   const focusedOptions = descriptors[focusedRoute.key]?.options;
   const tabBarStyle = focusedOptions?.tabBarStyle;
 
-  if (tabBarStyle && (tabBarStyle as any).display === 'none') {
+  if (tabBarStyle && (tabBarStyle as Record<string, unknown>).display === 'none') {
     return <></>;
   }
 
